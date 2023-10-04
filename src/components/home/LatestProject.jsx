@@ -9,9 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link as NextLink } from "next/link";
-import data from "~/data/project";
 
-function LatestProject() {
+function LatestProject({data}) {
     return (
         <Box pos={"relative"} w={"full"} mx={"auto"}>
             <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
@@ -39,7 +38,7 @@ function LatestProject() {
                 _before={{ md: { content: "''", margin: "auto" } }}
                 _after={{ md: { content: "''", margin: "auto" } }}
             >
-                {data.map((item, i) => (
+                {data?.map((item, i) => (
                     <Box
                         as={motion.div}
                         initial="offscreen"
@@ -69,7 +68,7 @@ function LatestProject() {
                         <Link
                             key={i}
                             as={NextLink}
-                            to={"#"}
+                            href={`/projects/${item.slug}`}
                             display={"block"}
                             w={"full"}
                             rounded={"xl"}
@@ -86,7 +85,7 @@ function LatestProject() {
                                     <Image
                                         border={"1px"}
                                         borderColor={"gray.100"}
-                                        src={item.thumbnail}
+                                        src={item.coverImage}
                                         w={"full"}
                                         h={"full"}
                                         objectFit={"cover"}
@@ -108,7 +107,7 @@ function LatestProject() {
                                         alignItems={"end !important"}
                                         top={0}
                                     >
-                                        {item.name}
+                                        {item.title}
                                     </Text>
                                 </>
                             </AspectRatio>

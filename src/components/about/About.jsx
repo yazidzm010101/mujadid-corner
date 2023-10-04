@@ -12,7 +12,7 @@ import {
     VStack,
 } from "@chakra-ui/react";
 import Blob from "@/assets/Blob";
-import data from '~/data/about';
+import data from '~/_data/about';
 
 function About() {
     return (

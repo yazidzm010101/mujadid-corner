@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import data from "~/data/experience";
+import data from "~/_data/experience";
 
 function Experience() {
     const [active, setActive] = useState(0);

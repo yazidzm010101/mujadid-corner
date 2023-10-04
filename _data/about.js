@@ -1,11 +1,10 @@
 
 import { SiChakraui } from "react-icons/si";
 import { TbBrandNextjs, TbBrandFlutter, TbBrandReact } from 'react-icons/tb';
-import photo from "~/data/profile.png";
 
 const data = {
     name: 'Yazid Zaidan Mujadid',
-    photo: photo.src,
+    photo: '/images/profile.png',
     about: `Already has an interest in information technology since
     high school and graduated from Gunadarma University in
     2021. During college, contributed to a computer

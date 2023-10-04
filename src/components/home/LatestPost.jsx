@@ -9,9 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link as NextLink } from "next/link";
-import data from "~/data/project";
 
-function LatestPost() {
+function LatestPost({data}) {
     return (
         <Box pos={"relative"} w={"full"} mx={"auto"}>
             <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
@@ -39,7 +38,7 @@ function LatestPost() {
                 _before={{ md: { content: "''", margin: "auto" } }}
                 _after={{ md: { content: "''", margin: "auto" } }}
             >
-                {data.map((item, i) => (
+                {data?.map((item, i) => (
                     <Box
                         as={motion.div}
                         initial="offscreen"
@@ -49,7 +48,7 @@ function LatestPost() {
                         variants={{
                             offscreen: {
                                 scale: 0.8,
-                                opacity: 0,
+                                opacity: 0 ,
                             },
                             onscreen: {
                                 scale: 1,
@@ -69,7 +68,7 @@ function LatestPost() {
                         <Link
                             key={i}
                             as={NextLink}
-                            to={"#"}
+                            href={`/posts/${item.slug}`}
                             display={"block"}
                             w={"full"}
                             rounded={"xl"}
@@ -86,7 +85,7 @@ function LatestPost() {
                                     <Image
                                         border={"1px"}
                                         borderColor={"gray.100"}
-                                        src={item.thumbnail}
+                                        src={item.coverImage}
                                         w={"full"}
                                         h={"full"}
                                         objectFit={"cover"}
@@ -108,7 +107,7 @@ function LatestPost() {
                                         alignItems={"end !important"}
                                         top={0}
                                     >
-                                        {item.name}
+                                        {item.title}
                                     </Text>
                                 </>
                             </AspectRatio>
