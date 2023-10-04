@@ -58,6 +58,7 @@ function About() {
                             w={"full"}
                             h={"full"}
                             src={data.photo}
+                            alt={'profile-image'}
                         />
                     </AspectRatio>
                 </Box>

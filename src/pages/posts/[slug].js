@@ -63,7 +63,7 @@ export default function Post({ post }) {
                     <Text as={"h1"} fontSize={"4xl"} fontWeight={"black"}>{post.title}</Text>
                     {
                         post.coverImage && (
-                            <Image src={post.coverImage} w={"full"} rounded={"lg"} my={6}/>
+                            <Image src={post.coverImage} alt={post.title} w={"full"} rounded={"lg"} my={6}/>
                         )
                     }
                     <Spacer as={"hr"} my={3}/>

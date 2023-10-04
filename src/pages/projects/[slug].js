@@ -62,7 +62,7 @@ export default function Project({ project }) {
                     <Text as={"h1"} fontSize={"4xl"} fontWeight={"black"}>{project.title}</Text>
                     {
                         project.coverImage && (
-                            <Image src={project.coverImage} w={"full"} rounded={"lg"} my={6}/>
+                            <Image src={project.coverImage} w={"full"} alt={project.title} rounded={"lg"} my={6}/>
                         )
                     }
                     <Spacer as={"hr"} my={3}/>

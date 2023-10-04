@@ -86,6 +86,7 @@ function LatestPost({data}) {
                                         border={"1px"}
                                         borderColor={"gray.100"}
                                         src={item.coverImage}
+                                        alt={item.title}
                                         w={"full"}
                                         h={"full"}
                                         objectFit={"cover"}

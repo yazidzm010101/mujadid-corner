@@ -89,6 +89,7 @@ function LatestProject({data}) {
                                         w={"full"}
                                         h={"full"}
                                         objectFit={"cover"}
+                                        alt={item.title}
                                     />
                                     <Text
                                         bgGradient={

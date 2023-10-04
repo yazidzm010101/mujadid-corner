@@ -1,5 +1,6 @@
 import { Button, Heading, Icon, Link, Text, VStack } from "@chakra-ui/react";
 import { FaPaperPlane } from "react-icons/fa";
+import config from "~/_data/config";
 
 function Greeting() {
     return (
@@ -14,7 +15,7 @@ function Greeting() {
                 bgGradient={"linear(to-br, green.200, green.300, blue.400)"}
                 bgClip={"text"}
             >
-                Welcome to Mujadid's Corner
+                Welcome to {config.page_name} 
             </Heading>
             <Text
                 textAlign={"center"}

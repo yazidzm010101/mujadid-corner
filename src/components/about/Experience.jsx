@@ -42,11 +42,13 @@ function Experience() {
             <HStack px={6}>
                 {data.map((item, i) => (
                     <Image
+                        key={i}
                         my={4}
                         w={"200px"}
                         h={"50px"}
                         objectFit={"contain"}
                         src={item.image}
+                        alt={item.name}
                         filter={active == i ? "saturate(1)" : "saturate(0)"}
                         cursor={"pointer"}
                         onClick={() => setActive(i)}
@@ -57,7 +59,8 @@ function Experience() {
             </HStack>
             {data.map((item, i) => (
                 <Stack
-                    direction={{base: 'column', md: 'row'}}
+                    key={i}
+                    direction={{ base: 'column', md: 'row' }}
                     in={active == i}
                     as={Fade}
                     unmountOnExit
@@ -66,16 +69,16 @@ function Experience() {
                     overflowY={"hidden"}
                     px={{ base: 0, lg: "6rem" }}
                     py={6}
-                    alignItems={{base: "center", md: "stretch   "}}
-                    _before={{md: { content: "''", margin: "auto" }}}
-                    _after={{md: { content: "''", margin: "auto" }}}
+                    alignItems={{ base: "center", md: "stretch   " }}
+                    _before={{ md: { content: "''", margin: "auto" } }}
+                    _after={{ md: { content: "''", margin: "auto" } }}
                 >
                     {item.experiences.map((item, i) => (
                         <Box
+                            key={i}
                             as={motion.div}
                             initial="offscreen"
                             whileInView="onscreen"
-                            key={i}
                             viewport={{ once: false, amount: 0.1 }}
                             variants={{
                                 offscreen: {
@@ -93,7 +96,7 @@ function Experience() {
                                 },
                             }}
                             w={"full"}
-                            maxW={{base: "400px", sm: '500px', md: "420px"}}
+                            maxW={{ base: "400px", sm: '500px', md: "420px" }}
                             flexShrink={0}
                             px={3}
                             py={2}
@@ -138,8 +141,9 @@ function Experience() {
                                 <CardFooter>
                                     {item.skills && (
                                         <HStack flexWrap={"wrap"} spacing={3}>
-                                            {item.skills.map((skill) => (
+                                            {item.skills.map((skill, i) => (
                                                 <Tag
+                                                    key={i}
                                                     color={
                                                         skill.color &&
                                                         skill.color + ".600"
