@@ -13,8 +13,16 @@ import {
 } from "@chakra-ui/react";
 import Blob from "@/assets/Blob";
 import data from "~/_data/about";
+import { useRouter } from "next/router";
 
 function About() {
+  const router = useRouter();
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
   return (
     <Box id="about" maxW="container.xl" mx={"auto"} px={6}>
       <Stack
@@ -56,7 +64,7 @@ function About() {
               rounded={"3rem"}
               w={"full"}
               h={"full"}
-              src={data.photo}
+              src={getFullUrl(data.photo)}
               alt={"profile-image"}
             />
           </AspectRatio>

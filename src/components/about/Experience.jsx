@@ -15,11 +15,19 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import data from "~/_data/experience";
 
 function Experience() {
   const [active, setActive] = useState(0);
+  const router = useRouter();
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
 
   return (
     <VStack w={"full"} mx={"auto"} pos={"relative"}>
@@ -46,7 +54,7 @@ function Experience() {
             w={"200px"}
             h={"50px"}
             objectFit={"contain"}
-            src={item.image}
+            src={getFullUrl(item.image)}
             alt={item.name}
             filter={active == i ? "saturate(1)" : "saturate(0)"}
             cursor={"pointer"}
