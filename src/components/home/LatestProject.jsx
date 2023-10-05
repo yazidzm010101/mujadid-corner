@@ -147,8 +147,8 @@ function LatestProject({ data }) {
             #Recent projects
           </Heading>
         </Box>
-        {data?.map((item) => (
-          <Project {...item} />
+        {data?.map((item, i) => (
+          <Project key={i} {...item} />
         ))}
       </Box>
       <HStack w={"full"} justifyContent={"center"} my={5}>

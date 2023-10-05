@@ -33,6 +33,7 @@ function Greeting() {
         src={
           "https://cdn.pixabay.com/photo/2017/08/15/08/23/stars-2643089_640.jpg"
         }
+        alt={"banner"}
         filter={"blur(4px)"}
         opacity={0.2}
         w={"full"}
