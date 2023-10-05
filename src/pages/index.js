@@ -29,6 +29,8 @@ export function getStaticProps({ params }) {
     "slug",
     "coverImage",
     "excerpt",
+    "icon",
+    "demoURL",
   ]);
 
   return {

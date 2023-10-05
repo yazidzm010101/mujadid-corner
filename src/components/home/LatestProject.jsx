@@ -22,7 +22,7 @@ function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-function Project({ coverImage, title, excerpt }) {
+function Project({ coverImage, title, icon, excerpt, demoURL }) {
   const ref = useRef(null);
 
   const router = useRouter();
@@ -44,21 +44,21 @@ function Project({ coverImage, title, excerpt }) {
           position: "absolute",
           left: "0",
           bottom: "20%",
-          opacity: 0.1,
+          opacity: 0.05,
           x: y,
           offsetAnchor: "right center",
         }}
       >
         <Heading
           letterSpacing={2}
-          color={"transparent"}
+          // color={"transparent"}
           as={"h3"}
           fontWeight={"extrabold"}
           fontSize={"400px"}
           w={"max-content"}
-          style={{
-            WebkitTextStroke: "2px black",
-          }}
+          // style={{
+          //   WebkitTextStroke: "2px black",
+          // }}
         >
           {title}
         </Heading>
@@ -69,7 +69,7 @@ function Project({ coverImage, title, excerpt }) {
           position: "absolute",
           right: "-20%",
           top: "0",
-          opacity: 0.1,
+          opacity: 0.05,
           x: y,
           offsetAnchor: "right center",
         }}
@@ -89,33 +89,92 @@ function Project({ coverImage, title, excerpt }) {
         </Heading>
       </motion.div>
       <VStack
+        pl={{ xl: "8rem" }}
         pos={"relative"}
         w={"full"}
         alignItems={"flex-start"}
         maxW={"container.md"}
         mx={"auto"}
       >
-        <AspectRatio ratio={4 / 3} w={"full"} mx={"auto"} mb={6}>
-          <Image src={getFullUrl(coverImage)} alt={title} rounded={"xl"} />
-        </AspectRatio>
-        <Heading
-          letterSpacing={3}
-          fontWeight={"extrabold"}
-          fontSize={"4xl"}
-          as={"h3"}
-          w={"max-content"}
-          textAlign={"start"}
+        <Box
+          w={"full"}
+          mx={"auto"}
+          mb={6}
+          p={3}
+          pb={0}
+          bg={"white"}
+          rounded={"3xl"}
+          border={"1px solid rgb(0 0 0 / 0.1)"}
         >
-          {title}
-        </Heading>
-        <Text
-          fontSize={"xl"}
-          noOfLines={3}
-          lineHeight={"3rem"}
-          letterSpacing={2}
-        >
-          {excerpt}
-        </Text>
+          <AspectRatio
+            ratio={4 / 3}
+            w={"full"}
+            bg={"white"}
+            rounded={"3xl"}
+            border={"1px solid rgb(0 0 0 / 0.1)"}
+            overflow={"hidden"}
+          >
+            <>
+              <Image
+                filter={"brightness(0.9)"}
+                src={getFullUrl(coverImage)}
+                alt={title}
+              />
+              {demoURL && (
+                <Link
+                  bg={"rgb(0 0 0 / 0.8)"}
+                  color={"white"}
+                  fontSize={"2xl"}
+                  href={demoURL}
+                  opacity={0}
+                  target="_blank"
+                  _hover={{ opacity: 1 }}
+                >
+                  Visit demo page
+                </Link>
+              )}
+            </>
+          </AspectRatio>
+          <Box
+            w={6}
+            h={6}
+            mx={"auto"}
+            bg={"rgb(0 0 0 / 0.1)"}
+            border={"1px solid rgb(0 0 0 / 0.1)"}
+            rounded={"full"}
+            my={3}
+          />
+        </Box>
+        <Box pos={"relative"} w={"full"}>
+          <Image
+            w={{ base: "4rem", lg: "6rem" }}
+            h={{ base: "4rem", lg: "6rem" }}
+            pos={"absolute"}
+            right={0}
+            transform={"translate(-20%, -100%)"}
+            rounded={"2xl"}
+            shadow={"dark-lg"}
+            alt={title}
+            src={getFullUrl(icon)}
+          />
+          <Heading
+            letterSpacing={3}
+            fontWeight={"extrabold"}
+            fontSize={"4xl"}
+            as={"h3"}
+            textAlign={"start"}
+          >
+            {title}
+          </Heading>
+          <Text
+            fontSize={"xl"}
+            noOfLines={3}
+            lineHeight={"3rem"}
+            letterSpacing={2}
+          >
+            {excerpt}
+          </Text>
+        </Box>
       </VStack>
     </Box>
   );
@@ -124,8 +183,8 @@ function Project({ coverImage, title, excerpt }) {
 function LatestProject({ data }) {
   return (
     <>
-      <Box pos={"relative"} w={"full"} mx={"auto"} py={12} pl={{ xl: "8rem" }}>
-        <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
+      <Box pos={"relative"} w={"full"} mx={"auto"} py={12} minH={"120vh"}>
+        <Box w={"full"} maxW={"container.xl"} mx={"auto"} pl={{ xl: "8rem" }}>
           <Heading
             display={{ xl: "none" }}
             as="h2"
@@ -158,11 +217,13 @@ function LatestProject({ data }) {
             #Recent projects
           </Heading>
         </Box>
-        {data?.map((item, i) => (
-          <Project key={i} {...item} />
-        ))}
+        <Box>
+          {data?.map((item, i) => (
+            <Project key={i} {...item} />
+          ))}
+        </Box>
       </Box>
-      <HStack w={"full"} justifyContent={"center"} my={5}>
+      <HStack w={"full"} justifyContent={"center"} my={5} pl={{ xl: "8rem" }}>
         <Button
           as={Link}
           rightIcon={<Icon as={HiArrowRight} />}

@@ -37,70 +37,9 @@ function LatestPost({ data }) {
       mb={-24}
       py={24}
       clipPath={"polygon(0% 2%, 100% 0%, 100% 100%, 0% 100%)"}
+      minH={"130vh"}
     >
-      <motion.div
-        style={{
-          position: "absolute",
-          pointerEvents: "none",
-          width: "200vh",
-          height: "200vh",
-          left: "30%",
-          top: "40%",
-          offsetPosition: "center",
-        }}
-        animate={{
-          rotate: [0, 360],
-          x: ["-50%"],
-          y: ["-50%"],
-          offsetPosition: "center",
-        }}
-        transition={{
-          duration: 120,
-          ease: "linear",
-          delay: 0,
-          repeat: Infinity,
-        }}
-      >
-        <JupyterRing
-          opacity={0.5}
-          filter={"blur(3px)"}
-          color={"gray.300"}
-          w={"full"}
-          h={"full"}
-        />
-      </motion.div>
-      <motion.div
-        style={{
-          position: "absolute",
-          pointerEvents: "none",
-          width: "200vh",
-          height: "200vh",
-          left: "30%",
-          top: "40%",
-          offsetPosition: "center",
-        }}
-        animate={{
-          rotate: [0, -360],
-          x: ["-50%"],
-          y: ["-50%"],
-          offsetPosition: "center",
-        }}
-        transition={{
-          duration: 120,
-          ease: "linear",
-          delay: 0,
-          repeat: Infinity,
-        }}
-      >
-        <JupyterRingAlt
-          opacity={0.5}
-          filter={"blur(3px)"}
-          color="gray.300"
-          w={"full"}
-          h={"full"}
-        />
-      </motion.div>
-      <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
+      <Box w={"full"} maxW={"container.xl"} mx={"auto"} pos={"relative"}>
         <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
           <Heading
             display={{ xl: "none" }}
@@ -135,6 +74,7 @@ function LatestPost({ data }) {
         </Box>
       </Box>
       <VStack
+        pos={"relative"}
         margin={"0 auto"}
         maxW={"container.xl"}
         px={{ base: 0, lg: "6rem" }}
@@ -193,7 +133,7 @@ function LatestPost({ data }) {
             </VStack>
           </Flex>
         ))}
-        <HStack bg={"gray.200"} w={"full"} justifyContent={"center"}>
+        <HStack w={"full"} justifyContent={"center"}>
           <Button
             as={Link}
             rightIcon={<Icon as={HiArrowRight} />}

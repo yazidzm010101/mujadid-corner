@@ -24,7 +24,7 @@ function Greeting() {
       my={-24}
       mb={10}
       py={64}
-      clipPath={"polygon(0% 0%, 100% 0%, 100% 100%, 0% 90%)"}
+      clipPath={"polygon(0% 0%, 100% 0%, 100% 100%, 0% 95%)"}
       px={4}
       pos={"relative"}
       overflow={"hidden"}
