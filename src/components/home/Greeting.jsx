@@ -68,6 +68,7 @@ function Greeting() {
         <JupyterRing
           filter={"blur(3px)"}
           color={"blue.200"}
+          opacity={0.05}
           w={"full"}
           h={"full"}
         />
@@ -98,6 +99,7 @@ function Greeting() {
         <JupyterRingAlt
           filter={"blur(3px)"}
           color="teal.200"
+          opacity={0.05}
           w={"full"}
           h={"full"}
         />

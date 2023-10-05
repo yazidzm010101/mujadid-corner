@@ -62,6 +62,7 @@ function LatestPost({ data }) {
         }}
       >
         <JupyterRing
+          opacity={0.5}
           filter={"blur(3px)"}
           color={"gray.300"}
           w={"full"}
@@ -92,6 +93,7 @@ function LatestPost({ data }) {
         }}
       >
         <JupyterRingAlt
+          opacity={0.5}
           filter={"blur(3px)"}
           color="gray.300"
           w={"full"}
@@ -141,32 +143,7 @@ function LatestPost({ data }) {
         spacing={32}
       >
         {data?.map((item, i) => (
-          <Flex
-            as={motion.div}
-            key={i}
-            flexDirection={{ base: "column", md: "row" }}
-            initial="offscreen"
-            whileInView="onscreen"
-            alignItems={"stretch"}
-            viewport={{ once: false, amount: 0 }}
-            variants={{
-              offscreen: {
-                scale: 0.8,
-                opacity: 0,
-                y: "20%",
-              },
-              onscreen: {
-                scale: 1,
-                opacity: 1,
-                y: 0,
-                transition: {
-                  type: "spring",
-                  bounce: 0.4,
-                  duration: 0.8,
-                },
-              },
-            }}
-          >
+          <Flex key={i} flexDirection={{ base: "column", md: "row" }}>
             <AspectRatio
               w={{ base: "full", md: "300px" }}
               ratio={16 / 9}
