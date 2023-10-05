@@ -17,31 +17,32 @@ import { getLatestProjects } from "@/lib/getProject";
 
 export function getStaticProps({ params }) {
   const latestPost = getLatestPost([
-    'title',
-    'date',
-    'slug',
-    'coverImage',
-    'excerpt'
-  ])
+    "title",
+    "date",
+    "slug",
+    "coverImage",
+    "excerpt",
+  ]);
   const latestProjects = getLatestProjects([
-    'title',
-    'date',
-    'slug',
-    'coverImage',
-  ])
+    "title",
+    "date",
+    "slug",
+    "coverImage",
+    "excerpt",
+  ]);
 
   return {
     props: { latestPost, latestProjects },
-  }
+  };
 }
 
 function Home({ latestPost, latestProjects }) {
   return (
     <Layout>
-      <VStack spacing={'12rem'} w={"full"}>
+      <VStack w={"full"} spacing={32}>
         <Greeting />
+        <LatestProject data={latestProjects} />
         <LatestPost data={latestPost} />
-        <LatestProject data={latestProjects}/>
       </VStack>
     </Layout>
   );

@@ -19,23 +19,11 @@ Yup, gw gk pake package manager buat pasang flutter, karena ketika gw cek flutte
 ## Setup environment variable
 Next kita perlu setup environment variable supaya setiap app yg dipasang tadi bisa berjalan dengan baik. Pertama env ANDROID_HOME, kemudian flutternya juga, dan terakhir ini opsional flutter web development secara default akan nyari basepath google chrome sebagai browser defaultnya. Tapi lo bisa pake chromium-web based lain (contohnya di gw brave browser) dengan cara setup env variable kaya begini. Next jangan lupa login logout atua restart linux lo biar env variablenya keload ulang lagi
 
-```sh bash_profile.sh
-# ........potongan kode sebelumynya sesuai settingan agan
-
-# taro ini dipaling bawah
-export CHROME_EXECUTABLE=/opt/brave-bin/brave
-export ANDROID_HOME=/home/$USER/Android/Sdk
-export FLUTTER_HOME=/home/$USER/Flutter/bin
-export PATH=$PATH:$FLUTTER_HOME
-
-```
-
 ## Flutter Doctor
 Last but not least, jalanin perintah flutter doctor -v maka terminal bakal ngelist dependency/requirement yg udah terpenuhi dari flutter apaan aja. Kalo ada yg masih merah mungkin ada yg keskip dr ente pas setup flutter + andro studionya. Jangan lupa juga buat agree all license dari flutter doctor dengan jalanin perintah ini.
 
 ## Opsional - VS Code Setup
 Ini opsional, tapi gw prefer pake visual studio code buat dev flutter karena lebih enteng ketimbang android studio, since gw gk pake xml based layout alias rada-rada kaya reactjs component based gt jadi gw lebih suka pake code editor biasa + adb/emulator. Nah di marketplace vscode ada satu extension keren tinggal dipasang aja buat ngesulap vscode jadi kaya IDE flutter. Dengan begini lo bisa ngerun dan ngedebug file main.dart pake code editor dan bakalan ngedetect available virtual device yg dipasang sekaligus adb device yg lagi jalan
 
-----
 ## Happy Fluttering
 Mantap seharusnya dengan begini flutter siap dipake buat ngerjain proyek proyek keren lu di luar sana. Jangan lupa share artikel ini kalo menurut kalian bermanfaat yess. adios~

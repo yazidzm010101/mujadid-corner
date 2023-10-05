@@ -1,12 +1,8 @@
-import { Box } from '@chakra-ui/react'
-import React from 'react'
+import { Box } from "@chakra-ui/react";
+import React from "react";
 
 function Footer() {
-    return (
-        <Box h={"100px"} w={"full"} bg={"teal.400"} pos={"relative"}>
-
-        </Box>
-    )
+  return <Box h={"100px"} w={"full"} bg={"gray.800"} pos={"relative"}></Box>;
 }
 
-export default Footer
+export default Footer;

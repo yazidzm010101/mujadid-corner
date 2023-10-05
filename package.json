@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "serve out",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.5",
@@ -22,12 +23,14 @@
     "react-dom": "^18",
     "react-icons": "^4.11.0",
     "react-markdown": "^8.0.7",
+    "react-syntax-highlighter": "^15.5.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
+    "prettier": "3.0.3",
     "serve": "^14.2.1"
   }
 }

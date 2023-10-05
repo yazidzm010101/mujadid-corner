@@ -1,8 +1,4 @@
 {
-    "frontMatter.content.pageFolders": [
-        {
-            "title": "_posts",
-            "path": "[[workspace]]/_posts"
-        }
-    ]
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }

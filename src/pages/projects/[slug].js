@@ -5,6 +5,7 @@ import { Box, Container, Image, Spacer, Text } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import ReactMarkdown from 'react-markdown'
 import { getAllProjects, getLatestProjects, getProjectBySlug } from '@/lib/getProject'
+import CodeBlock from '@/components/CodeBlock'
 
 export async function getStaticProps({ params }) {
     const project = getProjectBySlug(params.slug, [
@@ -38,14 +39,17 @@ export async function getStaticPaths() {
 
 const newTheme = {
     p: ({ children }) => (
-        <Text as={'p'} mb={2} fontSize={'medium'} lineHeight={10}>
+        <Text as={'p'} my={2} fontSize={'medium'} lineHeight={10}>
             {children}
         </Text>
     ),
     h2: ({ children }) => (
-        <Text as={'h2'} mb={2} fontSize={'2xl'} lineHeight={10} fontWeight={"bold"}>
+        <Text as={'h2'} my={2} fontSize={'2xl'} lineHeight={10} fontWeight={"bold"}>
             {children}
         </Text>
+    ),
+    code: ({...props})=> (
+        <CodeBlock {...props}/>
     ),
 };
 
@@ -59,7 +63,7 @@ export default function Project({ project }) {
         <Layout title={project.title}>
             <Container maxW={"container.md"}>
                 <Box as={"article"}>
-                    <Text as={"h1"} fontSize={"4xl"} fontWeight={"black"}>{project.title}</Text>
+                    <Text as={"h1"} fontSize={{base: "3xl", sm: "4xl", lg: "5xl"}} fontWeight={"black"}>{project.title}</Text>
                     {
                         project.coverImage && (
                             <Image src={project.coverImage} w={"full"} alt={project.title} rounded={"lg"} my={6}/>

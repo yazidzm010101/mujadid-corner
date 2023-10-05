@@ -1,123 +1,182 @@
 import {
-    AspectRatio,
-    Box,
-    HStack,
-    Heading,
-    Image,
-    Link,
-    Text,
+  AspectRatio,
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Heading,
+  Icon,
+  Image,
+  Link,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { Link as NextLink } from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import NextLink from "next/link";
+import { useRef } from "react";
+import { FaBox, FaCode, FaPaperPlane } from "react-icons/fa";
+import { HiArrowRight } from "react-icons/hi";
 
-function LatestProject({data}) {
-    return (
-        <Box pos={"relative"} w={"full"} mx={"auto"}>
-            <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
-                <Heading
-                    w={"full"}
-                    as="h2"
-                    mb={10}
-                    px={4}
-                    textAlign={{ base: "center" }}
-                    fontSize={"xl"}
-                    letterSpacing={3}
-                    fontWeight={"extrabold"}
-                    textTransform={"uppercase"}
-                    color={"teal.300"}
-                >
-                    Latest projects
-                </Heading>
-            </Box>
-            <HStack
-                overflowX={"auto"}
-                overflowY={"hidden"}
-                pos={"relative"}
-                px={{ base: 0, lg: "6rem" }}
-                py={6}
-                _before={{ md: { content: "''", margin: "auto" } }}
-                _after={{ md: { content: "''", margin: "auto" } }}
-            >
-                {data?.map((item, i) => (
-                    <Box
-                        as={motion.div}
-                        initial="offscreen"
-                        whileInView="onscreen"
-                        key={i}
-                        viewport={{ once: false, amount: 0.1 }}
-                        variants={{
-                            offscreen: {
-                                scale: 0.8,
-                                opacity: 0,
-                            },
-                            onscreen: {
-                                scale: 1,
-                                opacity: 1,
-                                transition: {
-                                    type: "spring",
-                                    bounce: 0.4,
-                                    duration: 0.8,
-                                },
-                            },
-                        }}
-                        w={"full"}
-                        maxW={"480px"}
-                        flexShrink={0}
-                        px={3}
-                    >
-                        <Link
-                            key={i}
-                            as={NextLink}
-                            href={`/projects/${item.slug}`}
-                            display={"block"}
-                            w={"full"}
-                            rounded={"xl"}
-                            border={"1px"}
-                            borderColor={"blackAlpha.200"}
-                            _hover={{
-                                transform: "scale(1.01)",
-                                borderColor: "green.400",
-                            }}
-                            overflow={"hidden"}
-                        >
-                            <AspectRatio ratio={16 / 9}>
-                                <>
-                                    <Image
-                                        border={"1px"}
-                                        borderColor={"gray.100"}
-                                        src={item.coverImage}
-                                        w={"full"}
-                                        h={"full"}
-                                        objectFit={"cover"}
-                                        alt={item.title}
-                                    />
-                                    <Text
-                                        bgGradient={
-                                            "linear(to-b, rgba(0,0,0,0), blackAlpha.300, blackAlpha.800)"
-                                        }
-                                        color={"white"}
-                                        pb={4}
-                                        pt={24}
-                                        bottom={0}
-                                        w={"full"}
-                                        textAlign={"start"}
-                                        px={6}
-                                        fontWeight={"bold"}
-                                        letterSpacing={2}
-                                        justifyContent={"start !important"}
-                                        alignItems={"end !important"}
-                                        top={0}
-                                    >
-                                        {item.title}
-                                    </Text>
-                                </>
-                            </AspectRatio>
-                        </Link>
-                    </Box>
-                ))}
-            </HStack>
+function useParallax(value, distance) {
+  return useTransform(value, [0, 1], [-distance, distance]);
+}
+
+function Project({ coverImage, title, excerpt }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useParallax(scrollYProgress, 300);
+  return (
+    <Box h={"100vh"} w={"full"} px={4} pos={"relative"} overflowX={"hidden"}>
+      <motion.div
+        style={{
+          pointerEvents: "none",
+          position: "absolute",
+          left: "0",
+          bottom: "20%",
+          opacity: 0.1,
+          x: y,
+          offsetAnchor: "right center",
+        }}
+      >
+        <Heading
+          letterSpacing={2}
+          color={"transparent"}
+          as={"h3"}
+          fontWeight={"extrabold"}
+          fontSize={"400px"}
+          w={"max-content"}
+          style={{
+            WebkitTextStroke: "2px black",
+          }}
+        >
+          {title}
+        </Heading>
+      </motion.div>
+      <motion.div
+        style={{
+          pointerEvents: "none",
+          position: "absolute",
+          right: "-20%",
+          top: "0",
+          opacity: 0.1,
+          x: y,
+          offsetAnchor: "right center",
+        }}
+      >
+        <Heading
+          letterSpacing={2}
+          color={"transparent"}
+          as={"h3"}
+          fontWeight={"extrabold"}
+          fontSize={"200px"}
+          w={"max-content"}
+          style={{
+            WebkitTextStroke: "2px black",
+          }}
+        >
+          {title}
+        </Heading>
+      </motion.div>
+      <VStack
+        pos={"relative"}
+        w={"full"}
+        alignItems={"flex-start"}
+        maxW={"container.md"}
+        mx={"auto"}
+      >
+        <AspectRatio ratio={4 / 3} w={"full"} mx={"auto"} mb={6}>
+          <Image src={coverImage} alt={title} rounded={"xl"} />
+        </AspectRatio>
+        <Heading
+          letterSpacing={3}
+          fontWeight={"extrabold"}
+          fontSize={"4xl"}
+          as={"h3"}
+          w={"max-content"}
+          textAlign={"start"}
+        >
+          {title}
+        </Heading>
+        <Text
+          fontSize={"xl"}
+          noOfLines={3}
+          lineHeight={"3rem"}
+          letterSpacing={2}
+        >
+          {excerpt}
+        </Text>
+      </VStack>
+    </Box>
+  );
+}
+
+function LatestProject({ data }) {
+  return (
+    <>
+      <Box pos={"relative"} w={"full"} mx={"auto"} py={12} pl={{ xl: "8rem" }}>
+        <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
+          <Heading
+            display={{ xl: "none" }}
+            as="h2"
+            mb={20}
+            px={4}
+            textAlign={{ base: "center" }}
+            fontSize={{ base: "2xl" }}
+            letterSpacing={4}
+            fontWeight={"extrabold"}
+            textTransform={"uppercase"}
+          >
+            #Recent projects
+          </Heading>
+          <Heading
+            display={{ base: "none", xl: "block" }}
+            pos={"absolute"}
+            top={0}
+            left={"-26rem"}
+            transform={"rotate(-90deg) translate(-50%, -50%)"}
+            as="h2"
+            mb={20}
+            px={4}
+            textAlign={"center"}
+            fontSize={"7xl"}
+            letterSpacing={20}
+            fontWeight={"extrabold"}
+            textTransform={"uppercase"}
+            // style={{ offsetAnchor: "center" }}
+          >
+            #Recent projects
+          </Heading>
         </Box>
-    );
+        {data?.map((item) => (
+          <Project {...item} />
+        ))}
+      </Box>
+      <HStack w={"full"} justifyContent={"center"} my={5}>
+        <Button
+          as={Link}
+          rightIcon={<Icon as={HiArrowRight} />}
+          rounded={"md"}
+          px={10}
+          py={6}
+          href="mailto:yazidzm.developer@gmail.com?subject=Hello%20Yazid"
+          bg={"gray.800"}
+          letterSpacing={5}
+          _hover={{
+            bg: "teal.400",
+            color: "white",
+            transform: "scale(1.02)",
+            shadow: "0px 6px 16px #38B2AC",
+            border: "1px",
+            borderColor: "rgba(255,255,255,0.2)",
+          }}
+          color={"teal.200"}
+          textTransform={"uppercase"}
+        >
+          See more of my works
+        </Button>
+      </HStack>
+    </>
+  );
 }
 
 export default LatestProject;
