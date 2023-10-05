@@ -1,3 +1,4 @@
+import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -23,9 +24,6 @@ function useParallax(value, distance) {
 }
 
 function Project({ coverImage, title, excerpt }) {
-  const router = useRouter();
-  const getFullURL = (path) => `${router.basePath}${path}`;
-
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);

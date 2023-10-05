@@ -1,10 +1,13 @@
 // only use this when using non nextjs component
+
+import { useRouter } from "next/router";
+
 // Image & Link
 export function getFullURL(url) {
+  const router = useRouter();
+  const getLink = (path) => `${router.basePath}${path}`;
   if (!!url.match(/^\//g)) {
-    const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH;
-    console.log(BASE_PATH);
-    return BASE_PATH + url;
+    return getLink(url);
   }
   return url;
 }

@@ -1,5 +1,6 @@
 import JupyterRing from "@/assets/JupyterRing";
 import JupyterRingAlt from "@/assets/JupyterRingAlt";
+import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -20,8 +21,6 @@ import { FaArrowRight } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
 
 function LatestPost({ data }) {
-  const router = useRouter();
-  const getFullURL = (path) => `${router.basePath}${path}`;
   return (
     <Box
       bg={"gray.200"}

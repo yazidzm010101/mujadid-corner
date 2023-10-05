@@ -7,11 +7,9 @@ import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { getFullURL } from "@/lib/getFullUrl";
 
 function Navbar() {
-  const router = useRouter();
-  const getFullURL = (path) => `${router.basePath}${path}`;
-
   const [isSolid, setIsSolid] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const ref = useRef({});
