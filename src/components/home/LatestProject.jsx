@@ -1,3 +1,4 @@
+import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -85,7 +86,7 @@ function Project({ coverImage, title, excerpt }) {
         mx={"auto"}
       >
         <AspectRatio ratio={4 / 3} w={"full"} mx={"auto"} mb={6}>
-          <Image src={coverImage} alt={title} rounded={"xl"} />
+          <Image src={getFullURL(coverImage)} alt={title} rounded={"xl"} />
         </AspectRatio>
         <Heading
           letterSpacing={3}

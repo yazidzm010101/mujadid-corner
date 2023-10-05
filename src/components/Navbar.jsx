@@ -7,6 +7,7 @@ import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { getFullURL } from "@/lib/getFullUrl";
 
 function Navbar() {
   const [isSolid, setIsSolid] = useState(false);
@@ -67,8 +68,8 @@ function Navbar() {
           spacing={12}
           display={{ base: "none", md: "flex" }}
         >
-          <Link href={"/"}>Home</Link>
-          <Link href={"/about"}>About</Link>
+          <Link href={getFullURL("/")}>Home</Link>
+          <Link href={getFullURL("/about")}>About</Link>
         </HStack>
         <Text fontSize={"2xl"} fontFamily={'"Noto Kufi Arabic", sans-serif'}>
           مجديد

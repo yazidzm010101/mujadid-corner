@@ -1,5 +1,6 @@
 import JupyterRing from "@/assets/JupyterRing";
 import JupyterRingAlt from "@/assets/JupyterRingAlt";
+import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -164,7 +165,7 @@ function LatestPost({ data }) {
               flexShrink={0}
             >
               <Image
-                src={item.coverImage}
+                src={getFullURL(item.coverImage)}
                 alt={item.title}
                 rounded={{ md: "lg" }}
               />
