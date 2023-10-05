@@ -1,4 +1,3 @@
-import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -25,8 +24,18 @@ function useParallax(value, distance) {
 
 function Project({ coverImage, title, excerpt }) {
   const ref = useRef(null);
+
+  const router = useRouter();
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
+
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
+
   return (
     <Box h={"100vh"} w={"full"} px={4} pos={"relative"} overflowX={"hidden"}>
       <motion.div
@@ -87,7 +96,7 @@ function Project({ coverImage, title, excerpt }) {
         mx={"auto"}
       >
         <AspectRatio ratio={4 / 3} w={"full"} mx={"auto"} mb={6}>
-          <Image src={getFullURL(coverImage)} alt={title} rounded={"xl"} />
+          <Image src={getFullUrl(coverImage)} alt={title} rounded={"xl"} />
         </AspectRatio>
         <Heading
           letterSpacing={3}

@@ -1,6 +1,5 @@
 import JupyterRing from "@/assets/JupyterRing";
 import JupyterRingAlt from "@/assets/JupyterRingAlt";
-import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -21,6 +20,14 @@ import { FaArrowRight } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
 
 function LatestPost({ data }) {
+  const router = useRouter();
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
+
   return (
     <Box
       bg={"gray.200"}
@@ -166,7 +173,7 @@ function LatestPost({ data }) {
               flexShrink={0}
             >
               <Image
-                src={getFullURL(item.coverImage)}
+                src={getFullUrl(item.coverImage)}
                 alt={item.title}
                 rounded={{ md: "lg" }}
               />

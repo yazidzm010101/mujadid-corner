@@ -1,4 +1,5 @@
 import { Box, Button, HStack, Icon, Link, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 import { RiMenu4Fill } from "react-icons/ri";
 import { useMotionValueEvent } from "framer-motion";
@@ -7,7 +8,6 @@ import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { getFullURL } from "@/lib/getFullUrl";
 
 function Navbar() {
   const [isSolid, setIsSolid] = useState(false);
@@ -68,8 +68,8 @@ function Navbar() {
           spacing={12}
           display={{ base: "none", md: "flex" }}
         >
-          <Link href={getFullURL("/")}>Home</Link>
-          <Link href={getFullURL("/about")}>About</Link>
+          <NextLink href={"/"}>Home</NextLink>
+          <NextLink href={"/about"}>About</NextLink>
         </HStack>
         <Text fontSize={"2xl"} fontFamily={'"Noto Kufi Arabic", sans-serif'}>
           مجديد
@@ -80,8 +80,8 @@ function Navbar() {
           spacing={12}
           display={{ base: "none", md: "flex" }}
         >
-          <Link href={"#"}>Projects</Link>
-          <Link href={"#"}>Blogs</Link>
+          <NextLink href={"#"}>Projects</NextLink>
+          <NextLink href={"#"}>Blogs</NextLink>
         </HStack>
       </HStack>
     </Box>
