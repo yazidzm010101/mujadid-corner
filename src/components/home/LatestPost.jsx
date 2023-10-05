@@ -119,7 +119,7 @@ function LatestPost({ data }) {
             display={{ base: "none", xl: "block" }}
             pos={"absolute"}
             top={0}
-            right={"-20rem"}
+            right={"-26rem"}
             transform={"rotate(-90deg) translate(-50%, -50%)"}
             as="h2"
             mb={20}
@@ -138,7 +138,7 @@ function LatestPost({ data }) {
         margin={"0 auto"}
         maxW={"container.xl"}
         px={{ base: 0, lg: "6rem" }}
-        pr={{ xl: 72 }}
+        pr={{ xl: 48 }}
         py={6}
         spacing={32}
       >
