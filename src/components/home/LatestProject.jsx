@@ -1,4 +1,3 @@
-import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -14,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import { FaBox, FaCode, FaPaperPlane } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
@@ -23,6 +23,9 @@ function useParallax(value, distance) {
 }
 
 function Project({ coverImage, title, excerpt }) {
+  const router = useRouter();
+  const getFullURL = (path) => `${router.basePath}${path}`;
+
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);

@@ -1,6 +1,5 @@
 import JupyterRing from "@/assets/JupyterRing";
 import JupyterRingAlt from "@/assets/JupyterRingAlt";
-import { getFullURL } from "@/lib/getFullUrl";
 import {
   AspectRatio,
   Box,
@@ -16,10 +15,13 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { FaArrowRight } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
 
 function LatestPost({ data }) {
+  const router = useRouter();
+  const getFullURL = (path) => `${router.basePath}${path}`;
   return (
     <Box
       bg={"gray.200"}
