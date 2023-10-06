@@ -1,8 +1,8 @@
 ---
-title: Qliner
-date: "2020-03-16T05:35:07.322Z"
-excerpt: Sistem pemesanan restoran cepat saji menggunakan Vite, React.js, MongoDB, ChakraUI dan React Query
-coverImage: "/images/project-qliner.png"
+title: Kanban it!
+date: "2023-10-04T10:45:01.605Z"
+excerpt: Simple task management dalam bentuk kanban view dikembangkan dalam bentuk PWA dan Desktop
+coverImage: "https://desk.zoho.com/support/ImageDisplay?downloadType=uploadedFile&fileName=1646830100904.png&blockId=48d0a458940565728645435cddc1269944a57df44dde9420&zgId=b54d79c69095249d&mode=view"
 icon: "/images/project-icon-fuzzysearch-commerce.png"
 ---
 

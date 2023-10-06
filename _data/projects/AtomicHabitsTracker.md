@@ -1,8 +1,8 @@
 ---
-title: Mujadid Apparel
-date: "2020-03-16T05:35:07.322Z"
-excerpt: E-commerce sederhana menggunakan next.js, mongodb, dan react query
-coverImage: "/images/project-hijab.png"
+title: AtomicHabits Tracker
+date: "2023-10-05T10:45:01.605Z"
+excerpt: Terinspirasi dari buku Atomic Habit by James Clear, aplikasi tracker sederhana untuk memonitor kebiasaan pribadi
+coverImage: "https://www.bookmarked.id/cdn/shop/products/AtomicHabitsNEW_1024x.jpg?v=1607098814"
 icon: "/images/project-icon-fuzzysearch-commerce.png"
 ---
 

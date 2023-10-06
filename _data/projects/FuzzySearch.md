@@ -1,7 +1,7 @@
 ---
 title: FuzzySearch Commerce
-date: "2020-03-16T05:35:07.322Z"
-excerpt: Implementasi fuzzy search sederhana pada katalog produk
+date: "2023-10-06T10:45:01.605Z"
+excerpt: Implementasi fuzzy search pada katalog produk menggunakan interpolasi linear
 coverImage: "/images/project-fuzzysearch-commerce.png"
 icon: "/images/project-icon-fuzzysearch-commerce.png"
 demoURL: "https://yazidzm010101.github.io/fuzzysearch-commerce/"

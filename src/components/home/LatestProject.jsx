@@ -96,55 +96,35 @@ function Project({ coverImage, title, icon, excerpt, demoURL }) {
         maxW={"container.md"}
         mx={"auto"}
       >
-        <Box
+        <AspectRatio
+          ratio={4 / 3}
           w={"full"}
-          mx={"auto"}
-          mb={6}
-          p={3}
-          pb={0}
           bg={"white"}
-          rounded={"3xl"}
-          border={"1px solid rgb(0 0 0 / 0.1)"}
+          rounded={"xl"}
+          border={"1px solid rgb(0 0 0 / 0.2)"}
+          overflow={"hidden"}
         >
-          <AspectRatio
-            ratio={4 / 3}
-            w={"full"}
-            bg={"white"}
-            rounded={"3xl"}
-            border={"1px solid rgb(0 0 0 / 0.1)"}
-            overflow={"hidden"}
-          >
-            <>
-              <Image
-                filter={"brightness(0.9)"}
-                src={getFullUrl(coverImage)}
-                alt={title}
-              />
-              {demoURL && (
-                <Link
-                  bg={"rgb(0 0 0 / 0.8)"}
-                  color={"white"}
-                  fontSize={"2xl"}
-                  href={demoURL}
-                  opacity={0}
-                  target="_blank"
-                  _hover={{ opacity: 1 }}
-                >
-                  Visit demo page
-                </Link>
-              )}
-            </>
-          </AspectRatio>
-          <Box
-            w={6}
-            h={6}
-            mx={"auto"}
-            bg={"rgb(0 0 0 / 0.1)"}
-            border={"1px solid rgb(0 0 0 / 0.1)"}
-            rounded={"full"}
-            my={3}
-          />
-        </Box>
+          <>
+            <Image
+              filter={"brightness(0.95)"}
+              src={getFullUrl(coverImage)}
+              alt={title}
+            />
+            {demoURL && (
+              <Link
+                bg={"rgb(0 0 0 / 0.5)"}
+                color={"white"}
+                fontSize={"2xl"}
+                href={demoURL}
+                opacity={0}
+                target="_blank"
+                _hover={{ opacity: 1 }}
+              >
+                Visit demo page
+              </Link>
+            )}
+          </>
+        </AspectRatio>
         <Box pos={"relative"} w={"full"}>
           <Image
             w={{ base: "4rem", lg: "6rem" }}
