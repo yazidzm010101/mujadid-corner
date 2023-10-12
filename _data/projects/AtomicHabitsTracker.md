@@ -4,6 +4,7 @@ date: "2023-10-05T10:45:01.605Z"
 excerpt: Habit Tracker terinspirasi dari Atomic Habit by James Clear, dibangun menggunakan ChakraUI + IndexedDB
 coverImage: "project-habit-tracker.png"
 icon: "/images/project-icon-fuzzysearch-commerce.png"
+demoURL: "https://yazidzm010101.github.io/atomic-habit-tracker/"
 ---
 
 Hello guys, di postingan kali ini gw bakal share pengalaman gw pasang flutter di linux. Flutter sendiri merupakan framework berbasis widget/component dan bersifat cross platform antara android, ios, ataupun web menggunakan satu codebase yang sama. Cara ini seharusnya cukup applicable mau lo make distro apapun, kebetulan distro yg gw pake kali ini adalah Garuda Linux berbasis Arch. Oke tanpa basa basi ini step by step instalasi flutter di linux.
