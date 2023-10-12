@@ -1,8 +1,8 @@
 ---
 title: AtomicHabits Tracker
 date: "2023-10-05T10:45:01.605Z"
-excerpt: Terinspirasi dari buku Atomic Habit by James Clear, aplikasi tracker sederhana untuk memonitor kebiasaan pribadi
-coverImage: "https://www.bookmarked.id/cdn/shop/products/AtomicHabitsNEW_1024x.jpg?v=1607098814"
+excerpt: Habit Tracker terinspirasi dari Atomic Habit by James Clear, dibangun menggunakan ChakraUI + IndexedDB
+coverImage: "project-habit-tracker.png"
 icon: "/images/project-icon-fuzzysearch-commerce.png"
 ---
 
