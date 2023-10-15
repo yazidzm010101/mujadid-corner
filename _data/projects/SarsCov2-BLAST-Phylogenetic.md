@@ -1,9 +1,10 @@
 ---
-title: Kanban it!
+title: SARS-CoV2 Phylogenetic Tree
 date: "2023-10-04T10:45:01.605Z"
-excerpt: Simple task management dalam bentuk kanban view dikembangkan dalam bentuk PWA dan Desktop
-coverImage: "https://desk.zoho.com/support/ImageDisplay?downloadType=uploadedFile&fileName=1646830100904.png&blockId=48d0a458940565728645435cddc1269944a57df44dde9420&zgId=b54d79c69095249d&mode=view"
-icon: "/images/project-icon-fuzzysearch-commerce.png"
+excerpt: Optimisasi BLAST query menggunakan Recursive Similarity Search dalam rangka penelitian Tesis
+coverImage: "/images/project-thesis.png"
+repoURL: https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic
+icon: "/images/project-icon-thesis.jpg"
 ---
 
 # Menyulap Lockscreen KDE Plasma menjadi seperti Gnome

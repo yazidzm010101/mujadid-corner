@@ -11,18 +11,19 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
-import { useRef } from "react";
 import { FaBox, FaCode, FaPaperPlane } from "react-icons/fa";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 import { HiArrowRight } from "react-icons/hi";
+import NextLink from "next/link";
+import { useRef } from "react";
+import { useRouter } from "next/router";
 
 function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-function Project({ coverImage, title, icon, excerpt, demoURL }) {
+function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const ref = useRef(null);
 
   const router = useRouter();
@@ -110,17 +111,17 @@ function Project({ coverImage, title, icon, excerpt, demoURL }) {
               src={getFullUrl(coverImage)}
               alt={title}
             />
-            {demoURL && (
+            {(demoURL || repoURL) && (
               <Link
                 bg={"rgb(0 0 0 / 0.5)"}
                 color={"white"}
                 fontSize={"2xl"}
-                href={demoURL}
+                href={demoURL || repoURL}
                 opacity={0}
                 target="_blank"
                 _hover={{ opacity: 1 }}
               >
-                Visit demo page
+                {(demoURL && "Open demo page") || "Open repository"}
               </Link>
             )}
           </>

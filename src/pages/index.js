@@ -7,12 +7,13 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import Layout from "@/components/Layout";
+
 import Greeting from "@/components/home/Greeting";
-import LatestProject from "@/components/home/LatestProject";
-import LatestPost from "@/components/home/LatestPost";
-import { getLatestPost } from "@/lib/getPost";
 import Head from "next/head";
+import LatestPost from "@/components/home/LatestPost";
+import LatestProject from "@/components/home/LatestProject";
+import Layout from "@/components/Layout";
+import { getLatestPost } from "@/lib/getPost";
 import { getLatestProjects } from "@/lib/getProject";
 
 export function getStaticProps({ params }) {
@@ -31,6 +32,7 @@ export function getStaticProps({ params }) {
     "excerpt",
     "icon",
     "demoURL",
+    "repoURL",
   ]);
 
   return {
