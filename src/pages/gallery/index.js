@@ -1,30 +1,21 @@
 import {
   AspectRatio,
   Box,
-  Button,
   Container,
   Flex,
-  HStack,
   Heading,
-  Icon,
   Image,
-  Link,
   Text,
-  VStack,
 } from "@chakra-ui/react";
 import { useScroll, useTransform } from "framer-motion";
 
-import About from "@/components/about/About";
-import Experience from "@/components/about/Experience";
 import GalleryList from "@/components/gallery/GalleryList";
-import Head from "next/head";
-import LatestGallery from "@/components/home/LatestGallery";
 import Layout from "@/components/Layout";
 import Scribble from "@/assets/Scribble";
-import config from "~/_data/config";
 import { getAllGallery } from "@/lib/getGallery";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import { useRouter } from "next/router";
 
 export function getStaticProps({ params }) {
   const allGallery = getAllGallery([
@@ -44,6 +35,13 @@ function GalleryPage({ allGallery }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll();
   const yMove = useTransform(scrollYProgress, [0, 0.5], [40, 0]);
+  const router = useRouter();
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
   return (
     <Layout title={"About"}>
       <Box ref={ref} w={"full"} pos={"relative"} mt={-16} pt={16} pb={24}>
@@ -101,7 +99,7 @@ function GalleryPage({ allGallery }) {
               <motion.div style={{ y: yMove }}>
                 <Image
                   filter={"contrast(0.7) brightness(1.1)"}
-                  src="/images/miyamoto-art.png"
+                  src={getFullUrl("/images/miyamoto-art.png")}
                   objectFit={"cover"}
                   w={"full"}
                   h={"full"}

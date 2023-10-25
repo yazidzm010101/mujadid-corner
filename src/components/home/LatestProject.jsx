@@ -46,17 +46,17 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
   const cardOpacity = useTransform(
     scrollYProgress,
     [0.1, 0.25, 0.75, 0.9],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
   const cardY = useTransform(
     scrollYProgress,
     [0, 0.2, 0.75, 0.8],
-    [500, 200, -200, -500],
+    [500, 200, -200, -500]
   );
 
   return (
@@ -98,7 +98,12 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             </Heading>
           </motion.div>
         </Box>
-        <motion.div style={{ opacity: backdropOpacity }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ amount: 0.8 }}
+          // style={{ opacity: backdropOpacity }}
+        >
           <AspectRatio
             ratio={0.7}
             w={"full"}
@@ -161,10 +166,13 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           </motion.div>
         </Box>
         <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ amount: 0.8 }}
           style={{
             width: "100%",
             position: "relative",
-            opacity: cardOpacity,
+            // opacity: cardOpacity,
             // y: cardY,
           }}
         >
