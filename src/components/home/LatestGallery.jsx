@@ -19,7 +19,7 @@ import NextLink from "next/link";
 import WaveAlt from "@/assets/WaveAlt";
 import { useRouter } from "next/router";
 
-function LatestPost({ data }) {
+function LatestGallery({ data }) {
   const router = useRouter();
   const getFullUrl = (url) => {
     if (url.match(/^\//g)) {
@@ -43,7 +43,7 @@ function LatestPost({ data }) {
       <AspectRatio
         ratio={4 / 3}
         pos={"absolute"}
-        // transform={"scaleY(-100%)"}
+        transform={"scaleY(-100%)"}
         bottom={0}
         opacity={0.5}
         right={{ base: "-50%", lg: 0 }}
@@ -60,7 +60,6 @@ function LatestPost({ data }) {
       >
         <Heading
           as="h2"
-          mb={20}
           // px={4}
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
@@ -68,8 +67,19 @@ function LatestPost({ data }) {
           letterSpacing={4}
           color={"teal.900"}
         >
-          Latest posts
+          Gallery
         </Heading>
+        <Text
+          maxW={"container.md"}
+          mt={4}
+          mb={20}
+          textAlign={{ base: "center", lg: "start" }}
+          fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+          letterSpacing={4}
+          color={"teal.900"}
+        >
+          Not just writing code, I also love art, drawing, and design
+        </Text>
       </Container>
       <Stack
         pos={"relative"}
@@ -84,8 +94,8 @@ function LatestPost({ data }) {
       >
         {data?.map((item, i) => (
           <Flex
-            as={NextLink}
-            href={`/posts/${item.slug}`}
+            // as={NextLink}
+            // href={`/posts/${item.slug}`}
             key={i}
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}
@@ -96,39 +106,45 @@ function LatestPost({ data }) {
               flexShrink={0}
               boxShadow={"0 2rem 2rem 0.15rem rgb(0 0 0 / 0.2)"}
               rounded={"xl"}
+              overflow={"hidden"}
+              cursor={"pointer"}
+              bg={"white"}
             >
-              <Image
-                src={getFullUrl(item.coverImage)}
-                alt={item.title}
-                rounded={"xl"}
-              />
+              <>
+                <Image
+                  src={getFullUrl(item.coverImage)}
+                  alt={item.title}
+                  rounded={"xl"}
+                  _hover={{ transform: "scale(1.1)" }}
+                  transition={"all .2s ease-in-out"}
+                />
+                <VStack
+                  top={"unset !important"}
+                  bottom={"0 !important"}
+                  bgGradient={
+                    "linear(to-t, teal.900, teal.900 20%, transparent)"
+                  }
+                  h={"max-content !important"}
+                  alignItems={"flex-start"}
+                  pt={20}
+                  pb={3}
+                  px={6}
+                >
+                  <Text
+                    as={"h5"}
+                    color={"gray.200"}
+                    fontSize={"lg"}
+                    w={"full"}
+                    letterSpacing={1.5}
+                    mb={1}
+                    fontWeight={"medium"}
+                    noOfLines={2}
+                  >
+                    {item.title}
+                  </Text>
+                </VStack>
+              </>
             </AspectRatio>
-            <VStack alignItems={"flex-start"} my={6}>
-              <Text
-                as={"h5"}
-                fontSize={"3xl"}
-                mb={1}
-                noOfLines={2}
-                // fontWeight={"bold"}
-                // mt={{ base: 8, md: 0 }}
-              >
-                {item.title}
-              </Text>
-              {/* <Text
-                fontSize={"1.1rem"}
-                color={"gray.600"}
-                lineHeight={"2rem"}
-                mb={2}
-                noOfLines={2}
-              >
-                {item.excerpt}
-              </Text> */}
-              <HStack w={"full"}>
-                <Text fontSize={"sm"} color={"gray.500"}>
-                  {item.date}
-                </Text>
-              </HStack>
-            </VStack>
           </Flex>
         ))}
         <Container maxW={"container.xl"} w={"full"}>
@@ -158,7 +174,7 @@ function LatestPost({ data }) {
               // color={"teal.200"}
               size={"lg"}
             >
-              Read my blog
+              Explore more
             </Button>
           </HStack>
         </Container>
@@ -167,4 +183,4 @@ function LatestPost({ data }) {
   );
 }
 
-export default LatestPost;
+export default LatestGallery;

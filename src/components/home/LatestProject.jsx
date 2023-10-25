@@ -20,9 +20,11 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 
+import { BiCodeBlock } from "react-icons/bi";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import Dots from "@/assets/Dots";
 import { HiArrowRight } from "react-icons/hi";
+import { TbScreenShare } from "react-icons/tb";
 import { useRouter } from "next/router";
 
 function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
@@ -204,7 +206,14 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                       target="_blank"
                       _hover={{ opacity: 1 }}
                     >
-                      {(demoURL && "Open demo page") || "Open repository"}
+                      <Icon
+                        mr={4}
+                        mt={1}
+                        as={(demoURL && TbScreenShare) || BiCodeBlock}
+                      />
+                      <Text>
+                        {(demoURL && "Open demo page") || "Open repository"}
+                      </Text>
                     </Link>
                   )}
                 </>
