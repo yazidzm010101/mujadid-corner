@@ -40,6 +40,17 @@ function LatestPost({ data }) {
       my={-24}
       minH={"130vh"}
     >
+      <AspectRatio
+        ratio={4 / 3}
+        pos={"absolute"}
+        transform={"scaleY(-100%)"}
+        bottom={0}
+        opacity={0.5}
+        right={{ base: "-50%", lg: 0 }}
+        w={{ base: "200%", lg: "150%" }}
+      >
+        <Box as={WaveAlt} />
+      </AspectRatio>
       <Container
         w={"full"}
         maxW={"container.xl"}
@@ -60,16 +71,6 @@ function LatestPost({ data }) {
           Latest posts
         </Heading>
       </Container>
-      <AspectRatio
-        ratio={4 / 3}
-        pos={"absolute"}
-        transform={"scaleY(-100%)"}
-        bottom={0}
-        right={0}
-        w={"100%"}
-      >
-        <Box as={WaveAlt} />
-      </AspectRatio>
       <Stack
         pos={"relative"}
         margin={"0 auto"}
