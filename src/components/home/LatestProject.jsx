@@ -44,17 +44,17 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0]
+    [0, 1, 1, 0],
   );
   const cardOpacity = useTransform(
     scrollYProgress,
     [0, 0.2, 0.5, 0.75],
-    [0, 1, 1, 0]
+    [0, 1, 1, 0],
   );
   const cardY = useTransform(
     scrollYProgress,
     [0, 0.2, 0.75, 0.8],
-    [500, 200, -200, -1000]
+    [500, 200, -200, -1000],
   );
 
   return (
@@ -81,6 +81,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
         >
           <Heading
             letterSpacing={2}
+            display={{ base: "none", md: "block" }}
             as={"h3"}
             color={"rgb(0 0 0 / 0.02)"}
             fontWeight={"extrabold"}
@@ -114,9 +115,10 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             maxW={"600px"}
             right={0}
             bottom={0}
-            transform={
-              "translateX(5%) translateY(20%) scale(0.5) rotateY(5deg) rotateZ(-2deg)"
-            }
+            transform={{
+              base: "translateX(20%) translateY(-5%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
+              sm: "translateX(5%) translateY(20%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
+            }}
             rounded={"3xl"}
             pos={"absolute"}
             border={"2px solid rgb(0 0 0 / 0.2)"}
@@ -140,6 +142,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
         >
           <Heading
             letterSpacing={2}
+            display={{ base: "none", md: "block" }}
             color={"transparent"}
             as={"h3"}
             fontWeight={"extrabold"}
@@ -276,6 +279,7 @@ function LatestProject({ data }) {
       w={"full"}
       minH={"100vh"}
       py={24}
+      px={4}
       clipPath={`polygon(0% ${clipPathY * 100}%, 100% ${
         (0.02 - clipPathY) * 100
       }%, 100% 100%, 0% 100%)`}

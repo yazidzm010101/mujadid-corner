@@ -28,7 +28,7 @@ function SimpleAbout() {
     return url;
   };
   return (
-    <Box id="greeting" maxW="container.xl" mx={"auto"} px={6}>
+    <Box id="greeting" w={"full"} maxW="container.xl" mx={"auto"} px={6}>
       <Stack
         direction={{ base: "column", md: "row" }}
         alignItems={"flex-start"}
@@ -89,7 +89,7 @@ function SimpleAbout() {
             py={10}
             bg={"transparent"}
             letterSpacing={1}
-            mr={-10}
+            mr={{ md: -10 }}
             _hover={{
               // bg: "gray.800",
               // color: "teal.200",
