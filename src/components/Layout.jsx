@@ -1,10 +1,10 @@
 import { Box, Flex } from "@chakra-ui/react";
-import Wave from "@/assets/Wave";
+
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import { useRouter } from "next/router";
-import config from "~/_data/config";
 import Head from "next/head";
+import Navbar from "@/components/Navbar";
+import config from "~/_data/config";
+import { useRouter } from "next/router";
 
 function Layout({ children, title }) {
   const { pathname } = useRouter();
@@ -24,22 +24,9 @@ function Layout({ children, title }) {
       <Head>
         <title>{page_title}</title>
       </Head>
-      {/* {pathname == "/" && (
-        <Box
-          as={Wave}
-          w={{ base: "600%", sm: "300%", lg: "200%" }}
-          pos={"absolute"}
-          top={0}
-          left={"50%"}
-          transform={"translateX(-50%)"}
-          color={"blue.200"}
-          opacity={0.2}
-          h={"600px"}
-        />
-      )} */}
       <Navbar />
       <Flex flexDir={"column"} w={"full"} minH={"100vh"} pos={"relative"}>
-        <Box w={"full"} py={24} flexGrow={1}>
+        <Box w={"full"} py={24} mt={-28} flexGrow={1}>
           {children}
         </Box>
         <Footer />

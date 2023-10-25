@@ -1,12 +1,34 @@
-import { BsWindowDock, BsFiletypeHtml } from "react-icons/bs";
-import { MdWeb } from "react-icons/md";
+import {
+  BsBootstrap,
+  BsDatabase,
+  BsFiletypeHtml,
+  BsWindowDock,
+} from "react-icons/bs";
+import { DiJava, DiMaterializecss } from "react-icons/di";
+import {
+  FaChalkboardTeacher,
+  FaHandsHelping,
+  FaReact,
+  FaSass,
+} from "react-icons/fa";
+import { MdCss, MdWeb } from "react-icons/md";
+import {
+  SiAndroid,
+  SiAntdesign,
+  SiFirebase,
+  SiGradle,
+  SiJquery,
+  SiNextdotjs,
+  SiPostman,
+  SiTailwindcss,
+} from "react-icons/si";
+import { TbBrandLaravel, TbBrandMysql, TbSettings2 } from "react-icons/tb";
+
 import { AiOutlineTeam } from "react-icons/ai";
+import { BiBrain } from "react-icons/bi";
+import { BiCodeBlock } from "react-icons/bi";
 import { HiDocumentReport } from "react-icons/hi";
 import { IoLogoJavascript } from "react-icons/io";
-import { BiBrain } from "react-icons/bi";
-import { FaHandsHelping, FaChalkboardTeacher } from "react-icons/fa";
-import { TbSettings2 } from "react-icons/tb";
-import { SiPostman } from "react-icons/si";
 
 const data = [
   {
@@ -15,9 +37,11 @@ const data = [
       "https://vm.lepkom.gunadarma.ac.id/assets/front/images/logo-lepkom.png",
     experiences: [
       {
-        title: "Tutor Assistant",
+        categoryColor: "gray",
+        category: "2018-2019",
+        title: "Assistant",
         description:
-          "Assisting course tutor and helping the participants to learn and follow instructions during the session",
+          "Learn and practice the course material beforehand to be well-prepared for assisting both participants and the instructor",
         skills: [
           {
             name: "Desktop Programming",
@@ -25,6 +49,7 @@ const data = [
             color: "green",
           },
           { name: "Web Programming", icon: MdWeb, color: "blue" },
+          { name: "DBMS", icon: BsDatabase, color: "orange" },
           {
             name: "Helping Initiative",
             icon: FaHandsHelping,
@@ -33,9 +58,11 @@ const data = [
         ],
       },
       {
-        title: "Course Tutor",
+        categoryColor: "gray",
+        category: "2019-2020",
+        title: "Instructor",
         description:
-          "Giving guidance and instructions to course participants so they can learn from the subject and quiz during the sessions",
+          "Guides participants based on course materials, assisting them to find the answers during practice, so they can complete quizzes and exams before grading",
         skills: [
           {
             name: "Desktop Programming",
@@ -51,7 +78,9 @@ const data = [
         ],
       },
       {
-        title: "Course Coordinator",
+        categoryColor: "gray",
+        category: "2020-2022",
+        title: "Supervisor",
         description:
           "Coordinates with tutor, assistant to ensure the course session executed by following the standarized producedure",
         skills: [
@@ -75,21 +104,112 @@ const data = [
     ],
   },
   {
+    name: "PT. PowerNET Indosolusi",
+    image: "https://powernet.co.id/assets/img/logo1.png",
+    experiences: [
+      {
+        categoryColor: "gray",
+        category: "2019-2020",
+        title: "Company Profile",
+        description:
+          "Redesign company profile for PT. PowerNet Indosolution at powernet.co.id using HTML, CSS, Bootstrap, Jquery, and AOS.js",
+        skills: [
+          {
+            name: "HTML",
+            icon: BsWindowDock,
+            color: "green",
+          },
+          { name: "CSS", icon: MdCss, color: "blue" },
+          { name: "Bootstrap", icon: BsBootstrap, color: "purple" },
+          {
+            name: "JQuery",
+            icon: SiJquery,
+            color: "blue",
+          },
+          {
+            name: "AOS.js",
+            icon: IoLogoJavascript,
+            color: "orange",
+          },
+        ],
+      },
+      {
+        categoryColor: "gray",
+        category: "Jun-Jul 2020",
+        title: "Object Research Indonesia - IQVIA",
+        description:
+          "2020 Hospital/laboratory revenue survey taking & monitoring",
+        skills: [
+          {
+            name: "Laravel",
+            icon: TbBrandLaravel,
+            color: "red",
+          },
+          { name: "Bootstrap", icon: BsBootstrap, color: "blue" },
+          {
+            name: "SCSS",
+            icon: FaSass,
+            color: "pink",
+          },
+          {
+            name: "JQuery",
+            icon: SiJquery,
+            color: "orange",
+          },
+        ],
+      },
+      {
+        categoryColor: "gray",
+        category: "Jul-Aug 2020",
+        title: "Object Research Indonesia - IMS",
+        description: "2020 Medical device revenue survey taking & monitoring",
+        skills: [
+          {
+            name: "Laravel",
+            icon: TbBrandLaravel,
+            color: "red",
+          },
+          { name: "Materialize.css", icon: DiMaterializecss, color: "pink" },
+          {
+            name: "Chart.js",
+            icon: IoLogoJavascript,
+            color: "orange",
+          },
+          {
+            name: "SCSS",
+            icon: FaSass,
+            color: "pink",
+          },
+          {
+            name: "JQuery",
+            icon: SiJquery,
+            color: "orange",
+          },
+        ],
+      },
+    ],
+  },
+  {
     name: "Jojonomic",
     image:
       "https://images.glints.com/unsafe/glints-dashboard.s3.amazonaws.com/company-banner-pic/45236c0777b6054b3421b85b7ede3367.png",
     experiences: [
       {
-        category: "FWD Insurance",
-        categoryColor: "orange",
-        title: "Office Booking System",
+        category: "Feb-Mar 2022",
+        categoryColor: "gray",
+        title: "Dynamic Reporting",
         description:
-          "Develops office booking system on top Jojonomic Officeless Platform using javascript visual programming for FWD Issurance",
+          "Creates visual programming to generates various reports for Human Capital Management System at one of Bank Pembangunan Daerah in Indonesia",
         skills: [
           {
             name: "Officeless",
             icon: TbSettings2,
             color: "blue",
+          },
+          {
+            name: "Visual Programming",
+            icon: BiCodeBlock,
+            color: "teal",
           },
           {
             name: "Javascript",
@@ -100,25 +220,25 @@ const data = [
             name: "Postman",
             icon: SiPostman,
             color: "orange",
-          },
-          {
-            name: "HTML & Officeless Report",
-            icon: BsFiletypeHtml,
-            color: "red",
           },
         ],
       },
       {
-        category: "PT. Geo Dipa Energi",
-        categoryColor: "green",
-        title: "Expense Management System",
+        category: "May-Jul 2022",
+        categoryColor: "gray",
+        title: "Office Booking System",
         description:
-          "Builds expense management system on top Officeless Platform and directly taking role as developer also business consultant facing user requirements",
+          "Develops office booking system on top Jojonomic Officeless Platform using javascript visual programming at one of Insurance Company in Jakarta",
         skills: [
           {
             name: "Officeless",
             icon: TbSettings2,
             color: "blue",
+          },
+          {
+            name: "Visual Programming",
+            icon: BiCodeBlock,
+            color: "teal",
           },
           {
             name: "Javascript",
@@ -130,10 +250,34 @@ const data = [
             icon: SiPostman,
             color: "orange",
           },
+        ],
+      },
+      {
+        category: "2022-2023",
+        categoryColor: "gray",
+        title: "Expense Management System",
+        description:
+          "Built, deliver, and maintain expense management system for Geothermal Energy Company in Java answering their different cases accross different units",
+        skills: [
           {
-            name: "HTML & Officeless Report",
-            icon: BsFiletypeHtml,
-            color: "red",
+            name: "Officeless",
+            icon: TbSettings2,
+            color: "blue",
+          },
+          {
+            name: "Visual Programming",
+            icon: BiCodeBlock,
+            color: "teal",
+          },
+          {
+            name: "Javascript",
+            icon: IoLogoJavascript,
+            color: "yellow",
+          },
+          {
+            name: "Postman",
+            icon: SiPostman,
+            color: "orange",
           },
           {
             name: "Business Consultant",
@@ -143,16 +287,21 @@ const data = [
         ],
       },
       {
-        category: "PT. Indonesia Financial Group",
-        categoryColor: "red",
+        category: "May-Aug 2023",
+        categoryColor: "gray",
         title: "Company KPI Ranking",
         description:
-          "Join development for IFG's child company ranking using officeless platform. Implement custom formulation and dynamic fields for KPI calculation. Help font-end team to consume statistical data by providing API",
+          "Join development for insurance, guarantee, and investment company group ranking system on top of officeless platform. Answering technical gap that natively had to store hundred columns into more simplified design by implementing dynamic fields. Implement custom user controlled formulation for KPI calculation. Help font-end team to consume statistical data by providing it's API",
         skills: [
           {
             name: "Officeless",
             icon: TbSettings2,
             color: "blue",
+          },
+          {
+            name: "Visual Programming",
+            icon: BiCodeBlock,
+            color: "teal",
           },
           {
             name: "Javascript",
@@ -162,37 +311,79 @@ const data = [
           {
             name: "Postman",
             icon: SiPostman,
+            color: "orange",
+          },
+          {
+            name: "SQL",
+            icon: TbBrandMysql,
+            color: "blue",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Majujaya Karya Indonesia",
+    image: "/images/experience-mki.png",
+    experiences: [
+      {
+        categoryColor: "gray",
+        category: "Jan-Apr 2022",
+        title: "FibeArt Trans Network - GudangKita",
+        description:
+          "Develop mobile application for Inventory management and transport document for PT. FibeArt Trans Network",
+        skills: [
+          {
+            name: "Android Studio",
+            icon: SiAndroid,
+            color: "green",
+          },
+          { name: "Java", icon: DiJava, color: "red" },
+          { name: "Retrofit", icon: SiGradle, color: "blue" },
+        ],
+      },
+      {
+        categoryColor: "gray",
+        category: "Feb-Mar 2022",
+        title: "IMM Kemensos",
+        description:
+          "Contribute to maintain layout and chart components for Indonesia Media Monitoring Kemensos tendering project covering dashboard for news monitoring, scraping, and analytics",
+        skills: [
+          {
+            name: "React.js",
+            icon: FaReact,
+            color: "blue",
+          },
+          { name: "Next.js", icon: SiNextdotjs, color: "gray" },
+          { name: "AntDesign", icon: SiAntdesign, color: "red" },
+          {
+            name: "Chart.js",
+            icon: IoLogoJavascript,
+            color: "pink",
+          },
+          {
+            name: "SWR",
+            icon: IoLogoJavascript,
             color: "orange",
           },
         ],
       },
       {
-        category: "CIMB Niaga",
-        categoryColor: "red",
-        title: "SMART Expense",
+        categoryColor: "gray",
+        category: "May-Jul 2022",
+        title: "TPQ Homepage",
         description:
-          "Join CIMB Niaga Smart Expense Management on Jojonomic Officeless Platform using Jojo Visual Programming.",
+          "Develop front-end application for Taman Pendidikan Al-Qur'an El-Rahmah Tangerang Selatan homepage including news, learning center, gallery, and activities",
         skills: [
           {
-            name: "Officeless",
-            icon: TbSettings2,
+            name: "React.js",
+            icon: FaReact,
             color: "blue",
           },
-          {
-            name: "Javascript",
-            icon: IoLogoJavascript,
-            color: "yellow",
-          },
-          {
-            name: "Postman",
-            icon: SiPostman,
-            color: "orange",
-          },
-          {
-            name: "HTML & Officeless Report",
-            icon: BsFiletypeHtml,
-            color: "red",
-          },
+          { name: "Next.js", icon: SiNextdotjs, color: "gray" },
+          { name: "AntDesign", icon: SiAntdesign, color: "pink" },
+          { name: "Tailwind", icon: SiTailwindcss, color: "teal" },
+          { name: "Firestore", icon: SiFirebase, color: "red" },
         ],
       },
     ],

@@ -43,7 +43,7 @@ export function getStaticProps({ params }) {
 function Home({ latestPost, latestProjects }) {
   return (
     <Layout>
-      <VStack w={"full"} spacing={32}>
+      <VStack w={"full"} spacing={0}>
         <Greeting />
         <LatestProject data={latestProjects} />
         <LatestPost data={latestPost} />
