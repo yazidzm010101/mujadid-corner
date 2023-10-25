@@ -48,13 +48,13 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   );
   const cardOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.5, 0.75],
+    [0, 0.2, 0.5, 0.8],
     [0, 1, 1, 0],
   );
   const cardY = useTransform(
     scrollYProgress,
     [0, 0.2, 0.75, 0.8],
-    [500, 200, -200, -1000],
+    [500, 200, -200, -500],
   );
 
   return (
@@ -68,32 +68,34 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
       ref={ref}
     >
       <Container w={"full"} maxW={"container.xl"} px={{ lg: 10 }}>
-        <motion.div
-          style={{
-            pointerEvents: "none",
-            position: "absolute",
-            left: "0",
-            top: "-10%",
-            opacity: backdropOpacity,
-            x: backdropX,
-            offsetAnchor: "right center",
-          }}
-        >
-          <Heading
-            letterSpacing={2}
-            display={{ base: "none", md: "block" }}
-            as={"h3"}
-            color={"rgb(0 0 0 / 0.02)"}
-            fontWeight={"extrabold"}
-            fontSize={"400px"}
-            w={"max-content"}
+        <Box display={{ base: "none", md: "block" }}>
+          <motion.div
             style={{
-              WebkitTextStroke: "1px rgb(0 0 0/0.05)",
+              pointerEvents: "none",
+              position: "absolute",
+              left: "0",
+              top: "-10%",
+              opacity: backdropOpacity,
+              x: backdropX,
+              offsetAnchor: "right center",
             }}
           >
-            {title}
-          </Heading>
-        </motion.div>
+            <Heading
+              letterSpacing={2}
+              // display={{ base: "none", md: "block" }}
+              as={"h3"}
+              color={"rgb(0 0 0 / 0.02)"}
+              fontWeight={"extrabold"}
+              fontSize={"400px"}
+              w={"max-content"}
+              style={{
+                WebkitTextStroke: "1px rgb(0 0 0/0.05)",
+              }}
+            >
+              {title}
+            </Heading>
+          </motion.div>
+        </Box>
         <motion.div style={{ opacity: backdropOpacity }}>
           <AspectRatio
             ratio={0.7}
@@ -129,32 +131,33 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             />
           </AspectRatio>
         </motion.div>
-        <motion.div
-          style={{
-            pointerEvents: "none",
-            position: "absolute",
-            right: "-100%",
-            bottom: "0",
-            opacity: backdropOpacity,
-            x: backdropX,
-            offsetAnchor: "right center",
-          }}
-        >
-          <Heading
-            letterSpacing={2}
-            display={{ base: "none", md: "block" }}
-            color={"transparent"}
-            as={"h3"}
-            fontWeight={"extrabold"}
-            fontSize={"200px"}
-            w={"max-content"}
+        <Box display={{ base: "none", md: "block" }}>
+          <motion.div
             style={{
-              WebkitTextStroke: "1px rgb(0 0 0 / 0.1)",
+              pointerEvents: "none",
+              position: "absolute",
+              right: "-100%",
+              bottom: "0",
+              opacity: backdropOpacity,
+              x: backdropX,
+              offsetAnchor: "right center",
             }}
           >
-            {title}
-          </Heading>
-        </motion.div>
+            <Heading
+              letterSpacing={2}
+              color={"transparent"}
+              as={"h3"}
+              fontWeight={"extrabold"}
+              fontSize={"200px"}
+              w={"max-content"}
+              style={{
+                WebkitTextStroke: "1px rgb(0 0 0 / 0.1)",
+              }}
+            >
+              {title}
+            </Heading>
+          </motion.div>
+        </Box>
         <motion.div
           style={{
             width: "100%",
@@ -265,7 +268,7 @@ function LatestProject({ data }) {
     return value;
   });
   useMotionValueEvent(scrollPageY, "change", (lastValue) => {
-    const maxValue = 0.3;
+    const maxValue = 0.5;
     let percentage = 0;
     let offsetClipPath = 0.02;
     if (lastValue > 0) {

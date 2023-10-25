@@ -50,7 +50,7 @@ function Greeting() {
       />
       <Box
         opacity={1}
-        bgGradient={"linear(to-t, teal.900, transparent)"}
+        bgGradient={"linear(to-t, teal.900, teal.900, transparent)"}
         w={"full"}
         h={"full"}
         objectFit={"cover"}
@@ -58,37 +58,39 @@ function Greeting() {
         top={0}
         left={0}
       />
-      <motion.div
-        style={{
-          position: "absolute",
-          pointerEvents: "none",
-          width: "200vh",
-          height: "200vh",
-          left: "70%",
-          top: "0%",
-          offsetPosition: "center",
-        }}
-        animate={{
-          rotate: [0, 360],
-          x: ["-50%"],
-          y: ["-50%"],
-          offsetPosition: "center",
-        }}
-        transition={{
-          duration: 120,
-          ease: "linear",
-          delay: 0,
-          repeat: Infinity,
-        }}
-      >
-        <JupyterRing
-          filter={"blur(3px)"}
-          color={"blue.200"}
-          opacity={0.05}
-          w={"full"}
-          h={"full"}
-        />
-      </motion.div>
+      <Box display={{ base: "none", md: "block" }}>
+        <motion.div
+          style={{
+            position: "absolute",
+            pointerEvents: "none",
+            width: "200vh",
+            height: "200vh",
+            left: "70%",
+            top: "0%",
+            offsetPosition: "center",
+          }}
+          animate={{
+            rotate: [0, 360],
+            x: ["-50%"],
+            y: ["-50%"],
+            offsetPosition: "center",
+          }}
+          transition={{
+            duration: 120,
+            ease: "linear",
+            delay: 0,
+            repeat: Infinity,
+          }}
+        >
+          <JupyterRing
+            filter={"blur(3px)"}
+            color={"blue.200"}
+            opacity={0.05}
+            w={"full"}
+            h={"full"}
+          />
+        </motion.div>
+      </Box>
       <motion.div
         style={{
           position: "absolute",
@@ -120,6 +122,25 @@ function Greeting() {
           h={"full"}
         />
       </motion.div>
+      {/* <motion.div style={{ y: greetingY, position: "absolute" }}>
+        <Heading
+          userSelect={"none"}
+          as={"h1"}
+          // my={5}
+          letterSpacing={1}
+          fontWeight={"normal"}
+          maxW={"10ch"}
+          fontSize={{ base: "5xl", lg: "7xl" }}
+          textAlign={"center"}
+          bgGradient={"linear(to-br, green.400, teal.300, purple.600)"}
+          bgClip={"text"}
+          filter={"blur(5px)"}
+          opacity={0.5}
+          pointerEvents={"none"}
+        >
+          <Text>Welcome to {config.page_name}</Text>
+        </Heading>
+      </motion.div> */}
       <motion.div style={{ y: greetingY, position: "relative" }}>
         <Heading
           as={motion.h1}
@@ -134,23 +155,7 @@ function Greeting() {
           <Text>Welcome to {config.page_name}</Text>
         </Heading>
       </motion.div>
-      <motion.div style={{ y: greetingY, position: "absolute" }}>
-        <Heading
-          as={"h1"}
-          letterSpacing={1}
-          fontWeight={"normal"}
-          maxW={"10ch"}
-          fontSize={{ base: "5xl", lg: "7xl" }}
-          textAlign={"center"}
-          bgGradient={"linear(to-br, green.400, teal.300, purple.600)"}
-          bgClip={"text"}
-          filter={"blur(20px)"}
-          opacity={0.5}
-          pointerEvents={"none"}
-        >
-          <Text>Welcome to {config.page_name}</Text>
-        </Heading>
-      </motion.div>
+
       <motion.div style={{ y: greetingY, position: "relative" }}>
         <Text
           pos={"relative"}
@@ -193,7 +198,6 @@ function Greeting() {
       >
         Who is this guy, like really?
       </Button>
-      <Spacer my={100} />
       <SimpleAbout />
     </VStack>
   );

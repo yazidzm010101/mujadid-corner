@@ -28,7 +28,14 @@ function SimpleAbout() {
     return url;
   };
   return (
-    <Box id="greeting" w={"full"} maxW="container.xl" mx={"auto"} px={6}>
+    <Box
+      id="greeting"
+      w={"full"}
+      maxW="container.xl"
+      mx={"auto"}
+      px={6}
+      pt={200}
+    >
       <Stack
         direction={{ base: "column", md: "row" }}
         alignItems={"flex-start"}
@@ -42,7 +49,7 @@ function SimpleAbout() {
             mx={{ base: "auto", md: "unset" }}
           >
             <Image
-              rounded={"3rem"}
+              rounded={"lg"}
               w={"full"}
               h={"full"}
               src={getFullUrl(data.photo_alt)}
@@ -61,7 +68,7 @@ function SimpleAbout() {
             fontWeight={"medium"}
             color={"white"}
             mb={6}
-            fontSize={{ base: "2xl", sm: "3xl", md: "4xl", lg: "5xl" }}
+            fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
           >
             Hi, I am {data.name} and this is my corner
           </Text>
@@ -70,7 +77,7 @@ function SimpleAbout() {
             letterSpacing={1}
             lineHeight={2}
             color={"gray.300"}
-            fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
+            fontSize={{ base: "lg", md: "xl" }}
           >
             {data.simple_about_description}
           </Text>
