@@ -113,7 +113,7 @@ function Footer() {
                   as={NextLink}
                   _hover={{ color: "gray.100" }}
                   href={
-                    "mailto:yazidzm.developer@gmail.com?subject=Hi%2C%20Yazid%20of%20Zaidan%20Mujadid"
+                    "mailto:yazidzm.developer@gmail.com?subject=Hi%2C%20Yazid%20Zaidan%20Mujadid"
                   }
                 >
                   yazidzm.developer@gmail.com
