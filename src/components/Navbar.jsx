@@ -86,6 +86,7 @@ function Navbar() {
               <Text
                 fontSize={"2xl"}
                 fontWeight={"black"}
+                overflow={"hidden"}
                 fontFamily={'"Noto Kufi Arabic", sans-serif'}
               >
                 مجديد
