@@ -41,6 +41,7 @@ export function getStaticProps({ params }) {
     "date",
     "slug",
     "coverImage",
+    "toolIcon",
   ]);
 
   return {

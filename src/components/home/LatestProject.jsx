@@ -50,7 +50,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   );
   const cardOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.5, 0.8],
+    [0.1, 0.25, 0.75, 0.9],
     [0, 1, 1, 0],
   );
   const cardY = useTransform(
@@ -69,7 +69,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
       }}
       ref={ref}
     >
-      <Container w={"full"} maxW={"container.xl"} px={{ lg: 10 }}>
+      <Container w={"full"} maxW={"container.xl"} py={10} px={{ lg: 10 }}>
         <Box display={{ base: "none", md: "block" }}>
           <motion.div
             style={{
@@ -165,7 +165,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             width: "100%",
             position: "relative",
             opacity: cardOpacity,
-            y: cardY,
+            // y: cardY,
           }}
         >
           <Stack
@@ -198,7 +198,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                   />
                   {(demoURL || repoURL) && (
                     <Link
-                      bg={"rgb(0 0 0 / 0.9)"}
+                      bg={"rgb(29 64 68 / 0.95)"}
                       color={"white"}
                       fontSize={"2xl"}
                       href={demoURL || repoURL}
@@ -362,7 +362,7 @@ function LatestProject({ data }) {
           </Button>
         </HStack>
       </Container>
-      <motion.div
+      {/* <motion.div
         style={{
           position: "absolute",
           right: "16rem",
@@ -370,7 +370,7 @@ function LatestProject({ data }) {
           y: indicatorY,
         }}
       >
-        {/* <VStack
+        <VStack
           w={"max-content"}
           pos={"relative"}
           spacing={8}
@@ -396,8 +396,8 @@ function LatestProject({ data }) {
               />
             </Box>
           ))}
-        </VStack> */}
-      </motion.div>
+        </VStack>
+      </motion.div> */}
     </Box>
   );
 }

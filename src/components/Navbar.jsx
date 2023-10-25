@@ -101,6 +101,7 @@ function Navbar() {
             display={{ base: "none", md: "flex" }}
           >
             <NextLink href={"#"}>Projects</NextLink>
+            <NextLink href={"/gallery"}>Gallery</NextLink>
             <NextLink href={"#"}>Blogs</NextLink>
             <NextLink href={"/about"}>About</NextLink>
           </HStack>

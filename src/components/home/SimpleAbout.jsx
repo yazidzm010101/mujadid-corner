@@ -107,7 +107,7 @@ function SimpleAbout() {
             // color={"teal.200"}
             size={"lg"}
           >
-            Learn more about Yazid
+            About me
           </Button>
         </VStack>
       </Stack>

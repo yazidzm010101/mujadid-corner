@@ -19,7 +19,7 @@ import NextLink from "next/link";
 import WaveAlt from "@/assets/WaveAlt";
 import { useRouter } from "next/router";
 
-function LatestGallery({ data }) {
+function GalleryList({ data }) {
   const router = useRouter();
   const getFullUrl = (url) => {
     if (url.match(/^\//g)) {
@@ -30,56 +30,15 @@ function LatestGallery({ data }) {
 
   return (
     <Box
-      bg={"gray.100"}
+      bgGradient={"linear(to-t, gray.100, gray.100 95%, transparent)"}
       pos={"relative"}
       w={"full"}
       mx={"auto"}
       py={24}
-      mb={-24}
+      mt={-48}
       overflow={"hidden"}
       minH={"130vh"}
     >
-      <AspectRatio
-        ratio={4 / 3}
-        pos={"absolute"}
-        transform={"scaleY(-100%)"}
-        bottom={0}
-        opacity={0.5}
-        right={{ base: "-50%", lg: 0 }}
-        w={{ base: "200%", lg: "150%" }}
-      >
-        <Box as={WaveAlt} />
-      </AspectRatio>
-      <Container
-        w={"full"}
-        maxW={"container.xl"}
-        px={{ lg: 10 }}
-        mx={"auto"}
-        pos={"relative"}
-      >
-        <Heading
-          as="h2"
-          // px={4}
-          textAlign={{ base: "center", lg: "start" }}
-          fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
-          fontWeight={"extrabold"}
-          letterSpacing={4}
-          color={"teal.900"}
-        >
-          Gallery
-        </Heading>
-        <Text
-          maxW={"container.md"}
-          mt={4}
-          mb={20}
-          textAlign={{ base: "center", lg: "start" }}
-          fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
-          letterSpacing={4}
-          color={"teal.900"}
-        >
-          Not just writing code, I also love art, drawing, and design
-        </Text>
-      </Container>
       <Stack
         pos={"relative"}
         margin={"0 auto"}
@@ -163,40 +122,9 @@ function LatestGallery({ data }) {
             )}
           </Flex>
         ))}
-        <Container maxW={"container.xl"} w={"full"}>
-          <HStack w={"full"} justifyContent={"flex-end"} my={5}>
-            <Button
-              as={NextLink}
-              href="/gallery"
-              color={"teal.900"}
-              iconSpacing={4}
-              rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
-              rounded={"full"}
-              variant={"ghost"}
-              fontSize={"2xl"}
-              fontWeight={"extrabold"}
-              px={10}
-              py={10}
-              bg={"transparent"}
-              letterSpacing={1}
-              mr={-10}
-              _hover={{
-                // bg: "gray.800",
-                // color: "teal.200",
-                transform: "scale(1.01)",
-                textUnderlineOffset: 12,
-                // textDecoration: "unset !important",
-              }}
-              // color={"teal.200"}
-              size={"lg"}
-            >
-              Explore more
-            </Button>
-          </HStack>
-        </Container>
       </Stack>
     </Box>
   );
 }
 
-export default LatestGallery;
+export default GalleryList;

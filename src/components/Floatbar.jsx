@@ -92,7 +92,7 @@ function Floatbar({ isOpen, onClose, ...props }) {
             px={8}
             py={4}
             color={"gray.200"}
-            href={"/projects"}
+            href={"/gallery"}
           >
             Gallery
           </Link>
