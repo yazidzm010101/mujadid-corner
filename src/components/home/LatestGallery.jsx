@@ -35,9 +35,8 @@ function LatestGallery({ data }) {
       w={"full"}
       mx={"auto"}
       py={24}
-      clipPath={"polygon(0% 2%, 100% 0%, 100% 100%, 0% 100%)"}
+      mb={-24}
       overflow={"hidden"}
-      my={-24}
       minH={"130vh"}
     >
       <AspectRatio
