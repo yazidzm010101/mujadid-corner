@@ -44,17 +44,17 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
   const cardOpacity = useTransform(
     scrollYProgress,
     [0, 0.2, 0.5, 0.75],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
   const cardY = useTransform(
     scrollYProgress,
     [0, 0.2, 0.75, 0.8],
-    [500, 200, -200, -1000],
+    [500, 200, -200, -1000]
   );
 
   return (
@@ -270,29 +270,6 @@ function LatestProject({ data }) {
     }
     setClipPathY(offsetClipPath - offsetClipPath * percentage);
   });
-
-  const indicatorOpacity = (i) =>
-    useTransform(
-      scrollYProgress,
-      [
-        (i - 0.5) / data.length,
-        (i - 0.25) / data.length,
-        (i + 0.25) / data.length,
-        (i + 0.5) / data.length,
-      ],
-      [0, 1, 1, 0],
-    );
-
-  const handleIndicator = (i) => {
-    console.log(ref);
-    if (ref?.current?.offsetTop) {
-      console.log("tes");
-      window.scrollTo({
-        top: ref.current.offsetTop + i * 0.28 * ref.current.clientHeight,
-        behavior: "smooth",
-      });
-    }
-  };
   return (
     <Box
       pos={"relative"}
