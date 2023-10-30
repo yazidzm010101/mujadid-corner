@@ -1,0 +1,16 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+.star-noise {
+  transform-origin: center center;
+  animation-name: rotate;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

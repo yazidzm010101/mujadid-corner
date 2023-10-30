@@ -20,6 +20,7 @@ import Link from "next/link";
 import SimpleAbout from "./SimpleAbout";
 import StarNoise from "@/assets/StarNoise";
 import config from "~/_data/config";
+import style from "@/styles/greeting.module.css";
 
 function Greeting() {
   const { scrollY } = useScroll();
@@ -70,7 +71,18 @@ function Greeting() {
         left={0}
         opacity={1}
       />
-      <motion.div
+      <Box
+        className={style["star-noise"]}
+        as={StarNoise}
+        rounded={"full"}
+        overflow={"hidden"}
+        pos={"absolute"}
+        top={"-10%"}
+        mx={"auto"}
+        w={"300vh"}
+        h={"300vh"}
+      />
+      {/* <motion.div
         style={{
           borderRadius: "100%",
           overflow: "hidden",
@@ -105,7 +117,7 @@ function Greeting() {
           opacity={1}
           // filter={"blur(1px)"}
         />
-      </motion.div>
+      </motion.div> */}
       <Box
         opacity={1}
         bgGradient={"linear(to-t, teal.900, transparent)"}
