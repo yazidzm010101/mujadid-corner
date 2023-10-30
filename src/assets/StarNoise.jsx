@@ -14,48 +14,42 @@ function StarNoise({ ...props }) {
         <defs>
           <filter
             id="nnnoise-filter"
-            x="-20%"
-            y="-20%"
             width="140%"
             height="140%"
+            x="-20%"
+            y="-20%"
+            colorInterpolationFilters="linearRGB"
             filterUnits="objectBoundingBox"
             primitiveUnits="userSpaceOnUse"
-            color-interpolation-filters="linearRGB"
           >
             <feTurbulence
-              type="turbulence"
+              x="0%"
+              y="0%"
               baseFrequency="0.2"
               numOctaves="4"
+              result="turbulence"
               seed="15"
               stitchTiles="stitch"
-              x="0%"
-              y="0%"
-              width="100%"
-              height="100%"
-              result="turbulence"
             ></feTurbulence>
             <feSpecularLighting
-              surfaceScale="23"
-              specularConstant="0.6"
-              specularExponent="20"
-              lighting-color="#ffffff"
               x="0%"
               y="0%"
-              width="100%"
-              height="100%"
               in="turbulence"
+              lightingColor="#fff"
               result="specularLighting"
+              specularConstant="0.6"
+              specularExponent="20"
+              surfaceScale="23"
             >
               <feDistantLight azimuth="3" elevation="36"></feDistantLight>
             </feSpecularLighting>
           </filter>
         </defs>
-        <rect
-          width="700"
-          height="700"
-          fill="#ffffff"
+        <path
+          fill="#fff"
+          d="M0 0H700V700H0z"
           filter="url(#nnnoise-filter)"
-        ></rect>
+        ></path>
       </svg>
     </Box>
   );

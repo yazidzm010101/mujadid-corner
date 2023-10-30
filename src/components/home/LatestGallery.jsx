@@ -59,7 +59,7 @@ function LatestGallery({ data }) {
       >
         <Heading
           as="h2"
-          // px={4}
+          px={4}
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
@@ -74,7 +74,7 @@ function LatestGallery({ data }) {
           mb={20}
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
-          letterSpacing={4}
+          letterSpacing={2}
           color={"teal.900"}
         >
           Not just writing code, I also love art, drawing, and design

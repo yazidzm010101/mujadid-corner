@@ -30,6 +30,9 @@ function Greeting() {
     stiffness: 50,
     damping: 10,
   });
+  const scrollDown = () => {
+    window.scrollTo({ top: window.outerHeight, behavior: "smooth" });
+  };
   return (
     <VStack
       bgColor={"black"}
@@ -177,7 +180,12 @@ function Greeting() {
           h={"full"}
         />
       </motion.div> */}
-      <motion.div style={{ y: greetingY, position: "absolute" }}>
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        style={{ position: "absolute" }}
+      >
         <Heading
           userSelect={"none"}
           as={"h1"}
@@ -200,7 +208,12 @@ function Greeting() {
           </Text>
         </Heading>
       </motion.div>
-      <motion.div style={{ y: greetingY, position: "relative" }}>
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        style={{ position: "relative" }}
+      >
         <Heading
           as={"h1"}
           letterSpacing={1}
@@ -218,7 +231,12 @@ function Greeting() {
         </Heading>
       </motion.div>
 
-      <motion.div style={{ y: greetingY, position: "relative" }}>
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        style={{ position: "relative" }}
+      >
         <Text
           pos={"relative"}
           textAlign={"center"}
@@ -232,8 +250,10 @@ function Greeting() {
         </Text>
       </motion.div>
       <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
         style={{
-          y: greetingButtonY,
           width: "100%",
           display: "flex",
           flexDirection: "column",
@@ -289,8 +309,7 @@ function Greeting() {
           }}
         >
           <Button
-            as={Link}
-            href={"#greeting"}
+            onClick={scrollDown}
             rounded={"full"}
             size={"lg"}
             variant={"ghost"}
