@@ -13,6 +13,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 import Aurora from "@/assets/Aurora";
 import { BiSolidConfused } from "react-icons/bi";
+import { CgMouse } from "react-icons/cg";
 import JupyterRing from "@/assets/JupyterRing";
 import JupyterRingAlt from "@/assets/JupyterRingAlt";
 import Link from "next/link";
@@ -66,16 +67,42 @@ function Greeting() {
         left={0}
         opacity={1}
       />
-      <Box
-        as={StarNoise}
-        w={"full"}
-        h={"full"}
-        pos={"absolute"}
-        top={0}
-        left={0}
-        opacity={1}
-        filter={"blur(1px)"}
-      />
+      <motion.div
+        style={{
+          borderRadius: "100%",
+          overflow: "hidden",
+          position: "absolute",
+          pointerEvents: "none",
+          width: "300vh",
+          height: "300vh",
+          left: "50%",
+          top: "50%",
+          offsetPosition: "center",
+        }}
+        animate={{
+          rotate: [0, 360],
+          x: ["-50%"],
+          y: ["-50%"],
+          offsetPosition: "center",
+        }}
+        transition={{
+          duration: 120,
+          ease: "linear",
+          delay: 0,
+          repeat: Infinity,
+        }}
+      >
+        <Box
+          as={StarNoise}
+          w={"full"}
+          h={"full"}
+          // pos={"absolute"}
+          // top={0}
+          // left={0}
+          opacity={1}
+          // filter={"blur(1px)"}
+        />
+      </motion.div>
       <Box
         opacity={1}
         bgGradient={"linear(to-t, teal.900, transparent)"}
@@ -86,7 +113,7 @@ function Greeting() {
         top={0}
         left={0}
       />
-      <Box display={{ base: "none", md: "block" }}>
+      {/* <Box display={{ base: "none", md: "block" }}>
         <motion.div
           style={{
             position: "absolute",
@@ -118,8 +145,8 @@ function Greeting() {
             h={"full"}
           />
         </motion.div>
-      </Box>
-      <motion.div
+      </Box> */}
+      {/* <motion.div
         style={{
           position: "absolute",
           pointerEvents: "none",
@@ -149,16 +176,16 @@ function Greeting() {
           w={"full"}
           h={"full"}
         />
-      </motion.div>
+      </motion.div> */}
       <motion.div style={{ y: greetingY, position: "absolute" }}>
         <Heading
           userSelect={"none"}
           as={"h1"}
-          mt={{ base: 0, md: 6 }}
+          // mt={{ base: 0, md: 6 }}
+          px={4}
           letterSpacing={1}
-          fontWeight={"normal"}
-          maxW={"10ch"}
-          fontSize={{ base: "5xl", lg: "7xl" }}
+          fontWeight={"bold"}
+          fontSize={{ base: "5xl", md: "6xl", lg: "8xl" }}
           textAlign={"center"}
           bgGradient={"linear(to-br, green.400, teal.300, purple.600)"}
           bgClip={"text"}
@@ -166,21 +193,28 @@ function Greeting() {
           opacity={0.5}
           pointerEvents={"none"}
         >
-          <Text>Welcome to {config.page_name}</Text>
+          <Text>
+            Welcome to
+            <br />
+            {config.page_name}
+          </Text>
         </Heading>
       </motion.div>
       <motion.div style={{ y: greetingY, position: "relative" }}>
         <Heading
-          as={motion.h1}
+          as={"h1"}
           letterSpacing={1}
-          fontWeight={"normal"}
-          maxW={"10ch"}
-          fontSize={{ base: "5xl", lg: "7xl" }}
+          fontWeight={"bold"}
+          fontSize={{ base: "5xl", md: "6xl", lg: "8xl" }}
           textAlign={"center"}
           bgGradient={"linear(to-br, green.400, teal.300, purple.600)"}
           bgClip={"text"}
         >
-          <Text>Welcome to {config.page_name}</Text>
+          <Text>
+            Welcome to
+            <br />
+            {config.page_name}
+          </Text>
         </Heading>
       </motion.div>
 
@@ -209,8 +243,17 @@ function Greeting() {
           <Button
             rounded={"full"}
             size={"lg"}
-            py={{ base: 8, md: 10 }}
-            px={{ base: 9, md: 16 }}
+            bg={"whiteAlpha.200"}
+            color={"white"}
+            variant={"outline"}
+            borderColor={"rgb(255 255 255 / 0.1)"}
+            backdropFilter={"blur(4px)"}
+            py={{ base: 7, md: 9 }}
+            px={{ base: 9, md: 10 }}
+            _hover={{
+              bg: "blackAlpha.200",
+              borderColor: "rgb(255 255 255 / 0.2)",
+            }}
           >
             Read my blog
           </Button>
@@ -219,29 +262,55 @@ function Greeting() {
             size={"lg"}
             variant={"outline"}
             color={"white"}
-            py={{ base: 8, md: 10 }}
-            px={{ base: 9, md: 16 }}
-            _hover={{ bg: "whiteAlpha.100" }}
+            borderColor={"rgb(255 255 255 / 0.05)"}
+            backdropFilter={"blur(4px)"}
+            py={{ base: 7, md: 9 }}
+            px={{ base: 9, md: 10 }}
+            _hover={{
+              bg: "blackAlpha.200",
+              borderColor: "rgb(255 255 255 / 0.2)",
+            }}
           >
             See my works
           </Button>
         </HStack>
-        <Button
-          as={Link}
-          href={"#greeting"}
-          rounded={"full"}
-          size={"lg"}
-          variant={"ghost"}
-          color={"white"}
-          py={{ base: 8, md: 10 }}
-          px={{ base: 9, md: 16 }}
-          w={"max-content"}
-          mx={"auto"}
-          leftIcon={<Icon as={BiSolidConfused} w={6} h={6} />}
-          _hover={{ bg: "whiteAlpha.100" }}
+        <motion.div
+          style={{ margin: "0 auto" }}
+          animate={{
+            y: [0, -20],
+            opacity: [0, 0.1, 1, 1, 0],
+            offsetPosition: "center",
+          }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+            delay: 0,
+            repeat: Infinity,
+          }}
         >
-          Who is this guy, like really?
-        </Button>
+          <Button
+            as={Link}
+            href={"#greeting"}
+            rounded={"full"}
+            size={"lg"}
+            variant={"ghost"}
+            color={"white"}
+            py={{ base: 8, md: 10 }}
+            px={{ base: 4, md: 5 }}
+            minW={"max-content"}
+            w={"max-content"}
+            border={"1px solid transparent"}
+            // leftIcon={<Icon as={BiSolidConfused} w={6} h={6} />}
+            _hover={{
+              bg: "blackAlpha.200",
+              // borderColor: "rgb(255 255 255 / 0.2)",
+              backdropFilter: "blur(4px)",
+            }}
+          >
+            <Icon as={CgMouse} w={10} h={10} />
+            {/* Who is this guy, like really? */}
+          </Button>
+        </motion.div>
       </motion.div>
       <SimpleAbout />
     </VStack>

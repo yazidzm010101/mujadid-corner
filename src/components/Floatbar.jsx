@@ -63,6 +63,9 @@ function Floatbar({ isOpen, onClose, ...props }) {
               fontWeight={"black"}
               color="teal.100"
               fontFamily={'"Noto Kufi Arabic", sans-serif'}
+              overflow={"hidden"}
+              wordBreak={"keep-all"}
+              minW={"max-content"}
             >
               مجديد
             </Text>

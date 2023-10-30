@@ -46,8 +46,12 @@ function SimpleAbout() {
           <motion.div
             style={{ width: "100%", position: "relative" }}
             initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
-            whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
-            viewport={{ amount: 0.9 }}
+            whileInView={{
+              y: 0,
+              scaleY: 1,
+              opacity: 1,
+            }}
+            viewport={{ amount: 0.5 }}
           >
             <AspectRatio
               ratio={0.7}
@@ -70,7 +74,7 @@ function SimpleAbout() {
             style={{ width: "100%", position: "relative" }}
             initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
             whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
-            viewport={{ amount: 0.9 }}
+            viewport={{ amount: 0.5 }}
           >
             <VStack alignItems={"start"}>
               <Text

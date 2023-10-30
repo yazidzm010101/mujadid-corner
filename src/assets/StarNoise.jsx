@@ -36,7 +36,7 @@ function StarNoise({ ...props }) {
             ></feTurbulence>
             <feSpecularLighting
               surfaceScale="23"
-              specularConstant="0.4"
+              specularConstant="0.6"
               specularExponent="20"
               lighting-color="#ffffff"
               x="0%"
