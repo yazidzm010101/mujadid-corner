@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 
-function Undulated({ ...props }) {
+function Undulated({ startColor, endColor, ...props }) {
   return (
     <Box {...props}>
       <svg
@@ -17,8 +17,14 @@ function Undulated({ ...props }) {
             y1="0%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="hsl(212, 72%, 59%)"></stop>
-            <stop offset="100%" stopColor="hsl(167, 52%, 78%)"></stop>
+            <stop
+              offset="0%"
+              stopColor={startColor || "hsl(212, 72%, 59%)"}
+            ></stop>
+            <stop
+              offset="100%"
+              stopColor={endColor || "hsl(167, 52%, 78%)"}
+            ></stop>
           </linearGradient>
         </defs>
         <g fill="none" stroke="url(#oooscillate-grad)" strokeLinecap="round">

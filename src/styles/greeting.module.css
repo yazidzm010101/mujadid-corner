@@ -10,7 +10,7 @@
 .star-noise {
   transform-origin: center center;
   animation-name: rotate;
-  animation-duration: 60s;
+  animation-duration: 120s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }

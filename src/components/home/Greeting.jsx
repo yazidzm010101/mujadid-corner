@@ -120,13 +120,22 @@ function Greeting() {
       </motion.div> */}
       <Box
         opacity={1}
-        bgGradient={"linear(to-t, teal.900, transparent)"}
-        w={"full"}
+        roundedTop={"full"}
+        // outline={"solid"}
+        // outlineColor={"teal.200"}
+        // outlineOffset={1}
+        boxShadow={"inset 0 0 4rem rgb(32 109 117 / 0.8)"}
+        bgGradient={
+          "radial(transparent, teal.900 30%, gray.900 60%, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0) 90%, rgb(0 0 0 / 0.9))"
+          // "radial(rgb(10 21 21 / 0.5), rgb(10 21 21 / 0.9), gray.900 40%, teal.900 70%, transparent)"
+        }
+        w={{ base: "200%", md: "180%", lg: "150%" }}
         h={"full"}
+        left={"50%"}
+        transform={"translateX(-50%)"}
         objectFit={"cover"}
         pos={"absolute"}
-        top={0}
-        left={0}
+        top={{ base: "35%", md: "40%", xl: "45%" }}
       />
       {/* <Box display={{ base: "none", md: "block" }}>
         <motion.div

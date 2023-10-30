@@ -30,24 +30,30 @@ function LatestPost({ data }) {
 
   return (
     <Box
-      bg={"gray.100"}
+      // bg={"gray.100"}
+      // bg={"teal.900"}
+      bg={"gray.900"}
+      // bgGradient={"linear(to-b, transparent, gray.900 10%, gray.900)"}
       pos={"relative"}
       w={"full"}
       mx={"auto"}
-      py={24}
-      clipPath={"polygon(0% 0%, 100% 2%, 100% 100%, 0% 100%)"}
+      pt={48}
+      // clipPath={"polygon(0% 0%, 100% 2%, 100% 100%, 0% 100%)"}
       overflow={"hidden"}
-      my={-24}
+      // mt={-48}
       minH={"130vh"}
     >
       <AspectRatio
         ratio={4 / 3}
         pos={"absolute"}
-        // transform={"scaleY(-100%)"}
+        filter={"blur(100px)"}
+        // transform={"rotate(-90deg)"}
+        // transformOrigin={"center"}
         bottom={0}
-        opacity={0.5}
-        right={{ base: "-50%", lg: 0 }}
-        w={{ base: "200%", lg: "150%" }}
+        top={"50%"}
+        opacity={0.8}
+        left={{ base: "-50%", lg: "-20%" }}
+        w={{ base: "300%", lg: "200%" }}
       >
         <Box as={WaveAlt} />
       </AspectRatio>
@@ -66,7 +72,8 @@ function LatestPost({ data }) {
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
           letterSpacing={4}
-          color={"teal.900"}
+          // color={"teal.900"}
+          color={"teal.300"}
         >
           Latest posts
         </Heading>
@@ -108,6 +115,7 @@ function LatestPost({ data }) {
                 as={"h5"}
                 fontSize={"3xl"}
                 mb={1}
+                color={"gray.200"}
                 noOfLines={2}
                 // fontWeight={"bold"}
                 // mt={{ base: 8, md: 0 }}
@@ -136,7 +144,8 @@ function LatestPost({ data }) {
             <Button
               as={Link}
               href="#"
-              color={"teal.900"}
+              // color={"teal.900"}
+              color={"teal.300"}
               iconSpacing={4}
               rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
               rounded={"full"}

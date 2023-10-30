@@ -22,6 +22,7 @@ function Footer() {
     <Box
       w={"full"}
       bg={"gray.900"}
+      borderTop={"1px solid rgb(255 2552 255 / 0.05)"}
       // bgGradient={"linear(to-l, teal.900, gray.900)"}
       pos={"relative"}
     >

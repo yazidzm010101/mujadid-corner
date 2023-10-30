@@ -81,12 +81,15 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             <Heading
               letterSpacing={2}
               as={"h3"}
-              color={"rgb(0 0 0 / 0.02)"}
+              // color={"rgb(0 0 0 / 0.02)"}
+              color={"rgb(255 255 255 / 0.01)"}
               fontWeight={"extrabold"}
               fontSize={"400px"}
               w={"max-content"}
+              userSelect={"none"}
               style={{
-                WebkitTextStroke: "1px rgb(0 0 0/0.05)",
+                // WebkitTextStroke: "1px rgb(0 0 0/0.05)",
+                WebkitTextStroke: "1px rgb(255 255 255/0.02)",
               }}
             >
               {title}
@@ -105,7 +108,12 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           pos={"absolute"}
           overflow={"hidden"}
         >
-          <Box as={Dots} color={"rgb(0 0 0 / 0.1)"} pos={"absolute"} />
+          <Box
+            as={Dots}
+            color={"rgb(255 255 255 / 0.1)"}
+            // color={"rgb(0 0 0 / 0.1)"}
+            pos={"absolute"}
+          />
         </AspectRatio>
         <AspectRatio
           ratio={{ base: 0.7, md: 1 }}
@@ -119,10 +127,16 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           }}
           rounded={"3xl"}
           pos={"absolute"}
-          border={"2px solid rgb(0 0 0 / 0.2)"}
+          // border={"2px solid rgb(0 0 0 / 0.2)"}
+          border={"2px solid rgb(255 255 255 / 0.1)"}
           overflow={"hidden"}
         >
-          <Box bgGradient={"linear(to-t, rgb(0 0 0 / 0.01), rgb(0 0 0/0.1))"} />
+          <Box
+            // bgGradient={"linear(to-t, rgb(0 0 0 / 0.01), rgb(0 0 0/0.1))"}
+            bgGradient={
+              "linear(to-t, rgb(255 255 255 / 0.01), rgb(255 255 255/0.1))"
+            }
+          />
         </AspectRatio>
         <Box display={{ base: "none", md: "block" }}>
           <motion.div
@@ -143,8 +157,10 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               fontWeight={"extrabold"}
               fontSize={"200px"}
               w={"max-content"}
+              userSelect={"none"}
               style={{
-                WebkitTextStroke: "1px rgb(0 0 0 / 0.1)",
+                // WebkitTextStroke: "1px rgb(0 0 0 / 0.1)",
+                WebkitTextStroke: "1px rgb(255 255 255 / 0.05)",
               }}
             >
               {title}
@@ -178,7 +194,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                 w={"full"}
                 bg={"white"}
                 rounded={"xl"}
-                border={"1px solid rgb(0 0 0 / 0.2)"}
+                // border={"1px solid rgb(0 0 0 / 0.2)"}
                 overflow={"hidden"}
               >
                 <>
@@ -238,7 +254,8 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               }}
             >
               <Heading
-                color={"gray.700"}
+                // color={"gray.700"}
+                color={"gray.200"}
                 letterSpacing={3}
                 fontWeight={"normal"}
                 fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
@@ -249,7 +266,8 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                 {title}
               </Heading>
               <Text
-                color={"gray.500"}
+                // color={"gray.500"}
+                color={"gray.400"}
                 fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
                 noOfLines={3}
                 lineHeight={"3rem"}
@@ -285,12 +303,14 @@ function LatestProject({ data }) {
       w={"full"}
       minH={"100vh"}
       py={24}
-      clipPath={`polygon(0% ${clipPathY * 100}%, 100% ${
-        (0.02 - clipPathY) * 100
-      }%, 100% 100%, 0% 100%)`}
-      mt={-12}
-      pt={48}
-      bg={"gray.200"}
+      // clipPath={`polygon(0% ${clipPathY * 100}%, 100% ${
+      //   (0.02 - clipPathY) * 100
+      // }%, 100% 100%, 0% 100%)`}
+      mt={-64}
+      pt={64}
+      pb={32}
+      // bg={"gray.200"}
+      bgGradient={"linear(to-b, transparent, teal.900 8%, gray.900)"}
     >
       <Container
         w={"full"}
@@ -307,7 +327,8 @@ function LatestProject({ data }) {
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
           letterSpacing={4}
-          color={"teal.900"}
+          // color={"teal.900"}
+          color={"teal.300"}
         >
           Latest Works
         </Heading>
@@ -329,7 +350,8 @@ function LatestProject({ data }) {
           <Button
             as={Link}
             href="#"
-            color={"teal.900"}
+            // color={"teal.900"}
+            color={"teal.300"}
             iconSpacing={4}
             rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
             rounded={"full"}

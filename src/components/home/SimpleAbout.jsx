@@ -60,7 +60,7 @@ function SimpleAbout() {
               mx={{ base: "auto", md: "unset" }}
             >
               <Image
-                rounded={"lg"}
+                rounded={"xl"}
                 w={"full"}
                 h={"full"}
                 src={getFullUrl(data.photo_alt)}

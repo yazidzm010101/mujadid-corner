@@ -111,7 +111,7 @@ function GalleryList({ data }) {
                 boxShadow={"0 0.5rem 3rem -.5rem black"}
                 pos={"absolute"}
                 top={10}
-                left={0}
+                left={2}
                 pointerEvents={"none"}
                 src={item.toolIcon}
                 w={12}

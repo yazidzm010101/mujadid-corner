@@ -30,7 +30,8 @@ function LatestGallery({ data }) {
 
   return (
     <Box
-      bg={"gray.100"}
+      // bg={"gray.100"}
+      bg={"gray.900"}
       pos={"relative"}
       w={"full"}
       mx={"auto"}
@@ -44,27 +45,32 @@ function LatestGallery({ data }) {
         pos={"absolute"}
         transform={"scaleY(-100%)"}
         bottom={0}
-        opacity={0.5}
+        // filter={"blur(5rem)"}
+        opacity={0.1}
         right={{ base: "-50%", lg: 0 }}
         w={{ base: "200%", lg: "150%" }}
       >
-        <Box as={WaveAlt} />
+        <Box
+          as={WaveAlt}
+          startColor={"rgb(100 255 200)"}
+          endColor={"rgb(100 200 255)"}
+        />
       </AspectRatio>
       <Container
         w={"full"}
         maxW={"container.xl"}
-        px={{ lg: 10 }}
+        px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
       >
         <Heading
           as="h2"
-          px={4}
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
           letterSpacing={4}
-          color={"teal.900"}
+          // color={"teal.900"}
+          color={"teal.300"}
         >
           Gallery
         </Heading>
@@ -75,7 +81,8 @@ function LatestGallery({ data }) {
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           letterSpacing={2}
-          color={"teal.900"}
+          // color={"teal.900"}
+          color={"teal.500"}
         >
           Not just writing code, I also love art, drawing, and design
         </Text>
@@ -152,7 +159,7 @@ function LatestGallery({ data }) {
                 boxShadow={"0 0.5rem 3rem -.5rem black"}
                 pos={"absolute"}
                 top={10}
-                left={0}
+                left={2}
                 pointerEvents={"none"}
                 src={item.toolIcon}
                 w={12}
@@ -168,7 +175,8 @@ function LatestGallery({ data }) {
             <Button
               as={NextLink}
               href="/gallery"
-              color={"teal.900"}
+              // color={"teal.900"}
+              color={"teal.300"}
               iconSpacing={4}
               rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
               rounded={"full"}
