@@ -16,6 +16,7 @@ import {
   motion,
   useMotionValueEvent,
   useScroll,
+  useSpring,
   useTransform,
 } from "framer-motion";
 import { useRef, useState } from "react";
@@ -46,17 +47,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0],
-  );
-  const cardOpacity = useTransform(
-    scrollYProgress,
-    [0.1, 0.25, 0.75, 0.9],
-    [0, 1, 1, 0],
-  );
-  const cardY = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.75, 0.8],
-    [500, 200, -200, -500],
+    [0, 1, 1, 0]
   );
 
   return (
@@ -69,7 +60,12 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
       }}
       ref={ref}
     >
-      <Container w={"full"} maxW={"container.xl"} py={10} px={{ lg: 10 }}>
+      <Container
+        w={"full"}
+        maxW={"container.xl"}
+        py={{ base: 20 }}
+        px={{ base: 4, lg: 10 }}
+      >
         <Box display={{ base: "none", md: "block" }}>
           <motion.div
             style={{
@@ -84,7 +80,6 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           >
             <Heading
               letterSpacing={2}
-              // display={{ base: "none", md: "block" }}
               as={"h3"}
               color={"rgb(0 0 0 / 0.02)"}
               fontWeight={"extrabold"}
@@ -98,46 +93,37 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             </Heading>
           </motion.div>
         </Box>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ amount: 0.8 }}
-          // style={{ opacity: backdropOpacity }}
+        <AspectRatio
+          ratio={0.7}
+          w={"full"}
+          maxW={"600px"}
+          left={"5%"}
+          top={"5%"}
+          bottom={0}
+          transform={"translateX(5%) translateY(10%)"}
+          rounded={"3xl"}
+          pos={"absolute"}
+          overflow={"hidden"}
         >
-          <AspectRatio
-            ratio={0.7}
-            w={"full"}
-            maxW={"600px"}
-            left={"5%"}
-            top={"5%"}
-            bottom={0}
-            transform={"translateX(5%) translateY(10%)"}
-            rounded={"3xl"}
-            pos={"absolute"}
-            overflow={"hidden"}
-          >
-            <Box as={Dots} color={"rgb(0 0 0 / 0.1)"} pos={"absolute"} />
-          </AspectRatio>
-          <AspectRatio
-            ratio={{ base: 0.7, md: 1 }}
-            w={"full"}
-            maxW={"600px"}
-            right={0}
-            bottom={0}
-            transform={{
-              base: "translateX(20%) translateY(-5%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
-              sm: "translateX(5%) translateY(20%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
-            }}
-            rounded={"3xl"}
-            pos={"absolute"}
-            border={"2px solid rgb(0 0 0 / 0.2)"}
-            overflow={"hidden"}
-          >
-            <Box
-              bgGradient={"linear(to-t, rgb(0 0 0 / 0.01), rgb(0 0 0/0.1))"}
-            />
-          </AspectRatio>
-        </motion.div>
+          <Box as={Dots} color={"rgb(0 0 0 / 0.1)"} pos={"absolute"} />
+        </AspectRatio>
+        <AspectRatio
+          ratio={{ base: 0.7, md: 1 }}
+          w={"full"}
+          maxW={"600px"}
+          right={0}
+          bottom={0}
+          transform={{
+            base: "translateX(20%) translateY(-5%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
+            sm: "translateX(5%) translateY(20%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
+          }}
+          rounded={"3xl"}
+          pos={"absolute"}
+          border={"2px solid rgb(0 0 0 / 0.2)"}
+          overflow={"hidden"}
+        >
+          <Box bgGradient={"linear(to-t, rgb(0 0 0 / 0.01), rgb(0 0 0/0.1))"} />
+        </AspectRatio>
         <Box display={{ base: "none", md: "block" }}>
           <motion.div
             style={{
@@ -145,8 +131,8 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               position: "absolute",
               right: "-100%",
               bottom: "0",
-              opacity: backdropOpacity,
               x: backdropX,
+              opacity: backdropOpacity,
               offsetAnchor: "right center",
             }}
           >
@@ -165,30 +151,27 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             </Heading>
           </motion.div>
         </Box>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ amount: 0.8 }}
-          style={{
-            width: "100%",
-            position: "relative",
-            // opacity: cardOpacity,
-            // y: cardY,
-          }}
+        <Stack
+          direction={{ base: "column", lg: "row-reverse" }}
+          w={"full"}
+          maxW={{ base: "500px", lg: "full" }}
+          spacing={10}
+          alignItems={"flex-start"}
+          mx={"auto"}
         >
-          <Stack
-            direction={{ base: "column", lg: "row-reverse" }}
+          <Box
+            pos={"relative"}
             w={"full"}
-            maxW={{ base: "500px", lg: "full" }}
-            spacing={10}
-            alignItems={"flex-start"}
-            mx={"auto"}
+            flex={{ lg: 5, xl: 1 }}
+            py={{ lg: 42 }}
           >
-            <Box
-              pos={"relative"}
-              w={"full"}
-              flex={{ lg: 5, xl: 1 }}
-              py={{ lg: 42 }}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ amount: 0.8 }}
+              style={{
+                width: "100%",
+              }}
             >
               <AspectRatio
                 ratio={4 / 3}
@@ -237,13 +220,22 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                 alt={title}
                 src={getFullUrl(icon)}
               />
-            </Box>
-            <Box
-              pos={"relative"}
-              py={{ lg: 42 }}
-              my={{ lg: 10 }}
-              w={"full"}
-              flex={{ lg: 4, xl: 1 }}
+            </motion.div>
+          </Box>
+          <Box
+            pos={"relative"}
+            py={{ lg: 42 }}
+            my={{ lg: 10 }}
+            w={"full"}
+            flex={{ lg: 4, xl: 1 }}
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ amount: 0.8 }}
+              style={{
+                width: "100%",
+              }}
             >
               <Heading
                 color={"gray.700"}
@@ -265,9 +257,9 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               >
                 {excerpt}
               </Text>
-            </Box>
-          </Stack>
-        </motion.div>
+            </motion.div>
+          </Box>
+        </Stack>
       </Container>
     </div>
   );
@@ -278,12 +270,6 @@ function LatestProject({ data }) {
   const { scrollYProgress } = useScroll({ target: ref });
   const { scrollYProgress: scrollPageY } = useScroll();
   const [clipPathY, setClipPathY] = useState(0.02);
-  const indicatorY = useTransform(scrollYProgress, (value) => {
-    if (ref?.current?.clientHeight) {
-      return value * ref.current.clientHeight * 0.5;
-    }
-    return value;
-  });
   useMotionValueEvent(scrollPageY, "change", (lastValue) => {
     const maxValue = 0.5;
     let percentage = 0;
@@ -299,7 +285,6 @@ function LatestProject({ data }) {
       w={"full"}
       minH={"100vh"}
       py={24}
-      px={4}
       clipPath={`polygon(0% ${clipPathY * 100}%, 100% ${
         (0.02 - clipPathY) * 100
       }%, 100% 100%, 0% 100%)`}

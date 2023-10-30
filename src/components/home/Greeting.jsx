@@ -9,18 +9,26 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
+import Aurora from "@/assets/Aurora";
 import { BiSolidConfused } from "react-icons/bi";
 import JupyterRing from "@/assets/JupyterRing";
 import JupyterRingAlt from "@/assets/JupyterRingAlt";
 import Link from "next/link";
 import SimpleAbout from "./SimpleAbout";
+import StarNoise from "@/assets/StarNoise";
 import config from "~/_data/config";
 
 function Greeting() {
   const { scrollY } = useScroll();
-  const greetingY = useTransform(() => scrollY.get() / -7);
+  const greetingYReal = useTransform(() => scrollY.get() / -1);
+  const greetingY = useSpring(greetingYReal, { stiffness: 50, damping: 10 });
+  const greetingButtonYReal = useTransform(() => scrollY.get() / -3);
+  const greetingButtonY = useSpring(greetingButtonYReal, {
+    stiffness: 50,
+    damping: 10,
+  });
   return (
     <VStack
       bgColor={"black"}
@@ -34,7 +42,7 @@ function Greeting() {
       pos={"relative"}
       overflow={"hidden"}
     >
-      <Image
+      {/* <Image
         src={
           "https://cdn.pixabay.com/photo/2017/08/15/08/23/stars-2643089_640.jpg"
         }
@@ -47,10 +55,30 @@ function Greeting() {
         pos={"absolute"}
         top={0}
         left={0}
+      /> */}
+      <Box
+        id={"aurora"}
+        as={Aurora}
+        w={"full"}
+        h={"full"}
+        pos={"absolute"}
+        top={0}
+        left={0}
+        opacity={1}
+      />
+      <Box
+        as={StarNoise}
+        w={"full"}
+        h={"full"}
+        pos={"absolute"}
+        top={0}
+        left={0}
+        opacity={1}
+        filter={"blur(1px)"}
       />
       <Box
         opacity={1}
-        bgGradient={"linear(to-t, teal.900, teal.900, transparent)"}
+        bgGradient={"linear(to-t, teal.900, transparent)"}
         w={"full"}
         h={"full"}
         objectFit={"cover"}
@@ -85,7 +113,7 @@ function Greeting() {
           <JupyterRing
             filter={"blur(3px)"}
             color={"blue.200"}
-            opacity={0.05}
+            opacity={0.02}
             w={"full"}
             h={"full"}
           />
@@ -117,16 +145,16 @@ function Greeting() {
         <JupyterRingAlt
           filter={"blur(3px)"}
           color="teal.200"
-          opacity={0.05}
+          opacity={0.02}
           w={"full"}
           h={"full"}
         />
       </motion.div>
-      {/* <motion.div style={{ y: greetingY, position: "absolute" }}>
+      <motion.div style={{ y: greetingY, position: "absolute" }}>
         <Heading
           userSelect={"none"}
           as={"h1"}
-          // my={5}
+          mt={{ base: 0, md: 6 }}
           letterSpacing={1}
           fontWeight={"normal"}
           maxW={"10ch"}
@@ -140,7 +168,7 @@ function Greeting() {
         >
           <Text>Welcome to {config.page_name}</Text>
         </Heading>
-      </motion.div> */}
+      </motion.div>
       <motion.div style={{ y: greetingY, position: "relative" }}>
         <Heading
           as={motion.h1}
@@ -164,40 +192,57 @@ function Greeting() {
           fontSize={"2xl"}
           fontWeight={"medium"}
           color={"white"}
+          mb={8}
         >
           The place where I can share my thoughts, story, and idea to the world
         </Text>
       </motion.div>
-      <HStack w={"full"} justifyContent={"center"} spacing={4} my={8}>
-        <Button rounded={"full"} size={"lg"} py={10} px={16}>
-          Read my blog
-        </Button>
+      <motion.div
+        style={{
+          y: greetingButtonY,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <HStack w={"full"} justifyContent={"center"} spacing={4} my={8}>
+          <Button
+            rounded={"full"}
+            size={"lg"}
+            py={{ base: 8, md: 10 }}
+            px={{ base: 9, md: 16 }}
+          >
+            Read my blog
+          </Button>
+          <Button
+            rounded={"full"}
+            size={"lg"}
+            variant={"outline"}
+            color={"white"}
+            py={{ base: 8, md: 10 }}
+            px={{ base: 9, md: 16 }}
+            _hover={{ bg: "whiteAlpha.100" }}
+          >
+            See my works
+          </Button>
+        </HStack>
         <Button
+          as={Link}
+          href={"#greeting"}
           rounded={"full"}
           size={"lg"}
-          variant={"outline"}
+          variant={"ghost"}
           color={"white"}
-          py={10}
-          px={16}
+          py={{ base: 8, md: 10 }}
+          px={{ base: 9, md: 16 }}
+          w={"max-content"}
+          mx={"auto"}
+          leftIcon={<Icon as={BiSolidConfused} w={6} h={6} />}
           _hover={{ bg: "whiteAlpha.100" }}
         >
-          See my works
+          Who is this guy, like really?
         </Button>
-      </HStack>
-      <Button
-        as={Link}
-        href={"#greeting"}
-        rounded={"full"}
-        size={"lg"}
-        variant={"ghost"}
-        color={"white"}
-        py={10}
-        px={16}
-        leftIcon={<Icon as={BiSolidConfused} w={6} h={6} />}
-        _hover={{ bg: "whiteAlpha.100" }}
-      >
-        Who is this guy, like really?
-      </Button>
+      </motion.div>
       <SimpleAbout />
     </VStack>
   );

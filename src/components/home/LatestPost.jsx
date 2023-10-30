@@ -35,7 +35,7 @@ function LatestPost({ data }) {
       w={"full"}
       mx={"auto"}
       py={24}
-      clipPath={"polygon(0% 2%, 100% 0%, 100% 100%, 0% 100%)"}
+      clipPath={"polygon(0% 0%, 100% 2%, 100% 100%, 0% 100%)"}
       overflow={"hidden"}
       my={-24}
       minH={"130vh"}

@@ -6,9 +6,9 @@ export default extendTheme({
     useSystemColorMode: false,
   },
   fonts: {
-    heading: '"Plus Jakarta Sans", sans-serif',
-    body: '"Plus Jakarta Sans", sans-serif',
-    mono: '"Plus Jakarta Sans", sans-serif',
+    heading: '"Inter", sans-serif',
+    body: '"Inter", sans-serif',
+    mono: '"Inter", sans-serif',
   },
   breakpoints: {
     xs: "414px",
