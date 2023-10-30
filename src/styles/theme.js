@@ -1,6 +1,10 @@
+import { buttonTheme } from "./buttonTheme";
 import { extendTheme } from "@chakra-ui/react";
 
 export default extendTheme({
+  components: {
+    Button: buttonTheme,
+  },
   config: {
     initialColorMode: "light",
     useSystemColorMode: false,

@@ -13,7 +13,6 @@ import { AiOutlineInstagram } from "react-icons/ai";
 import { BiLogoGitlab } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import NextLink from "next/link";
-import React from "react";
 import { SiLinkedin } from "react-icons/si";
 import data from "~/_data/about";
 
@@ -23,7 +22,6 @@ function Footer() {
       w={"full"}
       bg={"gray.900"}
       borderTop={"1px solid rgb(255 2552 255 / 0.05)"}
-      // bgGradient={"linear(to-l, teal.900, gray.900)"}
       pos={"relative"}
     >
       <Container maxW={"container.xl"} py={8}>
@@ -92,14 +90,7 @@ function Footer() {
             mt={8}
             width={{ base: "100%", md: "50%" }}
           >
-            <VStack
-              alignItems={"start"}
-              // ml={{ md: "auto" }}
-              // px={8}
-              spacing={3}
-              mb={8}
-              // width={{ base: "100%", md: "50%" }}
-            >
+            <VStack alignItems={"start"} spacing={3} mb={8}>
               <Text fontSize={"xl"} color={"gray.200"}>
                 Contact
               </Text>

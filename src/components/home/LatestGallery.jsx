@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import NextLink from "next/link";
+import MotionBox from "../MotionBox";
 import WaveAlt from "@/assets/WaveAlt";
 import { useRouter } from "next/router";
 
@@ -30,8 +30,6 @@ function LatestGallery({ data }) {
 
   return (
     <Box
-      // bg={"gray.100"}
-      bg={"gray.900"}
       pos={"relative"}
       w={"full"}
       mx={"auto"}
@@ -39,16 +37,18 @@ function LatestGallery({ data }) {
       mb={-24}
       overflow={"hidden"}
       minH={"130vh"}
+      bg={"gray.200"}
+      _dark={{ bg: "gray.900" }}
     >
       <AspectRatio
         ratio={4 / 3}
         pos={"absolute"}
         transform={"scaleY(-100%)"}
         bottom={0}
-        // filter={"blur(5rem)"}
-        opacity={0.1}
         right={{ base: "-50%", lg: 0 }}
         w={{ base: "200%", lg: "150%" }}
+        opacity={0.3}
+        _dark={{ opacity: 0.1 }}
       >
         <Box
           as={WaveAlt}
@@ -57,11 +57,15 @@ function LatestGallery({ data }) {
         />
       </AspectRatio>
       <Container
+        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
         px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ amount: 0.5 }}
       >
         <Heading
           as="h2"
@@ -69,11 +73,23 @@ function LatestGallery({ data }) {
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
           letterSpacing={4}
-          // color={"teal.900"}
-          color={"teal.300"}
+          color={"teal.900"}
+          _dark={{ color: "teal.300" }}
         >
           Gallery
         </Heading>
+      </Container>
+      <Container
+        as={MotionBox}
+        w={"full"}
+        maxW={"container.xl"}
+        px={{ base: 4, lg: 10 }}
+        mx={"auto"}
+        pos={"relative"}
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ amount: 0.5 }}
+      >
         <Text
           maxW={"container.md"}
           mt={4}
@@ -81,8 +97,8 @@ function LatestGallery({ data }) {
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           letterSpacing={2}
-          // color={"teal.900"}
-          color={"teal.500"}
+          color={"teal.800"}
+          _dark={{ color: "teal.500" }}
         >
           Not just writing code, I also love art, drawing, and design
         </Text>
@@ -100,13 +116,15 @@ function LatestGallery({ data }) {
       >
         {data?.map((item, i) => (
           <Flex
-            // as={NextLink}
-            // href={`/posts/${item.slug}`}
             key={i}
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}
             p={6}
             pos={"relative"}
+            as={MotionBox}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ amount: 0.1 }}
           >
             <AspectRatio
               ratio={[4 / 3, 1, 3 / 4]}
@@ -172,34 +190,36 @@ function LatestGallery({ data }) {
         ))}
         <Container maxW={"container.xl"} w={"full"}>
           <HStack w={"full"} justifyContent={"flex-end"} my={5}>
-            <Button
-              as={NextLink}
-              href="/gallery"
-              // color={"teal.900"}
-              color={"teal.300"}
-              iconSpacing={4}
-              rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
-              rounded={"full"}
-              variant={"ghost"}
-              fontSize={"2xl"}
-              fontWeight={"extrabold"}
-              px={10}
-              py={10}
-              bg={"transparent"}
-              letterSpacing={1}
-              mr={-10}
-              _hover={{
-                // bg: "gray.800",
-                // color: "teal.200",
-                transform: "scale(1.01)",
-                textUnderlineOffset: 12,
-                // textDecoration: "unset !important",
-              }}
-              // color={"teal.200"}
-              size={"lg"}
+            <MotionBox
+              initial={{ x: 10, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ amount: 0.5 }}
             >
-              Explore more
-            </Button>
+              <Button
+                as={Link}
+                href="#"
+                iconSpacing={4}
+                rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
+                rounded={"full"}
+                variant={"ghost"}
+                fontSize={"2xl"}
+                fontWeight={"extrabold"}
+                px={10}
+                py={10}
+                bg={"transparent"}
+                letterSpacing={1}
+                mr={-10}
+                _hover={{
+                  transform: "scale(1.01)",
+                  textUnderlineOffset: 12,
+                }}
+                size={"lg"}
+                color={"teal.900"}
+                _dark={{ color: "teal.300" }}
+              >
+                Explore more
+              </Button>
+            </MotionBox>
           </HStack>
         </Container>
       </Stack>

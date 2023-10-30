@@ -10,22 +10,15 @@ import {
   Link,
   Stack,
   Text,
-  VStack,
 } from "@chakra-ui/react";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import { useRef, useState } from "react";
+import { useScroll, useTransform } from "framer-motion";
 
 import { BiCodeBlock } from "react-icons/bi";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import Dots from "@/assets/Dots";
-import { HiArrowRight } from "react-icons/hi";
+import MotionBox from "@/components/MotionBox";
 import { TbScreenShare } from "react-icons/tb";
+import { useRef } from "react";
 import { useRouter } from "next/router";
 
 function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
@@ -47,7 +40,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0]
+    [0, 1, 1, 0],
   );
 
   return (
@@ -67,12 +60,12 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
         px={{ base: 4, lg: 10 }}
       >
         <Box display={{ base: "none", md: "block" }}>
-          <motion.div
+          <MotionBox
+            pointerEvents={"none"}
+            pos={"absolute"}
+            left={0}
+            top={"-10%"}
             style={{
-              pointerEvents: "none",
-              position: "absolute",
-              left: "0",
-              top: "-10%",
               opacity: backdropOpacity,
               x: backdropX,
               offsetAnchor: "right center",
@@ -81,20 +74,22 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             <Heading
               letterSpacing={2}
               as={"h3"}
-              // color={"rgb(0 0 0 / 0.02)"}
-              color={"rgb(255 255 255 / 0.01)"}
+              color={"rgb(0 0 0 / 0.02)"}
               fontWeight={"extrabold"}
               fontSize={"400px"}
               w={"max-content"}
               userSelect={"none"}
-              style={{
-                // WebkitTextStroke: "1px rgb(0 0 0/0.05)",
+              _light={{
+                WebkitTextStroke: "1px rgb(0 0 0/0.05)",
+              }}
+              _dark={{
+                color: "rgb(255 255 255 / 0.01)",
                 WebkitTextStroke: "1px rgb(255 255 255/0.02)",
               }}
             >
               {title}
             </Heading>
-          </motion.div>
+          </MotionBox>
         </Box>
         <AspectRatio
           ratio={0.7}
@@ -110,9 +105,11 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
         >
           <Box
             as={Dots}
-            color={"rgb(255 255 255 / 0.1)"}
-            // color={"rgb(0 0 0 / 0.1)"}
+            color={"rgb(0 0 0 / 0.1)"}
             pos={"absolute"}
+            _dark={{
+              color: "rgb(255 255 255 / 0.1)",
+            }}
           />
         </AspectRatio>
         <AspectRatio
@@ -127,24 +124,27 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           }}
           rounded={"3xl"}
           pos={"absolute"}
-          // border={"2px solid rgb(0 0 0 / 0.2)"}
-          border={"2px solid rgb(255 255 255 / 0.1)"}
+          border={"2px solid rgb(0 0 0 / 0.2)"}
           overflow={"hidden"}
+          _dark={{
+            border: "2px solid rgb(255 255 255 / 0.1)",
+          }}
         >
           <Box
-            // bgGradient={"linear(to-t, rgb(0 0 0 / 0.01), rgb(0 0 0/0.1))"}
-            bgGradient={
-              "linear(to-t, rgb(255 255 255 / 0.01), rgb(255 255 255/0.1))"
-            }
+            bgGradient={"linear(to-t, rgb(0 0 0 / 0.01), rgb(0 0 0/0.1))"}
+            _dark={{
+              bgGradient:
+                "linear(to-t, rgb(255 255 255 / 0.01), rgb(255 255 255/0.1))",
+            }}
           />
         </AspectRatio>
         <Box display={{ base: "none", md: "block" }}>
-          <motion.div
+          <MotionBox
+            pos={"absolute"}
+            pointerEvents={"none"}
+            right={"-100%"}
+            bottom={0}
             style={{
-              pointerEvents: "none",
-              position: "absolute",
-              right: "-100%",
-              bottom: "0",
               x: backdropX,
               opacity: backdropOpacity,
               offsetAnchor: "right center",
@@ -158,14 +158,16 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               fontSize={"200px"}
               w={"max-content"}
               userSelect={"none"}
-              style={{
-                // WebkitTextStroke: "1px rgb(0 0 0 / 0.1)",
+              _light={{
+                WebkitTextStroke: "1px rgb(0 0 0 / 0.1)",
+              }}
+              _dark={{
                 WebkitTextStroke: "1px rgb(255 255 255 / 0.05)",
               }}
             >
               {title}
             </Heading>
-          </motion.div>
+          </MotionBox>
         </Box>
         <Stack
           direction={{ base: "column", lg: "row-reverse" }}
@@ -181,21 +183,21 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             flex={{ lg: 5, xl: 1 }}
             py={{ lg: 42 }}
           >
-            <motion.div
+            <MotionBox
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ amount: 0.8 }}
-              style={{
-                width: "100%",
-              }}
+              w={"full"}
             >
               <AspectRatio
                 ratio={4 / 3}
                 w={"full"}
                 bg={"white"}
                 rounded={"xl"}
-                // border={"1px solid rgb(0 0 0 / 0.2)"}
                 overflow={"hidden"}
+                _light={{
+                  border: "1px solid rgb(0 0 0 / 0.2)",
+                }}
               >
                 <>
                   <Image
@@ -236,7 +238,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                 alt={title}
                 src={getFullUrl(icon)}
               />
-            </motion.div>
+            </MotionBox>
           </Box>
           <Box
             pos={"relative"}
@@ -245,37 +247,35 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             w={"full"}
             flex={{ lg: 4, xl: 1 }}
           >
-            <motion.div
+            <MotionBox
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ amount: 0.8 }}
-              style={{
-                width: "100%",
-              }}
+              w={"full"}
             >
               <Heading
-                // color={"gray.700"}
-                color={"gray.200"}
                 letterSpacing={3}
                 fontWeight={"normal"}
                 fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
                 as={"h3"}
                 my={2}
                 textAlign={"start"}
+                color={"gray.700"}
+                _dark={{ color: "gray.200" }}
               >
                 {title}
               </Heading>
               <Text
-                // color={"gray.500"}
-                color={"gray.400"}
                 fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
                 noOfLines={3}
                 lineHeight={"3rem"}
                 letterSpacing={2}
+                color={"gray.600"}
+                _dark={{ color: "gray.400" }}
               >
                 {excerpt}
               </Text>
-            </motion.div>
+            </MotionBox>
           </Box>
         </Stack>
       </Container>
@@ -284,135 +284,86 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
 }
 
 function LatestProject({ data }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const { scrollYProgress: scrollPageY } = useScroll();
-  const [clipPathY, setClipPathY] = useState(0.02);
-  useMotionValueEvent(scrollPageY, "change", (lastValue) => {
-    const maxValue = 0.5;
-    let percentage = 0;
-    let offsetClipPath = 0.02;
-    if (lastValue > 0) {
-      percentage = Math.min(lastValue, maxValue) / maxValue;
-    }
-    setClipPathY(offsetClipPath - offsetClipPath * percentage);
-  });
   return (
     <Box
       pos={"relative"}
       w={"full"}
       minH={"100vh"}
       py={24}
-      // clipPath={`polygon(0% ${clipPathY * 100}%, 100% ${
-      //   (0.02 - clipPathY) * 100
-      // }%, 100% 100%, 0% 100%)`}
       mt={-64}
       pt={64}
       pb={32}
-      // bg={"gray.200"}
-      bgGradient={"linear(to-b, transparent, teal.900 8%, gray.900)"}
+      _light={{
+        bgGradient:
+          "linear(to-b, transparent, gray.100 8%, gray.200 30%, gray.200)",
+      }}
+      _dark={{
+        bgGradient: "linear(to-b, transparent, teal.900 8%, gray.900)",
+      }}
     >
       <Container
+        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
-        px={{ lg: 10 }}
+        px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ amount: 0.5 }}
       >
         <Heading
           as="h2"
           mb={20}
-          // px={4}
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
           letterSpacing={4}
-          // color={"teal.900"}
-          color={"teal.300"}
+          color={"teal.900"}
+          _dark={{ color: "teal.300" }}
         >
           Latest Works
         </Heading>
       </Container>
-      <div
-        ref={ref}
-        style={{
-          width: "100%",
-          position: "relative",
-          scrollSnapAlign: "center",
-        }}
-      >
+      <Box w={"full"} pos={"relative"}>
         {data?.map((item, i) => (
           <Project key={i} {...item} />
         ))}
-      </div>
+      </Box>
       <Container maxW={"container.xl"} w={"full"}>
         <HStack w={"full"} justifyContent={"flex-end"} my={5}>
-          <Button
-            as={Link}
-            href="#"
-            // color={"teal.900"}
-            color={"teal.300"}
-            iconSpacing={4}
-            rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
-            rounded={"full"}
-            variant={"ghost"}
-            fontSize={"2xl"}
-            fontWeight={"extrabold"}
-            px={10}
-            py={10}
-            bg={"transparent"}
-            letterSpacing={1}
-            mr={-10}
-            _hover={{
-              // bg: "gray.800",
-              // color: "teal.200",
-              transform: "scale(1.01)",
-              textUnderlineOffset: 12,
-              // textDecoration: "unset !important",
-            }}
-            // color={"teal.200"}
-            size={"lg"}
+          <MotionBox
+            initial={{ x: 10, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ amount: 0.5 }}
           >
-            See more of my works
-          </Button>
+            <Button
+              as={Link}
+              href="#"
+              iconSpacing={4}
+              rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
+              rounded={"full"}
+              variant={"ghost"}
+              fontSize={"2xl"}
+              fontWeight={"extrabold"}
+              px={10}
+              py={10}
+              bg={"transparent"}
+              letterSpacing={1}
+              mr={-10}
+              _hover={{
+                transform: "scale(1.01)",
+                textUnderlineOffset: 12,
+              }}
+              size={"lg"}
+              color={"teal.900"}
+              _dark={{ color: "teal.300" }}
+            >
+              See more of my works
+            </Button>
+          </MotionBox>
         </HStack>
       </Container>
-      {/* <motion.div
-        style={{
-          position: "absolute",
-          right: "16rem",
-          top: (1 / data.length) * 50 + "%",
-          y: indicatorY,
-        }}
-      >
-        <VStack
-          w={"max-content"}
-          pos={"relative"}
-          spacing={8}
-          // transform={"translateY(-50%)"}
-        >
-          {data?.map((item, i) => (
-            <Box
-              rounded={"full"}
-              w={4}
-              h={4}
-              cursor={"pointer"}
-              border={"1px solid rgb(0 0 0 / 1)"}
-              overflow={"hidden"}
-            >
-              <motion.div
-                onClick={() => handleIndicator(i)}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "rgb(0 0 0 / 0.85)",
-                  opacity: indicatorOpacity(i),
-                }}
-              />
-            </Box>
-          ))}
-        </VStack>
-      </motion.div> */}
     </Box>
   );
 }

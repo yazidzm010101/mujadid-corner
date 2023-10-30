@@ -13,6 +13,7 @@ import { useRef, useState } from "react";
 
 import Floatbar from "./Floatbar";
 import NextLink from "next/link";
+import NightModeSwitcher from "./NightModeSwitcher";
 import { RiMenu4Fill } from "react-icons/ri";
 import { useRouter } from "next/router";
 
@@ -37,16 +38,8 @@ function Navbar() {
         pos={"relative"}
         zIndex={999}
         transition={".2s all ease-in-out"}
-        color={(pathname == "/" && "white") || "gray.800"}
-        // bg={
-        //   isSolid
-        //     ? (pathname == "/" && "rgb(0 0 0 / 0.2)") || "whiteAlpha.800"
-        //     : (pathname == "/" && "rgb(0 0 0 / 0)") || "rgb(255 255 255 / 0)"
-        // }
-        // borderBottom={"1px"}
-        // borderColor={(isSolid && "blackAlpha.200") || "transparent"}
-        // backdropFilter={isSolid && "blur(16px)"}
-        // transform={isHidden && "translateY(-100%)"}
+        color={"gray.800"}
+        _dark={{ color: "white" }}
       >
         <HStack
           w={"full"}
@@ -70,11 +63,8 @@ function Navbar() {
               right={0}
               h={"max-content"}
               onClick={() => navDislosure.onToggle()}
-              color={
-                (isSolid && "gray.600") ||
-                (pathname == "/" && "white") ||
-                "gray.600"
-              }
+              color={"gray.600"}
+              _dark={{ color: !isSolid && "white" }}
               _hover={{ color: "teal.400" }}
             >
               <Icon as={RiMenu4Fill} w={7} h={7} />
@@ -94,17 +84,18 @@ function Navbar() {
             </NextLink>
           </HStack>
           <HStack
-            as={Fade}
-            in={!navDislosure.isOpen}
+            // as={Fade}
+            // in={!navDislosure.isOpen}
             flex={1}
             justifyContent={"flex-end"}
             spacing={12}
-            display={{ base: "none", md: "flex" }}
+            // display={{ base: "none", md: "flex" }}
           >
-            <NextLink href={"#"}>Projects</NextLink>
+            <NightModeSwitcher />
+            {/* <NextLink href={"#"}>Projects</NextLink>
             <NextLink href={"/gallery"}>Gallery</NextLink>
             <NextLink href={"#"}>Blogs</NextLink>
-            <NextLink href={"/about"}>About</NextLink>
+            <NextLink href={"/about"}>About</NextLink> */}
           </HStack>
         </HStack>
         <Floatbar isOpen={navDislosure.isOpen} onClose={navDislosure.onClose} />

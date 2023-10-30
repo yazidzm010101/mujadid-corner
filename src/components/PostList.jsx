@@ -10,9 +10,10 @@ import {
   Link,
   Text,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+
+import { FaCode } from "react-icons/fa";
 import NextLink from "next/link";
-import { FaBox, FaCode, FaPaperPlane } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function LatestProject({ data }) {
   return (

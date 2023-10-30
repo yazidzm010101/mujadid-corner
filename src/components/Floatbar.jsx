@@ -1,16 +1,6 @@
-import {
-  Box,
-  Button,
-  Collapse,
-  Fade,
-  Icon,
-  Link,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, Fade, Icon, Link, Text, VStack } from "@chakra-ui/react";
 
 import NextLink from "next/link";
-import React from "react";
 import { RiCloseFill } from "react-icons/ri";
 
 function Floatbar({ isOpen, onClose, ...props }) {

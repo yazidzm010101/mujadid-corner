@@ -2,22 +2,17 @@ import {
   AspectRatio,
   Box,
   Button,
-  Flex,
-  HStack,
-  Heading,
   Icon,
   Image,
-  Spacer,
   Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
 
-import Blob from "@/assets/Blob";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import Link from "next/link";
+import MotionBox from "../MotionBox";
 import data from "~/_data/about";
-import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 function SimpleAbout() {
@@ -43,8 +38,9 @@ function SimpleAbout() {
         spacing={{ sm: 8, md: 16, xl: 48 }}
       >
         <Box w={{ base: "full", md: "40%" }} mb={8} pos={"relative"}>
-          <motion.div
-            style={{ width: "100%", position: "relative" }}
+          <MotionBox
+            w={"full"}
+            pos={"relative"}
             initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
             whileInView={{
               y: 0,
@@ -67,39 +63,48 @@ function SimpleAbout() {
                 alt={"profile-image"}
               />
             </AspectRatio>
-          </motion.div>
+          </MotionBox>
         </Box>
         <Box w={{ base: "full", md: "80%" }} pos={"relative"}>
-          <motion.div
-            style={{ width: "100%", position: "relative" }}
-            initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
-            whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
-            viewport={{ amount: 0.5 }}
-          >
-            <VStack alignItems={"start"}>
-              <Text
-                w={"full"}
-                letterSpacing={1}
-                fontWeight={"medium"}
-                color={"white"}
-                mb={6}
-                fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-              >
-                Hi, I am {data.name} and this is my corner
-              </Text>
-              <Text
-                w={"full"}
-                letterSpacing={1}
-                lineHeight={2}
-                color={"gray.300"}
-                fontSize={{ base: "lg", md: "xl" }}
-              >
-                {data.simple_about_description}
-              </Text>
+          <VStack as={MotionBox} alignItems={"start"}>
+            <Text
+              as={MotionBox}
+              w={"full"}
+              letterSpacing={1}
+              fontWeight={"medium"}
+              mb={6}
+              fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+              initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
+              whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
+              viewport={{ amount: 0.5 }}
+              color={"gray.700"}
+              _dark={{ color: "white" }}
+            >
+              Hi, I am {data.name} and this is my corner
+            </Text>
+            <Text
+              as={MotionBox}
+              w={"full"}
+              letterSpacing={1}
+              lineHeight={2}
+              fontSize={{ base: "lg", md: "xl" }}
+              initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
+              whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
+              viewport={{ amount: 0.5 }}
+              color={"gray.600"}
+              _dark={{ color: "gray.300" }}
+            >
+              {data.simple_about_description}
+            </Text>
+            <MotionBox
+              ml={"auto"}
+              initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
+              whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
+              viewport={{ amount: 0.5 }}
+            >
               <Button
                 as={Link}
                 href="/about"
-                color={"gray.100"}
                 iconSpacing={4}
                 rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
                 rounded={"full"}
@@ -113,19 +118,17 @@ function SimpleAbout() {
                 letterSpacing={1}
                 mr={{ md: -10 }}
                 _hover={{
-                  // bg: "gray.800",
-                  // color: "teal.200",
                   transform: "scale(1.01)",
                   textUnderlineOffset: 12,
-                  // textDecoration: "unset !important",
                 }}
-                // color={"teal.200"}
                 size={"lg"}
+                color={"gray.700"}
+                _dark={{ color: "gray.100" }}
               >
                 About me
               </Button>
-            </VStack>
-          </motion.div>
+            </MotionBox>
+          </VStack>
         </Box>
       </Stack>
     </Box>
