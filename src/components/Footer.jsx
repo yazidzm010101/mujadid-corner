@@ -38,7 +38,9 @@ function Footer() {
               {data.name}
             </Text>
             <Text fontSize={"md"} color={"gray.400"} lineHeight={2}>
-              Software engineer, linux hobbyist, no-smoking, non-coffe
+              Software engineer, love linux distro, non-smoker, drinks to{" "}
+              <s>coffe</s> matcha, can do a little art & design, currently
+              fighting typical programmer stereotype bad habits
             </Text>
             <HStack spacing={3}>
               <Link href={"https://github.com/yazidzm010101"}>

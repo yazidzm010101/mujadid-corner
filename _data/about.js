@@ -7,7 +7,7 @@ const data = {
   photo: "/images/profile.png",
   photo_alt: "/images/profile-alt.jpg",
   simple_about_description:
-    "I share my thoughts, story, projects, and writings here since I am not currently active on Instagram. I really love using Linux since I was 15, it's such a blessing I found it until I pursue my career as a software engineer. Matcha is one of my favorite drink beside water, i stopped drinking coffe since my business trip at Palu.",
+    "I started using Linux-distribution at 15 and fell in love using it, since than I pursue my study and career as a software engineer. Matcha is one of my favorite drink beside water, i stopped drinking coffe since my business trip at Palu. Currently, I am on my self-development journey and fighting programmer bad habits stereotype. I believe programmer can also have a strong healthy body and mind.",
   about: `Already has an interest in information technology since
     high school and graduated from Gunadarma University in
     2021. During college, contributed to a computer
