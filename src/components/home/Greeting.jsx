@@ -7,6 +7,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { useScroll, useTransform } from "framer-motion";
 
 import Aurora from "@/assets/Aurora";
 import { CgMouse } from "react-icons/cg";
@@ -17,12 +18,16 @@ import config from "~/_data/config";
 import style from "@/styles/greeting.module.css";
 
 function Greeting() {
+  const { scrollY } = useScroll();
   const scrollDown = () => {
     window.scrollTo({ top: window.outerHeight * 0.8, behavior: "smooth" });
   };
+  const y = useTransform(scrollY, [0, 300], [0, -100]);
+  const scale = useTransform(scrollY, [0, 1000], [1, 0.5]);
 
   return (
     <VStack
+      as={MotionBox}
       w={"full"}
       spacing={6}
       mt={-24}
@@ -32,6 +37,7 @@ function Greeting() {
       overflow={"hidden"}
       bgColor={"white"}
       _dark={{ bgColor: "black" }}
+      style={{ perspective: "100px" }}
     >
       <Box
         as={Aurora}
@@ -100,9 +106,15 @@ function Greeting() {
         }}
       />
       <MotionBox
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
+        // initial={{ y: 20, opacity: 0 }}
+        style={{
+          y: y,
+          scale: scale,
+          opacity: 1,
+          rotateX: 1,
+          transformStyle: "preserve-3d",
+        }}
+        // viewport={{ once: true }}
         pos={"relative"}
       >
         <Heading
@@ -127,9 +139,15 @@ function Greeting() {
         </Heading>
       </MotionBox>
       <MotionBox
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
+        // initial={{ y: 20, opacity: 0 }}
+        style={{
+          y: y,
+          scale: scale,
+          opacity: 1,
+          rotateX: 1,
+          transformStyle: "preserve-3d",
+        }}
+        // viewport={{ once: true }}
         pos={"relative"}
       >
         <Text
@@ -146,9 +164,15 @@ function Greeting() {
         </Text>
       </MotionBox>
       <MotionBox
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
+        // initial={{ y: 20, opacity: 0 }}
+        style={{
+          y: y,
+          scale: scale,
+          opacity: 1,
+          rotateX: 1,
+          transformStyle: "preserve-3d",
+        }}
+        // viewport={{ once: true }}
         w={"full"}
         display={"flex"}
         flexDir={"column"}

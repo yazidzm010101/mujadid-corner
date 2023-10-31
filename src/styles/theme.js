@@ -6,7 +6,7 @@ export default extendTheme({
     Button: buttonTheme,
   },
   config: {
-    initialColorMode: "light",
+    initialColorMode: "dark",
     useSystemColorMode: false,
   },
   fonts: {

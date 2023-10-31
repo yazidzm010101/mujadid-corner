@@ -20,6 +20,7 @@ function Layout({ children, title }) {
       pos={"relative"}
       bg={"gray.50"}
       overflowX={"hidden"}
+      _dark={{ bg: "gray.800" }}
     >
       <Head>
         <title>{page_title}</title>

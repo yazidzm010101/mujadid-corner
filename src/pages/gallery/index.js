@@ -11,6 +11,7 @@ import { useScroll, useTransform } from "framer-motion";
 
 import GalleryList from "@/components/gallery/GalleryList";
 import Layout from "@/components/Layout";
+import MotionBox from "@/components/MotionBox";
 import Scribble from "@/assets/Scribble";
 import { getAllGallery } from "@/lib/getGallery";
 import { motion } from "framer-motion";
@@ -44,7 +45,15 @@ function GalleryPage({ allGallery }) {
   };
   return (
     <Layout title={"About"}>
-      <Box ref={ref} w={"full"} pos={"relative"} mt={-16} pt={16} pb={24}>
+      <Box
+        ref={ref}
+        w={"full"}
+        pos={"relative"}
+        mt={-16}
+        pt={16}
+        pb={24}
+        _dark={{ bg: "gray.800" }}
+      >
         <AspectRatio
           ratio={4 / 3}
           w={"full"}
@@ -55,7 +64,12 @@ function GalleryPage({ allGallery }) {
           transform={{ md: "translateX(-10%)" }}
           pos={"absolute"}
         >
-          <Box as={Scribble} opacity={0.25} filter={"grayscale(1)"} />
+          <Box
+            as={Scribble}
+            filter={"grayscale(1)"}
+            opacity={0.25}
+            _dark={{ opacity: 0.3 }}
+          />
         </AspectRatio>
         <Container
           w={"full"}
@@ -69,24 +83,24 @@ function GalleryPage({ allGallery }) {
               <Heading
                 mt={16}
                 as="h2"
-                // px={4}
                 textAlign={{ base: "center", md: "start" }}
                 fontSize={{ base: "5xl", md: "5xl", lg: "6xl", xl: "7xl" }}
                 fontWeight={"extrabold"}
                 letterSpacing={4}
                 color={"teal.900"}
+                _dark={{ color: "teal.300" }}
               >
                 Gallery
               </Heading>
               <Text
-                maxW={"container.md"}
+                maxW={"container.xl"}
                 mt={4}
                 textAlign={{ base: "center", md: "start" }}
                 fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
-                letterSpacing={4}
-                color={"teal.900"}
+                color={"teal.800"}
+                _dark={{ color: "teal.500" }}
               >
-                Not just writing code, I also love art, drawing, and design
+                Not just writing codes, I also love doing some arts and designs.
               </Text>
             </Box>
 
@@ -95,16 +109,21 @@ function GalleryPage({ allGallery }) {
               ml={"auto"}
               ratio={{ base: 4 / 3, md: 1 }}
               w={{ base: "full", md: "40%" }}
+              _dark={{ mixBlendMode: "color-dodge" }}
             >
-              <motion.div style={{ y: yMove }}>
+              <MotionBox style={{ y: yMove }}>
                 <Image
                   filter={"contrast(0.7) brightness(1.1)"}
                   src={getFullUrl("/images/miyamoto-art.png")}
                   objectFit={"cover"}
                   w={"full"}
                   h={"full"}
+                  _dark={{
+                    filter: "invert(1s) contrast(0.7) brightness(1.1)",
+                    opacity: 0.3,
+                  }}
                 />
-              </motion.div>
+              </MotionBox>
             </AspectRatio>
           </Flex>
         </Container>

@@ -30,7 +30,7 @@ function GalleryList({ data }) {
 
   return (
     <Box
-      bgGradient={"linear(to-t, gray.100, gray.100 95%, transparent)"}
+      bgGradient={"linear(to-t, gray.100, gray.100 90%, transparent)"}
       pos={"relative"}
       w={"full"}
       mx={"auto"}
@@ -38,6 +38,9 @@ function GalleryList({ data }) {
       mt={-48}
       overflow={"hidden"}
       minH={"130vh"}
+      _dark={{
+        bgGradient: "linear(to-t, gray.800, gray.900 90%, transparent)",
+      }}
     >
       <Stack
         pos={"relative"}
@@ -52,8 +55,6 @@ function GalleryList({ data }) {
       >
         {data?.map((item, i) => (
           <Flex
-            // as={NextLink}
-            // href={`/posts/${item.slug}`}
             key={i}
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}

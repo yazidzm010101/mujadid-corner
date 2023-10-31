@@ -314,7 +314,6 @@ function LatestProject({ data }) {
       >
         <Heading
           as="h2"
-          mb={20}
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
@@ -322,8 +321,40 @@ function LatestProject({ data }) {
           color={"teal.900"}
           _dark={{ color: "teal.300" }}
         >
-          Latest Works
+          Project Corner
         </Heading>
+      </Container>
+      <Container
+        as={MotionBox}
+        w={"full"}
+        maxW={"container.xl"}
+        px={{ base: 4, lg: 10 }}
+        mx={"auto"}
+        pos={"relative"}
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ amount: 0.5 }}
+      >
+        <Text
+          maxW={"container.md"}
+          mt={4}
+          textAlign={{ base: "center", md: "start" }}
+          fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+          color={"teal.800"}
+          _dark={{ color: "teal.500" }}
+        >
+          It is so fun to do a little experiment and project.
+        </Text>
+        <Text
+          maxW={"container.lg"}
+          mt={4}
+          textAlign={{ base: "center", md: "start" }}
+          fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+          color={"teal.700"}
+          _dark={{ color: "teal.700" }}
+        >
+          Take a look at my most recent works here.
+        </Text>
       </Container>
       <Box w={"full"} pos={"relative"}>
         {data?.map((item, i) => (

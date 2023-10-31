@@ -91,16 +91,24 @@ function LatestGallery({ data }) {
         viewport={{ amount: 0.5 }}
       >
         <Text
-          maxW={"container.md"}
+          maxW={"container.xl"}
           mt={4}
-          mb={20}
-          textAlign={{ base: "center", lg: "start" }}
+          textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
-          letterSpacing={2}
           color={"teal.800"}
           _dark={{ color: "teal.500" }}
         >
-          Not just writing code, I also love art, drawing, and design
+          Not just writing codes, I also love doing some arts and designs.
+        </Text>
+        <Text
+          maxW={"container.xl"}
+          mt={4}
+          textAlign={{ base: "center", md: "start" }}
+          fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+          color={"teal.700"}
+          _dark={{ color: "teal.700" }}
+        >
+          Here, take a look at some of them.
         </Text>
       </Container>
       <Stack

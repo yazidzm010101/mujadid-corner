@@ -72,7 +72,6 @@ function LatestPost({ data }) {
       >
         <Heading
           as="h2"
-          mb={20}
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
@@ -80,8 +79,40 @@ function LatestPost({ data }) {
           color={"teal.900"}
           _dark={{ color: "teal.300" }}
         >
-          Latest Posts
+          Story Board
         </Heading>
+      </Container>
+      <Container
+        as={MotionBox}
+        w={"full"}
+        maxW={"container.xl"}
+        px={{ base: 4, lg: 10 }}
+        mx={"auto"}
+        pos={"relative"}
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ amount: 0.5 }}
+      >
+        <Text
+          maxW={"container.md"}
+          mt={4}
+          textAlign={{ base: "center", md: "start" }}
+          fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+          color={"teal.800"}
+          _dark={{ color: "teal.500" }}
+        >
+          Basically, this section lies all of my writings and posts.
+        </Text>
+        <Text
+          maxW={"container.lg"}
+          mt={4}
+          textAlign={{ base: "center", md: "start" }}
+          fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+          color={"teal.700"}
+          _dark={{ color: "teal.700" }}
+        >
+          Here are some of the latest posts.
+        </Text>
       </Container>
       <Stack
         pos={"relative"}
