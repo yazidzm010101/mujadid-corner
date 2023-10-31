@@ -72,7 +72,6 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             }}
           >
             <Heading
-              letterSpacing={2}
               as={"h3"}
               color={"rgb(0 0 0 / 0.02)"}
               fontWeight={"extrabold"}
@@ -151,7 +150,6 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             }}
           >
             <Heading
-              letterSpacing={2}
               color={"transparent"}
               as={"h3"}
               fontWeight={"extrabold"}
@@ -243,7 +241,6 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           >
             <Heading
               data-aos={"scale-fade-up"}
-              letterSpacing={3}
               fontWeight={"normal"}
               fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
               as={"h3"}
@@ -259,7 +256,6 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
               noOfLines={3}
               lineHeight={"3rem"}
-              letterSpacing={2}
               color={"gray.600"}
               _dark={{ color: "gray.400" }}
             >
@@ -304,7 +300,6 @@ function LatestProject({ data }) {
           textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
-          letterSpacing={4}
           color={"teal.900"}
           _dark={{ color: "teal.300" }}
         >
@@ -369,7 +364,6 @@ function LatestProject({ data }) {
             px={10}
             py={10}
             bg={"transparent"}
-            letterSpacing={1}
             mr={-10}
             _hover={{
               transform: "scale(1.01)",

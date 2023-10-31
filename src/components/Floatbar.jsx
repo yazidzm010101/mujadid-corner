@@ -1,33 +1,59 @@
-import { Box, Button, Fade, Icon, Link, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Icon, Link, VStack } from "@chakra-ui/react";
 
 import MujadidCorner from "@/assets/MujadidCorner";
 import NextLink from "next/link";
+import NightModeSwitcher from "./NightModeSwitcher";
 import { RiCloseFill } from "react-icons/ri";
+import { useEffect } from "react";
+
+const data = [
+  { name: "Projects", href: "/projects" },
+  { name: "Blogs", href: "/posts" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "About", href: "/about" },
+];
 
 function Floatbar({ isOpen, onClose, ...props }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
   return (
     <Box
-      unmountOnExit
-      animateOpacity
       pos={"fixed"}
       top={0}
       right={0}
-      roundedBottomLeft={(isOpen && "0") || "full"}
-      w={(isOpen && "100vw") || "0 !important"}
-      h={(isOpen && "100vh") || "0 !important"}
-      transition={"all .3s ease-in-out"}
+      roundedBottomLeft={isOpen ? "0" : "full"}
+      w={isOpen ? "100vw" : "0"}
+      h={isOpen ? "100vh" : "0"}
+      transition={"all .25s ease-in-out"}
+      shadow={"2xl"}
       overflow={"hidden"}
     >
       <Box
-        as={Fade}
-        in={isOpen}
-        unmountOnExit
-        bg={"teal.900"}
         w={"100vw"}
         h={"100vh"}
         overflowY={"auto"}
+        bg={"gray.100"}
+        _dark={{ bg: "teal.900" }}
       >
+        <Box
+          as={NightModeSwitcher}
+          pointerEvents={!isOpen && "none"}
+          pos={"fixed"}
+          top={4}
+          left={4}
+          className={
+            (isOpen && "animate__animated animate__fadeIn") ||
+            "animate__animated animate__fadeOut"
+          }
+          style={{ animationDelay: isOpen && ".25s", animationDuration: ".2s" }}
+        />
         <Button
+          pointerEvents={!isOpen && "none"}
           bg={"transparent"}
           rounded={"999px"}
           pos={"fixed"}
@@ -36,19 +62,27 @@ function Floatbar({ isOpen, onClose, ...props }) {
           py={3}
           top={3}
           right={2}
-          color={"gray.400"}
+          color={"gray.600"}
+          _dark={{ color: "gray.100" }}
           h={"max-content"}
           onClick={onClose}
-          _hover={{ color: "teal.100" }}
+          _hover={{ color: "teal.400" }}
         >
-          <Icon as={RiCloseFill} w={7} h={7} />
+          <Icon
+            as={RiCloseFill}
+            w={7}
+            h={7}
+            transition={"all .2s ease-in-out"}
+            transform={!isOpen && "rotate(-180deg)"}
+            opacity={!isOpen && 0}
+          />
         </Button>
-        <Box py={4} w={"max-content"} mx={"auto"}>
+        <Box py={"1.4rem"} w={"max-content"} ml={"auto"} mr={"4rem"}>
           <NextLink href={"/"}>
             <MujadidCorner
-              color="teal.100"
-              fontSize={"4xl"}
-              _cornerStyle={{ w: "4", h: "4", left: -2, borderWidth: "4px" }}
+              color="teal.800"
+              _dark={{ color: "teal.100" }}
+              fontSize={"xl"}
             />
           </NextLink>
         </Box>
@@ -61,36 +95,29 @@ function Floatbar({ isOpen, onClose, ...props }) {
           fontSize={"4xl"}
           mx={"auto"}
         >
-          <Link
-            as={NextLink}
-            px={8}
-            py={4}
-            color={"gray.200"}
-            href={"/projects"}
-          >
-            Projects
-          </Link>
-          <Link as={NextLink} px={8} py={4} color={"gray.200"} href={"/posts"}>
-            Blogs
-          </Link>
-          <Link
-            as={NextLink}
-            px={8}
-            py={4}
-            color={"gray.200"}
-            href={"/gallery"}
-          >
-            Gallery
-          </Link>
-          <Link
-            as={NextLink}
-            px={8}
-            py={4}
-            color={"gray.200"}
-            href={"/projects"}
-          >
-            About
-          </Link>
+          {data.map((item, i) => (
+            <Link
+              key={item.name}
+              as={NextLink}
+              px={8}
+              py={4}
+              fontWeight={"medium"}
+              color={"gray.600"}
+              _dark={{ color: "gray.200" }}
+              href={item.href}
+              className={
+                (isOpen && "animate__animated animate__fadeInUp") ||
+                "animate__animated animate__fadeOutDown"
+              }
+              style={{
+                animationDelay:
+                  (isOpen && i * 0.15 + "s") ||
+                  (data.length - (i + 1)) * 0.15 + "s",
+              }}
+            >
+              {item.name}
+            </Link>
+          ))}
         </VStack>
       </Box>
     </Box>

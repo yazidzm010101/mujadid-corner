@@ -7,7 +7,7 @@ import { FaSun } from "react-icons/fa";
 import MotionBox from "./MotionBox";
 import { RiSunFill } from "react-icons/ri";
 
-function NightModeSwitcher() {
+function NightModeSwitcher({ ...rest }) {
   const { colorMode, setColorMode } = useColorMode();
   const [darkMode, setDarkMode] = useState(colorMode == "dark");
   const moonY = useTransform(() => (darkMode ? 0 : 10));
@@ -21,8 +21,12 @@ function NightModeSwitcher() {
     }, 200);
     return () => clearTimeout(interval);
   }, [darkMode]);
+  useEffect(() => {
+    setDarkMode(colorMode == "dark");
+  }, [colorMode]);
   return (
     <Box
+      w={"max-content"}
       cursor={"pointer"}
       onClick={() => setDarkMode(!darkMode)}
       rounded={"full"}
@@ -33,6 +37,7 @@ function NightModeSwitcher() {
       borderColor={"rgb(0 0 0 / 0.05)"}
       transition={"all .2s ease-in-out"}
       backdropFilter={"blur(4px)"}
+      {...rest}
     >
       <AspectRatio ratio={1} w={10}>
         <>

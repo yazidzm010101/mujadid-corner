@@ -11,6 +11,7 @@ import { useScroll, useTransform } from "framer-motion";
 
 import Aurora from "@/assets/Aurora";
 import { CgMouse } from "react-icons/cg";
+import Cloud from "@/assets/Cloud";
 import MotionBox from "../MotionBox";
 import SimpleAbout from "./SimpleAbout";
 import StarNoise from "@/assets/StarNoise";
@@ -50,8 +51,9 @@ function Greeting() {
         _dark={{ display: "block" }}
       />
       <Box
+        bgGradient={"linear(to-r,blue.100, teal.100, blue.100, teal.100)"}
         className={style["star-noise"]}
-        as={Aurora}
+        as={Cloud}
         rounded={"full"}
         overflow={"hidden"}
         pos={"absolute"}
@@ -59,8 +61,8 @@ function Greeting() {
         mx={"auto"}
         w={"500vh"}
         h={"500vh"}
-        opacity={1}
-        _dark={{ opacity: 0.1 }}
+        _dark={{ display: "none" }}
+        style={{ animationDuration: "10s" }}
       />
       <Box
         pos={"absolute"}
@@ -106,25 +108,49 @@ function Greeting() {
         }}
       />
       <MotionBox
-        // initial={{ y: 20, opacity: 0 }}
         style={{
           y: y,
           scale: scale,
           opacity: 1,
           rotateX: 1,
-          // transformStyle: "preserve-3d",
         }}
-        // viewport={{ once: true }}
+        px={4}
+        pos={"absolute"}
+        filter={"blur(.2rem)"}
+        opacity={0.2}
+      >
+        <Heading
+          as={"h1"}
+          fontSize={{ base: "6xl", md: "7xl", lg: "8xl" }}
+          textAlign={"center"}
+          bgClip={"text"}
+          bgGradient={"linear(to-br, teal.400, blue.400, purple.400)"}
+          _dark={{
+            bgGradient: "linear(to-br, green.400, teal.300, purple.600)",
+          }}
+        >
+          <Text>
+            Welcome to
+            <br />
+            {config.page_name}
+          </Text>
+        </Heading>
+      </MotionBox>
+      <MotionBox
+        style={{
+          y: y,
+          scale: scale,
+          opacity: 1,
+          rotateX: 1,
+        }}
         pos={"relative"}
       >
         <Heading
           as={"h1"}
-          letterSpacing={1}
-          fontWeight={"medium"}
-          fontSize={{ base: "5xl", md: "6xl", lg: "8xl" }}
+          fontSize={{ base: "6xl", md: "7xl", lg: "8xl" }}
           textAlign={"center"}
           bgGradient={
-            "linear(to-br, teal.600, gray.600 30%, gray.700, gray.700, gray.600 70%, teal.600)"
+            "linear(to-br, teal.500, gray.600 30%, gray.700, gray.700, gray.600 80%, blue.500)"
           }
           bgClip={"text"}
           _dark={{

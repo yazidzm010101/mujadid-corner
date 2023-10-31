@@ -93,7 +93,15 @@ function Navbar() {
               _dark={{ color: !isSolid && "white" }}
               _hover={{ color: "teal.400" }}
             >
-              <Icon as={RiMenu4Fill} w={7} h={7} />
+              <Icon
+                as={RiMenu4Fill}
+                w={7}
+                h={7}
+                transformOrigin={"center"}
+                transition={"all .2s ease-in-out"}
+                transform={navDislosure.isOpen && "rotate(180deg)"}
+                opacity={navDislosure.isOpen && 0}
+              />
             </Button>
           </HStack>
         </HStack>

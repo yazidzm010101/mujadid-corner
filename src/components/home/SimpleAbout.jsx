@@ -58,7 +58,6 @@ function SimpleAbout() {
             <Text
               data-aos={"scale-fade-up"}
               w={"full"}
-              letterSpacing={1}
               fontWeight={"medium"}
               mb={6}
               fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
@@ -70,7 +69,6 @@ function SimpleAbout() {
             <Text
               data-aos={"scale-fade-up"}
               w={"full"}
-              letterSpacing={1}
               lineHeight={2}
               fontSize={{ base: "lg", md: "xl" }}
               color={"gray.600"}
@@ -92,7 +90,6 @@ function SimpleAbout() {
               px={10}
               py={10}
               bg={"transparent"}
-              letterSpacing={1}
               mr={{ md: -10 }}
               _hover={{
                 transform: "scale(1.01)",

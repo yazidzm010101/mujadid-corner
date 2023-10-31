@@ -10,9 +10,9 @@ export default extendTheme({
     useSystemColorMode: false,
   },
   fonts: {
-    heading: '"Inter", sans-serif',
-    body: '"Inter", sans-serif',
-    mono: '"Inter", sans-serif',
+    heading: '"Urbanist", sans-serif',
+    body: '"Urbanist", sans-serif',
+    mono: '"Urbanist", sans-serif',
   },
   breakpoints: {
     xs: "414px",

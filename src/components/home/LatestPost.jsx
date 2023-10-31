@@ -72,7 +72,6 @@ function LatestPost({ data }) {
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
-          letterSpacing={4}
           color={"teal.900"}
           _dark={{ color: "teal.300" }}
         >
@@ -190,7 +189,6 @@ function LatestPost({ data }) {
               px={10}
               py={10}
               bg={"transparent"}
-              letterSpacing={1}
               mr={-10}
               _hover={{
                 transform: "scale(1.01)",

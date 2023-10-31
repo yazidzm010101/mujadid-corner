@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import "aos/dist/aos.css";
+import "animate.css";
 
 import AOS from "aos";
 import { ChakraProvider } from "@chakra-ui/react";
