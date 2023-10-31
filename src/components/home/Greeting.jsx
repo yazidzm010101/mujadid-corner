@@ -23,7 +23,7 @@ function Greeting() {
     window.scrollTo({ top: window.outerHeight * 0.8, behavior: "smooth" });
   };
   const y = useTransform(scrollY, [0, 300], [0, -100]);
-  const scale = useTransform(scrollY, [0, 1000], [1, 0.5]);
+  const scale = useTransform(scrollY, [0, 1000], [1, 0.7]);
 
   return (
     <VStack

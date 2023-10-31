@@ -57,17 +57,14 @@ function LatestGallery({ data }) {
         />
       </AspectRatio>
       <Container
-        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
         px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
-        initial={{ opacity: 0, x: -10 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ amount: 0.5 }}
       >
         <Heading
+          data-aos={"scale-fade-up"}
           as="h2"
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
@@ -77,36 +74,43 @@ function LatestGallery({ data }) {
           _dark={{ color: "teal.300" }}
         >
           Gallery
+          <Image
+            src={
+              "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
+            }
+            display={"inline"}
+            verticalAlign={"middle"}
+            mx={4}
+            w={{ base: 10, md: 16, lg: 20 }}
+          />
         </Heading>
       </Container>
       <Container
-        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
         px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
-        initial={{ opacity: 0, x: -10 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ amount: 0.5 }}
       >
         <Text
+          data-aos={"scale-fade-up"}
           maxW={"container.xl"}
           mt={4}
           textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.800"}
-          _dark={{ color: "teal.500" }}
+          _dark={{ color: "gray.300" }}
         >
           Not just writing codes, I also love doing some arts and designs.
         </Text>
         <Text
+          data-aos={"scale-fade-up"}
           maxW={"container.xl"}
           mt={4}
           textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.700"}
-          _dark={{ color: "teal.700" }}
+          _dark={{ color: "gray.400" }}
         >
           Here, take a look at some of them.
         </Text>
@@ -124,15 +128,12 @@ function LatestGallery({ data }) {
       >
         {data?.map((item, i) => (
           <Flex
+            data-aos={"shrink-fade-up"}
             key={i}
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}
             p={6}
             pos={"relative"}
-            as={MotionBox}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ amount: 0.1 }}
           >
             <AspectRatio
               ratio={[4 / 3, 1, 3 / 4]}
@@ -198,36 +199,31 @@ function LatestGallery({ data }) {
         ))}
         <Container maxW={"container.xl"} w={"full"}>
           <HStack w={"full"} justifyContent={"flex-end"} my={5}>
-            <MotionBox
-              initial={{ x: 10, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ amount: 0.5 }}
+            <Button
+              data-aos={"scale-fade-left"}
+              as={Link}
+              href="#"
+              iconSpacing={4}
+              rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
+              rounded={"full"}
+              variant={"ghost"}
+              fontSize={"2xl"}
+              fontWeight={"extrabold"}
+              px={10}
+              py={10}
+              bg={"transparent"}
+              letterSpacing={1}
+              mr={-10}
+              _hover={{
+                transform: "scale(1.01)",
+                textUnderlineOffset: 12,
+              }}
+              size={"lg"}
+              color={"teal.900"}
+              _dark={{ color: "teal.300" }}
             >
-              <Button
-                as={Link}
-                href="#"
-                iconSpacing={4}
-                rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
-                rounded={"full"}
-                variant={"ghost"}
-                fontSize={"2xl"}
-                fontWeight={"extrabold"}
-                px={10}
-                py={10}
-                bg={"transparent"}
-                letterSpacing={1}
-                mr={-10}
-                _hover={{
-                  transform: "scale(1.01)",
-                  textUnderlineOffset: 12,
-                }}
-                size={"lg"}
-                color={"teal.900"}
-                _dark={{ color: "teal.300" }}
-              >
-                Explore more
-              </Button>
-            </MotionBox>
+              Explore more
+            </Button>
           </HStack>
         </Container>
       </Stack>

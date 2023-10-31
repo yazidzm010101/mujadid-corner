@@ -60,17 +60,14 @@ function LatestPost({ data }) {
         <Box as={WaveAlt} />
       </AspectRatio>
       <Container
-        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
         px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
-        initial={{ opacity: 0, x: -10 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ amount: 0.5 }}
       >
         <Heading
+          data-aos={"scale-fade-up"}
           as="h2"
           textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
@@ -80,36 +77,43 @@ function LatestPost({ data }) {
           _dark={{ color: "teal.300" }}
         >
           Story Board
+          <Image
+            src={
+              "https://www.iconarchive.com/download/i138836/microsoft/fluentui-emoji-3d/Writing-Hand-3d-Default.1024.png"
+            }
+            display={"inline"}
+            verticalAlign={"middle"}
+            mx={4}
+            w={{ base: 10, md: 16, lg: 20 }}
+          />
         </Heading>
       </Container>
       <Container
-        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
         px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
-        initial={{ opacity: 0, x: -10 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ amount: 0.5 }}
       >
         <Text
+          data-aos={"scale-fade-up"}
           maxW={"container.md"}
           mt={4}
           textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.800"}
-          _dark={{ color: "teal.500" }}
+          _dark={{ color: "gray.300" }}
         >
-          Basically, this section lies all of my writings and posts.
+          The board that hold all of my writings and posts.
         </Text>
         <Text
+          data-aos={"scale-fade-up"}
           maxW={"container.lg"}
           mt={4}
           textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.700"}
-          _dark={{ color: "teal.700" }}
+          _dark={{ color: "gray.400" }}
         >
           Here are some of the latest posts.
         </Text>
@@ -135,14 +139,11 @@ function LatestPost({ data }) {
             p={6}
           >
             <AspectRatio
-              as={MotionBox}
+              data-aos={"shrink-fade-up"}
               ratio={[4 / 3, 1, 3 / 4]}
               flexShrink={0}
               boxShadow={"0 2rem 2rem 0.15rem rgb(0 0 0 / 0.2)"}
               rounded={"xl"}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ amount: 0.5 }}
             >
               <Image
                 src={getFullUrl(item.coverImage)}
@@ -150,15 +151,9 @@ function LatestPost({ data }) {
                 rounded={"xl"}
               />
             </AspectRatio>
-            <VStack
-              as={MotionBox}
-              alignItems={"flex-start"}
-              my={6}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.8 }}
-            >
+            <VStack alignItems={"flex-start"} my={6}>
               <Text
+                data-aos={"scale-fade-up"}
                 as={"h5"}
                 fontSize={"3xl"}
                 mb={1}
@@ -168,7 +163,7 @@ function LatestPost({ data }) {
               >
                 {item.title}
               </Text>
-              <HStack w={"full"}>
+              <HStack w={"full"} data-aos={"scale-fade-up"}>
                 <Text
                   fontSize={"sm"}
                   color={"gray.600"}
@@ -182,36 +177,31 @@ function LatestPost({ data }) {
         ))}
         <Container maxW={"container.xl"} w={"full"}>
           <HStack w={"full"} justifyContent={"flex-end"} my={5}>
-            <MotionBox
-              initial={{ x: 10, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ amount: 0.5 }}
+            <Button
+              data-aos={"scale-fade-left"}
+              as={Link}
+              href="#"
+              iconSpacing={4}
+              rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
+              rounded={"full"}
+              variant={"ghost"}
+              fontSize={"2xl"}
+              fontWeight={"extrabold"}
+              px={10}
+              py={10}
+              bg={"transparent"}
+              letterSpacing={1}
+              mr={-10}
+              _hover={{
+                transform: "scale(1.01)",
+                textUnderlineOffset: 12,
+              }}
+              size={"lg"}
+              color={"teal.900"}
+              _dark={{ color: "teal.300" }}
             >
-              <Button
-                as={Link}
-                href="#"
-                iconSpacing={4}
-                rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
-                rounded={"full"}
-                variant={"ghost"}
-                fontSize={"2xl"}
-                fontWeight={"extrabold"}
-                px={10}
-                py={10}
-                bg={"transparent"}
-                letterSpacing={1}
-                mr={-10}
-                _hover={{
-                  transform: "scale(1.01)",
-                  textUnderlineOffset: 12,
-                }}
-                size={"lg"}
-                color={"teal.900"}
-                _dark={{ color: "teal.300" }}
-              >
-                Read my blog
-              </Button>
-            </MotionBox>
+              Read my blog
+            </Button>
           </HStack>
         </Container>
       </Stack>

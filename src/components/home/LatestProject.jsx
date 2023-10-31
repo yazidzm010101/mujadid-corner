@@ -178,67 +178,61 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           mx={"auto"}
         >
           <Box
+            data-aos={"shrink-fade-left"}
             pos={"relative"}
             w={"full"}
             flex={{ lg: 5, xl: 1 }}
             py={{ lg: 42 }}
           >
-            <MotionBox
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ amount: 0.8 }}
+            <AspectRatio
+              ratio={4 / 3}
               w={"full"}
+              bg={"white"}
+              rounded={"xl"}
+              overflow={"hidden"}
+              _light={{
+                border: "1px solid rgb(0 0 0 / 0.2)",
+              }}
             >
-              <AspectRatio
-                ratio={4 / 3}
-                w={"full"}
-                bg={"white"}
-                rounded={"xl"}
-                overflow={"hidden"}
-                _light={{
-                  border: "1px solid rgb(0 0 0 / 0.2)",
-                }}
-              >
-                <>
-                  <Image
-                    filter={"brightness(0.95)"}
-                    src={getFullUrl(coverImage)}
-                    alt={title}
-                  />
-                  {(demoURL || repoURL) && (
-                    <Link
-                      bg={"rgb(29 64 68 / 0.95)"}
-                      color={"white"}
-                      fontSize={"2xl"}
-                      href={demoURL || repoURL}
-                      opacity={0}
-                      target="_blank"
-                      _hover={{ opacity: 1 }}
-                    >
-                      <Icon
-                        mr={4}
-                        mt={1}
-                        as={(demoURL && TbScreenShare) || BiCodeBlock}
-                      />
-                      <Text>
-                        {(demoURL && "Open demo page") || "Open repository"}
-                      </Text>
-                    </Link>
-                  )}
-                </>
-              </AspectRatio>
-              <Image
-                w={{ base: "4rem", lg: "6rem" }}
-                h={{ base: "4rem", lg: "6rem" }}
-                pos={"absolute"}
-                right={0}
-                transform={"translate(-20%, -100%)"}
-                rounded={"2xl"}
-                shadow={"dark-lg"}
-                alt={title}
-                src={getFullUrl(icon)}
-              />
-            </MotionBox>
+              <>
+                <Image
+                  filter={"brightness(0.95)"}
+                  src={getFullUrl(coverImage)}
+                  alt={title}
+                />
+                {(demoURL || repoURL) && (
+                  <Link
+                    bg={"rgb(29 64 68 / 0.95)"}
+                    color={"white"}
+                    fontSize={"2xl"}
+                    href={demoURL || repoURL}
+                    opacity={0}
+                    target="_blank"
+                    _hover={{ opacity: 1 }}
+                  >
+                    <Icon
+                      mr={4}
+                      mt={1}
+                      as={(demoURL && TbScreenShare) || BiCodeBlock}
+                    />
+                    <Text>
+                      {(demoURL && "Open demo page") || "Open repository"}
+                    </Text>
+                  </Link>
+                )}
+              </>
+            </AspectRatio>
+            <Image
+              w={{ base: "4rem", lg: "6rem" }}
+              h={{ base: "4rem", lg: "6rem" }}
+              pos={"absolute"}
+              right={0}
+              transform={"translate(-20%, -100%)"}
+              rounded={"2xl"}
+              shadow={"dark-lg"}
+              alt={title}
+              src={getFullUrl(icon)}
+            />
           </Box>
           <Box
             pos={"relative"}
@@ -247,35 +241,30 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
             w={"full"}
             flex={{ lg: 4, xl: 1 }}
           >
-            <MotionBox
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ amount: 0.8 }}
-              w={"full"}
+            <Heading
+              data-aos={"scale-fade-up"}
+              letterSpacing={3}
+              fontWeight={"normal"}
+              fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
+              as={"h3"}
+              my={2}
+              textAlign={"start"}
+              color={"gray.700"}
+              _dark={{ color: "gray.200" }}
             >
-              <Heading
-                letterSpacing={3}
-                fontWeight={"normal"}
-                fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
-                as={"h3"}
-                my={2}
-                textAlign={"start"}
-                color={"gray.700"}
-                _dark={{ color: "gray.200" }}
-              >
-                {title}
-              </Heading>
-              <Text
-                fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
-                noOfLines={3}
-                lineHeight={"3rem"}
-                letterSpacing={2}
-                color={"gray.600"}
-                _dark={{ color: "gray.400" }}
-              >
-                {excerpt}
-              </Text>
-            </MotionBox>
+              {title}
+            </Heading>
+            <Text
+              data-aos={"scale-fade-up"}
+              fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
+              noOfLines={3}
+              lineHeight={"3rem"}
+              letterSpacing={2}
+              color={"gray.600"}
+              _dark={{ color: "gray.400" }}
+            >
+              {excerpt}
+            </Text>
           </Box>
         </Stack>
       </Container>
@@ -302,56 +291,60 @@ function LatestProject({ data }) {
       }}
     >
       <Container
-        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
         px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
-        initial={{ opacity: 0, x: -10 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ amount: 0.5 }}
       >
         <Heading
+          data-aos={"scale-fade-up"}
+          maxW={"container.md"}
           as="h2"
-          textAlign={{ base: "center", lg: "start" }}
+          textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
           letterSpacing={4}
           color={"teal.900"}
           _dark={{ color: "teal.300" }}
         >
-          Project Corner
+          Work Space
+          <Image
+            wrap
+            mx={4}
+            display={"inline"}
+            verticalAlign={"middle"}
+            src="https://static-00.iconduck.com/assets.00/rocket-emoji-2048x2018-qczjidkx.png"
+            w={{ base: 10, md: 16, lg: 20 }}
+          />
         </Heading>
       </Container>
       <Container
-        as={MotionBox}
         w={"full"}
         maxW={"container.xl"}
         px={{ base: 4, lg: 10 }}
         mx={"auto"}
         pos={"relative"}
-        initial={{ opacity: 0, x: -10 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ amount: 0.5 }}
       >
         <Text
+          data-aos={"scale-fade-up"}
           maxW={"container.md"}
           mt={4}
           textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.800"}
-          _dark={{ color: "teal.500" }}
+          _dark={{ color: "gray.300" }}
         >
           It is so fun to do a little experiment and project.
         </Text>
         <Text
+          data-aos={"scale-fade-up"}
           maxW={"container.lg"}
           mt={4}
           textAlign={{ base: "center", md: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.700"}
-          _dark={{ color: "teal.700" }}
+          _dark={{ color: "gray.400" }}
         >
           Take a look at my most recent works here.
         </Text>
@@ -363,36 +356,31 @@ function LatestProject({ data }) {
       </Box>
       <Container maxW={"container.xl"} w={"full"}>
         <HStack w={"full"} justifyContent={"flex-end"} my={5}>
-          <MotionBox
-            initial={{ x: 10, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ amount: 0.5 }}
+          <Button
+            data-aos={"scale-fade-left"}
+            as={Link}
+            href="#"
+            iconSpacing={4}
+            rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
+            rounded={"full"}
+            variant={"ghost"}
+            fontSize={"2xl"}
+            fontWeight={"extrabold"}
+            px={10}
+            py={10}
+            bg={"transparent"}
+            letterSpacing={1}
+            mr={-10}
+            _hover={{
+              transform: "scale(1.01)",
+              textUnderlineOffset: 12,
+            }}
+            size={"lg"}
+            color={"teal.900"}
+            _dark={{ color: "teal.300" }}
           >
-            <Button
-              as={Link}
-              href="#"
-              iconSpacing={4}
-              rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
-              rounded={"full"}
-              variant={"ghost"}
-              fontSize={"2xl"}
-              fontWeight={"extrabold"}
-              px={10}
-              py={10}
-              bg={"transparent"}
-              letterSpacing={1}
-              mr={-10}
-              _hover={{
-                transform: "scale(1.01)",
-                textUnderlineOffset: 12,
-              }}
-              size={"lg"}
-              color={"teal.900"}
-              _dark={{ color: "teal.300" }}
-            >
-              See more of my works
-            </Button>
-          </MotionBox>
+            See more of my works
+          </Button>
         </HStack>
       </Container>
     </Box>

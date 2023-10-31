@@ -11,7 +11,6 @@ import {
 
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import Link from "next/link";
-import MotionBox from "../MotionBox";
 import data from "~/_data/about";
 import { useRouter } from "next/router";
 
@@ -38,96 +37,73 @@ function SimpleAbout() {
         spacing={{ sm: 8, md: 16, xl: 48 }}
       >
         <Box w={{ base: "full", md: "40%" }} mb={8} pos={"relative"}>
-          <MotionBox
+          <AspectRatio
+            data-aos="shrink-fade-up"
+            ratio={0.7}
             w={"full"}
-            pos={"relative"}
-            initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
-            whileInView={{
-              y: 0,
-              scaleY: 1,
-              opacity: 1,
-            }}
-            viewport={{ amount: 0.5 }}
+            maxW={{ base: "240px", md: "full" }}
+            mx={{ base: "auto", md: "unset" }}
           >
-            <AspectRatio
-              ratio={0.7}
+            <Image
+              rounded={"xl"}
               w={"full"}
-              maxW={{ base: "240px", md: "full" }}
-              mx={{ base: "auto", md: "unset" }}
-            >
-              <Image
-                rounded={"xl"}
-                w={"full"}
-                h={"full"}
-                src={getFullUrl(data.photo_alt)}
-                alt={"profile-image"}
-              />
-            </AspectRatio>
-          </MotionBox>
+              h={"full"}
+              src={getFullUrl(data.photo_alt)}
+              alt={"profile-image"}
+            />
+          </AspectRatio>
         </Box>
         <Box w={{ base: "full", md: "80%" }} pos={"relative"}>
-          <VStack as={MotionBox} alignItems={"start"}>
+          <VStack alignItems={"start"}>
             <Text
-              as={MotionBox}
+              data-aos={"scale-fade-up"}
               w={"full"}
               letterSpacing={1}
               fontWeight={"medium"}
               mb={6}
               fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-              initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
-              whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
-              viewport={{ amount: 0.5 }}
               color={"gray.700"}
               _dark={{ color: "white" }}
             >
               Hi, I am {data.name} and this is my corner
             </Text>
             <Text
-              as={MotionBox}
+              data-aos={"scale-fade-up"}
               w={"full"}
               letterSpacing={1}
               lineHeight={2}
               fontSize={{ base: "lg", md: "xl" }}
-              initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
-              whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
-              viewport={{ amount: 0.5 }}
               color={"gray.600"}
               _dark={{ color: "gray.300" }}
             >
               {data.simple_about_description}
             </Text>
-            <MotionBox
+            <Button
+              data-aos={"scale-fade-left"}
               ml={"auto"}
-              initial={{ y: 30, scaleY: 1.1, opacity: 0 }}
-              whileInView={{ y: 0, scaleY: 1, opacity: 1 }}
-              viewport={{ amount: 0.5 }}
+              as={Link}
+              href="/about"
+              iconSpacing={4}
+              rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
+              rounded={"full"}
+              variant={"ghost"}
+              fontSize={"2xl"}
+              fontWeight={"extrabold"}
+              px={10}
+              py={10}
+              bg={"transparent"}
+              letterSpacing={1}
+              mr={{ md: -10 }}
+              _hover={{
+                transform: "scale(1.01)",
+                textUnderlineOffset: 12,
+              }}
+              size={"lg"}
+              color={"gray.700"}
+              _dark={{ color: "gray.100" }}
             >
-              <Button
-                as={Link}
-                href="/about"
-                iconSpacing={4}
-                rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
-                rounded={"full"}
-                variant={"ghost"}
-                fontSize={"2xl"}
-                fontWeight={"extrabold"}
-                px={10}
-                ml={"auto"}
-                py={10}
-                bg={"transparent"}
-                letterSpacing={1}
-                mr={{ md: -10 }}
-                _hover={{
-                  transform: "scale(1.01)",
-                  textUnderlineOffset: 12,
-                }}
-                size={"lg"}
-                color={"gray.700"}
-                _dark={{ color: "gray.100" }}
-              >
-                About me
-              </Button>
-            </MotionBox>
+              About me
+            </Button>
           </VStack>
         </Box>
       </Stack>
