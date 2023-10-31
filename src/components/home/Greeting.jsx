@@ -51,7 +51,9 @@ function Greeting() {
         _dark={{ display: "block" }}
       />
       <Box
-        bgGradient={"linear(to-r,blue.100, teal.100, blue.100, teal.100)"}
+        bgGradient={
+          "linear(to-r,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100)"
+        }
         className={style["star-noise"]}
         as={Cloud}
         rounded={"full"}
@@ -62,7 +64,6 @@ function Greeting() {
         w={"500vh"}
         h={"500vh"}
         _dark={{ display: "none" }}
-        style={{ animationDuration: "10s" }}
       />
       <Box
         pos={"absolute"}
@@ -99,7 +100,7 @@ function Greeting() {
         pos={"absolute"}
         top={{ base: "35%", md: "40%", xl: "45%" }}
         bgGradient={
-          "radial(transparent, teal.100 30%, gray.200 50%, rgb(200 200 200 / 0.1), rgb(200 200 200 / 0.8) 90%, rgb(200 200 200 / 1))"
+          "radial(transparent, transparent 60%, rgb(255 255 255 / 0.1) 65%, rgb(255 255 255 / 0.9) 70%, rgb(255 255 255 / 1))"
         }
         _dark={{
           boxShadow: "inset 0 0 4rem rgb(32 109 117 / 0.8)",
@@ -124,7 +125,9 @@ function Greeting() {
           fontSize={{ base: "6xl", md: "7xl", lg: "8xl" }}
           textAlign={"center"}
           bgClip={"text"}
-          bgGradient={"linear(to-br, teal.400, blue.400, purple.400)"}
+          bgGradient={
+            "linear(to-br, teal.400, purple.400, blue.400, teal.400, purple.400, blue.400)"
+          }
           _dark={{
             bgGradient: "linear(to-br, green.400, teal.300, purple.600)",
           }}
@@ -206,14 +209,16 @@ function Greeting() {
       >
         <HStack w={"full"} justifyContent={"center"} spacing={4} my={8}>
           <Button
+            pos={"relative"}
             rounded={"full"}
             size={"lg"}
             variant={"glass"}
             _light={{
-              bg: "teal.700",
+              bg: "blackAlpha.600",
               color: "white",
-              borderColor: "transparent",
-              _hover: { bg: "teal.800" },
+              _hover: {
+                bg: "blackAlpha.700",
+              },
             }}
           >
             Read my blog
