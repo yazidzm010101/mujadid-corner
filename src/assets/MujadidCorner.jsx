@@ -2,7 +2,7 @@ import { Box, Text } from "@chakra-ui/react";
 
 import React from "react";
 
-function MujadidCorner({ color = "white", ...rest }) {
+function MujadidCorner({ color = "white", _cornerStyle, ...rest }) {
   console.log(rest);
   return (
     <Box color={color} {...rest} pos={"relative"}>
@@ -15,6 +15,7 @@ function MujadidCorner({ color = "white", ...rest }) {
         bottom={0}
         left={0}
         _dark={{ borderColor: rest?._dark?.color }}
+        {..._cornerStyle}
       />
       <Text
         ml={4}

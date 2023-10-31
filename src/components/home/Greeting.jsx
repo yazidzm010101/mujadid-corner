@@ -79,10 +79,10 @@ function Greeting() {
         rounded={"full"}
         overflow={"hidden"}
         pos={"absolute"}
-        top={"-10%"}
+        top={{ base: 0, md: "-10%" }}
         mx={"auto"}
-        w={"300vh"}
-        h={"300vh"}
+        w={"200vw"}
+        h={"200vw"}
         display="none"
         _dark={{ display: "block" }}
       />
@@ -112,7 +112,7 @@ function Greeting() {
           scale: scale,
           opacity: 1,
           rotateX: 1,
-          transformStyle: "preserve-3d",
+          // transformStyle: "preserve-3d",
         }}
         // viewport={{ once: true }}
         pos={"relative"}
@@ -145,7 +145,7 @@ function Greeting() {
           scale: scale,
           opacity: 1,
           rotateX: 1,
-          transformStyle: "preserve-3d",
+          // transformStyle: "preserve-3d",
         }}
         // viewport={{ once: true }}
         pos={"relative"}
@@ -170,9 +170,10 @@ function Greeting() {
           scale: scale,
           opacity: 1,
           rotateX: 1,
-          transformStyle: "preserve-3d",
+          // transformStyle: "preserve-3d",
         }}
         // viewport={{ once: true }}
+        pos={"relative"}
         w={"full"}
         display={"flex"}
         flexDir={"column"}

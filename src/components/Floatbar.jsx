@@ -14,7 +14,7 @@ function Floatbar({ isOpen, onClose, ...props }) {
       right={0}
       roundedBottomLeft={(isOpen && "0") || "full"}
       w={(isOpen && "100vw") || "0 !important"}
-      h={(isOpen && "100vw") || "0 !important"}
+      h={(isOpen && "100vh") || "0 !important"}
       transition={"all .3s ease-in-out"}
       overflow={"hidden"}
     >
@@ -43,12 +43,24 @@ function Floatbar({ isOpen, onClose, ...props }) {
         >
           <Icon as={RiCloseFill} w={7} h={7} />
         </Button>
-        <Box pr={"5.5rem"} py={4} w={"max-content"} mx={"auto"}>
+        <Box py={4} w={"max-content"} mx={"auto"}>
           <NextLink href={"/"}>
-            <MujadidCorner color="teal.100" />
+            <MujadidCorner
+              color="teal.100"
+              fontSize={"4xl"}
+              _cornerStyle={{ w: "4", h: "4", left: -2, borderWidth: "4px" }}
+            />
           </NextLink>
         </Box>
-        <VStack alignItems={"stretch"} pb={14}>
+        <VStack
+          alignItems={"stretch"}
+          justifyContent={"center"}
+          py={20}
+          w={"full"}
+          maxW={"300px  "}
+          fontSize={"4xl"}
+          mx={"auto"}
+        >
           <Link
             as={NextLink}
             px={8}
@@ -58,13 +70,7 @@ function Floatbar({ isOpen, onClose, ...props }) {
           >
             Projects
           </Link>
-          <Link
-            as={NextLink}
-            px={8}
-            py={4}
-            color={"gray.200"}
-            href={"/projects"}
-          >
+          <Link as={NextLink} px={8} py={4} color={"gray.200"} href={"/posts"}>
             Blogs
           </Link>
           <Link
