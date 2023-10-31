@@ -74,7 +74,7 @@ function SimpleAbout() {
               color={"gray.600"}
               _dark={{ color: "gray.300" }}
             >
-              {data.simple_about_description}
+              {data.about}
             </Text>
             <Button
               data-aos={"scale-fade-left"}
