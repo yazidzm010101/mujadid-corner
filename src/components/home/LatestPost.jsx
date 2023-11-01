@@ -142,12 +142,23 @@ function LatestPost({ data }) {
               flexShrink={0}
               boxShadow={"0 2rem 2rem 0.15rem rgb(0 0 0 / 0.2)"}
               rounded={"xl"}
+              overflow={"hidden"}
             >
-              <Image
-                src={getFullUrl(item.coverImage)}
-                alt={item.title}
-                rounded={"xl"}
-              />
+              <>
+                <Image
+                  src={getFullUrl(item.coverImage)}
+                  alt={item.title}
+                  filter={"blur(20px)"}
+                  transform={"scale(1.5)"}
+                  rounded={"xl"}
+                />
+                <Image
+                  src={getFullUrl(item.coverImage)}
+                  alt={item.title}
+                  objectFit={"contain !important"}
+                  rounded={"xl"}
+                />
+              </>
             </AspectRatio>
             <VStack alignItems={"flex-start"} my={6}>
               <Text

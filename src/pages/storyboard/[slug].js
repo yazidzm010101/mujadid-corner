@@ -1,7 +1,3 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import Layout from "@/components/Layout";
-import { getPostBySlug, getAllPosts, getLatestPost } from "@/lib/getPost";
 import {
   Box,
   Button,
@@ -9,16 +5,19 @@ import {
   HStack,
   Icon,
   Image,
+  Link,
   Spacer,
   Text,
 } from "@chakra-ui/react";
-import Head from "next/head";
+import { getAllPosts, getLatestPost, getPostBySlug } from "@/lib/getPost";
+
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import ReactMarkdown from "react-markdown";
 import CodeBlock from "@/components/CodeBlock";
-import { BiShare } from "react-icons/bi";
-import { HiShare } from "react-icons/hi";
+import ErrorPage from "next/error";
+import Layout from "@/components/Layout";
+import ReactMarkdown from "react-markdown";
 import { TbShare } from "react-icons/tb";
+import { useRouter } from "next/router";
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug, [
@@ -52,14 +51,33 @@ export async function getStaticPaths() {
 
 const newTheme = {
   p: ({ children }) => (
-    <Text as={"p"} my={2} fontSize={"medium"} lineHeight={10}>
+    <Text as={"p"} my={5} fontSize={"xl"} lineHeight={"3rem"}>
       {children}
     </Text>
   ),
   h2: ({ children }) => (
-    <Text as={"h2"} my={2} fontSize={"2xl"} lineHeight={10} fontWeight={"bold"}>
+    <Text
+      as={"h2"}
+      my={5}
+      mt={20}
+      fontSize={"3xl"}
+      lineHeight={10}
+      fontWeight={"bold"}
+    >
       {children}
     </Text>
+  ),
+  a: ({ href, children }) => (
+    <Link
+      fontWeight={"bold"}
+      href={href}
+      wordBreak={"break-word"}
+      fontSize={"xl"}
+      lineHeight={10}
+      target="_blank"
+    >
+      {children}
+    </Link>
   ),
   code: ({ ...props }) => <CodeBlock {...props} />,
 };
