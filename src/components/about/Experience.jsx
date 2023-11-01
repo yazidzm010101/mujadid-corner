@@ -59,35 +59,39 @@ function Experience() {
               borderLeft={"1px solid"}
               borderTop={"1px solid"}
               roundedTopLeft={"3xl"}
+              roundedBottomLeft={i == data.length - 1 && "3xl"}
               borderColor={"teal.400"}
-              h={
-                (i != data.length - 1 && "calc(100% + 4rem)") ||
-                "calc(100% - 4rem)"
-              }
+              h={(i != data.length - 1 && "calc(100% + 4rem)") || "full"}
               top={"3rem"}
               left={0}
             />
             <Box
-              data-aos={"fade"}
               pos={"absolute"}
               w={6}
               h={6}
+              p={2}
               rounded={"full"}
               bg={"teal.400"}
               top={"3rem"}
               left={-3}
-            />
+            >
+              <Box rounded={"full"} w={"full"} h={"full"} bg={"white"} />
+            </Box>
             {i == data.length - 1 && (
               <Box
-                data-aos={"fade"}
+                fontWeight={"bold"}
                 pos={"absolute"}
-                w={6}
-                h={6}
+                px={3}
+                py={2}
+                color={"white"}
+                fontSize={"sm"}
                 rounded={"full"}
                 bg={"teal.400"}
-                bottom={-3}
-                left={-3}
-              />
+                bottom={-16}
+                left={3}
+              >
+                I&apos;m not born yet! 🤓
+              </Box>
             )}
             <HStack w={"full"} spacing={4} my={4} alignItems={"start"}>
               <AspectRatio
@@ -156,7 +160,7 @@ function Experience() {
                     borderTop={"1px solid"}
                     roundedTopLeft={"3xl"}
                     borderColor={"teal.400"}
-                    h={"calc(100% + 4rem)"}
+                    h={8}
                     top={-1}
                     left={-8}
                   />
@@ -183,11 +187,13 @@ function Experience() {
                         <Tag
                           rounded={"xl"}
                           mb={2}
-                          bg={item.categoryColor + ".500"}
+                          fontWeight={"bold"}
+                          bg={item.categoryColor + ".400"}
                           color={"white"}
                           pos={"absolute"}
                           top={-3}
                           left={4}
+                          pt={1}
                         >
                           {item.category}
                         </Tag>
