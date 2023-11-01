@@ -90,7 +90,12 @@ function Experience() {
                 bottom={-16}
                 left={3}
               >
-                I&apos;m not born yet! 🤓
+                <HStack spacing={1}>
+                  <Box bg={"white"} rounded={"full"} px={0.5} fontSize={"xl"}>
+                    🏃
+                  </Box>
+                  <Text>Yes, I&apos;m started here</Text>
+                </HStack>
               </Box>
             )}
             <HStack w={"full"} spacing={4} my={4} alignItems={"start"}>

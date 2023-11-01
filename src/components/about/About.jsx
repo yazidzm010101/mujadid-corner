@@ -119,7 +119,7 @@ function About() {
                 mx={4}
                 objectFit={"contain"}
                 pos={"absolute"}
-                filter={"hue-rotate(90deg)"}
+                filter={"hue-rotate(150deg)"}
                 transform={"translate(50%, 20%) scale(0.5)"}
               />
               <Image
@@ -131,6 +131,7 @@ function About() {
                 display={"inline"}
                 verticalAlign={"middle"}
                 mx={4}
+                filter={"hue-rotate(200deg)"}
                 objectFit={"contain"}
               />
               <Image
@@ -141,6 +142,18 @@ function About() {
                 alt={"profile-image"}
                 boxShadow={"0 1rem 4rem -1.5rem black"}
                 border={"1px solid rgb(0 0 0 / 0.3)"}
+                _dark={{ display: "none" }}
+              />
+
+              <Image
+                rounded={"3rem"}
+                w={"full"}
+                h={"full"}
+                src={getFullUrl(data.photo_dark)}
+                alt={"profile-image"}
+                boxShadow={"0 1rem 4rem -1.5rem black"}
+                border={"1px solid rgb(0 0 0 / 0.3)"}
+                _light={{ display: "none" }}
               />
             </>
           </AspectRatio>

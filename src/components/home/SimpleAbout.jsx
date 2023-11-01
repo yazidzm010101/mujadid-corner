@@ -29,32 +29,56 @@ function SimpleAbout() {
       maxW="container.xl"
       mx={"auto"}
       px={6}
-      pt={200}
+      pt={{ base: 0, xl: 200 }}
     >
       <Stack
-        direction={{ base: "column", md: "row" }}
+        direction={{ base: "column", xl: "row" }}
         alignItems={"flex-start"}
-        spacing={{ sm: 8, md: 16, xl: 48 }}
+        spacing={{ xl: 20 }}
       >
-        <Box w={{ base: "full", md: "40%" }} mb={8} pos={"relative"}>
+        <Box w={{ base: "full", xl: "40%" }} mb={8} pos={"relative"}>
           <AspectRatio
-            data-aos="shrink-fade-up"
-            ratio={0.7}
+            data-aos="zoom-in"
+            ratio={1}
             w={"full"}
-            maxW={{ base: "240px", md: "full" }}
-            mx={{ base: "auto", md: "unset" }}
+            maxW={{ base: "240px", xl: "full" }}
+            mx={"auto"}
           >
-            <Image
-              rounded={"xl"}
-              w={"full"}
-              h={"full"}
-              src={getFullUrl(data.photo_alt)}
-              alt={"profile-image"}
-            />
+            <>
+              <Image
+                transform={"rotate(-5deg) translate(-50%, -5%) scale(0.5)"}
+                rounded={"xl"}
+                w={"full"}
+                h={"full"}
+                objectFit={"contain !important"}
+                src={
+                  "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
+                }
+              />
+              <Image
+                transform={"rotate(5deg) translate(40%, -10%) scale(0.5)"}
+                rounded={"xl"}
+                w={"full"}
+                h={"full"}
+                objectFit={"contain !important"}
+                src={
+                  "https://static.vecteezy.com/system/resources/previews/028/600/712/original/hoodie-3d-rendering-icon-illustration-free-png.png"
+                }
+              />
+              <Image
+                rounded={"xl"}
+                w={"full"}
+                h={"full"}
+                objectFit={"contain !important"}
+                src={
+                  "https://cdn3d.iconscout.com/3d/premium/thumb/matcha-8147961-6478159.png"
+                }
+              />
+            </>
           </AspectRatio>
         </Box>
-        <Box w={{ base: "full", md: "80%" }} pos={"relative"}>
-          <VStack alignItems={"start"}>
+        <Box w={{ base: "full", xl: "80%" }} pos={"relative"}>
+          <VStack alignItems={"start"} maxW={"container.sm"} mx={"auto"}>
             <Text
               data-aos={"scale-fade-up"}
               w={"full"}

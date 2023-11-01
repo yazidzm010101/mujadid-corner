@@ -13,6 +13,7 @@ import { SiChakraui } from "react-icons/si";
 const data = {
   name: "Yazid Zaidan Mujadid",
   photo: "/images/profile.png",
+  photo_dark: "/images/profile-dark.jpg",
   photo_alt: "/images/profile-alt.jpg",
   about:
     "I started using Linux-distribution at 15 and fell in love using it, since then I pursue my study and career as a software engineer. Matcha is one of my favorite drink beside water, I stopped drinking coffe since my business trip at Palu. Currently, I am on my self-development journey and fighting programmer bad habits stereotype. I believe programmer could also have a strong healthy body and mind.",
