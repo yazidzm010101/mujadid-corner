@@ -1,29 +1,39 @@
-import { Box, Text } from "@chakra-ui/react";
+import { AspectRatio, HStack, Text } from "@chakra-ui/react";
 
+import MujadidCornerIcon from "./MujadidCornerIcon";
 import { useState } from "react";
 
-function MujadidCorner({ color = "gray.700", _cornerStyle, ...rest }) {
+function MujadidCorner({
+  color = "gray.700",
+  _cornerStyle,
+  _logoStyle,
+  ...rest
+}) {
   const [currColor, setCurrColor] = useState(color);
   const [currDarkColor, setCurrDarkColor] = useState(rest?._dark?.color);
+  const [currFilter, setCurrFilter] = useState("saturate(0)");
   const onMouseOver = () => {
     setCurrColor("teal.500");
     setCurrDarkColor("teal.200");
+    setCurrFilter("saturate(1)");
   };
   const onMouseLeave = () => {
     setCurrColor(color);
     setCurrDarkColor(rest?._dark?.color || color);
+    setCurrFilter("saturate(0) brightness(3)");
   };
   return (
-    <Box
+    <HStack
       color={currColor}
       {...rest}
       _dark={{ ...rest?._dark, color: currDarkColor }}
+      _hover={{ color: color, _dark: { color: rest?._dark?.color } }}
       pos={"relative"}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
       transition={".2s all ease-in-out"}
     >
-      <Box
+      {/* <Box
         w={2}
         h={2}
         border={"3px solid"}
@@ -35,7 +45,7 @@ function MujadidCorner({ color = "gray.700", _cornerStyle, ...rest }) {
         transition={".2s all ease-in-out"}
         _dark={{ borderColor: currDarkColor }}
         {..._cornerStyle}
-      />
+      /> */}
       <Text
         ml={4}
         fontSize={rest?.fontSize || "xl"}
@@ -45,7 +55,14 @@ function MujadidCorner({ color = "gray.700", _cornerStyle, ...rest }) {
       >
         مجديد
       </Text>
-    </Box>
+      <AspectRatio ratio={1} w={8}>
+        <MujadidCornerIcon
+          filter={currFilter}
+          transition={".2s all ease-in-out"}
+          {..._logoStyle}
+        />
+      </AspectRatio>
+    </HStack>
   );
 }
 
