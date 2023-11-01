@@ -38,7 +38,7 @@ const data = [
       "https://vm.lepkom.gunadarma.ac.id/assets/front/images/logo-lepkom.png",
     experiences: [
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "2018-2019",
         title: "Assistant",
         description:
@@ -59,7 +59,7 @@ const data = [
         ],
       },
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "2019-2020",
         title: "Instructor",
         description:
@@ -79,7 +79,7 @@ const data = [
         ],
       },
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "2020-2022",
         title: "Supervisor",
         description:
@@ -110,7 +110,7 @@ const data = [
     image: "https://powernet.co.id/assets/img/logo1.png",
     experiences: [
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "2019-2020",
         title: "Company Profile",
         description:
@@ -136,7 +136,7 @@ const data = [
         ],
       },
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "Jun-Jul 2020",
         title: "Object Research Indonesia - IQVIA",
         description:
@@ -161,7 +161,7 @@ const data = [
         ],
       },
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "Jul-Aug 2020",
         title: "Object Research Indonesia - IMS",
         description: "2020 Medical device revenue survey taking & monitoring",
@@ -197,7 +197,7 @@ const data = [
     image: "/images/experience-mki.png",
     experiences: [
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "Jan-Apr 2022",
         title: "FibeArt Trans Network - GudangKita",
         description:
@@ -213,7 +213,7 @@ const data = [
         ],
       },
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "Feb-Mar 2022",
         title: "IMM Kemensos",
         description:
@@ -239,7 +239,7 @@ const data = [
         ],
       },
       {
-        categoryColor: "gray",
+        categoryColor: "teal",
         category: "May-Jul 2022",
         title: "TPQ Homepage",
         description:
@@ -266,7 +266,7 @@ const data = [
     experiences: [
       {
         category: "Feb-Mar 2022",
-        categoryColor: "gray",
+        categoryColor: "teal",
         title: "Dynamic Reporting",
         description:
           "Creates visual programming to generates various reports for Human Capital Management System at one of Bank Pembangunan Daerah in Indonesia",
@@ -295,7 +295,7 @@ const data = [
       },
       {
         category: "May-Jul 2022",
-        categoryColor: "gray",
+        categoryColor: "teal",
         title: "Office Booking System",
         description:
           "Develops office booking system on top Jojonomic Officeless Platform using javascript visual programming at one of Insurance Company in Jakarta",
@@ -324,7 +324,7 @@ const data = [
       },
       {
         category: "2022-2023",
-        categoryColor: "gray",
+        categoryColor: "teal",
         title: "Expense Management System",
         description:
           "Built, deliver, and maintain expense management system for Geothermal Energy Company in Java answering their different cases accross different units",
@@ -358,7 +358,7 @@ const data = [
       },
       {
         category: "May-Aug 2023",
-        categoryColor: "gray",
+        categoryColor: "teal",
         title: "Company KPI Ranking",
         description:
           "Join development for insurance, guarantee, and investment company group ranking system on top of officeless platform. Answering technical gap that natively had to store hundred columns into more simplified design by implementing dynamic fields. Implement custom user controlled formulation for KPI calculation. Help font-end team to consume statistical data by providing it&apos;s API",

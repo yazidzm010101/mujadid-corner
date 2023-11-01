@@ -58,12 +58,37 @@ function Experience() {
               w={8}
               borderLeft={"1px solid"}
               borderTop={"1px solid"}
-              roundedTopLeft={"full"}
+              roundedTopLeft={"3xl"}
               borderColor={"teal.400"}
-              h={"calc(100% - 4rem)"}
+              h={
+                (i != data.length - 1 && "calc(100% + 4rem)") ||
+                "calc(100% - 4rem)"
+              }
               top={"3rem"}
               left={0}
             />
+            <Box
+              data-aos={"fade"}
+              pos={"absolute"}
+              w={6}
+              h={6}
+              rounded={"full"}
+              bg={"teal.400"}
+              top={"3rem"}
+              left={-3}
+            />
+            {i == data.length - 1 && (
+              <Box
+                data-aos={"fade"}
+                pos={"absolute"}
+                w={6}
+                h={6}
+                rounded={"full"}
+                bg={"teal.400"}
+                bottom={-3}
+                left={-3}
+              />
+            )}
             <HStack w={"full"} spacing={4} my={4} alignItems={"start"}>
               <AspectRatio
                 data-aos={"shrink-fade-up"}
@@ -109,7 +134,6 @@ function Experience() {
               key={i}
               direction={"column"}
               w={"full"}
-              overflow={"hidden"}
               py={{ base: 6, md: 0 }}
               alignItems={{ base: "center", md: "stretch   " }}
               _before={{ md: { content: "''", margin: "auto" } }}
@@ -119,10 +143,23 @@ function Experience() {
               {item.experiences.map((item, i) => (
                 <Box
                   key={i}
-                  data-aos={"shrink-fade-left"}
+                  data-aos={"shrink-fade-up"}
                   w={"full"}
+                  pos={"relative"}
                   flexShrink={0}
                 >
+                  <Box
+                    data-aos={"fade"}
+                    pos={"absolute"}
+                    w={12}
+                    borderLeft={"1px solid"}
+                    borderTop={"1px solid"}
+                    roundedTopLeft={"3xl"}
+                    borderColor={"teal.400"}
+                    h={"calc(100% + 4rem)"}
+                    top={-1}
+                    left={-8}
+                  />
                   <Card
                     w={"full"}
                     maxW={"container.lg"}
