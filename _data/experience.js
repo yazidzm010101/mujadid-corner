@@ -243,7 +243,7 @@ const data = [
         category: "May-Jul 2022",
         title: "TPQ Homepage",
         description:
-          "Develop front-end application for Taman Pendidikan Al-Qur'an El-Rahmah Tangerang Selatan homepage including news, learning center, gallery, and activities",
+          "Develop front-end application for Taman Pendidikan Al-Qur&apos;an El-Rahmah Tangerang Selatan homepage including news, learning center, gallery, and activities",
         skills: [
           {
             name: "React.js",
@@ -361,7 +361,7 @@ const data = [
         categoryColor: "gray",
         title: "Company KPI Ranking",
         description:
-          "Join development for insurance, guarantee, and investment company group ranking system on top of officeless platform. Answering technical gap that natively had to store hundred columns into more simplified design by implementing dynamic fields. Implement custom user controlled formulation for KPI calculation. Help font-end team to consume statistical data by providing it's API",
+          "Join development for insurance, guarantee, and investment company group ranking system on top of officeless platform. Answering technical gap that natively had to store hundred columns into more simplified design by implementing dynamic fields. Implement custom user controlled formulation for KPI calculation. Help font-end team to consume statistical data by providing it&apos;s API",
         skills: [
           {
             name: "Officeless",

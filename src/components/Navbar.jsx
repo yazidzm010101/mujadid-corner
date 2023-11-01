@@ -39,6 +39,7 @@ function Navbar() {
 
   const detectIndex = () =>
     setActiveIndex(data.findIndex((item) => item.href == pathname));
+
   useEffect(() => {
     detectIndex();
   }, []);
