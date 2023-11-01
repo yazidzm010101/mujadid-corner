@@ -109,6 +109,7 @@ function Navbar() {
                   as={NextLink}
                   key={item.name}
                   href={item.href}
+                  fontWeight={pathname == item.href && "bold"}
                   onMouseOver={() => setActiveIndex(i)}
                   onMouseLeave={detectIndex}
                   textDecor={"unset !important"}
@@ -134,8 +135,15 @@ function Navbar() {
                 bottom={-1}
                 transform={"translateX(-50%)"}
                 rounded={"full"}
-                left={getLeftPercentageNav(activeIndex) + "%"}
-                transition={".2s all ease-in-out"}
+                opacity={activeIndex == -1 && 0}
+                left={
+                  (activeIndex == -1 && "50%") ||
+                  getLeftPercentageNav(activeIndex) + "%"
+                }
+                transition={
+                  (activeIndex == -1 && "all .2s ease-in-out") ||
+                  "all .2s ease-in-out, opacity .5s ease-in"
+                }
                 _dark={{ bg: "teal.200" }}
               />
             </HStack>
