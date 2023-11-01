@@ -17,8 +17,16 @@ import {
 } from "@chakra-ui/react";
 
 import data from "~/_data/experience";
+import { useRouter } from "next/router";
 
 function Experience() {
+  const router = useRouter();
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
   return (
     <Box w={"full"} mx={"auto"} pos={"relative"}>
       <Container
@@ -67,7 +75,7 @@ function Experience() {
                 rounded={"xl"}
               >
                 <Image
-                  src={item.image}
+                  src={getFullUrl(item.image)}
                   px={2}
                   objectFit={"contain !important"}
                 />
