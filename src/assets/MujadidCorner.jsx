@@ -11,16 +11,21 @@ function MujadidCorner({
 }) {
   const [currColor, setCurrColor] = useState(color);
   const [currDarkColor, setCurrDarkColor] = useState(rest?._dark?.color);
-  const [currFilter, setCurrFilter] = useState("saturate(0)");
+  const [currFilter, setCurrFilter] = useState("saturate(0) brightness(0.5)");
+  const [currDarkFilter, setCurrDarkFilter] = useState(
+    "saturate(0) brightness(3)"
+  );
   const onMouseOver = () => {
     setCurrColor("teal.500");
     setCurrDarkColor("teal.200");
     setCurrFilter("saturate(1)");
+    setCurrDarkFilter("saturate(1)");
   };
   const onMouseLeave = () => {
     setCurrColor(color);
     setCurrDarkColor(rest?._dark?.color || color);
-    setCurrFilter("saturate(0) brightness(3)");
+    setCurrFilter("saturate(0) brightness(0.8)");
+    setCurrDarkFilter("saturate(0) brightness(3)");
   };
   return (
     <HStack
@@ -58,6 +63,7 @@ function MujadidCorner({
       <AspectRatio ratio={1} w={8}>
         <MujadidCornerIcon
           filter={currFilter}
+          _dark={{ filter: currDarkFilter }}
           transition={".2s all ease-in-out"}
           {..._logoStyle}
         />
