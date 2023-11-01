@@ -1,19 +1,39 @@
 import { Box, Text } from "@chakra-ui/react";
 
-import React from "react";
+import { useState } from "react";
 
-function MujadidCorner({ color = "white", _cornerStyle, ...rest }) {
+function MujadidCorner({ color = "gray.700", _cornerStyle, ...rest }) {
+  const [currColor, setCurrColor] = useState(color);
+  const [currDarkColor, setCurrDarkColor] = useState(rest?._dark?.color);
+  const onMouseOver = () => {
+    setCurrColor("teal.500");
+    setCurrDarkColor("teal.200");
+  };
+  const onMouseLeave = () => {
+    setCurrColor(color);
+    setCurrDarkColor(rest?._dark?.color || color);
+  };
   return (
-    <Box color={color} {...rest} pos={"relative"}>
+    <Box
+      color={currColor}
+      {...rest}
+      _dark={{ ...rest?._dark, color: currDarkColor }}
+      pos={"relative"}
+      onMouseOver={onMouseOver}
+      onMouseLeave={onMouseLeave}
+      transition={".2s all ease-in-out"}
+    >
       <Box
         w={2}
         h={2}
-        border={"2px solid"}
-        borderColor={color}
+        border={"3px solid"}
+        borderColor={currColor}
         pos={"absolute"}
         bottom={0}
         left={0}
-        _dark={{ borderColor: rest?._dark?.color }}
+        rounded={"sm"}
+        transition={".2s all ease-in-out"}
+        _dark={{ borderColor: currDarkColor }}
         {..._cornerStyle}
       />
       <Text

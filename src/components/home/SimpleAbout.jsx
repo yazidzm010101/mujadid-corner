@@ -45,8 +45,8 @@ function SimpleAbout() {
             mx={"auto"}
           >
             <>
-              <Image
-                transform={"rotate(-5deg) translate(-50%, -5%) scale(0.5)"}
+              {/* <Image
+                transform={"rotate(-5deg) translate(50%, -5%) scale(0.5)"}
                 rounded={"xl"}
                 w={"full"}
                 h={"full"}
@@ -54,8 +54,36 @@ function SimpleAbout() {
                 src={
                   "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
                 }
+              /> */}
+              <Image
+                transform={"rotate(20deg) translate(45%, -20%) scale(0.45)"}
+                rounded={"xl"}
+                w={"full"}
+                h={"full"}
+                objectFit={"contain !important"}
+                src={
+                  "https://cdn3d.iconscout.com/3d/premium/thumb/fist-hand-gesture-8196937-6516366.png?f=webp"
+                }
               />
               <Image
+                transform={"rotate(-10deg) translate(-55%, -5%) scale(0.5)"}
+                rounded={"xl"}
+                w={"full"}
+                h={"full"}
+                objectFit={"contain !important"}
+                src={
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Tux_Enhanced.svg/154px-Tux_Enhanced.svg.png"
+                }
+              />
+              {/* <Image
+                transform={"rotate(5deg) translate(40%, -10%) scale(0.5)"}
+                rounded={"xl"}
+                w={"full"}
+                h={"full"}
+                objectFit={"contain !important"}
+                src={getFullUrl("/images/laptop-linux.png")}
+              /> */}
+              {/* <Image
                 transform={"rotate(5deg) translate(40%, -10%) scale(0.5)"}
                 rounded={"xl"}
                 w={"full"}
@@ -64,7 +92,7 @@ function SimpleAbout() {
                 src={
                   "https://static.vecteezy.com/system/resources/previews/028/600/712/original/hoodie-3d-rendering-icon-illustration-free-png.png"
                 }
-              />
+              /> */}
               <Image
                 rounded={"xl"}
                 w={"full"}

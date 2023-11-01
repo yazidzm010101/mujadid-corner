@@ -7,9 +7,10 @@ import { RiCloseFill } from "react-icons/ri";
 import { useEffect } from "react";
 
 const data = [
-  { name: "Projects", href: "/projects" },
-  { name: "Blogs", href: "/posts" },
-  { name: "Gallery", href: "/gallery" },
+  { name: "Home", href: "/" },
+  { name: "Workspace", href: "/workspace" },
+  { name: "Storyboard", href: "/storyboard" },
+  { name: "Artscape", href: "/artscape" },
   { name: "About", href: "/about" },
 ];
 
@@ -113,9 +114,10 @@ function Floatbar({ isOpen, onClose, ...props }) {
                 "animate__animated animate__fadeOutDown"
               }
               style={{
+                animationDuration: ".5s",
                 animationDelay:
-                  (isOpen && i * 0.15 + "s") ||
-                  (data.length - (i + 1)) * 0.15 + "s",
+                  (isOpen && i * 0.07 + "s") ||
+                  (data.length - (i + 1)) * 0.07 + "s",
               }}
             >
               {item.name}

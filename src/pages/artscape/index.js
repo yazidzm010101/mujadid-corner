@@ -9,12 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { useScroll, useTransform } from "framer-motion";
 
-import GalleryList from "@/components/gallery/GalleryList";
+import GalleryList from "@/components/artscape/GalleryList";
 import Layout from "@/components/Layout";
 import MotionBox from "@/components/MotionBox";
 import Scribble from "@/assets/Scribble";
 import { getAllGallery } from "@/lib/getGallery";
-import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
@@ -81,26 +80,46 @@ function GalleryPage({ allGallery }) {
           <Flex w={"full"} flexWrap={"wrap"}>
             <Box w={{ base: "full", md: "60%" }} py={16}>
               <Heading
-                mt={16}
+                data-aos={"scale-fade-up"}
                 as="h2"
                 textAlign={{ base: "center", md: "start" }}
-                fontSize={{ base: "5xl", md: "5xl", lg: "6xl", xl: "7xl" }}
+                fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
                 fontWeight={"extrabold"}
-                letterSpacing={4}
                 color={"teal.900"}
                 _dark={{ color: "teal.300" }}
               >
-                Gallery
+                Art Scape
+                <Image
+                  src={
+                    // "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
+                    "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
+                  }
+                  display={"inline"}
+                  verticalAlign={"middle"}
+                  mx={4}
+                  w={{ base: 10, md: 16, lg: 20 }}
+                />
               </Heading>
               <Text
+                data-aos={"scale-fade-up"}
                 maxW={"container.xl"}
                 mt={4}
                 textAlign={{ base: "center", md: "start" }}
                 fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
                 color={"teal.800"}
-                _dark={{ color: "teal.500" }}
+                _dark={{ color: "gray.300" }}
               >
-                Not just writing codes, I also love doing some arts and designs.
+                Not just writing codes, I also love doing some{" "}
+                <Box
+                  as={"span"}
+                  verticalAlign={"top"}
+                  pt={0.5}
+                  display={"inline-block"}
+                  fontFamily={"Satisfy"}
+                >
+                  arts & designs
+                </Box>
+                .
               </Text>
             </Box>
 

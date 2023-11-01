@@ -16,6 +16,13 @@ import NextLink from "next/link";
 import { SiLinkedin } from "react-icons/si";
 import data from "~/_data/about";
 
+const sitemaps = [
+  { name: "Workspace", href: "/workspace" },
+  { name: "Storyboard", href: "/storyboard" },
+  { name: "Artscape", href: "/artscape" },
+  { name: "About", href: "/about" },
+];
+
 function Footer() {
   return (
     <Box
@@ -38,9 +45,14 @@ function Footer() {
               {data.name}
             </Text>
             <Text fontSize={"md"} color={"gray.400"} lineHeight={2}>
-              Software engineer, love linux-distro, non-smoker (Yeah, get lost
-              smokes!), drinks <s>coffe</s> matcha, can do a little art &
-              design, currently fighting programmer-stereotype bad habits.
+              Software engineer who loves linux-distro and is a non-smoker
+              (Yeah, get lost cigarettes!), enjoy drinking <s>coffe</s> matcha,
+              can do a little{" "}
+              <Box as={"span"} display={"inline"} fontFamily={"Satisfy"}>
+                art & design
+              </Box>
+              , currently fighting againts the stereotype of bad habits among
+              programmers.
             </Text>
             <HStack spacing={3}>
               <Link href={"https://github.com/yazidzm010101"}>
@@ -137,32 +149,19 @@ function Footer() {
                 _hover={{ color: "gray.100" }}
                 href={"/"}
               >
-                Home
+                {"Home"}
               </Link>
-              <Link
-                mb={-5}
-                as={NextLink}
-                _hover={{ color: "gray.100" }}
-                href={"/projects"}
-              >
-                Projects
-              </Link>
-              <Link
-                mb={-5}
-                as={NextLink}
-                _hover={{ color: "gray.100" }}
-                href={"/blog"}
-              >
-                Blog
-              </Link>
-              <Link
-                mb={-5}
-                as={NextLink}
-                _hover={{ color: "gray.100" }}
-                href={"/about"}
-              >
-                About
-              </Link>
+              {sitemaps.map((site) => (
+                <Link
+                  mb={-5}
+                  as={NextLink}
+                  _hover={{ color: "gray.100" }}
+                  href={site.href}
+                  key={site.name}
+                >
+                  {site.name}
+                </Link>
+              ))}
             </VStack>
           </VStack>
           <Text px={8} w={"full"} mt={20} color={"gray.400"}>

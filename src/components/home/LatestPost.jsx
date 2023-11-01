@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import MotionBox from "@/components/MotionBox";
 import NextLink from "next/link";
 import WaveAlt from "@/assets/WaveAlt";
 import { useRouter } from "next/router";
@@ -96,9 +95,9 @@ function LatestPost({ data }) {
       >
         <Text
           data-aos={"scale-fade-up"}
-          maxW={"container.md"}
+          maxW={"container.xl"}
           mt={4}
-          textAlign={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.800"}
           _dark={{ color: "gray.300" }}
@@ -107,9 +106,9 @@ function LatestPost({ data }) {
         </Text>
         <Text
           data-aos={"scale-fade-up"}
-          maxW={"container.lg"}
+          maxW={"container.xl"}
           mt={4}
-          textAlign={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.700"}
           _dark={{ color: "gray.400" }}
@@ -131,7 +130,7 @@ function LatestPost({ data }) {
         {data?.map((item, i) => (
           <Flex
             as={NextLink}
-            href={`/posts/${item.slug}`}
+            href={`/storyboard/${item.slug}`}
             key={i}
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}
@@ -198,7 +197,7 @@ function LatestPost({ data }) {
               color={"teal.900"}
               _dark={{ color: "teal.300" }}
             >
-              Read my blog
+              Read other stories
             </Button>
           </HStack>
         </Container>

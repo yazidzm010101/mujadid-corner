@@ -219,7 +219,7 @@ function Greeting() {
               transform: "translateY(-4px)",
             }}
           >
-            Read my blog
+            Read my story
           </Button>
           <Button
             rounded={"full"}

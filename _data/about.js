@@ -16,7 +16,7 @@ const data = {
   photo_dark: "/images/profile-dark.jpg",
   photo_alt: "/images/profile-alt.jpg",
   about:
-    "I started using Linux-distribution at 15 and fell in love using it, since then I pursue my study and career as a software engineer. Matcha is one of my favorite drink beside water, I stopped drinking coffe since my business trip at Palu. Currently, I am on my self-development journey and fighting programmer bad habits stereotype. I believe programmer could also have a strong healthy body and mind.",
+    "I started using a Linux distribution at 15 and fell in love with it. Since then, I have pursued my studies and career as a software engineer. Matcha is one of my favorite drinks, along with water. I stopped drinking coffee since my business trip to Palu. Currently, I am on a self-development journey and am fighting against the stereotype of bad habits among programmers. I believe that programmers can also have a strong, healthy body, and mind.",
   latest_interest: [
     {
       name: "React.js",

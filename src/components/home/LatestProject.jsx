@@ -40,7 +40,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
 
   return (
@@ -295,9 +295,9 @@ function LatestProject({ data }) {
       >
         <Heading
           data-aos={"scale-fade-up"}
-          maxW={"container.md"}
+          maxW={"container.xl"}
           as="h2"
-          textAlign={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
           fontWeight={"extrabold"}
           color={"teal.900"}
@@ -323,9 +323,9 @@ function LatestProject({ data }) {
       >
         <Text
           data-aos={"scale-fade-up"}
-          maxW={"container.md"}
+          maxW={"container.xl"}
           mt={4}
-          textAlign={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.800"}
           _dark={{ color: "gray.300" }}
@@ -334,9 +334,9 @@ function LatestProject({ data }) {
         </Text>
         <Text
           data-aos={"scale-fade-up"}
-          maxW={"container.lg"}
+          maxW={"container.xl"}
           mt={4}
-          textAlign={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.700"}
           _dark={{ color: "gray.400" }}

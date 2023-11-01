@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import MotionBox from "../MotionBox";
 import WaveAlt from "@/assets/WaveAlt";
 import { useRouter } from "next/router";
 
@@ -72,10 +71,11 @@ function LatestGallery({ data }) {
           color={"teal.900"}
           _dark={{ color: "teal.300" }}
         >
-          Gallery
+          Art Scape
           <Image
             src={
-              "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
+              // "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
+              "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
             }
             display={"inline"}
             verticalAlign={"middle"}
@@ -95,18 +95,28 @@ function LatestGallery({ data }) {
           data-aos={"scale-fade-up"}
           maxW={"container.xl"}
           mt={4}
-          textAlign={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.800"}
           _dark={{ color: "gray.300" }}
         >
-          Not just writing codes, I also love doing some arts and designs.
+          Not just writing codes, I also love doing some{" "}
+          <Box
+            as={"span"}
+            verticalAlign={"top"}
+            pt={0.5}
+            display={"inline-block"}
+            fontFamily={"Satisfy"}
+          >
+            arts & designs
+          </Box>
+          .
         </Text>
         <Text
           data-aos={"scale-fade-up"}
           maxW={"container.xl"}
           mt={4}
-          textAlign={{ base: "center", md: "start" }}
+          textAlign={{ base: "center", lg: "start" }}
           fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
           color={"teal.700"}
           _dark={{ color: "gray.400" }}
@@ -200,7 +210,7 @@ function LatestGallery({ data }) {
             <Button
               data-aos={"scale-fade-left"}
               as={Link}
-              href="#"
+              href="/artscape"
               iconSpacing={4}
               rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
               rounded={"full"}
