@@ -119,6 +119,7 @@ function Greeting() {
         pos={"absolute"}
         filter={"blur(.2rem)"}
         opacity={0.2}
+        userSelect={"none"}
       >
         <Heading
           as={"h1"}
@@ -212,13 +213,10 @@ function Greeting() {
             pos={"relative"}
             rounded={"full"}
             size={"lg"}
+            backdropFilter={"blur(4px) saturate(4)"}
             variant={"glass"}
-            _light={{
-              bg: "blackAlpha.600",
-              color: "white",
-              _hover: {
-                bg: "blackAlpha.700",
-              },
+            _hover={{
+              transform: "translateY(-4px)",
             }}
           >
             Read my blog
@@ -228,11 +226,16 @@ function Greeting() {
             size={"lg"}
             variant={"glass"}
             colorScheme="transparent"
+            _hover={{
+              transform: "translateY(-4px)",
+            }}
           >
             See my works
           </Button>
         </HStack>
         <MotionBox
+          backdropFilter={"blur(4px) saturate(3)"}
+          rounded={"full"}
           marginX={"auto"}
           animate={{
             y: [0, -20],
@@ -251,6 +254,7 @@ function Greeting() {
             rounded={"full"}
             size={"lg"}
             variant={"blur"}
+            backdropFilter={"blur(4px) saturate(3)"}
             py={{ base: 6, md: 8 }}
             px={{ base: 2, md: 4 }}
             minW={"max-content"}

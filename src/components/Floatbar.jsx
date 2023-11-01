@@ -50,7 +50,10 @@ function Floatbar({ isOpen, onClose, ...props }) {
             (isOpen && "animate__animated animate__fadeIn") ||
             "animate__animated animate__fadeOut"
           }
-          style={{ animationDelay: isOpen && ".25s", animationDuration: ".2s" }}
+          style={{
+            animationDelay: (isOpen && ".25s") || "0s",
+            animationDuration: ".2s",
+          }}
         />
         <Button
           pointerEvents={!isOpen && "none"}

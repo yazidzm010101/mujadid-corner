@@ -1,186 +1,139 @@
 import {
+  AspectRatio,
   Box,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Container,
-  Fade,
   HStack,
   Heading,
   Icon,
   Image,
-  Spacer,
   Stack,
   Tag,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 
 import data from "~/_data/experience";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 
 function Experience() {
-  const [active, setActive] = useState(0);
-  const [interval, setInterval] = useState(4000);
-  const router = useRouter();
-
-  const getFullUrl = (url) => {
-    if (url.match(/^\//g)) {
-      return router.basePath + url;
-    }
-    return url;
-  };
-
-  useEffect(() => {
-    let to;
-    if (interval >= 0) {
-      to = setTimeout(() => {
-        let nextActive = active + 1;
-        if (nextActive > data.length - 1) {
-          nextActive = 0;
-        }
-        setActive(nextActive);
-      }, interval);
-    }
-    return () => {
-      clearTimeout(to);
-    };
-  }, [active, interval]);
-
   return (
-    <VStack w={"full"} mx={"auto"} pos={"relative"}>
-      <Box w={"full"} maxW={"container.xl"} mx={"auto"}>
-        <Heading
-          w={"full"}
-          as="h2"
-          mb={10}
-          px={4}
-          textAlign={{ base: "center" }}
-          fontSize={"xl"}
-          letterSpacing={6}
-          fontWeight={"extrabold"}
-          textTransform={"uppercase"}
-        >
-          #Working Experience
-        </Heading>
-      </Box>
+    <Box w={"full"} mx={"auto"} pos={"relative"}>
       <Container
-        as={HStack}
+        px={{ base: 4, lg: 10 }}
+        w={"full"}
         maxW={"container.xl"}
-        spacing={0}
-        alignItems={"start"}
-        flexWrap={"wrap"}
+        mx={"auto"}
+        pos={"relative"}
       >
-        <Box w={{ base: "full", md: "20%" }}>
-          <Stack
-            direction={{ base: "row", md: "column" }}
-            overflowX={{ base: "auto", md: "hidden" }}
-            px={6}
-            flexShrink={0}
-          >
-            {data.map((item, i) => (
-              <Image
-                key={i}
-                my={4}
-                w={{ base: "200px", md: "160px" }}
-                h={"50px"}
-                objectFit={"contain"}
-                maxW={"full"}
-                mx={4}
-                src={getFullUrl(item.image)}
-                alt={item.name}
-                filter={
-                  active == i ? "saturate(1)" : "saturate(0) brightness(0)"
-                }
-                opacity={active == i ? "1" : "0.5"}
-                cursor={"pointer"}
-                onClick={() => {
-                  setActive(i);
-                  setInterval(-1);
-                }}
-                transition={".15s all ease-in-out"}
-                _hover={{
-                  opacity: active != i && 0.75,
-                }}
-              />
-            ))}
-          </Stack>
-        </Box>
-        <Box w={{ base: "full", md: "80%" }} flexShrink={0}>
-          {data[active]?.name && (
-            <VStack px={12} w={"full"} alignItems={"start"} py={6}>
-              <Text fontSize={"xl"}>{data[active].name}</Text>
-              <Spacer as={"hr"} />
-              <Text fontSize={"sm"} lineHeight={2}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                nec tortor non augue fermentum dictum. Cras tempus in orci in
-                laoreet. Mauris sit amet rutrum justo, vel eleifend erat.
-                Aliquam erat volutpat. Mauris porttitor rutrum auctor. Mauris
-                blandit mauris sed mi cursus pretium. Pellentesque volutpat
-                mattis lorem eget tempus. Sed ultricies vel lacus et blandit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                finibus mi laoreet ornare semper. Nunc bibendum lobortis nulla
-                eget iaculis. Pellentesque viverra dui odio, ac lacinia elit
-                pulvinar rutrum. Suspendisse faucibus pellentesque ipsum, non
-                dapibus dui facilisis a.
-              </Text>
-            </VStack>
-          )}
-          {data.map((item, i) => (
+        <Heading
+          mb={20}
+          data-aos={"scale-fade-up"}
+          as="h2"
+          textAlign={{ base: "center", lg: "start" }}
+          fontSize={{ base: "3xl", md: "5xl", lg: "6xl", xl: "7xl" }}
+          fontWeight={"extrabold"}
+          color={"teal.900"}
+          _dark={{ color: "teal.300" }}
+        >
+          Experience
+        </Heading>
+      </Container>
+      <Container maxW={"container.xl"}>
+        {[...data].reverse().map((item, i) => (
+          <Box pos={"relative"} w={"full"} pl={8} key={i}>
+            <Box
+              data-aos={"fade"}
+              pos={"absolute"}
+              w={8}
+              borderLeft={"1px solid"}
+              borderTop={"1px solid"}
+              roundedTopLeft={"full"}
+              borderColor={"teal.400"}
+              h={"calc(100% - 4rem)"}
+              top={"3rem"}
+              left={0}
+            />
+            <HStack w={"full"} spacing={4} my={4} alignItems={"start"}>
+              <AspectRatio
+                data-aos={"shrink-fade-up"}
+                boxShadow={"0 1rem 3rem -1.5rem black"}
+                w={24}
+                flexShrink={0}
+                ratio={1}
+                bg={"white"}
+                rounded={"xl"}
+              >
+                <Image
+                  src={item.image}
+                  px={2}
+                  objectFit={"contain !important"}
+                />
+              </AspectRatio>
+              <VStack
+                data-aos={"scale-fade-up"}
+                alignItems={"start"}
+                flexGrow={1}
+                spacing={0}
+              >
+                <Text
+                  fontWeight={"bold"}
+                  maxW={"full"}
+                  wordBreak={"break-word"}
+                  fontSize={{ base: "2xl", md: "3xl" }}
+                  color={"gray.700"}
+                  _dark={{ color: "gray.300" }}
+                >
+                  {item.position}
+                </Text>
+                <Text
+                  color={"gray.500"}
+                  fontSize={{ base: "lg", md: "xl" }}
+                  _dark={{ color: "gray.400" }}
+                >
+                  {item.name}
+                </Text>
+              </VStack>
+            </HStack>
             <Stack
               key={i}
               direction={"column"}
-              in={active == i}
-              as={Fade}
-              unmountOnExit
               w={"full"}
-              overflowX={"auto"}
-              overflowY={"hidden"}
-              px={6}
+              overflow={"hidden"}
               py={{ base: 6, md: 0 }}
               alignItems={{ base: "center", md: "stretch   " }}
               _before={{ md: { content: "''", margin: "auto" } }}
               _after={{ md: { content: "''", margin: "auto" } }}
+              spacing={12}
             >
               {item.experiences.map((item, i) => (
                 <Box
                   key={i}
-                  as={motion.div}
-                  initial="offscreen"
-                  whileInView="onscreen"
-                  viewport={{ once: false, amount: 0.1 }}
-                  variants={{
-                    offscreen: {
-                      scale: 0.8,
-                      opacity: 0,
-                    },
-                    onscreen: {
-                      scale: 1,
-                      opacity: 1,
-                      transition: {
-                        type: "spring",
-                        bounce: 0.4,
-                        duration: 0.8,
-                      },
-                    },
-                  }}
+                  data-aos={"shrink-fade-left"}
                   w={"full"}
-                  // maxW={{ base: "400px", sm: "500px", md: "420px" }}
                   flexShrink={0}
-                  px={3}
-                  py={4}
                 >
                   <Card
-                    bg={"white"}
                     w={"full"}
+                    maxW={"container.lg"}
                     h={"full"}
                     rounded={"xl"}
                     shadow={"unset"}
+                    bg={"whiteAlpha.500"}
+                    backdropFilter={"blur(10px)"}
+                    border={"1px solid"}
+                    borderColor={"blackAlpha.50"}
+                    transition={"all .2s ease-in-out"}
+                    _dark={{
+                      bg: "blackAlpha.100",
+                      color: "gray.500",
+                      borderColor: "whiteAlpha.200",
+                      backdropFilter: "blur(10px)",
+                    }}
                   >
-                    <CardHeader pb={1} pos={"relative"}>
+                    <CardHeader px={8} pb={1} pos={"relative"}>
                       {item.category && (
                         <Tag
                           rounded={"xl"}
@@ -197,16 +150,22 @@ function Experience() {
                       <Heading
                         as={"h5"}
                         mt={1}
-                        color={"gray.800"}
+                        color={"gray.700"}
                         fontSize={"xl"}
-                        fontWeight={"normal"}
+                        fontWeight={"bold"}
                         letterSpacing={1}
+                        _dark={{ color: "gray.400" }}
                       >
                         {item.title}
                       </Heading>
                     </CardHeader>
-                    <CardBody py={0}>
-                      <Text lineHeight={2} color={"gray.500"} fontSize={"sm"}>
+                    <CardBody px={8} py={0}>
+                      <Text
+                        lineHeight={2}
+                        color={"gray.500"}
+                        fontSize={{ base: "lg", md: "xl" }}
+                        _dark={{ color: "gray.500" }}
+                      >
                         {item.description}
                       </Text>
                     </CardBody>
@@ -219,11 +178,15 @@ function Experience() {
                               color={skill.color && skill.color + ".600"}
                               bg={skill.color && skill.color + ".50"}
                               rounded={"xl"}
+                              _dark={{
+                                bg: skill.color && skill.color + ".600",
+                                color: "white",
+                              }}
                             >
                               {skill.icon && (
-                                <Icon as={skill.icon} mr={1} w={3} h={3} />
+                                <Icon as={skill.icon} mr={1} w={4} h={4} />
                               )}
-                              <Text fontSize="xs">{skill.name}</Text>
+                              <Text fontSize="md">{skill.name}</Text>
                             </Tag>
                           ))}
                         </HStack>
@@ -233,10 +196,10 @@ function Experience() {
                 </Box>
               ))}
             </Stack>
-          ))}
-        </Box>
+          </Box>
+        ))}
       </Container>
-    </VStack>
+    </Box>
   );
 }
 

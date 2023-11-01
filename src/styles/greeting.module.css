@@ -7,9 +7,26 @@
   }
 }
 
+@keyframes rotate-center {
+  from {
+    transform: rotate(0) translateX(-50%);
+  }
+  from {
+    transform: rotate(360deg) translateX(-50%);
+  }
+}
+
 .star-noise {
   transform-origin: center center;
   animation-name: rotate;
+  animation-duration: 120s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.star-noise-center {
+  transform-origin: center center;
+  animation-name: rotate-center;
   animation-duration: 120s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;

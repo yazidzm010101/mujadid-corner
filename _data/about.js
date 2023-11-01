@@ -1,4 +1,12 @@
-import { TbBrandFlutter, TbBrandNextjs, TbBrandReact } from "react-icons/tb";
+import {
+  TbBrandCss3,
+  TbBrandHtml5,
+  TbBrandLaravel,
+  TbBrandMysql,
+  TbBrandNextjs,
+  TbBrandReact,
+  TbBrandTailwind,
+} from "react-icons/tb";
 
 import { SiChakraui } from "react-icons/si";
 
@@ -12,7 +20,7 @@ const data = {
     {
       name: "React.js",
       icon: TbBrandReact,
-      color: "blue.500",
+      color: "blue.400",
     },
     {
       name: "Chakra UI",
@@ -22,11 +30,33 @@ const data = {
     {
       name: "Next.js",
       icon: TbBrandNextjs,
-      color: "black.400",
+      color: "black",
+    },
+
+    {
+      name: "Laravel",
+      icon: TbBrandLaravel,
+      color: "red.400",
     },
     {
-      name: "Flutter",
-      icon: TbBrandFlutter,
+      name: "Tailwind",
+      icon: TbBrandTailwind,
+      color: "blue.400",
+    },
+
+    {
+      name: "MariaDB",
+      icon: TbBrandMysql,
+      color: "orange.400",
+    },
+    {
+      name: "HTML",
+      icon: TbBrandHtml5,
+      color: "red.500",
+    },
+    {
+      name: "CSS",
+      icon: TbBrandCss3,
       color: "blue.400",
     },
   ],

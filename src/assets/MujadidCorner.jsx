@@ -3,7 +3,6 @@ import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 
 function MujadidCorner({ color = "white", _cornerStyle, ...rest }) {
-  console.log(rest);
   return (
     <Box color={color} {...rest} pos={"relative"}>
       <Box

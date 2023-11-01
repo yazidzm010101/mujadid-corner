@@ -1,13 +1,15 @@
 import {
+  Box,
   Button,
   Container,
   Fade,
   HStack,
   Icon,
+  Link,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { useRef, useState } from "react";
 
 import Floatbar from "./Floatbar";
 import MujadidCorner from "@/assets/MujadidCorner";
@@ -16,22 +18,61 @@ import NightModeSwitcher from "./NightModeSwitcher";
 import { RiMenu4Fill } from "react-icons/ri";
 import { useRouter } from "next/router";
 
+const data = [
+  { name: "Projects", href: "/projects" },
+  { name: "Blogs", href: "/posts" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "About", href: "/about" },
+];
+
 function Navbar() {
+  const ref = useRef(null);
   const [isSolid, setIsSolid] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const ref = useRef({});
+  const [activeIndex, setActiveIndex] = useState(-1);
   const { pathname } = useRouter();
   const navDislosure = useDisclosure();
 
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const difference = scrollY.getPrevious() - latest;
-    const direction = difference < 0 ? "down" : "up";
     setIsSolid(latest > ref.current.clientHeight);
-    setIsHidden(direction == "down" && latest > ref.current.clientHeight);
   });
+
+  const detectIndex = () =>
+    setActiveIndex(data.findIndex((item) => item.href == pathname));
+  useEffect(() => {
+    detectIndex();
+  }, []);
+
+  const getLeftPercentageNav = (i) => {
+    const parent = ref.current;
+    if (parent) {
+      const child = parent.children[i];
+      const width = parent.offsetWidth;
+      if (child) {
+        return (
+          ((child.offsetLeft + child.offsetWidth / 2 - parent.offsetLeft) /
+            width) *
+          100
+        );
+      }
+    }
+    return 0;
+  };
+
+  const getWidthNav = (i) => {
+    const parent = ref.current;
+    if (parent) {
+      const child = parent.children[i];
+      if (child) {
+        const width = child.offsetWidth;
+        return width;
+      }
+    }
+    return 0;
+  };
+
   return (
-    <div ref={ref} style={{ width: "100%", position: "relative" }}>
+    <Box w={"full"}>
       <Container
         maxW={"full"}
         pos={"relative"}
@@ -52,19 +93,52 @@ function Navbar() {
           <HStack flexShrink={0} justifyContent={"flex-start"} spacing={12}>
             <NightModeSwitcher />
           </HStack>
-          <HStack
-            as={Fade}
-            in={!navDislosure.isOpen}
-            flex={1}
-            justifyContent={"flex-start"}
-            spacing={6}
-            display={{ base: "none", md: "flex" }}
-          >
-            <NextLink href={"#"}>Projects</NextLink>
-            <NextLink href={"/gallery"}>Gallery</NextLink>
-            <NextLink href={"#"}>Blogs</NextLink>
-            <NextLink href={"/about"}>About</NextLink>
-          </HStack>
+          <Box as={Fade} in={!navDislosure.isOpen} mr={"auto"} pos={"relative"}>
+            <HStack
+              w={"full"}
+              justifyContent={"flex-start"}
+              spacing={0}
+              display={{ base: "none", md: "flex" }}
+              ref={ref}
+            >
+              {data.map((item, i) => (
+                <Link
+                  py={1}
+                  px={3}
+                  as={NextLink}
+                  key={item.name}
+                  href={item.href}
+                  onMouseOver={() => setActiveIndex(i)}
+                  onMouseLeave={detectIndex}
+                  textDecor={"unset !important"}
+                  color={
+                    pathname == item.href || i == activeIndex ? "teal.600" : ""
+                  }
+                  _dark={{
+                    color:
+                      pathname == item.href || i == activeIndex
+                        ? "teal.200"
+                        : "",
+                  }}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Box
+                pointerEvents={"none"}
+                w={getWidthNav(activeIndex) / 2 + "px"}
+                h={"3px"}
+                bg={"teal.600"}
+                pos={"absolute"}
+                bottom={-1}
+                transform={"translateX(-50%)"}
+                rounded={"full"}
+                left={getLeftPercentageNav(activeIndex) + "%"}
+                transition={".2s all ease-in-out"}
+                _dark={{ bg: "teal.200" }}
+              />
+            </HStack>
+          </Box>
           <HStack
             flexShrink={0}
             flex={{ base: 1, md: 0 }}
@@ -78,7 +152,9 @@ function Navbar() {
           </HStack>
           <HStack flexShrink={0} spacing={12}>
             <Button
-              bg={(isSolid && "white") || "transparent"}
+              bg={!isSolid && "transparent"}
+              backdropFilter={isSolid && "blur(4px) contrast(2) saturate(2)"}
+              variant={"glass"}
               rounded={"full"}
               pos={"fixed"}
               top={3}
@@ -90,8 +166,9 @@ function Navbar() {
               h={"max-content"}
               onClick={() => navDislosure.onToggle()}
               color={"gray.600"}
-              _dark={{ color: !isSolid && "white" }}
-              _hover={{ color: "teal.400" }}
+              _dark={{ color: "white" }}
+              _hover={{ color: "teal.400", _dark: { color: "teal.200" } }}
+              {...(!isSolid && { borderColor: "transparent" })}
             >
               <Icon
                 as={RiMenu4Fill}
@@ -107,7 +184,7 @@ function Navbar() {
         </HStack>
         <Floatbar isOpen={navDislosure.isOpen} onClose={navDislosure.onClose} />
       </Container>
-    </div>
+    </Box>
   );
 }
 

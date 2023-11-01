@@ -32,7 +32,8 @@ import { IoLogoJavascript } from "react-icons/io";
 
 const data = [
   {
-    name: "Lepkom",
+    name: "Lembaga Pengembangan Komputerisasi Gunadarma (LePKom)",
+    position: "Assistant/Instructor/Supervisor",
     image:
       "https://vm.lepkom.gunadarma.ac.id/assets/front/images/logo-lepkom.png",
     experiences: [
@@ -105,6 +106,7 @@ const data = [
   },
   {
     name: "PT. PowerNET Indosolusi",
+    position: "Fullstack Developer",
     image: "https://powernet.co.id/assets/img/logo1.png",
     experiences: [
       {
@@ -190,7 +192,75 @@ const data = [
     ],
   },
   {
-    name: "Jojonomic",
+    name: "Majujaya Karya Indonesia",
+    position: "Frontend Developer (Freelance)",
+    image: "/images/experience-mki.png",
+    experiences: [
+      {
+        categoryColor: "gray",
+        category: "Jan-Apr 2022",
+        title: "FibeArt Trans Network - GudangKita",
+        description:
+          "Develop mobile application for Inventory management and transport document for PT. FibeArt Trans Network",
+        skills: [
+          {
+            name: "Android Studio",
+            icon: SiAndroid,
+            color: "green",
+          },
+          { name: "Java", icon: DiJava, color: "red" },
+          { name: "Retrofit", icon: SiGradle, color: "blue" },
+        ],
+      },
+      {
+        categoryColor: "gray",
+        category: "Feb-Mar 2022",
+        title: "IMM Kemensos",
+        description:
+          "Contribute to maintain layout and chart components for Indonesia Media Monitoring Kemensos tendering project covering dashboard for news monitoring, scraping, and analytics",
+        skills: [
+          {
+            name: "React.js",
+            icon: FaReact,
+            color: "blue",
+          },
+          { name: "Next.js", icon: SiNextdotjs, color: "gray" },
+          { name: "AntDesign", icon: SiAntdesign, color: "red" },
+          {
+            name: "Chart.js",
+            icon: IoLogoJavascript,
+            color: "pink",
+          },
+          {
+            name: "SWR",
+            icon: IoLogoJavascript,
+            color: "orange",
+          },
+        ],
+      },
+      {
+        categoryColor: "gray",
+        category: "May-Jul 2022",
+        title: "TPQ Homepage",
+        description:
+          "Develop front-end application for Taman Pendidikan Al-Qur'an El-Rahmah Tangerang Selatan homepage including news, learning center, gallery, and activities",
+        skills: [
+          {
+            name: "React.js",
+            icon: FaReact,
+            color: "blue",
+          },
+          { name: "Next.js", icon: SiNextdotjs, color: "gray" },
+          { name: "AntDesign", icon: SiAntdesign, color: "pink" },
+          { name: "Tailwind", icon: SiTailwindcss, color: "teal" },
+          { name: "Firestore", icon: SiFirebase, color: "red" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "PT. Jojo Nomic Indonesia",
+    position: "Officeless Implementor (Javascript Developer)",
     image:
       "https://images.glints.com/unsafe/glints-dashboard.s3.amazonaws.com/company-banner-pic/45236c0777b6054b3421b85b7ede3367.png",
     experiences: [
@@ -318,72 +388,6 @@ const data = [
             icon: TbBrandMysql,
             color: "blue",
           },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Majujaya Karya Indonesia",
-    image: "/images/experience-mki.png",
-    experiences: [
-      {
-        categoryColor: "gray",
-        category: "Jan-Apr 2022",
-        title: "FibeArt Trans Network - GudangKita",
-        description:
-          "Develop mobile application for Inventory management and transport document for PT. FibeArt Trans Network",
-        skills: [
-          {
-            name: "Android Studio",
-            icon: SiAndroid,
-            color: "green",
-          },
-          { name: "Java", icon: DiJava, color: "red" },
-          { name: "Retrofit", icon: SiGradle, color: "blue" },
-        ],
-      },
-      {
-        categoryColor: "gray",
-        category: "Feb-Mar 2022",
-        title: "IMM Kemensos",
-        description:
-          "Contribute to maintain layout and chart components for Indonesia Media Monitoring Kemensos tendering project covering dashboard for news monitoring, scraping, and analytics",
-        skills: [
-          {
-            name: "React.js",
-            icon: FaReact,
-            color: "blue",
-          },
-          { name: "Next.js", icon: SiNextdotjs, color: "gray" },
-          { name: "AntDesign", icon: SiAntdesign, color: "red" },
-          {
-            name: "Chart.js",
-            icon: IoLogoJavascript,
-            color: "pink",
-          },
-          {
-            name: "SWR",
-            icon: IoLogoJavascript,
-            color: "orange",
-          },
-        ],
-      },
-      {
-        categoryColor: "gray",
-        category: "May-Jul 2022",
-        title: "TPQ Homepage",
-        description:
-          "Develop front-end application for Taman Pendidikan Al-Qur'an El-Rahmah Tangerang Selatan homepage including news, learning center, gallery, and activities",
-        skills: [
-          {
-            name: "React.js",
-            icon: FaReact,
-            color: "blue",
-          },
-          { name: "Next.js", icon: SiNextdotjs, color: "gray" },
-          { name: "AntDesign", icon: SiAntdesign, color: "pink" },
-          { name: "Tailwind", icon: SiTailwindcss, color: "teal" },
-          { name: "Firestore", icon: SiFirebase, color: "red" },
         ],
       },
     ],

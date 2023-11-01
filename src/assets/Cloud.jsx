@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import React from "react";
 
 function Cloud({ ...props }) {
   return (
@@ -10,8 +9,8 @@ function Cloud({ ...props }) {
         viewBox="0 0 700 700"
         preserveAspectRatio="none"
         style={{
-          width: "100%",
-          height: "100%",
+          width: "100% !important",
+          height: "100% !important",
           mixBlendMode: "multiply",
           opacity: 0.5,
         }}
