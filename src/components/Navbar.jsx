@@ -38,7 +38,7 @@ function Navbar() {
   });
 
   const detectIndex = () =>
-    setActiveIndex(data.findIndex((item) => item.href == pathname));
+    setActiveIndex(data.findIndex((item) => pathname.startsWith(item.href)));
 
   useEffect(() => {
     detectIndex();
@@ -109,7 +109,7 @@ function Navbar() {
                   as={NextLink}
                   key={item.name}
                   href={item.href}
-                  fontWeight={pathname == item.href && "bold"}
+                  fontWeight={pathname.startsWith(item.href) && "bold"}
                   onMouseOver={() => setActiveIndex(i)}
                   onMouseLeave={detectIndex}
                   textDecor={"unset !important"}
