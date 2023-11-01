@@ -94,7 +94,7 @@ function GetInTouch() {
             maxW={"container.lg"}
             textAlign={"center"}
           >
-            Let's go build something great!
+            Let&apos;s go build something great!
           </Heading>
           <Button
             as={Link}
