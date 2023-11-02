@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import config from "~/_data/config";
 import { useRouter } from "next/router";
 
-function Layout({ children, title }) {
+function Layout({ children, title, ...rest }) {
   const { pathname } = useRouter();
   let page_title = config.page_name;
   if (!!title) {
@@ -21,6 +21,7 @@ function Layout({ children, title }) {
       bg={"gray.50"}
       overflowX={"hidden"}
       _dark={{ bg: "gray.800" }}
+      {...rest}
     >
       <Head>
         <title>{page_title}</title>

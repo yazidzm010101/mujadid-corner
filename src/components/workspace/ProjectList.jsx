@@ -20,7 +20,7 @@ import WaveAlt from "@/assets/WaveAlt";
 import { formatDateString } from "@/lib/textUtils";
 import { useRouter } from "next/router";
 
-function PostList({ data }) {
+function ProjectList({ data }) {
   const router = useRouter();
   const getFullUrl = (url) => {
     if (url.match(/^\//g)) {
@@ -52,20 +52,19 @@ function PostList({ data }) {
         bottom={0}
         left={0}
         bg={"teal.200"}
-        _dark={{ bg: "gray.800" }}
+        _dark={{ bg: "teal.800" }}
       />
       <Box
         w={"full"}
         h={"50%"}
         pos={"absolute"}
         bottom={0}
-        mixBlendMode={"color-burn"}
         left={0}
-        bgImage={`url("${getFullUrl("/images/storyboard-pattern.svg")}")`}
+        bgImage={`url("${getFullUrl("/images/workspace-pattern.svg")}")`}
         bgRepeat={"repeat"}
-        backgroundSize={"50px"}
+        backgroundSize={"300px"}
+        filter={"invert(1)"}
         opacity={0.1}
-        _dark={{ filter: "invert(1)", mixBlendMode: "unset" }}
       />
       <Box
         w={"full"}
@@ -94,8 +93,8 @@ function PostList({ data }) {
       >
         {data?.map((item, i) => (
           <Flex
-            as={NextLink}
-            href={`/storyboard/${item.slug}`}
+            // as={NextLink}
+            // href={`/workspace/${item.slug}`}
             key={i}
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}
@@ -152,4 +151,4 @@ function PostList({ data }) {
   );
 }
 
-export default PostList;
+export default ProjectList;

@@ -17,6 +17,7 @@ import {
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import NextLink from "next/link";
 import WaveAlt from "@/assets/WaveAlt";
+import { formatDateString } from "@/lib/textUtils";
 import { useRouter } from "next/router";
 
 function LatestPost({ data }) {
@@ -178,7 +179,7 @@ function LatestPost({ data }) {
                   color={"gray.600"}
                   _dark={{ color: "gray.300" }}
                 >
-                  {item.date}
+                  {formatDateString({ input: item.date, isRelative: true })}
                 </Text>
               </HStack>
             </VStack>

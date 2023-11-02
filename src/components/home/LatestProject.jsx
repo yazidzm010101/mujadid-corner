@@ -305,7 +305,6 @@ function LatestProject({ data }) {
         >
           Work Space
           <Image
-            wrap
             mx={4}
             display={"inline"}
             verticalAlign={"middle"}

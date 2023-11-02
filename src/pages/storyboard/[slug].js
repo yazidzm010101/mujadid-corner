@@ -17,6 +17,7 @@ import ErrorPage from "next/error";
 import Layout from "@/components/Layout";
 import ReactMarkdown from "react-markdown";
 import { TbShare } from "react-icons/tb";
+import { formatDateString } from "@/lib/textUtils";
 import { useRouter } from "next/router";
 
 export async function getStaticProps({ params }) {
@@ -87,42 +88,82 @@ export default function Post({ post }) {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
 
   return (
     <Layout title={post.title}>
-      <Container maxW={"container.md"}>
-        <Box as={"article"}>
-          <Spacer as={"hr"} my={3} />
-          {post.coverImage && (
-            <Image
-              src={post.coverImage}
-              alt={post.title}
-              mx={{ base: "-1rem", md: "0" }}
-              maxW={{ base: "unset", md: "full" }}
-              w={{ base: "calc(100% + 2rem)", md: "full" }}
-              rounded={{ md: "lg" }}
-              my={6}
-            />
-          )}
-          <Text
-            as={"h1"}
-            fontSize={{ base: "3xl", sm: "4xl", lg: "5xl" }}
-            fontWeight={"black"}
-          >
-            {post.title}
-          </Text>
-          <HStack>
-            <Text marginRight={"auto"}>{post.date}</Text>
-            <Button variant={"ghost"}>
-              <Icon h={"20px"} w={"20px"} as={TbShare} />
-            </Button>
-          </HStack>
-          <Spacer as={"hr"} my={3} />
-          <ReactMarkdown components={ChakraUIRenderer(newTheme)}>
-            {post.content}
-          </ReactMarkdown>
-        </Box>
-      </Container>
+      <Box
+        pos={"relative"}
+        w={"full"}
+        minH={"full"}
+        mt={-24}
+        pt={24}
+        mb={-32}
+        pb={32}
+      >
+        <Box
+          w={"full"}
+          h={"full"}
+          pos={"absolute"}
+          bottom={0}
+          mixBlendMode={"color-burn"}
+          left={0}
+          bgImage={`url("${getFullUrl("/images/storyboard-pattern.svg")}")`}
+          bgRepeat={"repeat"}
+          backgroundSize={"50px"}
+          opacity={0.1}
+        />
+        <Box
+          w={"full"}
+          h={"full"}
+          pos={"absolute"}
+          bottom={0}
+          left={0}
+          bgGradient={
+            "linear(to-b, transparent, gray.100 10%, gray.100 90%, transparent)"
+          }
+        />
+        <Container maxW={"container.md"} pos={"relative"}>
+          <Box as={"article"}>
+            <Spacer as={"hr"} my={3} borderColor={"blackAlpha.200"} />
+            {post.coverImage && (
+              <Image
+                src={post.coverImage}
+                alt={post.title}
+                mx={{ base: "-1rem", md: "0" }}
+                maxW={{ base: "unset", md: "full" }}
+                w={{ base: "calc(100% + 2rem)", md: "full" }}
+                rounded={{ md: "lg" }}
+                my={6}
+              />
+            )}
+            <Text
+              as={"h1"}
+              fontSize={{ base: "3xl", sm: "4xl", lg: "5xl" }}
+              fontWeight={"black"}
+            >
+              {post.title}
+            </Text>
+            <HStack>
+              <Text marginRight={"auto"}>
+                {formatDateString({ input: post.date })}
+              </Text>
+              <Button variant={"ghost"}>
+                <Icon h={"20px"} w={"20px"} as={TbShare} />
+              </Button>
+            </HStack>
+            <Spacer as={"hr"} my={3} />
+            <ReactMarkdown components={ChakraUIRenderer(newTheme)}>
+              {post.content}
+            </ReactMarkdown>
+          </Box>
+        </Container>
+      </Box>
     </Layout>
   );
 }

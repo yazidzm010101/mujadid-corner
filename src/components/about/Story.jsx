@@ -23,8 +23,6 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
   const [leftNavShown, setLeftNavShown] = useState(false);
   const [rightNavShown, setRightNavShown] = useState(false);
   const [active, setActive] = useState(-1);
-  const [clientX, setClientX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
 
   const containerRef = useRef(null);
   const targetRef = useRef(null);
@@ -96,21 +94,226 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
         left={0}
         w={"full"}
         h={"full"}
+        overflowY={active > -1 ? "auto" : "hidden"}
+        className="scroll-dark"
       >
-        <Button
-          variant={"ghost"}
-          color={"white"}
-          rounded={"full"}
+        <VStack
+          alignItems={"center"}
+          justifyContent={"center"}
           pos={"absolute"}
-          top={4}
-          right={4}
-          px={2}
-          py={7}
-          onClick={onClose}
-          _hover={{ bg: "whiteAlpha.200" }}
+          top={0}
+          left={0}
+          px={{ base: 2, md: 4, lg: 10 }}
+          minH={"full"}
+          w={"full"}
         >
-          <Icon as={BsX} w={10} h={10} />
-        </Button>
+          <Box
+            w={"full"}
+            mt={48}
+            mb={10}
+            flexShrink={0}
+            transform={"translateY(-1rem)"}
+            pos={"relative"}
+          >
+            <Box
+              ref={containerRef}
+              onScroll={(e) => onScroll(e.target)}
+              w={"full"}
+              rounded={"xl"}
+              overflowX={"auto"}
+              className="scroll-dark"
+            >
+              <HStack ref={targetRef} mx={"auto"} spacing={4} w={"max-content"}>
+                {data?.map((image, i) => (
+                  <>
+                    <AspectRatio
+                      flexShrink={0}
+                      w={"container.md"}
+                      ratio={3 / 4}
+                      key={i}
+                      rounded={"xl"}
+                      overflow={"hidden"}
+                      maxH={"full"}
+                      maxW={"400px"}
+                      onClick={() => setActive(i)}
+                      role="group"
+                      cursor={"pointer"}
+                      userSelect={"none"}
+                    >
+                      <Image
+                        src={image}
+                        transition={"all .2s ease-in-out"}
+                        _hover={{ transform: "scale(1.1)" }}
+                      />
+                    </AspectRatio>
+                    <Portal>
+                      <VStack
+                        spacing={0}
+                        pos={"fixed"}
+                        top={0}
+                        w={"full"}
+                        h={"full"}
+                        left={0}
+                        as={ScaleFade}
+                        in={i == active}
+                        bg={"blackAlpha.800"}
+                        zIndex={1001}
+                        unmountOnExit
+                      >
+                        <Image
+                          w={"full"}
+                          h={"full"}
+                          src={image}
+                          objectFit={"contain"}
+                        />
+                        {data.length > 1 && (
+                          <>
+                            <VStack
+                              pos={"absolute"}
+                              top={0}
+                              left={0}
+                              pl={{ base: 2, md: 4, lg: 10 }}
+                              pr={14}
+                              justifyContent={"center"}
+                              h={"calc(100% + 5px)"}
+                              bgGradient={
+                                "linear(to-r, blackAlpha.500, transparent)"
+                              }
+                              transition={".25s all ease-in-out"}
+                              role="group"
+                            >
+                              <Button
+                                variant={"ghost"}
+                                color={"white"}
+                                px={1}
+                                py={7}
+                                rounded={"full"}
+                                _hover={{ bg: "whiteAlpha.100" }}
+                                opacity={0.5}
+                                _groupHover={{ opacity: 1 }}
+                                onClick={() =>
+                                  setActive(
+                                    active - 1 < 0
+                                      ? data.length - 1
+                                      : active - 1,
+                                  )
+                                }
+                              >
+                                <Icon as={BiChevronLeft} w={12} h={12} />
+                              </Button>
+                            </VStack>
+                            <VStack
+                              pos={"absolute"}
+                              top={0}
+                              right={0}
+                              pr={{ base: 2, md: 4, lg: 10 }}
+                              pl={14}
+                              justifyContent={"center"}
+                              h={"calc(100% + 5px)"}
+                              bgGradient={
+                                "linear(to-l, blackAlpha.500, transparent)"
+                              }
+                              transition={".25s all ease-in-out"}
+                              role="group"
+                            >
+                              <Button
+                                variant={"ghost"}
+                                color={"white"}
+                                px={1}
+                                py={7}
+                                rounded={"full"}
+                                _hover={{ bg: "whiteAlpha.100" }}
+                                opacity={0.5}
+                                _groupHover={{ opacity: 1 }}
+                                onClick={() =>
+                                  setActive(
+                                    active + 1 >= data.length ? 0 : active + 1,
+                                  )
+                                }
+                              >
+                                <Icon as={BiChevronRight} w={12} h={12} />
+                              </Button>
+                            </VStack>
+                          </>
+                        )}
+                        <Button
+                          variant={"ghost"}
+                          rounded={"full"}
+                          color={"white"}
+                          pos={"absolute"}
+                          top={{ base: 1, md: 4 }}
+                          right={{ base: 3, md: 4 }}
+                          px={2}
+                          py={7}
+                          _hover={{ bg: "whiteAlpha.200" }}
+                          onClick={() => setActive(-1)}
+                        >
+                          <Icon as={BsX} w={10} h={10} />
+                        </Button>
+                      </VStack>
+                    </Portal>
+                  </>
+                ))}{" "}
+              </HStack>
+            </Box>
+            <VStack
+              pos={"absolute"}
+              top={-1}
+              left={0}
+              pr={14}
+              pointerEvents={"none"}
+              justifyContent={"center"}
+              h={"calc(100% - 5px)"}
+              opacity={leftNavShown ? 1 : 0}
+              bgGradient={"linear(to-r, gray.900, transparent)"}
+              transition={".25s all ease-in-out"}
+            >
+              <Button
+                as={MotionBox}
+                variant={"ghost"}
+                color={"white"}
+                px={1}
+                py={7}
+                rounded={"full"}
+                _hover={{ bg: "whiteAlpha.100" }}
+                pointerEvents={leftNavShown ? "auto" : "none"}
+                cursor={leftNavShown ? "pointer" : "none"}
+                transition={".25s all ease-in-out"}
+                onClick={() => navigateScroll(-1)}
+              >
+                <Icon as={BiChevronLeft} w={12} h={12} />
+              </Button>
+            </VStack>{" "}
+            <VStack
+              pos={"absolute"}
+              top={-1}
+              right={0}
+              pointerEvents={"none"}
+              pl={14}
+              justifyContent={"center"}
+              h={"calc(100% - 5px)"}
+              opacity={rightNavShown ? 1 : 0}
+              bgGradient={"linear(to-l, gray.900, transparent)"}
+              transition={".25s all ease-in-out"}
+            >
+              <Button
+                as={MotionBox}
+                variant={"ghost"}
+                color={"white"}
+                px={1}
+                py={7}
+                rounded={"full"}
+                _hover={{ bg: "whiteAlpha.100" }}
+                pointerEvents={rightNavShown ? "auto" : "none"}
+                cursor={rightNavShown ? "pointer" : "none"}
+                transition={".25s all ease-in-out"}
+                onClick={() => navigateScroll(1)}
+              >
+                <Icon as={BiChevronRight} w={12} h={12} />
+              </Button>
+            </VStack>
+          </Box>
+        </VStack>
         <VStack alignItems={"flex-start"} pos={"absolute"} top={8} left={10}>
           <Heading
             as="h2"
@@ -129,239 +332,20 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
             {title}
           </Heading>
         </VStack>
-        <Box
-          w={"full"}
-          px={10}
-          pos={"absolute"}
-          top={"50%"}
-          left={0}
-          transform={"translateY(-50%)"}
+        <Button
+          variant={"ghost"}
+          color={"white"}
+          rounded={"full"}
+          pos={"fixed"}
+          top={{ base: 1, md: 4 }}
+          right={{ base: 3, md: 4 }}
+          px={2}
+          py={7}
+          onClick={onClose}
+          _hover={{ bg: "whiteAlpha.200" }}
         >
-          <Box
-            ref={containerRef}
-            onScroll={(e) => onScroll(e.target)}
-            w={"full"}
-            rounded={"xl"}
-            overflowX={"auto"}
-            className="scroll-dark"
-            // onMouseDown={(e) => {
-            //   setClientX(e.clientX);
-            //   setIsDragging(true);
-            // }}
-            // onMouseUp={(e) => {
-            //   setClientX(e.clientX);
-            //   setIsDragging(false);
-            // }}
-            // onMouseMove={(e) => {
-            //   if (isDragging) {
-            //     navigateScroll(e.clientX - clientX, true);
-            //     setClientX(e.clientX);
-            //   }
-            // }}
-            // // onDragOver={(e) => {
-            // //   navigateScroll(e.clientX - clientX, true);
-            // //   setClientX(e.clientX);
-            // // }}
-          >
-            <HStack ref={targetRef} mx={"auto"} spacing={4} w={"max-content"}>
-              {data?.map((image, i) => (
-                <>
-                  <AspectRatio
-                    flexShrink={0}
-                    w={"container.md"}
-                    ratio={3 / 4}
-                    key={i}
-                    rounded={"xl"}
-                    overflow={"hidden"}
-                    maxH={"full"}
-                    maxW={"400px"}
-                    onClick={() => setActive(i)}
-                    role="group"
-                    cursor={"pointer"}
-                    userSelect={"none"}
-                  >
-                    <>
-                      <Image
-                        src={image}
-                        transition={"all .2s ease-in-out"}
-                        _groupHover={{ transform: "scale(1.1)" }}
-                      />
-                      {/* <Image
-                        src={image}
-                        filter={"blur(10px)"}
-                        transform={"scale(1.1)"}
-                        transition={"all .2s ease-in-out"}
-                        _groupHover={{ transform: "scale(1.2)" }}
-                      /> */}
-                      {/* <Image
-                        src={image}
-                        objectFit={"contain !important"}
-                        transition={"all .2s ease-in-out"}
-                        _groupHover={{ transform: "scale(1.1)" }}
-                      /> */}
-                    </>
-                  </AspectRatio>
-                  <Portal>
-                    <VStack
-                      spacing={0}
-                      pos={"fixed"}
-                      top={0}
-                      w={"full"}
-                      h={"full"}
-                      left={0}
-                      as={ScaleFade}
-                      in={i == active}
-                      bg={"blackAlpha.800"}
-                      zIndex={1001}
-                      unmountOnExit
-                    >
-                      <Image
-                        w={"full"}
-                        h={"full"}
-                        src={image}
-                        objectFit={"contain"}
-                      />
-                      {data.length > 1 && (
-                        <>
-                          <VStack
-                            pos={"absolute"}
-                            top={0}
-                            left={0}
-                            pl={10}
-                            pr={14}
-                            justifyContent={"center"}
-                            h={"calc(100% + 5px)"}
-                            bgGradient={
-                              "linear(to-r, blackAlpha.500, transparent)"
-                            }
-                            transition={".25s all ease-in-out"}
-                            role="group"
-                          >
-                            <Button
-                              variant={"ghost"}
-                              color={"white"}
-                              px={1}
-                              py={7}
-                              rounded={"full"}
-                              _hover={{ bg: "whiteAlpha.100" }}
-                              opacity={0.5}
-                              _groupHover={{ opacity: 1 }}
-                              onClick={() =>
-                                setActive(
-                                  active - 1 < 0 ? data.length - 1 : active - 1,
-                                )
-                              }
-                            >
-                              <Icon as={BiChevronLeft} w={12} h={12} />
-                            </Button>
-                          </VStack>
-                          <VStack
-                            pos={"absolute"}
-                            top={0}
-                            right={0}
-                            pr={10}
-                            pl={14}
-                            justifyContent={"center"}
-                            h={"calc(100% + 5px)"}
-                            bgGradient={
-                              "linear(to-l, blackAlpha.500, transparent)"
-                            }
-                            transition={".25s all ease-in-out"}
-                            role="group"
-                          >
-                            <Button
-                              variant={"ghost"}
-                              color={"white"}
-                              px={1}
-                              py={7}
-                              rounded={"full"}
-                              _hover={{ bg: "whiteAlpha.100" }}
-                              opacity={0.5}
-                              _groupHover={{ opacity: 1 }}
-                              onClick={() =>
-                                setActive(
-                                  active + 1 >= data.length ? 0 : active + 1,
-                                )
-                              }
-                            >
-                              <Icon as={BiChevronRight} w={12} h={12} />
-                            </Button>
-                          </VStack>
-                        </>
-                      )}
-                      <Button
-                        variant={"ghost"}
-                        rounded={"full"}
-                        color={"white"}
-                        pos={"absolute"}
-                        top={4}
-                        right={4}
-                        px={2}
-                        py={7}
-                        _hover={{ bg: "whiteAlpha.200" }}
-                        onClick={() => setActive(-1)}
-                      >
-                        <Icon as={BsX} w={10} h={10} />
-                      </Button>
-                    </VStack>
-                  </Portal>
-                </>
-              ))}{" "}
-            </HStack>
-          </Box>
-          <VStack
-            pos={"absolute"}
-            top={-1}
-            left={10}
-            pr={14}
-            justifyContent={"center"}
-            h={"calc(100% - 5px)"}
-            opacity={leftNavShown ? 1 : 0}
-            bgGradient={"linear(to-r, gray.900, transparent)"}
-            transition={".25s all ease-in-out"}
-          >
-            <Button
-              as={MotionBox}
-              variant={"ghost"}
-              color={"white"}
-              px={1}
-              rounded={"full"}
-              _hover={{ bg: "whiteAlpha.100" }}
-              pointerEvents={leftNavShown ? "auto" : "none"}
-              cursor={leftNavShown ? "pointer" : "none"}
-              transition={".25s all ease-in-out"}
-              onClick={() => navigateScroll(-1)}
-            >
-              <Icon as={BiChevronLeft} w={12} h={12} />
-            </Button>
-          </VStack>{" "}
-          <VStack
-            pos={"absolute"}
-            top={-1}
-            right={10}
-            pl={14}
-            justifyContent={"center"}
-            h={"calc(100% - 5px)"}
-            opacity={rightNavShown ? 1 : 0}
-            bgGradient={"linear(to-l, gray.900, transparent)"}
-            transition={".25s all ease-in-out"}
-          >
-            <Button
-              as={MotionBox}
-              variant={"ghost"}
-              color={"white"}
-              px={1}
-              rounded={"full"}
-              _hover={{ bg: "whiteAlpha.100" }}
-              pointerEvents={rightNavShown ? "auto" : "none"}
-              cursor={rightNavShown ? "pointer" : "none"}
-              transition={".25s all ease-in-out"}
-              onClick={() => navigateScroll(1)}
-            >
-              <Icon as={BiChevronRight} w={12} h={12} />
-            </Button>
-          </VStack>
-        </Box>
+          <Icon as={BsX} w={10} h={10} />
+        </Button>
       </Box>
     </Portal>
   );

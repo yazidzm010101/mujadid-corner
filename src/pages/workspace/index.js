@@ -8,18 +8,18 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useScroll, useTransform } from "framer-motion";
 
 import Cloud from "@/assets/Cloud";
 import Layout from "@/components/Layout";
 import PostList from "@/components/storyboard/PostList";
-import { getAllPosts } from "@/lib/getPost";
+import ProjectList from "@/components/workspace/ProjectList";
+import { getAllProjects } from "@/lib/getProject";
 import style from "@/styles/greeting.module.css";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
 export function getStaticProps({ params }) {
-  const allPost = getAllPosts([
+  const allProjects = getAllProjects([
     "title",
     "date",
     "slug",
@@ -28,14 +28,12 @@ export function getStaticProps({ params }) {
   ]);
 
   return {
-    props: { allPost },
+    props: { allProjects },
   };
 }
 
-function GalleryPage({ allPost }) {
+function WorkspacePage({ allProjects }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll();
-  const yMove = useTransform(scrollYProgress, [0, 0.5], [40, 0]);
   const router = useRouter();
   const getFullUrl = (url) => {
     if (url.match(/^\//g)) {
@@ -75,7 +73,7 @@ function GalleryPage({ allPost }) {
           />
         </VStack>
         <AspectRatio
-          w={{ base: "200%", md: "full" }}
+          w={{ base: "100%", md: "full" }}
           ratio={1}
           pos={"absolute"}
           top={0}
@@ -85,7 +83,7 @@ function GalleryPage({ allPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -99,11 +97,11 @@ function GalleryPage({ allPost }) {
           h={"full"}
           pos={"absolute"}
           top={0}
-          mixBlendMode={"color-burn"}
           left={0}
-          bgImage={`url("${getFullUrl("/images/storyboard-pattern.svg")}")`}
+          bgImage={`url("${getFullUrl("/images/workspace-pattern.svg")}")`}
           bgRepeat={"repeat"}
-          backgroundSize={"50px"}
+          backgroundSize={"300px"}
+          filter={"invert(1)"}
           opacity={0.1}
         />
         <Container
@@ -124,10 +122,10 @@ function GalleryPage({ allPost }) {
                 color={"teal.900"}
                 _dark={{ color: "teal.300" }}
               >
-                Story Board
+                Work Space
                 <Image
                   src={
-                    "https://www.iconarchive.com/download/i138836/microsoft/fluentui-emoji-3d/Writing-Hand-3d-Default.1024.png"
+                    "https://static-00.iconduck.com/assets.00/rocket-emoji-2048x2018-qczjidkx.png"
                   }
                   display={"inline"}
                   verticalAlign={"middle"}
@@ -144,17 +142,17 @@ function GalleryPage({ allPost }) {
                 color={"teal.800"}
                 _dark={{ color: "gray.300" }}
               >
-                The board that hold all of my writings and posts.
+                It is so fun to do a little experiment and project.
               </Text>
             </Box>
           </Flex>
         </Container>
       </Box>
       <Box w={"full"} mb={-24}>
-        <PostList data={allPost} />
+        <ProjectList data={allProjects} />
       </Box>
     </Layout>
   );
 }
 
-export default GalleryPage;
+export default WorkspacePage;
