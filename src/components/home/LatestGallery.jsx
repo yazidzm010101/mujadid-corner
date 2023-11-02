@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import NextLink from "next/link";
 import WaveAlt from "@/assets/WaveAlt";
 import { useRouter } from "next/router";
 
@@ -209,7 +210,7 @@ function LatestGallery({ data }) {
           <HStack w={"full"} justifyContent={"flex-end"} my={5}>
             <Button
               data-aos={"scale-fade-left"}
-              as={Link}
+              as={NextLink}
               href="/artscape"
               iconSpacing={4}
               rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}

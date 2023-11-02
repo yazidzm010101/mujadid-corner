@@ -17,6 +17,17 @@
   background: rgb(0 0 0 / 0.05);
 }
 
+[data-theme="dark"] ::-webkit-scrollbar-thumb,
+.scroll-dark::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 /0.2);
+}
+
+[data-theme="dark"]
+  ::-webkit-scrollbar-track
+  .scroll-dark::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 /0.2);
+}
+
 a,
 a:hover {
   text-decoration: none;

@@ -13,7 +13,7 @@ function MujadidCorner({
   const [currDarkColor, setCurrDarkColor] = useState(rest?._dark?.color);
   const [currFilter, setCurrFilter] = useState("saturate(0) brightness(0.5)");
   const [currDarkFilter, setCurrDarkFilter] = useState(
-    "saturate(0) brightness(3)"
+    "saturate(0) brightness(3)",
   );
   const onMouseOver = () => {
     setCurrColor("teal.500");

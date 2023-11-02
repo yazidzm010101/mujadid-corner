@@ -188,8 +188,8 @@ function LatestPost({ data }) {
           <HStack w={"full"} justifyContent={"flex-end"} my={5}>
             <Button
               data-aos={"scale-fade-left"}
-              as={Link}
-              href="#"
+              as={NextLink}
+              href="/storyboard"
               iconSpacing={4}
               rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
               rounded={"full"}

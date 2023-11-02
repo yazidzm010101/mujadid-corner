@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
   Container,
+  Flex,
   HStack,
   Heading,
   Icon,
@@ -14,13 +15,18 @@ import {
   Tag,
   Text,
   VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 
+import Story from "./Story";
 import data from "~/_data/experience";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 function Experience() {
   const router = useRouter();
+  const [activeStory, setActiveStory] = useState(-1);
+  const storyDisc = useDisclosure();
   const getFullUrl = (url) => {
     if (url.match(/^\//g)) {
       return router.basePath + url;
@@ -62,7 +68,7 @@ function Experience() {
               roundedBottomLeft={i == data.length - 1 && "3xl"}
               borderColor={"teal.400"}
               h={(i != data.length - 1 && "calc(100% + 4rem)") || "full"}
-              top={"3rem"}
+              top={{ base: 8, md: 10, lg: 12 }}
               left={0}
             />
             <Box
@@ -72,7 +78,7 @@ function Experience() {
               p={2}
               rounded={"full"}
               bg={"teal.400"}
-              top={"3rem"}
+              top={{ base: 8, md: 10, lg: 12 }}
               left={-3}
             >
               <Box rounded={"full"} w={"full"} h={"full"} bg={"white"} />
@@ -98,11 +104,17 @@ function Experience() {
                 </HStack>
               </Box>
             )}
-            <HStack w={"full"} spacing={4} my={4} alignItems={"start"}>
+            <HStack
+              pos={"relative"}
+              w={"full"}
+              spacing={4}
+              my={4}
+              alignItems={"start"}
+            >
               <AspectRatio
                 data-aos={"shrink-fade-up"}
                 boxShadow={"0 1rem 3rem -1.5rem black"}
-                w={24}
+                w={{ base: 14, md: 20, lg: 24 }}
                 flexShrink={0}
                 ratio={1}
                 bg={"white"}
@@ -124,7 +136,7 @@ function Experience() {
                   fontWeight={"bold"}
                   maxW={"full"}
                   wordBreak={"break-word"}
-                  fontSize={{ base: "2xl", md: "3xl" }}
+                  fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
                   color={"gray.700"}
                   _dark={{ color: "gray.300" }}
                 >
@@ -132,13 +144,83 @@ function Experience() {
                 </Text>
                 <Text
                   color={"gray.500"}
-                  fontSize={{ base: "lg", md: "xl" }}
+                  fontSize={{ base: "md", md: "lg", lg: "xl" }}
                   _dark={{ color: "gray.400" }}
                 >
                   {item.name}
                 </Text>
               </VStack>
             </HStack>
+            {item?.gallery && (
+              <HStack
+                data-aos={"shrink-fade-up"}
+                w={"max-content"}
+                pos={"relative"}
+                ml={10}
+                spacing={0}
+                flexShrink={0}
+                rounded={"full"}
+                cursor={"pointer"}
+                onClick={() => {
+                  storyDisc.onOpen();
+                  setActiveStory(i);
+                }}
+              >
+                {" "}
+                <Box
+                  data-aos={"fade"}
+                  pos={"absolute"}
+                  w={12}
+                  borderLeft={"1px solid"}
+                  borderTop={"1px solid"}
+                  roundedTopLeft={"3xl"}
+                  borderColor={"teal.400"}
+                  borderStyle={"dashed"}
+                  h={8}
+                  top={6}
+                  left={"-4.5rem"}
+                />
+                {item?.gallery.slice(0, 3).map((image, i) => (
+                  <AspectRatio
+                    key={i}
+                    ratio={1}
+                    rounded={"xl"}
+                    overflow={"hidden"}
+                    pos={"relative"}
+                    zIndex={item?.gallery.length - i}
+                    w={12}
+                    ml={-10}
+                    border={"2px solid"}
+                    borderColor={"teal.400"}
+                  >
+                    <Image src={image} />
+                  </AspectRatio>
+                ))}
+                {item?.gallery.length - 3 > 0 && (
+                  <Flex
+                    pos={"absolute"}
+                    left={
+                      Math.min(Math.max(item?.gallery.length - 3, 3), 3) * 0.3 +
+                      "rem"
+                    }
+                    h={"full"}
+                    fontWeight={"bold"}
+                    roundedRight={"xl"}
+                    bg={"teal.400"}
+                    alignItems={"center"}
+                    justifyContent={"flex-end"}
+                    px={2}
+                    pl={
+                      Math.min(Math.max(item?.gallery.length - 3, 3), 3) * 0.3 +
+                      "rem"
+                    }
+                    color={"white"}
+                  >
+                    {item?.gallery.length - 3}+
+                  </Flex>
+                )}
+              </HStack>
+            )}
             <Stack
               key={i}
               direction={"column"}
@@ -149,7 +231,7 @@ function Experience() {
               _after={{ md: { content: "''", margin: "auto" } }}
               spacing={12}
             >
-              {item.experiences.map((item, i) => (
+              {[...item.experiences].reverse().map((item, i) => (
                 <Box
                   key={i}
                   data-aos={"shrink-fade-up"}
@@ -164,6 +246,7 @@ function Experience() {
                     borderLeft={"1px solid"}
                     borderTop={"1px solid"}
                     roundedTopLeft={"3xl"}
+                    borderStyle={"dashed"}
                     borderColor={"teal.400"}
                     h={8}
                     top={-1}
@@ -255,6 +338,12 @@ function Experience() {
           </Box>
         ))}
       </Container>
+      <Story
+        isOpen={storyDisc.isOpen}
+        onClose={storyDisc.onClose}
+        data={[...data].reverse()[activeStory]?.gallery}
+        title={[...data].reverse()[activeStory]?.name}
+      />
     </Box>
   );
 }
