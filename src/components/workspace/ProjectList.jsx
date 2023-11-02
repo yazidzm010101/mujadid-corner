@@ -1,22 +1,14 @@
 import {
   AspectRatio,
   Box,
-  Button,
-  Container,
   Flex,
   HStack,
-  Heading,
-  Icon,
   Image,
-  Link,
   Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
 
-import { BsArrowRightCircleFill } from "react-icons/bs";
-import NextLink from "next/link";
-import WaveAlt from "@/assets/WaveAlt";
 import { formatDateString } from "@/lib/textUtils";
 import { useRouter } from "next/router";
 
@@ -62,7 +54,7 @@ function ProjectList({ data }) {
         left={0}
         bgImage={`url("${getFullUrl("/images/workspace-pattern.svg")}")`}
         bgRepeat={"repeat"}
-        backgroundSize={"300px"}
+        backgroundSize={"150px"}
         filter={"invert(1)"}
         opacity={0.1}
       />

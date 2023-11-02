@@ -40,7 +40,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
 
   return (
@@ -269,6 +269,13 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
 }
 
 function LatestProject({ data }) {
+  const router = useRouter();
+  const getFullUrl = (url) => {
+    if (url.match(/^\//g)) {
+      return router.basePath + url;
+    }
+    return url;
+  };
   return (
     <Box
       pos={"relative"}
@@ -353,7 +360,7 @@ function LatestProject({ data }) {
           <Button
             data-aos={"scale-fade-left"}
             as={Link}
-            href="#"
+            href={getFullUrl("/workspace")}
             iconSpacing={4}
             rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
             rounded={"full"}

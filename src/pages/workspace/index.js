@@ -11,7 +11,6 @@ import {
 
 import Cloud from "@/assets/Cloud";
 import Layout from "@/components/Layout";
-import PostList from "@/components/storyboard/PostList";
 import ProjectList from "@/components/workspace/ProjectList";
 import { getAllProjects } from "@/lib/getProject";
 import style from "@/styles/greeting.module.css";
@@ -83,7 +82,7 @@ function WorkspacePage({ allProjects }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg"
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -100,7 +99,7 @@ function WorkspacePage({ allProjects }) {
           left={0}
           bgImage={`url("${getFullUrl("/images/workspace-pattern.svg")}")`}
           bgRepeat={"repeat"}
-          backgroundSize={"300px"}
+          backgroundSize={"150px"}
           filter={"invert(1)"}
           opacity={0.1}
         />
