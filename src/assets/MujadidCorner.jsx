@@ -34,9 +34,9 @@ function MujadidCorner({
       _dark={{ ...rest?._dark, color: currDarkColor }}
       _hover={{ color: color, _dark: { color: rest?._dark?.color } }}
       pos={"relative"}
+      transition={".2s all ease-in-out"}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
-      transition={".2s all ease-in-out"}
     >
       {/* <Box
         w={2}

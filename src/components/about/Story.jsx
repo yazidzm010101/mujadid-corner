@@ -9,9 +9,15 @@ import {
   Image,
   Portal,
   ScaleFade,
+  Stack,
   VStack,
 } from "@chakra-ui/react";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import {
+  BiCarousel,
+  BiChevronLeft,
+  BiChevronRight,
+  BiGridAlt,
+} from "react-icons/bi";
 import { useEffect, useRef, useState } from "react";
 
 import { BsX } from "react-icons/bs";
@@ -22,6 +28,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
   const [title, setTitle] = useState(initialTitle);
   const [leftNavShown, setLeftNavShown] = useState(false);
   const [rightNavShown, setRightNavShown] = useState(false);
+  const [isGrid, setIsGrid] = useState(false);
   const [active, setActive] = useState(-1);
 
   const containerRef = useRef(null);
@@ -84,113 +91,145 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
   return (
     <Portal>
       <Box
-        as={Fade}
-        in={isOpen}
         unmountOnExit
+        as={Fade}
         bg={"gray.900"}
-        pos={"fixed"}
-        zIndex={1000}
-        top={0}
-        left={0}
-        w={"full"}
-        h={"full"}
-        overflowY={active > -1 ? "auto" : "hidden"}
         className="scroll-dark"
+        h={"full"}
+        in={isOpen}
+        left={0}
+        overflowY={active > -1 ? "hidden" : "auto"}
+        pos={"fixed"}
+        top={0}
+        w={"full"}
+        zIndex={1000}
       >
         <VStack
-          alignItems={"center"}
+          alignItems={"flex-start"}
           justifyContent={"center"}
-          pos={"absolute"}
-          top={0}
           left={0}
-          px={{ base: 2, md: 4, lg: 10 }}
           minH={"full"}
+          pb={10}
+          pos={"absolute"}
+          pt={48}
+          px={{ base: 2, md: 4, lg: 10 }}
+          top={0}
           w={"full"}
         >
-          <Box
-            w={"full"}
-            mt={48}
-            mb={10}
-            flexShrink={0}
-            transform={"translateY(-1rem)"}
-            pos={"relative"}
-          >
-            <Box
-              ref={containerRef}
-              onScroll={(e) => onScroll(e.target)}
-              w={"full"}
-              rounded={"xl"}
-              overflowX={"auto"}
-              className="scroll-dark"
+          <HStack display={{ base: "none", sm: "flex" }} flexShrink={0} px={4}>
+            <AspectRatio
+              color={(isGrid && "gray.500") || "gray.200"}
+              cursor={"pointer"}
+              ratio={1}
+              w={10}
+              onClick={() => setIsGrid(false)}
             >
-              <HStack ref={targetRef} mx={"auto"} spacing={4} w={"max-content"}>
+              <Icon as={BiCarousel} />
+            </AspectRatio>
+            <AspectRatio
+              cursor={"pointer"}
+              ratio={1}
+              w={10}
+              onClick={() => setIsGrid(true)}
+            >
+              <Icon
+                as={BiGridAlt}
+                color={(!isGrid && "gray.500") || "gray.200"}
+              />
+            </AspectRatio>
+          </HStack>
+          <Box flexShrink={0} pos={"relative"} w={"full"}>
+            <Box
+              className="scroll-dark"
+              overflowX={{ base: "none", sm: !isGrid && "auto" }}
+              ref={containerRef}
+              rounded={"xl"}
+              w={"full"}
+              onScroll={(e) => onScroll(e.target)}
+            >
+              <Stack
+                direction={"row"}
+                flexWrap={{ base: "wrap", sm: (isGrid && "wrap") || "nowrap" }}
+                ref={targetRef}
+                spacing={0}
+                w={{ base: "full", sm: !isGrid && "max-content" }}
+              >
                 {data?.map((image, i) => (
-                  <>
+                  <Box
+                    flexShrink={0}
+                    key={i}
+                    maxW={{ sm: !isGrid && "400px" }}
+                    p={4}
+                    w={{
+                      base: "50%",
+                      sm: isGrid ? "50%" : "full",
+                      md: isGrid && "33.33%",
+                      xl: isGrid && "25%",
+                    }}
+                  >
                     <AspectRatio
-                      flexShrink={0}
-                      w={"container.md"}
-                      ratio={3 / 4}
-                      key={i}
-                      rounded={"xl"}
-                      overflow={"hidden"}
-                      maxH={"full"}
-                      maxW={"400px"}
-                      onClick={() => setActive(i)}
-                      role="group"
                       cursor={"pointer"}
+                      flexShrink={0}
+                      key={i}
+                      overflow={"hidden"}
+                      ratio={3 / 4}
+                      role="group"
+                      rounded={"xl"}
                       userSelect={"none"}
+                      w={"full"}
+                      onClick={() => setActive(i)}
                     >
                       <Image
+                        _hover={{ transform: "scale(1.1)" }}
                         src={image}
                         transition={"all .2s ease-in-out"}
-                        _hover={{ transform: "scale(1.1)" }}
                       />
                     </AspectRatio>
                     <Portal>
                       <VStack
-                        spacing={0}
+                        unmountOnExit
+                        as={ScaleFade}
+                        bg={"blackAlpha.800"}
+                        h={"full"}
+                        in={i == active}
+                        left={0}
                         pos={"fixed"}
+                        spacing={0}
                         top={0}
                         w={"full"}
-                        h={"full"}
-                        left={0}
-                        as={ScaleFade}
-                        in={i == active}
-                        bg={"blackAlpha.800"}
                         zIndex={1001}
-                        unmountOnExit
                       >
                         <Image
-                          w={"full"}
                           h={"full"}
-                          src={image}
                           objectFit={"contain"}
+                          src={image}
+                          w={"full"}
                         />
                         {data.length > 1 && (
                           <>
                             <VStack
-                              pos={"absolute"}
-                              top={0}
+                              h={"calc(100% + 5px)"}
+                              justifyContent={"center"}
                               left={0}
                               pl={{ base: 2, md: 4, lg: 10 }}
+                              pos={"absolute"}
                               pr={14}
-                              justifyContent={"center"}
-                              h={"calc(100% + 5px)"}
+                              role="group"
+                              top={0}
+                              transition={".25s all ease-in-out"}
                               bgGradient={
                                 "linear(to-r, blackAlpha.500, transparent)"
                               }
-                              transition={".25s all ease-in-out"}
-                              role="group"
                             >
                               <Button
-                                variant={"ghost"}
+                                _groupHover={{ opacity: 1 }}
+                                _hover={{ bg: "whiteAlpha.100" }}
                                 color={"white"}
+                                opacity={0.5}
                                 px={1}
                                 py={7}
                                 rounded={"full"}
-                                _hover={{ bg: "whiteAlpha.100" }}
-                                opacity={0.5}
-                                _groupHover={{ opacity: 1 }}
+                                variant={"ghost"}
                                 onClick={() =>
                                   setActive(
                                     active - 1 < 0
@@ -199,152 +238,154 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                                   )
                                 }
                               >
-                                <Icon as={BiChevronLeft} w={12} h={12} />
+                                <Icon as={BiChevronLeft} h={12} w={12} />
                               </Button>
                             </VStack>
                             <VStack
-                              pos={"absolute"}
-                              top={0}
-                              right={0}
-                              pr={{ base: 2, md: 4, lg: 10 }}
-                              pl={14}
-                              justifyContent={"center"}
                               h={"calc(100% + 5px)"}
+                              justifyContent={"center"}
+                              pl={14}
+                              pos={"absolute"}
+                              pr={{ base: 2, md: 4, lg: 10 }}
+                              right={0}
+                              role="group"
+                              top={0}
+                              transition={".25s all ease-in-out"}
                               bgGradient={
                                 "linear(to-l, blackAlpha.500, transparent)"
                               }
-                              transition={".25s all ease-in-out"}
-                              role="group"
                             >
                               <Button
-                                variant={"ghost"}
+                                _groupHover={{ opacity: 1 }}
+                                _hover={{ bg: "whiteAlpha.100" }}
                                 color={"white"}
+                                opacity={0.5}
                                 px={1}
                                 py={7}
                                 rounded={"full"}
-                                _hover={{ bg: "whiteAlpha.100" }}
-                                opacity={0.5}
-                                _groupHover={{ opacity: 1 }}
+                                variant={"ghost"}
                                 onClick={() =>
                                   setActive(
                                     active + 1 >= data.length ? 0 : active + 1,
                                   )
                                 }
                               >
-                                <Icon as={BiChevronRight} w={12} h={12} />
+                                <Icon as={BiChevronRight} h={12} w={12} />
                               </Button>
                             </VStack>
                           </>
                         )}
                         <Button
-                          variant={"ghost"}
-                          rounded={"full"}
+                          _hover={{ bg: "whiteAlpha.200" }}
                           color={"white"}
                           pos={"absolute"}
-                          top={{ base: 1, md: 4 }}
-                          right={{ base: 3, md: 4 }}
                           px={2}
                           py={7}
-                          _hover={{ bg: "whiteAlpha.200" }}
+                          right={{ base: 3, md: 4 }}
+                          rounded={"full"}
+                          top={{ base: 1, md: 4 }}
+                          variant={"ghost"}
                           onClick={() => setActive(-1)}
                         >
-                          <Icon as={BsX} w={10} h={10} />
+                          <Icon as={BsX} h={10} w={10} />
                         </Button>
                       </VStack>
                     </Portal>
-                  </>
+                  </Box>
                 ))}{" "}
-              </HStack>
+              </Stack>
             </Box>
             <VStack
-              pos={"absolute"}
-              top={-1}
-              left={0}
-              pr={14}
-              pointerEvents={"none"}
-              justifyContent={"center"}
-              h={"calc(100% - 5px)"}
-              opacity={leftNavShown ? 1 : 0}
               bgGradient={"linear(to-r, gray.900, transparent)"}
+              display={{ base: "none", sm: !isGrid && "flex" }}
+              h={"calc(100% - 10px)"}
+              justifyContent={"center"}
+              left={0}
+              opacity={leftNavShown ? 1 : 0}
+              pointerEvents={"none"}
+              pos={"absolute"}
+              pr={14}
+              top={0}
               transition={".25s all ease-in-out"}
             >
               <Button
+                _hover={{ bg: "whiteAlpha.100" }}
                 as={MotionBox}
-                variant={"ghost"}
                 color={"white"}
+                cursor={leftNavShown ? "pointer" : "none"}
+                pointerEvents={leftNavShown ? "auto" : "none"}
                 px={1}
                 py={7}
                 rounded={"full"}
-                _hover={{ bg: "whiteAlpha.100" }}
-                pointerEvents={leftNavShown ? "auto" : "none"}
-                cursor={leftNavShown ? "pointer" : "none"}
                 transition={".25s all ease-in-out"}
+                variant={"ghost"}
                 onClick={() => navigateScroll(-1)}
               >
-                <Icon as={BiChevronLeft} w={12} h={12} />
+                <Icon as={BiChevronLeft} h={12} w={12} />
               </Button>
             </VStack>{" "}
             <VStack
-              pos={"absolute"}
-              top={-1}
-              right={0}
-              pointerEvents={"none"}
-              pl={14}
-              justifyContent={"center"}
-              h={"calc(100% - 5px)"}
-              opacity={rightNavShown ? 1 : 0}
               bgGradient={"linear(to-l, gray.900, transparent)"}
+              display={{ base: "none", sm: !isGrid && "flex" }}
+              h={"calc(100% - 10px)"}
+              justifyContent={"center"}
+              opacity={rightNavShown ? 1 : 0}
+              pl={14}
+              pointerEvents={"none"}
+              pos={"absolute"}
+              right={0}
+              top={0}
               transition={".25s all ease-in-out"}
             >
               <Button
+                _hover={{ bg: "whiteAlpha.100" }}
                 as={MotionBox}
-                variant={"ghost"}
                 color={"white"}
+                cursor={rightNavShown ? "pointer" : "none"}
+                pointerEvents={rightNavShown ? "auto" : "none"}
                 px={1}
                 py={7}
                 rounded={"full"}
-                _hover={{ bg: "whiteAlpha.100" }}
-                pointerEvents={rightNavShown ? "auto" : "none"}
-                cursor={rightNavShown ? "pointer" : "none"}
                 transition={".25s all ease-in-out"}
+                variant={"ghost"}
                 onClick={() => navigateScroll(1)}
               >
-                <Icon as={BiChevronRight} w={12} h={12} />
+                <Icon as={BiChevronRight} h={12} w={12} />
               </Button>
             </VStack>
           </Box>
         </VStack>
-        <VStack alignItems={"flex-start"} pos={"absolute"} top={8} left={10}>
+        <VStack alignItems={"flex-start"} left={10} pos={"absolute"} top={8}>
           <Heading
             as="h2"
+            color={"teal.200"}
             fontSize={"4xl"}
             fontWeight={"extrabold"}
-            color={"teal.200"}
           >
             Gallery
           </Heading>
           <Heading
             as="h4"
+            color={"gray.200"}
             fontSize={"lg"}
             fontWeight={"normal"}
-            color={"gray.200"}
           >
             {title}
           </Heading>
         </VStack>
         <Button
-          variant={"ghost"}
+          _hover={{ bg: "whiteAlpha.200" }}
           color={"white"}
-          rounded={"full"}
           pos={"fixed"}
-          top={{ base: 1, md: 4 }}
-          right={{ base: 3, md: 4 }}
           px={2}
           py={7}
+          right={{ base: 3, md: 4 }}
+          rounded={"full"}
+          top={{ base: 1, md: 4 }}
+          variant={"ghost"}
           onClick={onClose}
-          _hover={{ bg: "whiteAlpha.200" }}
         >
-          <Icon as={BsX} w={10} h={10} />
+          <Icon as={BsX} h={10} w={10} />
         </Button>
       </Box>
     </Portal>

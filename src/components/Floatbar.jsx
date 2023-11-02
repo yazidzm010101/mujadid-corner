@@ -69,8 +69,8 @@ function Floatbar({ isOpen, onClose, ...props }) {
           color={"gray.600"}
           _dark={{ color: "gray.100" }}
           h={"max-content"}
-          onClick={onClose}
           _hover={{ color: "teal.400" }}
+          onClick={onClose}
         >
           <Icon
             as={RiCloseFill}

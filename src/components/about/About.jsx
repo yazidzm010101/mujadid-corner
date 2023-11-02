@@ -111,9 +111,6 @@ function About() {
           >
             <>
               <Image
-                src={
-                  "https://cdn3d.iconscout.com/3d/premium/thumb/profile-6073860-4996977.png?f=webp"
-                }
                 display={"inline"}
                 verticalAlign={"middle"}
                 mx={4}
@@ -121,18 +118,21 @@ function About() {
                 pos={"absolute"}
                 filter={"hue-rotate(150deg)"}
                 transform={"translate(50%, 20%) scale(0.5)"}
+                src={
+                  "https://cdn3d.iconscout.com/3d/premium/thumb/profile-6073860-4996977.png?f=webp"
+                }
               />
               <Image
                 pos={"absolute"}
                 transform={"translate(-70%, 30%) scale(0.7)"}
-                src={
-                  "https://cdn3d.iconscout.com/3d/premium/thumb/profile-6073860-4996977.png?f=webp"
-                }
                 display={"inline"}
                 verticalAlign={"middle"}
                 mx={4}
                 filter={"hue-rotate(200deg)"}
                 objectFit={"contain"}
+                src={
+                  "https://cdn3d.iconscout.com/3d/premium/thumb/profile-6073860-4996977.png?f=webp"
+                }
               />
               <Image
                 rounded={"3rem"}
@@ -209,6 +209,7 @@ function About() {
         h={"1px"}
         w={"full"}
         display={{ base: "none", md: "block" }}
+        my={3}
         bgGradient={{
           base: "linear(to-l, rgb(0 0 0 / 0), rgb(0 0 0 / 0.1), rgb(0 0 0 / 0))",
           md: "linear(to-l, rgb(0 0 0 / 0.1), rgb(0 0 0 / 0))",
@@ -219,7 +220,6 @@ function About() {
             md: "linear(to-l, rgb(255 255 255 / 0.1), rgb(255 255 255  / 0))",
           },
         }}
-        my={3}
       />
       <ParallaxSkills skills={data?.latest_interest} baseVelocity={2} />
       <ParallaxSkills skills={data?.latest_interest} baseVelocity={-2} />

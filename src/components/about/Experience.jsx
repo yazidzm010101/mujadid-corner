@@ -199,10 +199,6 @@ function Experience() {
                 {item?.gallery.length - 3 > 0 && (
                   <Flex
                     pos={"absolute"}
-                    left={
-                      Math.min(Math.max(item?.gallery.length - 3, 3), 3) * 0.3 +
-                      "rem"
-                    }
                     h={"full"}
                     fontWeight={"bold"}
                     roundedRight={"xl"}
@@ -210,11 +206,15 @@ function Experience() {
                     alignItems={"center"}
                     justifyContent={"flex-end"}
                     px={2}
+                    color={"white"}
+                    left={
+                      Math.min(Math.max(item?.gallery.length - 3, 3), 3) * 0.3 +
+                      "rem"
+                    }
                     pl={
                       Math.min(Math.max(item?.gallery.length - 3, 3), 3) * 0.3 +
                       "rem"
                     }
-                    color={"white"}
                   >
                     {item?.gallery.length - 3}+
                   </Flex>
@@ -340,9 +340,9 @@ function Experience() {
       </Container>
       <Story
         isOpen={storyDisc.isOpen}
-        onClose={storyDisc.onClose}
         data={[...data].reverse()[activeStory]?.gallery}
         title={[...data].reverse()[activeStory]?.name}
+        onClose={storyDisc.onClose}
       />
     </Box>
   );

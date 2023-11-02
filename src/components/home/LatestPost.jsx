@@ -77,13 +77,13 @@ function LatestPost({ data }) {
         >
           Story Board
           <Image
-            src={
-              "https://www.iconarchive.com/download/i138836/microsoft/fluentui-emoji-3d/Writing-Hand-3d-Default.1024.png"
-            }
             display={"inline"}
             verticalAlign={"middle"}
             mx={4}
             w={{ base: 10, md: 16, lg: 20 }}
+            src={
+              "https://www.iconarchive.com/download/i138836/microsoft/fluentui-emoji-3d/Writing-Hand-3d-Default.1024.png"
+            }
           />
         </Heading>
       </Container>
@@ -201,13 +201,13 @@ function LatestPost({ data }) {
               py={10}
               bg={"transparent"}
               mr={-10}
+              size={"lg"}
+              color={"teal.900"}
+              _dark={{ color: "teal.300" }}
               _hover={{
                 transform: "scale(1.01)",
                 textUnderlineOffset: 12,
               }}
-              size={"lg"}
-              color={"teal.900"}
-              _dark={{ color: "teal.300" }}
             >
               Read other stories
             </Button>

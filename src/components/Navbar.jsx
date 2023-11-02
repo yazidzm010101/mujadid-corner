@@ -110,8 +110,6 @@ function Navbar() {
                   key={item.name}
                   href={item.href}
                   fontWeight={pathname.startsWith(item.href) && "bold"}
-                  onMouseOver={() => setActiveIndex(i)}
-                  onMouseLeave={detectIndex}
                   textDecor={"unset !important"}
                   color={
                     pathname == item.href || i == activeIndex ? "teal.600" : ""
@@ -122,6 +120,8 @@ function Navbar() {
                         ? "teal.200"
                         : "",
                   }}
+                  onMouseOver={() => setActiveIndex(i)}
+                  onMouseLeave={detectIndex}
                 >
                   {item.name}
                 </Link>
@@ -136,6 +136,7 @@ function Navbar() {
                 transform={"translateX(-50%)"}
                 rounded={"full"}
                 opacity={activeIndex == -1 && 0}
+                _dark={{ bg: "teal.200" }}
                 left={
                   (activeIndex == -1 && "50%") ||
                   getLeftPercentageNav(activeIndex) + "%"
@@ -144,7 +145,6 @@ function Navbar() {
                   (activeIndex == -1 && "all .2s ease-in-out") ||
                   "all .2s ease-in-out, opacity .5s ease-in"
                 }
-                _dark={{ bg: "teal.200" }}
               />
             </HStack>
           </Box>
@@ -173,10 +173,10 @@ function Navbar() {
               px={3}
               py={3}
               h={"max-content"}
-              onClick={() => navDislosure.onToggle()}
               color={"gray.600"}
               _dark={{ color: "white" }}
               _hover={{ color: "teal.400", _dark: { color: "teal.200" } }}
+              onClick={() => navDislosure.onToggle()}
               {...(!isSolid && { borderColor: "transparent" })}
             >
               <Icon

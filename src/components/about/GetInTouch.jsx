@@ -39,25 +39,25 @@ function GetInTouch() {
           mx={"auto"}
           w={"200vw"}
           h={"200vw"}
-          bgGradient={
-            "linear(to-r,teal.100,green.100, teal.100,green.100, teal.100, green.100, teal.100)"
-          }
           mixBlendMode={"darken"}
           opacity={0.3}
           _dark={{ mixBlendMode: "color-dodge", opacity: 0.3 }}
           as={Cloud}
+          bgGradient={
+            "linear(to-r,teal.100,green.100, teal.100,green.100, teal.100, green.100, teal.100)"
+          }
         />
       </VStack>
       <Box
         bgGradient={"linear(to-b, gray.100, transparent 30%, gray.100)"}
-        _dark={{
-          bgGradient: "linear(to-b, gray.800, transparent 30%, gray.800)",
-        }}
         pos={"absolute"}
         top={"0"}
         left={0}
         w={"full"}
         h={"full"}
+        _dark={{
+          bgGradient: "linear(to-b, gray.800, transparent 30%, gray.800)",
+        }}
       />
       <VStack px={4}>
         <Image
@@ -100,15 +100,15 @@ function GetInTouch() {
           <Button
             data-aos={"scale-fade-up"}
             as={Link}
-            href={
-              "mailto:yazidzm.developer@gmail.com?subject=Hi%2C%20Yazid%20Zaidan%20Mujadid"
-            }
             textDecor={"none !important"}
             variant={"glass"}
             size={"lg"}
             backdropFilter={"saturate(8)"}
             my={3}
             fontSize={"2xl"}
+            href={
+              "mailto:yazidzm.developer@gmail.com?subject=Hi%2C%20Yazid%20Zaidan%20Mujadid"
+            }
             _hover={{
               transform: "translateY(-4px)",
             }}

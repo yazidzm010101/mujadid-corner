@@ -40,18 +40,18 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0]
+    [0, 1, 1, 0],
   );
 
   return (
     <div
+      ref={ref}
       style={{
         width: "100%",
         position: "relative",
         overflowX: "hidden",
         overflowY: "hidden",
       }}
-      ref={ref}
     >
       <Container
         w={"full"}
@@ -117,14 +117,14 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
           maxW={"600px"}
           right={0}
           bottom={0}
-          transform={{
-            base: "translateX(20%) translateY(-5%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
-            sm: "translateX(5%) translateY(20%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
-          }}
           rounded={"3xl"}
           pos={"absolute"}
           border={"2px solid rgb(0 0 0 / 0.2)"}
           overflow={"hidden"}
+          transform={{
+            base: "translateX(20%) translateY(-5%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
+            sm: "translateX(5%) translateY(20%) scale(0.5) rotateY(5deg) rotateZ(-2deg)",
+          }}
           _dark={{
             border: "2px solid rgb(255 255 255 / 0.1)",
           }}
@@ -371,13 +371,13 @@ function LatestProject({ data }) {
             py={10}
             bg={"transparent"}
             mr={-10}
+            size={"lg"}
+            color={"teal.900"}
+            _dark={{ color: "teal.300" }}
             _hover={{
               transform: "scale(1.01)",
               textUnderlineOffset: 12,
             }}
-            size={"lg"}
-            color={"teal.900"}
-            _dark={{ color: "teal.300" }}
           >
             See more of my works
           </Button>

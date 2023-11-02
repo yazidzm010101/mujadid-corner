@@ -62,13 +62,13 @@ function WorkspacePage({ allProjects }) {
             mx={"auto"}
             w={"250vw"}
             h={"250vw"}
-            bgGradient={
-              "linear(to-r,teal.200,blue.200, teal.200,blue.200, teal.200, blue.200, teal.200)"
-            }
             mixBlendMode={"hard-light"}
             opacity={1}
             _dark={{ mixBlendMode: "hard-light", opacity: 1 }}
             as={Cloud}
+            bgGradient={
+              "linear(to-r,teal.200,blue.200, teal.200,blue.200, teal.200, blue.200, teal.200)"
+            }
           />
         </VStack>
         <AspectRatio
@@ -82,7 +82,7 @@ function WorkspacePage({ allProjects }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -123,13 +123,13 @@ function WorkspacePage({ allProjects }) {
               >
                 Work Space
                 <Image
-                  src={
-                    "https://static-00.iconduck.com/assets.00/rocket-emoji-2048x2018-qczjidkx.png"
-                  }
                   display={"inline"}
                   verticalAlign={"middle"}
                   mx={4}
                   w={{ base: 10, md: 16, lg: 20 }}
+                  src={
+                    "https://static-00.iconduck.com/assets.00/rocket-emoji-2048x2018-qczjidkx.png"
+                  }
                 />
               </Heading>
               <Text

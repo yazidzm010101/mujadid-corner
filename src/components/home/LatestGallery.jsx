@@ -74,14 +74,14 @@ function LatestGallery({ data }) {
         >
           Art Scape
           <Image
-            src={
-              // "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
-              "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
-            }
             display={"inline"}
             verticalAlign={"middle"}
             mx={4}
             w={{ base: 10, md: 16, lg: 20 }}
+            src={
+              // "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
+              "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
+            }
           />
         </Heading>
       </Container>
@@ -165,14 +165,14 @@ function LatestGallery({ data }) {
                 <VStack
                   top={"unset !important"}
                   bottom={"0 !important"}
-                  bgGradient={
-                    "linear(to-t, teal.900, teal.900 20%, transparent)"
-                  }
                   h={"max-content !important"}
                   alignItems={"flex-start"}
                   pt={20}
                   pb={3}
                   px={6}
+                  bgGradient={
+                    "linear(to-t, teal.900, teal.900 20%, transparent)"
+                  }
                 >
                   <Text
                     as={"h5"}
@@ -222,13 +222,13 @@ function LatestGallery({ data }) {
               py={10}
               bg={"transparent"}
               mr={-10}
+              size={"lg"}
+              color={"teal.900"}
+              _dark={{ color: "teal.300" }}
               _hover={{
                 transform: "scale(1.01)",
                 textUnderlineOffset: 12,
               }}
-              size={"lg"}
-              color={"teal.900"}
-              _dark={{ color: "teal.300" }}
             >
               Explore more
             </Button>

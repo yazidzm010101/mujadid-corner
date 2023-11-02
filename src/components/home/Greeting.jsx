@@ -51,9 +51,6 @@ function Greeting() {
         _dark={{ display: "block" }}
       />
       <Box
-        bgGradient={
-          "linear(to-r,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100)"
-        }
         className={style["star-noise"]}
         as={Cloud}
         rounded={"full"}
@@ -64,6 +61,9 @@ function Greeting() {
         w={"500vh"}
         h={"500vh"}
         _dark={{ display: "none" }}
+        bgGradient={
+          "linear(to-r,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100,blue.100, teal.100, purple.100)"
+        }
       />
       <Box
         pos={"absolute"}
@@ -71,10 +71,10 @@ function Greeting() {
         left={0}
         bottom={0}
         right={0}
+        _dark={{ display: "none" }}
         bgGradient={
           "linear(to-b, gray.200, transparent 20%, transparent 40%, gray.200)"
         }
-        _dark={{ display: "none" }}
       />
       <Box
         className={style["star-noise"]}
@@ -109,17 +109,17 @@ function Greeting() {
         }}
       />
       <MotionBox
+        px={4}
+        pos={"absolute"}
+        filter={"blur(.2rem)"}
+        opacity={0.2}
+        userSelect={"none"}
         style={{
           y: y,
           scale: scale,
           opacity: 1,
           rotateX: 1,
         }}
-        px={4}
-        pos={"absolute"}
-        filter={"blur(.2rem)"}
-        opacity={0.2}
-        userSelect={"none"}
       >
         <Heading
           as={"h1"}
@@ -141,22 +141,22 @@ function Greeting() {
         </Heading>
       </MotionBox>
       <MotionBox
+        pos={"relative"}
         style={{
           y: y,
           scale: scale,
           opacity: 1,
           rotateX: 1,
         }}
-        pos={"relative"}
       >
         <Heading
           as={"h1"}
           fontSize={{ base: "6xl", md: "7xl", lg: "8xl" }}
           textAlign={"center"}
+          bgClip={"text"}
           bgGradient={
             "linear(to-br, teal.500, gray.600 30%, gray.700, gray.700, gray.600 80%, blue.500)"
           }
-          bgClip={"text"}
           _dark={{
             bgGradient: "linear(to-br, green.400, teal.300, purple.600)",
           }}
@@ -250,7 +250,6 @@ function Greeting() {
           }}
         >
           <Button
-            onClick={scrollDown}
             rounded={"full"}
             size={"lg"}
             variant={"blur"}
@@ -259,6 +258,7 @@ function Greeting() {
             px={{ base: 2, md: 4 }}
             minW={"max-content"}
             w={"max-content"}
+            onClick={scrollDown}
           >
             <Icon as={CgMouse} w={8} h={8} />
           </Button>

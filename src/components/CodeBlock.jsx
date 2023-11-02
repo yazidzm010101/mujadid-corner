@@ -42,12 +42,12 @@ function CodeBlock({ language, children, node: { data } }) {
           <Popover isOpen={isOpen} onClose={onClose}>
             <PopoverTrigger>
               <Button
-                onClick={() => onCopy(children)}
                 m={0}
                 ml={"auto"}
                 size={"sm"}
                 p={0.2}
                 variant={"ghost"}
+                onClick={() => onCopy(children)}
               >
                 <Icon w={"16px"} h={"16px"} as={FaClipboard} />
               </Button>

@@ -28,7 +28,6 @@ function NightModeSwitcher({ ...rest }) {
     <Box
       w={"max-content"}
       cursor={"pointer"}
-      onClick={() => setDarkMode(!darkMode)}
       rounded={"full"}
       overflow={"hidden"}
       my={0}
@@ -37,6 +36,7 @@ function NightModeSwitcher({ ...rest }) {
       borderColor={"rgb(0 0 0 / 0.05)"}
       transition={"all .2s ease-in-out"}
       backdropFilter={"blur(4px)"}
+      onClick={() => setDarkMode(!darkMode)}
       {...rest}
     >
       <AspectRatio ratio={1} w={10}>

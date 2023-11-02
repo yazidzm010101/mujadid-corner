@@ -90,14 +90,14 @@ function GalleryPage({ allGallery }) {
               >
                 Art Scape
                 <Image
-                  src={
-                    // "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
-                    "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
-                  }
                   display={"inline"}
                   verticalAlign={"middle"}
                   mx={4}
                   w={{ base: 10, md: 16, lg: 20 }}
+                  src={
+                    // "https://cdn3d.iconscout.com/3d/premium/thumb/gallery-6332703-5209349.png"
+                    "https://cdn3d.iconscout.com/3d/premium/thumb/painting-board-5748776-4817934.png?f=webp"
+                  }
                 />
               </Heading>
               <Text

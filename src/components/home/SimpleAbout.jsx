@@ -143,13 +143,13 @@ function SimpleAbout() {
               py={10}
               bg={"transparent"}
               mr={{ md: -10 }}
+              size={"lg"}
+              color={"gray.700"}
+              _dark={{ color: "gray.100" }}
               _hover={{
                 transform: "scale(1.01)",
                 textUnderlineOffset: 12,
               }}
-              size={"lg"}
-              color={"gray.700"}
-              _dark={{ color: "gray.100" }}
             >
               About me
             </Button>

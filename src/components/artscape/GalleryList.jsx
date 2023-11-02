@@ -81,14 +81,14 @@ function GalleryList({ data }) {
                 <VStack
                   top={"unset !important"}
                   bottom={"0 !important"}
-                  bgGradient={
-                    "linear(to-t, teal.900, teal.900 20%, transparent)"
-                  }
                   h={"max-content !important"}
                   alignItems={"flex-start"}
                   pt={20}
                   pb={3}
                   px={6}
+                  bgGradient={
+                    "linear(to-t, teal.900, teal.900 20%, transparent)"
+                  }
                 >
                   <Text
                     as={"h5"}
