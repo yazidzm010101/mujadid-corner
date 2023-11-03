@@ -193,11 +193,12 @@ function GalleryList({ data }) {
                         py={7}
                         rounded={"full"}
                         variant={"ghost"}
-                        onClick={() =>
+                        onClick={() => {
                           setActive(
-                            active - 1 < 0 ? data.length - 1 : active - 1,
-                          )
-                        }
+                            active - 1 < 0 ? data.length - 1 : active - 1
+                          );
+                          setActiveHover(true);
+                        }}
                       >
                         <Icon as={BiChevronLeft} h={12} w={12} />
                       </Button>
@@ -224,9 +225,10 @@ function GalleryList({ data }) {
                         py={7}
                         rounded={"full"}
                         variant={"ghost"}
-                        onClick={() =>
-                          setActive(active + 1 >= data.length ? 0 : active + 1)
-                        }
+                        onClick={() => {
+                          setActive(active + 1 >= data.length ? 0 : active + 1);
+                          setActiveHover(true);
+                        }}
                       >
                         <Icon as={BiChevronRight} h={12} w={12} />
                       </Button>
@@ -240,13 +242,15 @@ function GalleryList({ data }) {
                   pos={"absolute"}
                   top={0}
                   left={0}
-                  bgGradient={"linear(to-b, black, transparent)"}
+                  pointerEvents={"none"}
+                  bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
                 >
                   <Heading
+                    color={"white"}
                     pr={20}
                     pl={{ base: 4, md: 8, lg: 10 }}
                     py={4}
-                    pb={30}
+                    pb={40}
                   >
                     {item.title}
                   </Heading>
@@ -261,7 +265,10 @@ function GalleryList({ data }) {
                   rounded={"full"}
                   top={{ base: 1, md: 4 }}
                   variant={"ghost"}
-                  onClick={() => setActive(-1)}
+                  onClick={() => {
+                    setActive(-1);
+                    setActiveHover(true);
+                  }}
                 >
                   <Icon as={BsX} h={10} w={10} />
                 </Button>
