@@ -1,5 +1,5 @@
 ---
-title: "Hacktiv8 Week #3 - Calculator"
+title: "Hacktiv8 Week #3 - API Fetching"
 date: "2019-03-21"
 excerpt: Latihan minggu ketiga Developer Circles x Hactiv8 Javascript Development Course
 coverImage: "https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/project_images%2FScreenshot_20231103_175532.png?alt=media"

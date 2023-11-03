@@ -254,6 +254,8 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               pos={"absolute"}
               right={0}
               transform={"translate(-20%, -100%)"}
+              objectFit={"contain"}
+              bg={"gray.100"}
               rounded={"2xl"}
               shadow={"dark-lg"}
               alt={title}

@@ -24,6 +24,8 @@ export function getStaticProps({ params }) {
     "date",
     "slug",
     "coverImage",
+    "gallery",
+    "tools",
     "icon",
     "demoURL",
     "repoURL",

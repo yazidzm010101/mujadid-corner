@@ -35,6 +35,7 @@ function GalleryList({ data }) {
       setActiveHover(true);
       document.body.style.overflow = "hidden";
     } else {
+      setActiveHover(false);
       document.body.style.overflow = "unset";
     }
   }, [active]);
