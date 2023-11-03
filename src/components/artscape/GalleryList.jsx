@@ -2,6 +2,7 @@ import {
   AspectRatio,
   Box,
   Button,
+  Fade,
   Flex,
   Icon,
   Image,
@@ -132,7 +133,7 @@ function GalleryList({ data }) {
             <Portal>
               <VStack
                 unmountOnExit
-                as={ScaleFade}
+                as={Fade}
                 bg={"blackAlpha.800"}
                 h={"full"}
                 in={i == active}
@@ -143,12 +144,14 @@ function GalleryList({ data }) {
                 w={"full"}
                 zIndex={1001}
               >
-                <Image
-                  h={"full"}
-                  objectFit={"contain"}
-                  src={item.coverImage}
-                  w={"full"}
-                />
+                <Box as={ScaleFade} in={i == active} w={"full"} h={"full"}>
+                  <Image
+                    h={"full"}
+                    objectFit={"contain"}
+                    src={item.coverImage}
+                    w={"full"}
+                  />
+                </Box>
                 {data.length > 1 && (
                   <>
                     <VStack
