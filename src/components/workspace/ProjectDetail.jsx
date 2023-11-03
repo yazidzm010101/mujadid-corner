@@ -77,7 +77,11 @@ function ProjectDetail({ isOpen, onClose, data }) {
               overflow={"hidden"}
               ratio={4 / 3}
             >
-              <Image src={data.coverImage} objectFit={"contain"} />
+              <Image
+                bg={"gray.300"}
+                src={getFullUrl(data.coverImage)}
+                objectFit={"contain"}
+              />
             </AspectRatio>
           )}
         </ModalHeader>
@@ -157,7 +161,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                   shadow={"lg"}
                   w={{ base: 14, md: 18, lg: 20 }}
                 >
-                  <Image src={data.icon} />
+                  <Image bg={"gray.300"} src={getFullUrl(data.icon)} />
                 </AspectRatio>
               )}
               <VStack alignItems={"flex-start"}>
