@@ -1,5 +1,5 @@
 ---
-title: "Hacktiv8 Week #4 - Calculator"
+title: "Hacktiv8 Week #4 - Login Simulation"
 date: "2019-03-24"
 excerpt: Latihan minggu ketiga Developer Circles x Hactiv8 Javascript Development Course
 coverImage: "https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/project_images%2FScreenshot_20231103_175633.png?alt=media"
