@@ -10,7 +10,7 @@ function Layout({ children, title, ...rest }) {
   const { pathname } = useRouter();
   let page_title = config.page_name;
   if (!!title) {
-    page_title = title + " - " + page_title;
+    page_title = title + " • " + page_title;
   }
   return (
     <Box

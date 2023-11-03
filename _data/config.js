@@ -1,5 +1,5 @@
 const data = {
-  page_name: "Mujadid's Corner",
+  page_name: "مجديد",
 };
 
 export default data;

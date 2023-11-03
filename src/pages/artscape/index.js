@@ -43,7 +43,7 @@ function GalleryPage({ allGallery }) {
     return url;
   };
   return (
-    <Layout title={"About"}>
+    <Layout title={"Artscape"}>
       <Box
         ref={ref}
         w={"full"}
