@@ -8,8 +8,8 @@ import { useEffect } from "react";
 
 const data = [
   { name: "Home", href: "/" },
-  { name: "Workspace", href: "/workspace" },
   { name: "Storyboard", href: "/storyboard" },
+  { name: "Workspace", href: "/workspace" },
   { name: "Artscape", href: "/artscape" },
   { name: "About", href: "/about" },
 ];

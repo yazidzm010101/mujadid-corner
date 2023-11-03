@@ -17,8 +17,8 @@ import { SiLinkedin } from "react-icons/si";
 import data from "~/_data/about";
 
 const sitemaps = [
-  { name: "Workspace", href: "/workspace" },
   { name: "Storyboard", href: "/storyboard" },
+  { name: "Workspace", href: "/workspace" },
   { name: "Artscape", href: "/artscape" },
   { name: "About", href: "/about" },
 ];

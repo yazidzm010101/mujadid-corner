@@ -12,6 +12,7 @@ import { useScroll, useTransform } from "framer-motion";
 import Aurora from "@/assets/Aurora";
 import { CgMouse } from "react-icons/cg";
 import Cloud from "@/assets/Cloud";
+import Link from "next/link";
 import MotionBox from "../MotionBox";
 import SimpleAbout from "./SimpleAbout";
 import StarNoise from "@/assets/StarNoise";
@@ -210,6 +211,8 @@ function Greeting() {
       >
         <HStack w={"full"} justifyContent={"center"} spacing={4} my={8}>
           <Button
+            as={Link}
+            href={"/storyboard"}
             pos={"relative"}
             rounded={"full"}
             size={"lg"}
@@ -222,6 +225,8 @@ function Greeting() {
             Read my story
           </Button>
           <Button
+            as={Link}
+            href={"/workspace"}
             rounded={"full"}
             size={"lg"}
             variant={"glass"}

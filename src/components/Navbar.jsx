@@ -19,8 +19,8 @@ import { RiMenu4Fill } from "react-icons/ri";
 import { useRouter } from "next/router";
 
 const data = [
-  { name: "Workspace", href: "/workspace" },
   { name: "Storyboard", href: "/storyboard" },
+  { name: "Workspace", href: "/workspace" },
   { name: "Artscape", href: "/artscape" },
   { name: "About", href: "/about" },
 ];
