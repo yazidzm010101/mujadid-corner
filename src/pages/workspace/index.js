@@ -7,14 +7,15 @@ import {
   Image,
   Text,
   VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
+import { useRef, useState } from "react";
 
 import Cloud from "@/assets/Cloud";
 import Layout from "@/components/Layout";
 import ProjectList from "@/components/workspace/ProjectList";
 import { getAllProjects } from "@/lib/getProject";
 import style from "@/styles/greeting.module.css";
-import { useRef } from "react";
 import { useRouter } from "next/router";
 
 export function getStaticProps({ params }) {
@@ -26,6 +27,8 @@ export function getStaticProps({ params }) {
     "icon",
     "demoURL",
     "repoURL",
+    "content",
+    "excerpt",
   ]);
 
   return {
@@ -42,6 +45,7 @@ function WorkspacePage({ allProjects }) {
     }
     return url;
   };
+
   return (
     <Layout title={"About"}>
       <Box

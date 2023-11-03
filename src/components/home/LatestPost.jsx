@@ -8,7 +8,6 @@ import {
   Heading,
   Icon,
   Image,
-  Link,
   Stack,
   Text,
   VStack,
@@ -16,7 +15,6 @@ import {
 
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import NextLink from "next/link";
-import WaveAlt from "@/assets/WaveAlt";
 import { formatDateString } from "@/lib/textUtils";
 import { useRouter } from "next/router";
 
@@ -40,24 +38,47 @@ function LatestPost({ data }) {
       _dark={{ bg: "gray.900" }}
     >
       <AspectRatio
-        ratio={4 / 3}
+        pointerEvents={"none"}
+        opacity={0.3}
+        w={{ base: "200%", md: "full" }}
+        ratio={1}
         pos={"absolute"}
-        bottom={0}
-        opacity={0.8}
-        w={{ base: "300%", lg: "200%" }}
-        _light={{
-          transform: "rotate(-90deg) scaleX(1) scaleY(1)",
-          transformOrigin: "center",
-          top: 0,
-          right: "-10%",
-        }}
-        _dark={{
-          filter: "blur(100px)",
-          top: "50%",
-          left: { base: "-50%", lg: "-20%" },
-        }}
+        top={0}
+        transform={"translateY(-20%)"}
+        right={{ base: 0, md: "-20%" }}
+        _dark={{ mixBlendMode: "color-burn" }}
       >
-        <Box as={WaveAlt} />
+        <Image
+          src={getFullUrl(
+            "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
+          )}
+          style={{
+            maskImage: "radial-gradient(black, transparent)",
+            WebkitMaskImage: "radial-gradient(black, transparent, transparent)",
+          }}
+        />
+      </AspectRatio>
+      <AspectRatio
+        pointerEvents={"none"}
+        w={{ base: "200%", md: "full" }}
+        ratio={1}
+        pos={"absolute"}
+        top={0}
+        transform={"translateY(-20%)"}
+        right={{ base: 0, md: "-20%" }}
+      >
+        <Box
+          bgImage={`url("${getFullUrl("/images/storyboard-pattern.svg")}")`}
+          bgRepeat={"repeat"}
+          backgroundSize={"50px"}
+          mixBlendMode={"color-burn"}
+          opacity={0.1}
+          _dark={{ filter: "invert(1)", mixBlendMode: "unset" }}
+          style={{
+            maskImage: "radial-gradient(black, transparent)",
+            WebkitMaskImage: "radial-gradient(black, transparent, transparent)",
+          }}
+        />
       </AspectRatio>
       <Container
         w={"full"}
@@ -207,6 +228,7 @@ function LatestPost({ data }) {
               _hover={{
                 transform: "scale(1.01)",
                 textUnderlineOffset: 12,
+                bg: "transparent",
               }}
             >
               Read other stories

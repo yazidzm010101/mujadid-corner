@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Box,
   Button,
   Container,
@@ -105,7 +106,48 @@ export default function Post({ post }) {
         pt={24}
         mb={-32}
         pb={32}
+        _dark={{ bg: "gray.900" }}
       >
+        <AspectRatio
+          opacity={0.3}
+          w={{ base: "200%", md: "full" }}
+          ratio={1}
+          pos={"absolute"}
+          top={0}
+          transform={"translateY(-20%)"}
+          left={{ base: 0, md: "-20%" }}
+        >
+          <Image
+            src={getFullUrl(
+              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
+            )}
+            style={{
+              maskImage: "radial-gradient(black, transparent)",
+              WebkitMaskImage:
+                "radial-gradient(black, transparent, transparent)",
+            }}
+          />
+        </AspectRatio>
+        <AspectRatio
+          opacity={0.2}
+          w={{ base: "200%", md: "full" }}
+          ratio={1}
+          pos={"absolute"}
+          bottom={0}
+          transform={"translateY(30%)"}
+          right={{ base: 0, md: "-20%" }}
+        >
+          <Image
+            src={getFullUrl(
+              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg",
+            )}
+            style={{
+              maskImage: "radial-gradient(black, transparent)",
+              WebkitMaskImage:
+                "radial-gradient(black, transparent, transparent)",
+            }}
+          />
+        </AspectRatio>
         <Box
           w={"full"}
           h={"full"}
@@ -117,6 +159,7 @@ export default function Post({ post }) {
           bgRepeat={"repeat"}
           backgroundSize={"50px"}
           opacity={0.1}
+          _dark={{ filter: "invert(1)", mixBlendMode: "unset" }}
         />
         <Box
           w={"full"}
@@ -125,12 +168,16 @@ export default function Post({ post }) {
           bottom={0}
           left={0}
           bgGradient={
-            "linear(to-b, transparent, gray.100 10%, gray.100 90%, transparent)"
+            "linear(to-b, transparent, gray.100 30%, gray.100 70%, transparent)"
           }
+          _dark={{
+            bgGradient:
+              "linear(to-b, transparent, gray.800 30%, gray.800 70%, transparent)",
+          }}
         />
         <Container maxW={"container.md"} pos={"relative"}>
           <Box as={"article"}>
-            <Spacer as={"hr"} my={3} borderColor={"blackAlpha.200"} />
+            <Spacer as={"hr"} my={3} />
             {post.coverImage && (
               <Image
                 src={post.coverImage}

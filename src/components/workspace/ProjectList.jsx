@@ -1,18 +1,17 @@
 import {
   AspectRatio,
   Box,
-  Button,
   Flex,
-  HStack,
   Image,
   Stack,
   Text,
   VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 
-import Link from "next/link";
-import { formatDateString } from "@/lib/textUtils";
+import ProjectDetail from "./ProjectDetail";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 function ProjectList({ data }) {
   const router = useRouter();
@@ -22,6 +21,9 @@ function ProjectList({ data }) {
     }
     return url;
   };
+
+  const [active, setActive] = useState(null);
+  const detailDisc = useDisclosure();
 
   return (
     <Box
@@ -93,13 +95,24 @@ function ProjectList({ data }) {
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}
             p={6}
+            cursor={"pointer"}
+            _hover={{ transform: "translateY(-4px)" }}
+            transition={".2s transform ease-in-out"}
+            onClick={() => {
+              setActive(i);
+              detailDisc.onOpen();
+            }}
           >
             <AspectRatio
               ratio={4 / 3}
               flexShrink={0}
-              boxShadow={"0 2rem 2rem 0.15rem rgb(0 0 0 / 0.2)"}
+              boxShadow={"0 2rem 2rem 0.15rem rgb(0 0 0 / 0.04)"}
               rounded={"xl"}
               role="group"
+              transition={".2s all ease-in-out"}
+              _hover={{
+                boxShadow: "0 2rem 2rem 0.15rem rgb(0 0 0 / 0.2)",
+              }}
             >
               <>
                 <Image
@@ -129,65 +142,12 @@ function ProjectList({ data }) {
                     }}
                   />
                 )}
-                <VStack
-                  opacity={0}
-                  backdropFilter={"blur(4px)"}
-                  _groupHover={{ opacity: 1 }}
-                  transition={".2s all ease-in-out"}
-                  bg={"blackAlpha.300"}
-                  px={8}
-                  pt={4}
-                  rounded={"xl"}
-                >
-                  <Button
-                    color={"white"}
-                    variant={"outline"}
-                    borderColor={"rgb(0 0 0 / 0.2)"}
-                    bg={"blackAlpha.800"}
-                    as={Link}
-                    w={"full"}
-                    href={getFullUrl("/workspace/" + item.slug)}
-                    _hover={{ bg: "blackAlpha.900" }}
-                  >
-                    Read article
-                  </Button>
-                  {item.demoURL && (
-                    <Button
-                      w={"full"}
-                      color={"white"}
-                      variant={"outline"}
-                      borderColor={"rgb(0 0 0 / 0.2)"}
-                      bg={"blackAlpha.500"}
-                      as={Link}
-                      href={getFullUrl(item.demoURL)}
-                      target="_blank"
-                      _hover={{ bg: "blackAlpha.900" }}
-                    >
-                      Open demo
-                    </Button>
-                  )}
-                  {item.repoURL && (
-                    <Button
-                      w={"full"}
-                      color={"white"}
-                      variant={"outline"}
-                      borderColor={"rgb(0 0 0 / 0.2)"}
-                      bg={"blackAlpha.500"}
-                      as={Link}
-                      href={getFullUrl(item.repoURL)}
-                      target="_blank"
-                      _hover={{ bg: "blackAlpha.900" }}
-                    >
-                      Open repository
-                    </Button>
-                  )}
-                </VStack>
               </>
             </AspectRatio>
             <VStack alignItems={"flex-start"} my={6}>
               <Text
                 as={"h5"}
-                fontSize={"3xl"}
+                fontSize={"2xl"}
                 mb={1}
                 color={"gray.700"}
                 noOfLines={2}
@@ -195,7 +155,7 @@ function ProjectList({ data }) {
               >
                 {item.title}
               </Text>
-              <HStack w={"full"}>
+              {/* <HStack w={"full"}>
                 <Text
                   fontSize={"sm"}
                   color={"gray.600"}
@@ -203,11 +163,16 @@ function ProjectList({ data }) {
                 >
                   {formatDateString({ input: item.date })}
                 </Text>
-              </HStack>
+              </HStack> */}
             </VStack>
           </Flex>
         ))}
       </Stack>
+      <ProjectDetail
+        data={data[active]}
+        isOpen={detailDisc.isOpen}
+        onClose={detailDisc.onClose}
+      />
     </Box>
   );
 }

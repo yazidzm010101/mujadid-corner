@@ -132,7 +132,7 @@ function SimpleAbout() {
               data-aos={"scale-fade-left"}
               ml={"auto"}
               as={Link}
-              href="/about"
+              href={getFullUrl("/about")}
               iconSpacing={4}
               rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
               rounded={"full"}
@@ -149,6 +149,7 @@ function SimpleAbout() {
               _hover={{
                 transform: "scale(1.01)",
                 textUnderlineOffset: 12,
+                bg: "transparent",
               }}
             >
               About me

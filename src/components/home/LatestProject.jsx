@@ -10,14 +10,16 @@ import {
   Link,
   Stack,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import { useScroll, useTransform } from "framer-motion";
 
-import { BiCodeBlock } from "react-icons/bi";
+import { BiCode } from "react-icons/bi";
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import { CgDesktop } from "react-icons/cg";
 import Dots from "@/assets/Dots";
 import MotionBox from "@/components/MotionBox";
-import { TbScreenShare } from "react-icons/tb";
+import NextLink from "next/link";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
@@ -188,6 +190,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               bg={"white"}
               rounded={"xl"}
               overflow={"hidden"}
+              role="group"
               _light={{
                 border: "1px solid rgb(0 0 0 / 0.2)",
               }}
@@ -198,26 +201,51 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                   src={getFullUrl(coverImage)}
                   alt={title}
                 />
-                {(demoURL || repoURL) && (
-                  <Link
-                    bg={"rgb(29 64 68 / 0.95)"}
-                    color={"white"}
-                    fontSize={"2xl"}
-                    href={demoURL || repoURL}
-                    opacity={0}
-                    target="_blank"
-                    _hover={{ opacity: 1 }}
-                  >
-                    <Icon
-                      mr={4}
-                      mt={1}
-                      as={(demoURL && TbScreenShare) || BiCodeBlock}
-                    />
-                    <Text>
-                      {(demoURL && "Open demo page") || "Open repository"}
-                    </Text>
-                  </Link>
-                )}
+                <VStack
+                  opacity={0}
+                  backdropFilter={"blur(4px)"}
+                  _groupHover={{ opacity: 1 }}
+                  transition={".2s all ease-in-out"}
+                  bg={"blackAlpha.300"}
+                  px={8}
+                  pt={4}
+                  rounded={"xl"}
+                >
+                  {demoURL && (
+                    <Button
+                      size={"lg"}
+                      rounded={"full"}
+                      color={"white"}
+                      variant={"outline"}
+                      borderColor={"rgb(0 0 0 / 0.2)"}
+                      bg={"blackAlpha.500"}
+                      as={Link}
+                      href={getFullUrl(demoURL)}
+                      target="_blank"
+                      _hover={{ bg: "blackAlpha.900" }}
+                      leftIcon={<Icon w={5} h={5} as={CgDesktop} />}
+                    >
+                      Open demo
+                    </Button>
+                  )}
+                  {repoURL && (
+                    <Button
+                      size={"lg"}
+                      rounded={"full"}
+                      color={"white"}
+                      variant={"outline"}
+                      borderColor={"rgb(0 0 0 / 0.2)"}
+                      bg={"blackAlpha.500"}
+                      as={Link}
+                      href={getFullUrl(repoURL)}
+                      target="_blank"
+                      _hover={{ bg: "blackAlpha.900" }}
+                      leftIcon={<Icon w={5} h={5} as={BiCode} />}
+                    >
+                      Open repository
+                    </Button>
+                  )}
+                </VStack>
               </>
             </AspectRatio>
             <Image
@@ -359,8 +387,8 @@ function LatestProject({ data }) {
         <HStack w={"full"} justifyContent={"flex-end"} my={5}>
           <Button
             data-aos={"scale-fade-left"}
-            as={Link}
-            href={getFullUrl("/workspace")}
+            as={NextLink}
+            href={"/workspace"}
             iconSpacing={4}
             rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
             rounded={"full"}
@@ -377,6 +405,7 @@ function LatestProject({ data }) {
             _hover={{
               transform: "scale(1.01)",
               textUnderlineOffset: 12,
+              bg: "transparent",
             }}
           >
             See more of my works

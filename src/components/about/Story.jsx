@@ -87,7 +87,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
       setActive(-1);
       setIsGrid(false);
     }
-  });
+  }, []);
 
   return (
     <Portal>

@@ -8,16 +8,15 @@ import {
   Heading,
   Icon,
   Image,
-  Link,
   Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
 
-import { BsArrowRightCircleFill } from "react-icons/bs";
-import NextLink from "next/link";
 import WaveAlt from "@/assets/WaveAlt";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
+import { BsArrowRightCircleFill } from "react-icons/bs";
 
 function LatestGallery({ data }) {
   const router = useRouter();
@@ -228,6 +227,7 @@ function LatestGallery({ data }) {
               _hover={{
                 transform: "scale(1.01)",
                 textUnderlineOffset: 12,
+                bg: "transparent",
               }}
             >
               Explore more
