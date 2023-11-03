@@ -7,20 +7,27 @@ repoURL: https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic
 icon: "/images/project-icon-thesis.jpg"
 ---
 
-# Menyulap Lockscreen KDE Plasma menjadi seperti Gnome
+<h4 align="center">BLAST Query Optimization using<br> Recursive Similarity Search for<br> SARS-CoV-2 Phylogenetic Tree Construction</h4>
 
-Halo balik lagi sobat linux, khususnya kde fanboy pernah berfikir gk kenapa kita udh ngotak ngatik tema segala macem sampe login screen jg dicustom temanya tapi lockscreennya gitu2 aja tampilannya? Jadi gw smpet penasaran ubek2 file /usr/share sampe ketemu file2 yg cukup suspicious yaitu di folder plasma/look-n-feel. Dimana ketika gw buka folder tema default itu ada file2 bernama LocksScreen dan segala macem, dan itu cuman terletak di folder breeze aja ges, since tema breeze itu tema defaultnya KDE. Nah pas gw cek ternyata itu isinya adalah file qml ges, dimana qml layout itu ibaratnya kalo ada yg maen android ya file xml buat ngehandle antarmuka/UI, ato kalo yg maennya webdev ya ibaratnya itu HTMLnya lah. Nah gw iseng ubek2 dokumentasi QML ternyata ini bagian dari QT framework, ternyata itu impact ke UI lockscreen lo loh. Jadi gw putusin buat melajarin gimana caranya ini lockscreen tampilannya makin elegan. Soalnya gw ngiri liat tampilan lockscreenya gnome, kok di KDE agak aneh gt bentuk jamnya shadow wallpapernya jg gak diblur atau digelapin
+--------
+This repository contains program that was used as a tool for FASTA sequence extraction and phylogenetic tree construction using BioPython library and was intended as a part of my research and final examination at Information System Management at Gunadarma University.
 
-## Backup first!
+The project structure consist of four folder/file:
+```
+├─ 01-inputs
+├─ 02-blast-search
+├─ 03-fasta-processing
+├─ 04-outputs
+├─ example_working_directory
+├─ main_input.ipynb
+└─ main_phylo.ipynb
+```
+1. [01-inputs](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//01-inputs/), contains singular FASTA that was used as an input for BLAST search in the research
+2. [02-blast-search](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//02-blast-search/), the folder containing search results from each trials
+3. [03-fasta-processing](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//03-fasta-processing/), this directory store fasta files that has been processed using either this python script itself or from external program (MUSCLE)
+3. [04-outputs](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//04-outputs/), phylogenetic tree images that was generated from this script
+3. [example_working_directory](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//example_working_directory/), working directory used in example notebook
+3. [main_input.ipynb](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//main_input.ipynb), python notebook mainly for fasta reading/parsing, extracting, merging, etc
+4. [main_phylo.ipynb](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//main_phylo.ipynb), python code to construct phylogenetic tree
 
-## LockScreen.qml
-
-## Clock.qml
-
-## WallpaperFader.qml
-
-## Final Result
-
-jadi jamnya di buat ditengah, ketika lo ngetik sesuatu atau berintaksi lgsg ilang jamnya dan keganti dengan session manager disertai animasi dikit-dikit kaya begini.
-Kalo ada yg penasaran gw taro di git juga kok gess filenya hehe.
-Nah jadi itu ges sekedar pengalaman gw melajarin qml lockscreenya KDE Plasma, semoga membantu see u on the next post!
+You can also read more detailed usage documentation [here](https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic/tree/main//manual_book/Manual_Book-SARSCoV2_BLAST_Recursive_Phylogenetic-ID.pdf)

@@ -38,7 +38,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
     if (target?.scrollWidth > target?.offsetWidth) {
       setLeftNavShown(target.scrollLeft > 0);
       setRightNavShown(
-        target.scrollLeft + target.offsetWidth < target.scrollWidth
+        target.scrollLeft + target.offsetWidth < target.scrollWidth,
       );
     } else {
       setLeftNavShown(false);
@@ -214,7 +214,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                                   setActive(
                                     active - 1 < 0
                                       ? data.length - 1
-                                      : active - 1
+                                      : active - 1,
                                   )
                                 }
                               >
@@ -246,7 +246,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                                 variant={"ghost"}
                                 onClick={() =>
                                   setActive(
-                                    active + 1 >= data.length ? 0 : active + 1
+                                    active + 1 >= data.length ? 0 : active + 1,
                                   )
                                 }
                               >
