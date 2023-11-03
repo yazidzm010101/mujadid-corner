@@ -142,7 +142,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                   color={"white"}
                   rounded={"full"}
                   as={Link}
-                  href={data?.demoURL}
+                  href={data?.repoURL}
                   shadow={"lg"}
                   leftIcon={<Icon w={5} h={5} as={BiCode} />}
                   _hover={{ color: "white", bg: "teal.600" }}

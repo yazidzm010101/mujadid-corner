@@ -38,7 +38,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
     if (target?.scrollWidth > target?.offsetWidth) {
       setLeftNavShown(target.scrollLeft > 0);
       setRightNavShown(
-        target.scrollLeft + target.offsetWidth < target.scrollWidth,
+        target.scrollLeft + target.offsetWidth < target.scrollWidth
       );
     } else {
       setLeftNavShown(false);
@@ -214,7 +214,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                                   setActive(
                                     active - 1 < 0
                                       ? data.length - 1
-                                      : active - 1,
+                                      : active - 1
                                   )
                                 }
                               >
@@ -246,7 +246,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                                 variant={"ghost"}
                                 onClick={() =>
                                   setActive(
-                                    active + 1 >= data.length ? 0 : active + 1,
+                                    active + 1 >= data.length ? 0 : active + 1
                                   )
                                 }
                               >
@@ -342,13 +342,13 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
           w={"full"}
           justifyContent={"flex-end"}
           px={4}
-          display={{ base: "none", sm: "flex" }}
           flexShrink={0}
           spacing={0}
           py={3}
           bgGradient={"linear(to-b, gray.900, transparent)"}
         >
           <AspectRatio
+            display={{ base: "none", sm: "block" }}
             color={(isGrid && "gray.500") || "gray.200"}
             cursor={"pointer"}
             ratio={1}
@@ -359,6 +359,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
             <Icon as={BiCarousel} />
           </AspectRatio>
           <AspectRatio
+            display={{ base: "none", sm: "block" }}
             cursor={"pointer"}
             ratio={1}
             w={8}
