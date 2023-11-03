@@ -1,8 +1,8 @@
 ---
 title: "Hacktiv8 Week #3 - Calculator"
-date: "2019-03-13"
+date: "2019-03-21"
 excerpt: Latihan minggu ketiga Developer Circles x Hactiv8 Javascript Development Course
-coverImage: "/images/project-habit-tracker.png"
+coverImage: "https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/project_images%2FScreenshot_20231103_175532.png"
 icon: "https://gitlab.com/uploads/-/system/project/avatar/22802226/hacktiv8.jpg?width=64"
 demoURL: "https://yazidzm010101.gitlab.io/Exercise-3/"
 repoURL: "https://gitlab.com/yazidzm010101/Exercise-3/"
