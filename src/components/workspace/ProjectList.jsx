@@ -1,6 +1,7 @@
 import {
   AspectRatio,
   Box,
+  Button,
   Flex,
   HStack,
   Image,
@@ -9,6 +10,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
+import Link from "next/link";
 import { formatDateString } from "@/lib/textUtils";
 import { useRouter } from "next/router";
 
@@ -93,26 +95,75 @@ function ProjectList({ data }) {
             p={6}
           >
             <AspectRatio
-              ratio={[4 / 3, 1, 3 / 4]}
+              ratio={4 / 3}
               flexShrink={0}
               boxShadow={"0 2rem 2rem 0.15rem rgb(0 0 0 / 0.2)"}
               rounded={"xl"}
-              overflow={"hidden"}
+              role="group"
             >
               <>
                 <Image
                   src={getFullUrl(item.coverImage)}
                   alt={item.title}
-                  filter={"blur(20px)"}
-                  transform={"scale(1.5)"}
                   rounded={"xl"}
                 />
-                <Image
-                  src={getFullUrl(item.coverImage)}
-                  alt={item.title}
-                  objectFit={"contain !important"}
+                {item.icon && (
+                  <Image
+                    src={getFullUrl(item.icon)}
+                    rounded={"xl"}
+                    w={{
+                      base: "5rem !important",
+                      sm: "4rem !important",
+                      md: "3rem !important",
+                    }}
+                    h={{
+                      base: "5rem !important",
+                      sm: "4rem !important",
+                      md: "3rem !important",
+                    }}
+                    bottom={"-.5rem !important"}
+                    top={"unset !important"}
+                    left={"unset !important"}
+                    right={".5rem !important"}
+                    shadow={"xl"}
+                    border={"1px solid rgb(0 0 0 / 0.1)"}
+                  />
+                )}
+                <VStack
+                  opacity={0}
+                  backdropFilter={"blur(4px)"}
+                  _groupHover={{ opacity: 1 }}
+                  transition={".2s all ease-in-out"}
+                  bg={"blackAlpha.300"}
+                  pt={4}
                   rounded={"xl"}
-                />
+                >
+                  <Button
+                    color={"white"}
+                    variant={"outline"}
+                    borderColor={"rgb(0 0 0 / 0.2)"}
+                    bg={"blackAlpha.800"}
+                    as={Link}
+                    href={getFullUrl("/workspace/" + item.slug)}
+                    _hover={{ bg: "blackAlpha.900" }}
+                  >
+                    Read article
+                  </Button>
+                  {item.demoURL && (
+                    <Button
+                      color={"white"}
+                      variant={"outline"}
+                      borderColor={"rgb(0 0 0 / 0.2)"}
+                      bg={"blackAlpha.500"}
+                      as={Link}
+                      href={getFullUrl(item.demoURL)}
+                      target="_blank"
+                      _hover={{ bg: "blackAlpha.900" }}
+                    >
+                      Open demo
+                    </Button>
+                  )}
+                </VStack>
               </>
             </AspectRatio>
             <VStack alignItems={"flex-start"} my={6}>

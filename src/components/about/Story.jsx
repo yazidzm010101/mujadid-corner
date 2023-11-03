@@ -38,7 +38,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
     if (target?.scrollWidth > target?.offsetWidth) {
       setLeftNavShown(target.scrollLeft > 0);
       setRightNavShown(
-        target.scrollLeft + target.offsetWidth < target.scrollWidth,
+        target.scrollLeft + target.offsetWidth < target.scrollWidth
       );
     } else {
       setLeftNavShown(false);
@@ -85,6 +85,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
     } else {
       document.body.style.overflow = "unset";
       setActive(-1);
+      setIsGrid(false);
     }
   });
 
@@ -116,28 +117,6 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
           top={0}
           w={"full"}
         >
-          <HStack display={{ base: "none", sm: "flex" }} flexShrink={0} px={4}>
-            <AspectRatio
-              color={(isGrid && "gray.500") || "gray.200"}
-              cursor={"pointer"}
-              ratio={1}
-              w={10}
-              onClick={() => setIsGrid(false)}
-            >
-              <Icon as={BiCarousel} />
-            </AspectRatio>
-            <AspectRatio
-              cursor={"pointer"}
-              ratio={1}
-              w={10}
-              onClick={() => setIsGrid(true)}
-            >
-              <Icon
-                as={BiGridAlt}
-                color={(!isGrid && "gray.500") || "gray.200"}
-              />
-            </AspectRatio>
-          </HStack>
           <Box flexShrink={0} pos={"relative"} w={"full"}>
             <Box
               className="scroll-dark"
@@ -162,7 +141,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                     p={4}
                     w={{
                       base: "50%",
-                      sm: isGrid ? "50%" : "full",
+                      sm: isGrid ? "50%" : "container.md",
                       md: isGrid && "33.33%",
                       xl: isGrid && "25%",
                     }}
@@ -181,6 +160,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                     >
                       <Image
                         _hover={{ transform: "scale(1.1)" }}
+                        bg={"gray.600"}
                         src={image}
                         transition={"all .2s ease-in-out"}
                       />
@@ -234,7 +214,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                                   setActive(
                                     active - 1 < 0
                                       ? data.length - 1
-                                      : active - 1,
+                                      : active - 1
                                   )
                                 }
                               >
@@ -266,7 +246,7 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
                                 variant={"ghost"}
                                 onClick={() =>
                                   setActive(
-                                    active + 1 >= data.length ? 0 : active + 1,
+                                    active + 1 >= data.length ? 0 : active + 1
                                   )
                                 }
                               >
@@ -355,7 +335,62 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
             </VStack>
           </Box>
         </VStack>
-        <VStack alignItems={"flex-start"} left={10} pos={"absolute"} top={8}>
+        <HStack
+          pos={"fixed"}
+          top={0}
+          right={0}
+          w={"full"}
+          justifyContent={"flex-end"}
+          px={4}
+          display={{ base: "none", sm: "flex" }}
+          flexShrink={0}
+          spacing={0}
+          py={3}
+          bgGradient={"linear(to-b, gray.900, transparent)"}
+        >
+          <AspectRatio
+            color={(isGrid && "gray.500") || "gray.200"}
+            cursor={"pointer"}
+            ratio={1}
+            w={8}
+            mr={4}
+            onClick={() => setIsGrid(false)}
+          >
+            <Icon as={BiCarousel} />
+          </AspectRatio>
+          <AspectRatio
+            cursor={"pointer"}
+            ratio={1}
+            w={8}
+            mr={4}
+            onClick={() => setIsGrid(true)}
+          >
+            <Icon
+              as={BiGridAlt}
+              color={(!isGrid && "gray.500") || "gray.200"}
+            />
+          </AspectRatio>
+          <Box my={3} bg={"gray.400"} w={"1px"} alignSelf={"stretch"} />
+          <Button
+            _hover={{ bg: "whiteAlpha.200" }}
+            color={"white"}
+            px={2}
+            py={7}
+            rounded={"full"}
+            variant={"ghost"}
+            onClick={onClose}
+          >
+            <Icon as={BsX} h={10} w={10} />
+          </Button>
+        </HStack>
+        <VStack
+          alignItems={"flex-start"}
+          left={10}
+          pos={"absolute"}
+          top={8}
+          pointerEvents={"none"}
+          pr={{ sm: 200 }}
+        >
           <Heading
             as="h2"
             color={"teal.200"}
@@ -373,20 +408,6 @@ function Story({ isOpen, onClose, data: initialData, title: initialTitle }) {
             {title}
           </Heading>
         </VStack>
-        <Button
-          _hover={{ bg: "whiteAlpha.200" }}
-          color={"white"}
-          pos={"fixed"}
-          px={2}
-          py={7}
-          right={{ base: 3, md: 4 }}
-          rounded={"full"}
-          top={{ base: 1, md: 4 }}
-          variant={"ghost"}
-          onClick={onClose}
-        >
-          <Icon as={BsX} h={10} w={10} />
-        </Button>
       </Box>
     </Portal>
   );
