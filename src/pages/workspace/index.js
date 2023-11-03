@@ -25,6 +25,7 @@ export function getStaticProps({ params }) {
     "coverImage",
     "icon",
     "demoURL",
+    "repoURL",
   ]);
 
   return {
@@ -83,7 +84,7 @@ function WorkspacePage({ allProjects }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",

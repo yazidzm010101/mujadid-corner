@@ -111,6 +111,12 @@ function ProjectList({ data }) {
                   <Image
                     src={getFullUrl(item.icon)}
                     rounded={"xl"}
+                    bottom={"-.5rem !important"}
+                    top={"unset !important"}
+                    left={"unset !important"}
+                    right={".5rem !important"}
+                    shadow={"xl"}
+                    border={"1px solid rgb(0 0 0 / 0.1)"}
                     w={{
                       base: "5rem !important",
                       sm: "4rem !important",
@@ -121,12 +127,6 @@ function ProjectList({ data }) {
                       sm: "4rem !important",
                       md: "3rem !important",
                     }}
-                    bottom={"-.5rem !important"}
-                    top={"unset !important"}
-                    left={"unset !important"}
-                    right={".5rem !important"}
-                    shadow={"xl"}
-                    border={"1px solid rgb(0 0 0 / 0.1)"}
                   />
                 )}
                 <VStack
@@ -135,6 +135,7 @@ function ProjectList({ data }) {
                   _groupHover={{ opacity: 1 }}
                   transition={".2s all ease-in-out"}
                   bg={"blackAlpha.300"}
+                  px={8}
                   pt={4}
                   rounded={"xl"}
                 >
@@ -144,6 +145,7 @@ function ProjectList({ data }) {
                     borderColor={"rgb(0 0 0 / 0.2)"}
                     bg={"blackAlpha.800"}
                     as={Link}
+                    w={"full"}
                     href={getFullUrl("/workspace/" + item.slug)}
                     _hover={{ bg: "blackAlpha.900" }}
                   >
@@ -151,6 +153,7 @@ function ProjectList({ data }) {
                   </Button>
                   {item.demoURL && (
                     <Button
+                      w={"full"}
                       color={"white"}
                       variant={"outline"}
                       borderColor={"rgb(0 0 0 / 0.2)"}
@@ -161,6 +164,21 @@ function ProjectList({ data }) {
                       _hover={{ bg: "blackAlpha.900" }}
                     >
                       Open demo
+                    </Button>
+                  )}
+                  {item.repoURL && (
+                    <Button
+                      w={"full"}
+                      color={"white"}
+                      variant={"outline"}
+                      borderColor={"rgb(0 0 0 / 0.2)"}
+                      bg={"blackAlpha.500"}
+                      as={Link}
+                      href={getFullUrl(item.repoURL)}
+                      target="_blank"
+                      _hover={{ bg: "blackAlpha.900" }}
+                    >
+                      Open repository
                     </Button>
                   )}
                 </VStack>

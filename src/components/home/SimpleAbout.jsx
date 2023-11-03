@@ -38,7 +38,7 @@ function SimpleAbout() {
       >
         <Box w={{ base: "full", xl: "40%" }} mb={8} pos={"relative"}>
           <AspectRatio
-            data-aos="zoom-in"
+            data-aos="zoom-out"
             ratio={1}
             w={"full"}
             maxW={{ base: "240px", xl: "full" }}
