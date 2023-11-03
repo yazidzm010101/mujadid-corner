@@ -319,10 +319,10 @@ function LatestProject({ data }) {
       pb={32}
       _light={{
         bgGradient:
-          "linear(to-b, transparent, gray.100 8%, gray.200 30%, gray.200)",
+          "linear(to-b, transparent, gray.100 10rem, gray.200 30%, gray.200)",
       }}
       _dark={{
-        bgGradient: "linear(to-b, transparent, teal.900 8%, gray.900)",
+        bgGradient: "linear(to-b, transparent, teal.900 10rem, gray.900)",
       }}
     >
       <Container
