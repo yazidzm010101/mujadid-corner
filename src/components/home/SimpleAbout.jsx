@@ -132,7 +132,7 @@ function SimpleAbout() {
               data-aos={"scale-fade-left"}
               ml={"auto"}
               as={Link}
-              href={getFullUrl("/about")}
+              href={"/about"}
               iconSpacing={4}
               rightIcon={<Icon h={7} w={7} as={BsArrowRightCircleFill} />}
               rounded={"full"}
