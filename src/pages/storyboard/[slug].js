@@ -19,6 +19,7 @@ import Layout from "@/components/Layout";
 import ReactMarkdown from "react-markdown";
 import { TbShare } from "react-icons/tb";
 import { formatDateString } from "@/lib/textUtils";
+import remarkGfm from "remark-gfm";
 import { useRouter } from "next/router";
 
 export async function getStaticProps({ params }) {
@@ -119,7 +120,7 @@ export default function Post({ post }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg"
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -139,7 +140,7 @@ export default function Post({ post }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg"
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -205,7 +206,10 @@ export default function Post({ post }) {
               </Button>
             </HStack>
             <Spacer as={"hr"} my={3} />
-            <ReactMarkdown components={ChakraUIRenderer(newTheme)}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={ChakraUIRenderer(newTheme)}
+            >
               {post.content}
             </ReactMarkdown>
           </Box>

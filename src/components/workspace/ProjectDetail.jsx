@@ -24,6 +24,7 @@ import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import CodeBlock from "../CodeBlock";
 import ReactMarkdown from "react-markdown";
 import { formatDateString } from "@/lib/textUtils";
+import remarkGfm from "remark-gfm";
 import { useRouter } from "next/router";
 
 const newTheme = {
@@ -189,9 +190,14 @@ function ProjectDetail({ isOpen, onClose, data }) {
             </HStack>
             <Spacer as={"hr"} my={4} />
             <Box color={"gray.700"} _dark={{ color: "gray.400" }}>
-              <ReactMarkdown components={ChakraUIRenderer(newTheme)}>
-                {data?.content}
-              </ReactMarkdown>
+              {data?.content && (
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={ChakraUIRenderer(newTheme)}
+                >
+                  {data?.content}
+                </ReactMarkdown>
+              )}
             </Box>
           </VStack>
         </ModalBody>

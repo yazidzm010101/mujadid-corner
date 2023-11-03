@@ -1,15 +1,17 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import Layout from "@/components/Layout";
 import { Box, Container, Image, Spacer, Text } from "@chakra-ui/react";
-import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import ReactMarkdown from "react-markdown";
 import {
   getAllProjects,
   getLatestProjects,
   getProjectBySlug,
 } from "@/lib/getProject";
+
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import CodeBlock from "@/components/CodeBlock";
+import ErrorPage from "next/error";
+import Layout from "@/components/Layout";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { useRouter } from "next/router";
 
 export async function getStaticProps({ params }) {
   const project = getProjectBySlug(params.slug, [
@@ -82,7 +84,10 @@ export default function Project({ project }) {
             />
           )}
           <Spacer as={"hr"} my={3} />
-          <ReactMarkdown components={ChakraUIRenderer(newTheme)}>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={ChakraUIRenderer(newTheme)}
+          >
             {project.content}
           </ReactMarkdown>
         </Box>
