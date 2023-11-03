@@ -145,7 +145,7 @@ function ProjectList({ data }) {
                       right={".5rem !important"}
                       shadow={"xl"}
                       objectFit={"contain !important"}
-                      bg={"gray.100"}
+                      bg={"white"}
                       w={{
                         base: "5rem !important",
                         sm: "4rem !important",

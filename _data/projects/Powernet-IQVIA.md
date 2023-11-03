@@ -1,7 +1,7 @@
 ---
 title: "2020 Laboratory Survey Monitoring"
 date: "2020-01-04"
-excerpt: "Buit using Laravel, Bootstrap, and jQuery"
+excerpt: "Web application for laboratory revenue survey monitoring at 2020"
 coverImage: "https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/project_images%2Fpowernet-iqvia%2Fscreenshot-localhost_8000-2023.10.18-07_28_45.png?alt=media"
 icon: "https://powernet.co.id/assets/img/favicon.png"
 tools: ["Laravel", "Bootstrap", "jQuery", "aos.css"]

@@ -128,9 +128,9 @@ function GalleryPage({ allGallery }) {
               ml={"auto"}
               ratio={{ base: 4 / 3, md: 1 }}
               w={{ base: "full", md: "40%" }}
-              _dark={{ mixBlendMode: "color-dodge" }}
+              _dark={{ mixBlendMode: "screen" }}
             >
-              <MotionBox style={{ y: yMove }}>
+              <MotionBox style={{ y: yMove }} pos={"relative"}>
                 <Image
                   filter={"contrast(0.7) brightness(1.1)"}
                   src={getFullUrl("/images/miyamoto-art.png")}
@@ -138,8 +138,8 @@ function GalleryPage({ allGallery }) {
                   w={"full"}
                   h={"full"}
                   _dark={{
-                    filter: "invert(1s) contrast(0.7) brightness(1.1)",
-                    opacity: 0.3,
+                    filter: "contrast(1) brightness(.8)",
+                    opacity: 1,
                   }}
                 />
               </MotionBox>

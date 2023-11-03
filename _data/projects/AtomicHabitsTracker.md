@@ -3,7 +3,7 @@ title: AtomicHabits Tracker
 date: "2023-10-05T10:45:01.605Z"
 excerpt: Habit Tracker terinspirasi dari Atomic Habit by James Clear, dibangun menggunakan ChakraUI + IndexedDB
 coverImage: "/images/project-habit-tracker.png"
-icon: "/images/project-icon-fuzzysearch-commerce.png"
+icon: "https://cdn.iconscout.com/icon/free/png-256/free-react-1-282599.png"
 demoURL: "https://yazidzm010101.github.io/atomic-habit-tracker/"
 ---
 

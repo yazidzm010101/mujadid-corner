@@ -220,7 +220,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
               >
                 <Image
                   objectFit={"contain !important"}
-                  bg={"gray.300"}
+                  bg={"white"}
                   src={getFullUrl(data.icon)}
                 />
               </AspectRatio>
