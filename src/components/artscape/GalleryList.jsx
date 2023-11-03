@@ -4,6 +4,7 @@ import {
   Button,
   Fade,
   Flex,
+  Heading,
   Icon,
   Image,
   Portal,
@@ -21,6 +22,7 @@ import { useRouter } from "next/router";
 function GalleryList({ data }) {
   const router = useRouter();
   const [active, setActive] = useState(-1);
+  const [activeHover, setActiveHover] = useState(true);
   const getFullUrl = (url) => {
     if (url.match(/^\//g)) {
       return router.basePath + url;
@@ -30,11 +32,24 @@ function GalleryList({ data }) {
 
   useEffect(() => {
     if (active > -1) {
+      setActiveHover(true);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
   }, [active]);
+
+  useEffect(() => {
+    let timeout;
+    if (activeHover) {
+      timeout = setTimeout(() => {
+        setActiveHover(false);
+      }, 2000);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [activeHover]);
 
   return (
     <Box
@@ -143,6 +158,8 @@ function GalleryList({ data }) {
                 top={0}
                 w={"full"}
                 zIndex={1001}
+                onMouseMove={() => setActiveHover(true)}
+                onMouseDown={() => setActiveHover(true)}
               >
                 <Box as={ScaleFade} in={i == active} w={"full"} h={"full"}>
                   <Image
@@ -163,6 +180,7 @@ function GalleryList({ data }) {
                       pr={14}
                       role="group"
                       top={0}
+                      opacity={activeHover ? 1 : 0}
                       transition={".25s all ease-in-out"}
                       bgGradient={"linear(to-r, blackAlpha.500, transparent)"}
                     >
@@ -193,6 +211,7 @@ function GalleryList({ data }) {
                       right={0}
                       role="group"
                       top={0}
+                      opacity={activeHover ? 1 : 0}
                       transition={".25s all ease-in-out"}
                       bgGradient={"linear(to-l, blackAlpha.500, transparent)"}
                     >
@@ -214,6 +233,24 @@ function GalleryList({ data }) {
                     </VStack>
                   </>
                 )}
+                <Box
+                  as={Fade}
+                  in={activeHover}
+                  w={"full"}
+                  pos={"absolute"}
+                  top={0}
+                  left={0}
+                  bgGradient={"linear(to-b, black, transparent)"}
+                >
+                  <Heading
+                    pr={20}
+                    pl={{ base: 4, md: 8, lg: 10 }}
+                    py={4}
+                    pb={30}
+                  >
+                    {item.title}
+                  </Heading>
+                </Box>
                 <Button
                   _hover={{ bg: "whiteAlpha.200" }}
                   color={"white"}

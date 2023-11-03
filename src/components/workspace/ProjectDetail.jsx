@@ -21,6 +21,7 @@ import {
 import { BiCode } from "react-icons/bi";
 import { CgDesktop } from "react-icons/cg";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
+import CodeBlock from "../CodeBlock";
 import ReactMarkdown from "react-markdown";
 import { formatDateString } from "@/lib/textUtils";
 import { useRouter } from "next/router";

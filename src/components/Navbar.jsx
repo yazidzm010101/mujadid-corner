@@ -161,7 +161,7 @@ function Navbar() {
           </HStack>
           <HStack flexShrink={0} spacing={12}>
             <Button
-              bg={!isSolid && "transparent"}
+              bg={(!isSolid && "transparent") || "whiteAlpha.700"}
               backdropFilter={isSolid && "blur(4px) contrast(2) saturate(2)"}
               variant={"glass"}
               rounded={"full"}
@@ -174,8 +174,11 @@ function Navbar() {
               py={3}
               h={"max-content"}
               color={"gray.600"}
-              _dark={{ color: "white" }}
               _hover={{ color: "teal.400", _dark: { color: "teal.200" } }}
+              _dark={{
+                color: "white",
+                bg: (!isSolid && "transparent") || "blackAlpha.600",
+              }}
               onClick={() => navDislosure.onToggle()}
               {...(!isSolid && { borderColor: "transparent" })}
             >
