@@ -102,7 +102,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
     if (target?.scrollWidth > target?.offsetWidth) {
       setLeftNavShown(target.scrollLeft > 0);
       setRightNavShown(
-        target.scrollLeft + target.offsetWidth < target.scrollWidth,
+        target.scrollLeft + target.offsetWidth < target.scrollWidth
       );
     } else {
       setLeftNavShown(false);
@@ -380,7 +380,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                           <Image
                             h={"full"}
                             objectFit={"contain"}
-                            src={item.image}
+                            src={getFullUrl(item.image)}
                             w={"full"}
                           />
                         </Box>
@@ -414,7 +414,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery - 1 < 0
                                       ? gallery.length - 1
-                                      : activeGallery - 1,
+                                      : activeGallery - 1
                                   );
                                   setActiveGalleryHover(true);
                                 }}
@@ -450,7 +450,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery + 1 >= gallery.length
                                       ? 0
-                                      : activeGallery + 1,
+                                      : activeGallery + 1
                                   );
                                   setActiveGalleryHover(true);
                                 }}

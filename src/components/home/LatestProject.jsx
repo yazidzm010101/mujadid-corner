@@ -42,7 +42,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
 
   return (
@@ -201,51 +201,53 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
                   src={getFullUrl(coverImage)}
                   alt={title}
                 />
-                <VStack
-                  opacity={0}
-                  backdropFilter={"blur(4px)"}
-                  _groupHover={{ opacity: 1 }}
-                  transition={".2s all ease-in-out"}
-                  bg={"blackAlpha.300"}
-                  px={8}
-                  pt={4}
-                  rounded={"xl"}
-                >
-                  {demoURL && (
-                    <Button
-                      size={"lg"}
-                      rounded={"full"}
-                      color={"white"}
-                      variant={"outline"}
-                      borderColor={"rgb(0 0 0 / 0.2)"}
-                      bg={"blackAlpha.500"}
-                      as={Link}
-                      href={getFullUrl(demoURL)}
-                      target="_blank"
-                      _hover={{ bg: "blackAlpha.900" }}
-                      leftIcon={<Icon w={5} h={5} as={CgDesktop} />}
-                    >
-                      Open demo
-                    </Button>
-                  )}
-                  {repoURL && (
-                    <Button
-                      size={"lg"}
-                      rounded={"full"}
-                      color={"white"}
-                      variant={"outline"}
-                      borderColor={"rgb(0 0 0 / 0.2)"}
-                      bg={"blackAlpha.500"}
-                      as={Link}
-                      href={getFullUrl(repoURL)}
-                      target="_blank"
-                      _hover={{ bg: "blackAlpha.900" }}
-                      leftIcon={<Icon w={5} h={5} as={BiCode} />}
-                    >
-                      Open repository
-                    </Button>
-                  )}
-                </VStack>
+                {(demoURL || repoURL) && (
+                  <VStack
+                    opacity={0}
+                    backdropFilter={"blur(4px)"}
+                    _groupHover={{ opacity: 1 }}
+                    transition={".2s all ease-in-out"}
+                    bg={"blackAlpha.300"}
+                    px={8}
+                    pt={4}
+                    rounded={"xl"}
+                  >
+                    {demoURL && (
+                      <Button
+                        size={"lg"}
+                        rounded={"full"}
+                        color={"white"}
+                        variant={"outline"}
+                        borderColor={"rgb(0 0 0 / 0.2)"}
+                        bg={"blackAlpha.500"}
+                        as={Link}
+                        href={getFullUrl(demoURL)}
+                        target="_blank"
+                        _hover={{ bg: "blackAlpha.900" }}
+                        leftIcon={<Icon w={5} h={5} as={CgDesktop} />}
+                      >
+                        Open demo
+                      </Button>
+                    )}
+                    {repoURL && (
+                      <Button
+                        size={"lg"}
+                        rounded={"full"}
+                        color={"white"}
+                        variant={"outline"}
+                        borderColor={"rgb(0 0 0 / 0.2)"}
+                        bg={"blackAlpha.500"}
+                        as={Link}
+                        href={getFullUrl(repoURL)}
+                        target="_blank"
+                        _hover={{ bg: "blackAlpha.900" }}
+                        leftIcon={<Icon w={5} h={5} as={BiCode} />}
+                      >
+                        Open repository
+                      </Button>
+                    )}
+                  </VStack>
+                )}
               </>
             </AspectRatio>
             <Image
