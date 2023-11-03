@@ -54,7 +54,7 @@ function GalleryList({ data }) {
 
   return (
     <Box
-      bgGradient={"linear(to-t, gray.100, gray.100 90%, transparent)"}
+      bgGradient={"linear(to-b, transparent, gray.100 8rem, gray.100)"}
       pos={"relative"}
       w={"full"}
       mx={"auto"}
@@ -63,7 +63,7 @@ function GalleryList({ data }) {
       overflow={"hidden"}
       minH={"130vh"}
       _dark={{
-        bgGradient: "linear(to-t, gray.800, gray.900 90%, transparent)",
+        bgGradient: "linear(to-b, transparent, gray.800 8rem, gray.900 )",
       }}
     >
       <Stack
@@ -196,7 +196,7 @@ function GalleryList({ data }) {
                         variant={"ghost"}
                         onClick={() => {
                           setActive(
-                            active - 1 < 0 ? data.length - 1 : active - 1,
+                            active - 1 < 0 ? data.length - 1 : active - 1
                           );
                           setActiveHover(true);
                         }}
