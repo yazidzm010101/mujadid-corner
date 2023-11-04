@@ -5,6 +5,11 @@ description: Optimisasi BLAST query menggunakan Recursive Similarity Search dala
 preview: "/images/project-thesis.png"
 repoURL: https://github.com/yazidzm010101/sars_cov2-blast-recursive-phylogenetic
 icon: "/images/project-icon-thesis.jpg"
+tags:
+  - Python
+  - Conda
+  - Bioconda
+  - Jupyter Notebook
 ---
 
 ## BLAST Query Optimization using Recursive Similarity Search for SARS-CoV-2 Phylogenetic Tree Construction

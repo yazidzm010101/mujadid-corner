@@ -33,13 +33,16 @@ import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { useRouter } from "next/router";
 import { CgDesktop } from "react-icons/cg";
 import {
+  SiAnaconda,
   SiBootstrap,
   SiChakraui,
   SiCss3,
   SiHtml5,
   SiJavascript,
   SiJquery,
+  SiJupyter,
   SiLaravel,
+  SiPython,
   SiReact,
   SiSass,
   SiVite,
@@ -91,7 +94,10 @@ const tagsMap = {
   Vite: SiVite,
   HTML: SiHtml5,
   CSS: SiCss3,
+  Python: SiPython,
   Javascript: SiJavascript,
+  "Jupyter Notebook": SiJupyter,
+  Conda: SiAnaconda,
 };
 
 function ProjectDetail({ isOpen, onClose, data }) {
@@ -117,7 +123,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
     if (target?.scrollWidth > target?.offsetWidth) {
       setLeftNavShown(target.scrollLeft > 0);
       setRightNavShown(
-        target.scrollLeft + target.offsetWidth < target.scrollWidth,
+        target.scrollLeft + target.offsetWidth < target.scrollWidth
       );
     } else {
       setLeftNavShown(false);
@@ -429,7 +435,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery - 1 < 0
                                       ? gallery.length - 1
-                                      : activeGallery - 1,
+                                      : activeGallery - 1
                                   );
                                   setActiveGalleryHover(true);
                                 }}
@@ -465,7 +471,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery + 1 >= gallery.length
                                       ? 0
-                                      : activeGallery + 1,
+                                      : activeGallery + 1
                                   );
                                   setActiveGalleryHover(true);
                                 }}
