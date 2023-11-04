@@ -32,8 +32,12 @@ function CodeBlock({ language, children, node: { data } }) {
     );
   };
   return (
-    <Box rounded={"md"} overflow={"hidden"}>
-      <SyntaxHighlighter language={language} style={atomOneDark}>
+    <Box rounded={"md"} overflow={"hidden"} mb={12}>
+      <SyntaxHighlighter
+        language={language}
+        style={atomOneDark}
+        customStyle={{ padding: "1rem 1rem" }}
+      >
         {children}
       </SyntaxHighlighter>
       {data?.meta && (

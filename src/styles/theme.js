@@ -12,7 +12,7 @@ export default extendTheme({
   fonts: {
     heading: '"Urbanist", sans-serif',
     body: '"Urbanist", sans-serif',
-    mono: '"Urbanist", sans-serif',
+    serif: '"Inter", sans-serif',
   },
   breakpoints: {
     xs: "414px",

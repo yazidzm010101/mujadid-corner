@@ -8,8 +8,15 @@ import {
   Icon,
   Image,
   Link,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger,
   Spacer,
   Text,
+  VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import {
   getAllStories,
@@ -20,14 +27,15 @@ import {
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import CodeBlock from "@/components/CodeBlock";
 import ErrorPage from "next/error";
+import LatestPost from "@/components/storyboard/LatestPost";
 import Layout from "@/components/Layout";
+import PostList from "@/components/storyboard/PostList";
 import ReactMarkdown from "react-markdown";
 import { TbShare } from "react-icons/tb";
 import { formatDateString } from "@/lib/textUtils";
 import remarkGfm from "remark-gfm";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-import PostList from "@/components/storyboard/PostList";
-import LatestPost from "@/components/storyboard/LatestPost";
 
 export async function getStaticProps({ params }) {
   const post = getSingleStory(params, [
@@ -68,20 +76,42 @@ export async function getStaticPaths() {
   };
 }
 
-const newTheme = {
+let newTheme = {
+  img: ({ alt, src }) => (
+    <VStack as={"span"} w={"full"} mb={10}>
+      <Image src={src} w={"full"} alt={alt} />
+      {alt && (
+        <Text as={"span"} fontStyle={"italic"} textAlign={"center"}>
+          {alt}
+        </Text>
+      )}
+    </VStack>
+  ),
   p: ({ children }) => (
-    <Text as={"p"} my={5} fontSize={"xl"} lineHeight={"3rem"}>
+    <Text
+      mb={10}
+      fontSize={{ base: "lg", md: "xl" }}
+      lineHeight={{ base: "2rem", sm: "2.5rem" }}
+    >
       {children}
     </Text>
   ),
-  h2: ({ children }) => (
+  ul: ({ children }) => (
     <Text
-      as={"h2"}
-      my={5}
-      mt={20}
-      fontSize={"3xl"}
-      lineHeight={10}
-      fontWeight={"bold"}
+      mb={10}
+      as={"ul"}
+      fontSize={{ base: "lg", md: "xl" }}
+      pl={{ base: 10, md: 16 }}
+    >
+      {children}
+    </Text>
+  ),
+  li: ({ children }) => (
+    <Text
+      mb={2}
+      as={"li"}
+      fontSize={{ base: "lg", md: "xl" }}
+      lineHeight={{ base: "2rem", sm: "2.5rem" }}
     >
       {children}
     </Text>
@@ -91,8 +121,8 @@ const newTheme = {
       fontWeight={"bold"}
       href={href}
       wordBreak={"break-word"}
-      fontSize={"xl"}
-      lineHeight={10}
+      fontSize={{ base: "lg", md: "xl" }}
+      lineHeight={{ base: "2rem", sm: "2.5rem" }}
       target="_blank"
     >
       {children}
@@ -100,8 +130,26 @@ const newTheme = {
   ),
   code: ({ ...props }) => <CodeBlock {...props} />,
 };
+for (let i = 1; i <= 6; i++) {
+  let baseFont = 1;
+  let base = (7 - i) * 0.15 + baseFont + "rem";
+  let md = (8 - i) * 0.15 + baseFont + "rem";
+  newTheme["h" + i] = ({ children }) => (
+    <Text
+      as={"h" + i}
+      mb={2}
+      fontFamily={"heading"}
+      fontSize={{ base, md }}
+      lineHeight={{ base: "2rem", sm: "2.5rem" }}
+      fontWeight={"bold"}
+    >
+      {children}
+    </Text>
+  );
+}
 
 export default function StoryPage({ post, latestPost }) {
+  const shareDisc = useDisclosure();
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -112,6 +160,20 @@ export default function StoryPage({ post, latestPost }) {
     }
     return url;
   };
+
+  useEffect(() => {
+    let timer;
+    if (shareDisc.isOpen) {
+      let message = `Read "${post.title}" on Mujadid's Corner\n${location.protocol}//${location.host}${location.pathname}`;
+      navigator.clipboard.writeText(message);
+      timer = setTimeout(() => {
+        shareDisc.onClose();
+      }, 1000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [shareDisc.isOpen]);
 
   return (
     <Layout title={post.title}>
@@ -126,7 +188,7 @@ export default function StoryPage({ post, latestPost }) {
         _dark={{ bg: "gray.900" }}
       >
         <AspectRatio
-          opacity={0.3}
+          opacity={0.5}
           w={{ base: "200%", md: "full" }}
           ratio={1}
           pos={"absolute"}
@@ -146,7 +208,7 @@ export default function StoryPage({ post, latestPost }) {
           />
         </AspectRatio>
         <AspectRatio
-          opacity={0.2}
+          opacity={0.5}
           w={{ base: "200%", md: "full" }}
           ratio={1}
           pos={"absolute"}
@@ -192,9 +254,13 @@ export default function StoryPage({ post, latestPost }) {
               "linear(to-b, transparent, gray.800 30%, gray.800 70%, transparent)",
           }}
         />
-        <Container maxW={"container.md"} pos={"relative"}>
-          <Box as={"article"}>
-            <Spacer as={"hr"} my={3} />
+        <Container as={"section"} maxW={"container.md"} pos={"relative"}>
+          <Box as={"section"}>
+            <Spacer
+              as={"hr"}
+              my={3}
+              _light={{ borderColor: "rgb(0 0 0 / 0.1)" }}
+            />
             {post.preview && (
               <Image
                 src={post.preview}
@@ -208,7 +274,7 @@ export default function StoryPage({ post, latestPost }) {
             )}
             <Text
               as={"h1"}
-              fontSize={{ base: "3xl", sm: "4xl", lg: "5xl" }}
+              fontSize={{ base: "3xl", sm: "4xl" }}
               fontWeight={"black"}
             >
               {post.title}
@@ -217,23 +283,54 @@ export default function StoryPage({ post, latestPost }) {
               <Text marginRight={"auto"}>
                 {formatDateString({ input: post.date })}
               </Text>
-              <Button variant={"ghost"}>
-                <Icon h={"20px"} w={"20px"} as={TbShare} />
-              </Button>
+              <Popover isOpen={shareDisc.isOpen} onClose={shareDisc.onClose}>
+                <PopoverTrigger>
+                  <Button variant={"ghost"} onClick={shareDisc.onOpen}>
+                    <Icon h={"20px"} w={"20px"} as={TbShare} />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent w={"max-content"} border={"1px solid black"}>
+                  <PopoverArrow bg={"black"} boxShadow={"0 !important"} />
+                  <PopoverBody
+                    bg={"black"}
+                    color={"white"}
+                    fontFamily={"serif"}
+                  >
+                    <Text>Successfully copied!</Text>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
             </HStack>
-            <Spacer as={"hr"} my={3} />
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={ChakraUIRenderer(newTheme)}
-            >
-              {post.content}
-            </ReactMarkdown>
+            <Spacer
+              as={"hr"}
+              my={3}
+              _light={{ borderColor: "rgb(0 0 0 / 0.1)" }}
+            />
+            <Box w={"full"} fontFamily={"serif"}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={ChakraUIRenderer(newTheme)}
+              >
+                {post.content}
+              </ReactMarkdown>
+            </Box>
           </Box>
-          <Spacer as={"hr"} mt={24} mb={10} />
-          <Heading as={"h5"} fontSize={"2xl"}>
-            Read another story
-          </Heading>
-          <LatestPost data={latestPost} />
+          {latestPost?.length > 0 && (
+            <>
+              <Spacer
+                as={"hr"}
+                mt={24}
+                mb={10}
+                _light={{ borderColor: "rgb(0 0 0 / 0.1)" }}
+              />
+              <VStack as={"section"} alignItems={"flex-start"}>
+                <Heading as={"h5"} fontSize={"2xl"}>
+                  More of my story
+                </Heading>
+                <LatestPost data={latestPost} />
+              </VStack>
+            </>
+          )}
         </Container>
       </Box>
     </Layout>
