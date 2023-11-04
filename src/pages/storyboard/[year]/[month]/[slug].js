@@ -151,9 +151,6 @@ for (let i = 1; i <= 6; i++) {
 export default function StoryPage({ post, latestPost }) {
   const shareDisc = useDisclosure();
   const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
   const getFullUrl = (url) => {
     if (url.match(/^\//g)) {
       return router.basePath + url;
@@ -174,6 +171,10 @@ export default function StoryPage({ post, latestPost }) {
       clearTimeout(timer);
     };
   }, [shareDisc.isOpen]);
+
+  if (!router.isFallback && !post?.slug) {
+    return <ErrorPage statusCode={404} />;
+  }
 
   return (
     <Layout title={post.title}>
@@ -198,7 +199,7 @@ export default function StoryPage({ post, latestPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg"
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -218,7 +219,7 @@ export default function StoryPage({ post, latestPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg"
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
