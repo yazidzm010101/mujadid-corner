@@ -95,7 +95,7 @@ function PostList({ data }) {
         {data?.map((item, i) => (
           <Flex
             as={NextLink}
-            href={`/storyboard/${item.slug}`}
+            href={`/storyboard/${item.year}/${item.month}/${item.slug}`}
             key={i}
             flexDirection={"column"}
             w={{ base: "full", md: "50%", lg: "33.33%" }}
@@ -110,14 +110,14 @@ function PostList({ data }) {
             >
               <>
                 <Image
-                  src={getFullUrl(item.coverImage)}
+                  src={getFullUrl(item.preview)}
                   alt={item.title}
                   filter={"blur(20px)"}
                   transform={"scale(1.5)"}
                   rounded={"xl"}
                 />
                 <Image
-                  src={getFullUrl(item.coverImage)}
+                  src={getFullUrl(item.preview)}
                   alt={item.title}
                   objectFit={"contain !important"}
                   rounded={"xl"}

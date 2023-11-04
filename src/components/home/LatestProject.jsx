@@ -23,7 +23,7 @@ import NextLink from "next/link";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
-function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
+function Project({ preview, title, icon, description, demoURL, repoURL }) {
   const ref = useRef(null);
 
   const router = useRouter();
@@ -198,7 +198,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               <>
                 <Image
                   filter={"brightness(0.95)"}
-                  src={getFullUrl(coverImage)}
+                  src={getFullUrl(preview)}
                   alt={title}
                 />
                 {(demoURL || repoURL) && (
@@ -291,7 +291,7 @@ function Project({ coverImage, title, icon, excerpt, demoURL, repoURL }) {
               color={"gray.600"}
               _dark={{ color: "gray.400" }}
             >
-              {excerpt}
+              {description}
             </Text>
           </Box>
         </Stack>

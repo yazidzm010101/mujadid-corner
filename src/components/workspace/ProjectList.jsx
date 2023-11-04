@@ -128,7 +128,7 @@ function ProjectList({ data }) {
                 transition={".2s all ease-in-out"}
               >
                 <>
-                  <Image src={getFullUrl(item.coverImage)} alt={item.title} />
+                  <Image src={getFullUrl(item.preview)} alt={item.title} />
                   <Box
                     bgGradient={"linear(to-t, gray.200, transparent 20%)"}
                     _dark={{
@@ -178,7 +178,7 @@ function ProjectList({ data }) {
                   _dark={{ color: "gray.300" }}
                   noOfLines={2}
                 >
-                  {item.excerpt}
+                  {item.description}
                 </Text>
               </HStack>
             </VStack>

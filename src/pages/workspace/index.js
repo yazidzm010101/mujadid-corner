@@ -14,7 +14,7 @@ import { useRef, useState } from "react";
 import Cloud from "@/assets/Cloud";
 import Layout from "@/components/Layout";
 import ProjectList from "@/components/workspace/ProjectList";
-import { getAllProjects } from "@/lib/getProject";
+import { getAllProjects } from "@/lib/fetchWork";
 import style from "@/styles/greeting.module.css";
 import { useRouter } from "next/router";
 
@@ -23,14 +23,14 @@ export function getStaticProps({ params }) {
     "title",
     "date",
     "slug",
-    "coverImage",
+    "preview",
     "gallery",
-    "tools",
+    "tags",
     "icon",
     "demoURL",
     "repoURL",
     "content",
-    "excerpt",
+    "description",
   ]);
 
   return {

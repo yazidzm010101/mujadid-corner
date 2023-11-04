@@ -13,16 +13,16 @@ import GalleryList from "@/components/artscape/GalleryList";
 import Layout from "@/components/Layout";
 import MotionBox from "@/components/MotionBox";
 import Scribble from "@/assets/Scribble";
-import { getAllGallery } from "@/lib/getGallery";
+import { getAllArts } from "@/lib/fetchArt";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
 export function getStaticProps({ params }) {
-  const allGallery = getAllGallery([
+  const allGallery = getAllArts([
     "title",
     "date",
     "slug",
-    "coverImage",
+    "preview",
     "toolIcon",
   ]);
 

@@ -3,23 +3,24 @@ import {
   getAllProjects,
   getLatestProjects,
   getProjectBySlug,
-} from "@/lib/getProject";
+} from "@/lib/fetchWork";
 
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import CodeBlock from "@/components/CodeBlock";
 import ErrorPage from "next/error";
 import Layout from "@/components/Layout";
 import ReactMarkdown from "react-markdown";
+import { getSingleArt } from "@/lib/getGallery";
 import remarkGfm from "remark-gfm";
 import { useRouter } from "next/router";
 
 export async function getStaticProps({ params }) {
-  const project = getProjectBySlug(params.slug, [
+  const project = getSingleArt(params, [
     "title",
     "date",
     "slug",
     "content",
-    "coverImage",
+    "preview",
   ]);
   const latestProjects = getLatestProjects(["slug", "title", "date"]);
 
@@ -74,9 +75,9 @@ export default function Project({ project }) {
           >
             {project.title}
           </Text>
-          {project.coverImage && (
+          {project.preview && (
             <Image
-              src={project.coverImage}
+              src={project.preview}
               w={"full"}
               alt={project.title}
               rounded={"lg"}

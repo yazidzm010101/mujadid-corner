@@ -1,0 +1,72 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "Publishing date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Content preview",
+          "name": "preview",
+          "type": "image"
+        },
+        {
+          "title": "Is in draft",
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Categories",
+          "name": "categories",
+          "type": "categories"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.id": "next",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.preview.host": "http://localhost:3000",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "artscape",
+      "path": "[[workspace]]/_data/artscape",
+      "previewPath": "/artscape",
+      "contentTypes": ["artscape"]
+    },
+    {
+      "title": "workspace",
+      "path": "[[workspace]]/_data/workspace",
+      "previewPath": "/workspace",
+      "contentTypes": ["workspace"]
+    },
+    {
+      "title": "storyboard",
+      "path": "[[workspace]]/_data/storyboard",
+      "previewPath": "/storyboard/{{year}}/{{month}}",
+      "contentTypes": ["posts"]
+    }
+  ]
+}

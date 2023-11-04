@@ -14,35 +14,32 @@ import LatestGallery from "@/components/home/LatestGallery";
 import LatestPost from "@/components/home/LatestPost";
 import LatestProject from "@/components/home/LatestProject";
 import Layout from "@/components/Layout";
-import { getLatestGallery } from "@/lib/getGallery";
-import { getLatestPost } from "@/lib/getPost";
-import { getLatestProjects } from "@/lib/getProject";
+import { getLatestArts } from "@/lib/fetchArt";
+import { getLatestPost } from "@/lib/fetchStory";
+import { getLatestProjects } from "@/lib/fetchWork";
 
 export function getStaticProps({ params }) {
   const latestPost = getLatestPost([
     "title",
     "date",
     "slug",
-    "coverImage",
-    "excerpt",
+    "preview",
+    "description",
   ]);
   const latestProjects = getLatestProjects([
     "title",
     "date",
     "slug",
-    "coverImage",
-    "excerpt",
+    "preview",
+    "description",
     "icon",
     "demoURL",
     "repoURL",
   ]);
-  const latestGallery = getLatestGallery([
-    "title",
-    "date",
-    "slug",
-    "coverImage",
-    "toolIcon",
-  ]);
+  const latestGallery = getLatestArts(
+    ["title", "date", "slug", "preview", "toolIcon"],
+    6
+  );
 
   return {
     props: { latestPost, latestProjects, latestGallery },

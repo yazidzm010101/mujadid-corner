@@ -13,7 +13,7 @@ import { useScroll, useTransform } from "framer-motion";
 import Cloud from "@/assets/Cloud";
 import Layout from "@/components/Layout";
 import PostList from "@/components/storyboard/PostList";
-import { getAllPosts } from "@/lib/getPost";
+import { getAllPosts } from "@/lib/fetchStory";
 import style from "@/styles/greeting.module.css";
 import { useRef } from "react";
 import { useRouter } from "next/router";
@@ -22,8 +22,10 @@ export function getStaticProps({ params }) {
   const allPost = getAllPosts([
     "title",
     "date",
+    "year",
+    "month",
     "slug",
-    "coverImage",
+    "preview",
     "toolIcon",
   ]);
 
@@ -32,7 +34,7 @@ export function getStaticProps({ params }) {
   };
 }
 
-function GalleryPage({ allPost }) {
+function StoryboardPage({ allPost }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll();
   const yMove = useTransform(scrollYProgress, [0, 0.5], [40, 0]);
@@ -157,4 +159,4 @@ function GalleryPage({ allPost }) {
   );
 }
 
-export default GalleryPage;
+export default StoryboardPage;

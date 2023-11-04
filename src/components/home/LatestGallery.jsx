@@ -13,10 +13,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import WaveAlt from "@/assets/WaveAlt";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import NextLink from "next/link";
+import WaveAlt from "@/assets/WaveAlt";
+import { useRouter } from "next/router";
 
 function LatestGallery({ data }) {
   const router = useRouter();
@@ -150,16 +150,16 @@ function LatestGallery({ data }) {
               boxShadow={"0 2rem 2rem 0.15rem rgb(0 0 0 / 0.2)"}
               rounded={"xl"}
               overflow={"hidden"}
-              cursor={"pointer"}
+              // cursor={"pointer"}
               bg={"white"}
             >
               <>
                 <Image
-                  src={getFullUrl(item.coverImage)}
+                  src={getFullUrl(item.preview)}
                   alt={item.title}
                   rounded={"xl"}
-                  _hover={{ transform: "scale(1.1)" }}
-                  transition={"all .2s ease-in-out"}
+                  // _hover={{ transform: "scale(1.1)" }}
+                  // transition={"all .2s ease-in-out"}
                 />
                 <VStack
                   top={"unset !important"}

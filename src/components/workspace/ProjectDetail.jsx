@@ -72,7 +72,7 @@ const newTheme = {
   code: ({ ...props }) => <CodeBlock {...props} />,
 };
 
-const toolsMap = {
+const tagsMap = {
   Laravel: FaLaravel,
   jQuery: SiJquery,
   SCSS: TbBrandSass,
@@ -145,7 +145,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
 
   useEffect(() => {
     if (isOpen) {
-      let currGallery = [{ name: data.title, image: data.coverImage }];
+      let currGallery = [{ name: data.title, image: data.preview }];
       if (data?.gallery) {
         currGallery = data.gallery;
       }
@@ -244,7 +244,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
               color={"gray.600"}
               _dark={{ color: "gray.400" }}
             >
-              {data?.excerpt}
+              {data?.description}
             </Text>
             {data?.date && (
               <Text color={"gray.500"} _dark={{ color: "gray.500" }}>
@@ -253,7 +253,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
             )}
           </VStack>
 
-          {data?.tools && (
+          {data?.tags && (
             <HStack
               w={"full"}
               alignItems={"stretch"}
@@ -262,9 +262,9 @@ function ProjectDetail({ isOpen, onClose, data }) {
               py={4}
               spacing={4}
             >
-              {data.tools.map((item, i) => (
+              {data.tags.map((item, i) => (
                 <HStack key={i} minH={4} flexShrink={0}>
-                  {toolsMap[item] && <Icon w={4} h={4} as={toolsMap[item]} />}
+                  {tagsMap[item] && <Icon w={4} h={4} as={tagsMap[item]} />}
                   <Text>{item}</Text>
                 </HStack>
               ))}

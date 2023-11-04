@@ -97,7 +97,7 @@ function GalleryList({ data }) {
             >
               <>
                 <Image
-                  src={getFullUrl(item.coverImage)}
+                  src={getFullUrl(item.preview)}
                   alt={item.title}
                   rounded={"xl"}
                   _hover={{ transform: "scale(1.1)" }}
@@ -166,7 +166,7 @@ function GalleryList({ data }) {
                   <Image
                     h={"full"}
                     objectFit={"contain"}
-                    src={item.coverImage}
+                    src={item.preview}
                     w={"full"}
                   />
                 </Box>
