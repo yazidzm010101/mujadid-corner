@@ -196,7 +196,7 @@ function GalleryList({ data }) {
                         variant={"ghost"}
                         onClick={() => {
                           setActive(
-                            active - 1 < 0 ? data.length - 1 : active - 1
+                            active - 1 < 0 ? data.length - 1 : active - 1,
                           );
                           setActiveHover(true);
                         }}

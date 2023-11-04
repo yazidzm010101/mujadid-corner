@@ -13,13 +13,13 @@ import { useScroll, useTransform } from "framer-motion";
 import Cloud from "@/assets/Cloud";
 import Layout from "@/components/Layout";
 import PostList from "@/components/storyboard/PostList";
-import { getAllPosts } from "@/lib/fetchStory";
+import { getAllStories } from "@/lib/fetchStory";
 import style from "@/styles/greeting.module.css";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
 export function getStaticProps({ params }) {
-  const allPost = getAllPosts([
+  const allPost = getAllStories([
     "title",
     "date",
     "year",
@@ -87,7 +87,7 @@ function StoryboardPage({ allPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",

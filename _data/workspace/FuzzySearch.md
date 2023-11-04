@@ -5,6 +5,11 @@ description: Implementasi fuzzy search pada katalog produk menggunakan interpola
 preview: "/images/project-fuzzysearch-commerce.png"
 icon: "/images/project-icon-fuzzysearch-commerce.png"
 demoURL: "https://yazidzm010101.github.io/fuzzysearch-commerce/"
+tags:
+  - Vite
+  - React.js
+  - ChakraUI
+  - ReactQuery
 ---
 
 Aplikasi ini merupakan reimplementasi dari topik yang saya angkat pada tugas akhir pendidikan S1 Teknik Informatika pada tahun 2021 di Gunadarma. Dimana pada saat itu saya menerapkan pencarian fuzzy pada sistem pendukung keputusan pemilihan tablet grafik menggunakan Android Studio (java), Express.js, MongoDB, React.js (Dashboard administrator), Puppeteer.js, Gitlab CI/CD, ParseHub dan Heroku untuk mengakomodir kebutuhan sebagai berikut:

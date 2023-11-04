@@ -1,28 +1,24 @@
 import { Box, Container, Image, Spacer, Text } from "@chakra-ui/react";
-import {
-  getAllProjects,
-  getLatestProjects,
-  getProjectBySlug,
-} from "@/lib/fetchWork";
+import { getAllPWorks, getLatestWorks } from "@/lib/fetchWork";
 
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import CodeBlock from "@/components/CodeBlock";
 import ErrorPage from "next/error";
 import Layout from "@/components/Layout";
 import ReactMarkdown from "react-markdown";
-import { getSingleArt } from "@/lib/getGallery";
+import { getSingleWork } from "@/lib/fetchWork";
 import remarkGfm from "remark-gfm";
 import { useRouter } from "next/router";
 
 export async function getStaticProps({ params }) {
-  const project = getSingleArt(params, [
+  const project = getSingleWork(params, [
     "title",
     "date",
     "slug",
     "content",
     "preview",
   ]);
-  const latestProjects = getLatestProjects(["slug", "title", "date"]);
+  const latestProjects = getLatestWorks(["slug", "title", "date"]);
 
   return {
     props: { project, latestProjects },
@@ -30,7 +26,8 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const projects = getAllProjects(["slug"]);
+  getLatestWorks;
+  const projects = getAllPWorks(["slug"]);
 
   return {
     paths: projects.map((project) => {

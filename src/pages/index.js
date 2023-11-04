@@ -15,18 +15,18 @@ import LatestPost from "@/components/home/LatestPost";
 import LatestProject from "@/components/home/LatestProject";
 import Layout from "@/components/Layout";
 import { getLatestArts } from "@/lib/fetchArt";
-import { getLatestPost } from "@/lib/fetchStory";
-import { getLatestProjects } from "@/lib/fetchWork";
+import { getLatestStories } from "@/lib/fetchStory";
+import { getLatestWorks } from "@/lib/fetchWork";
 
 export function getStaticProps({ params }) {
-  const latestPost = getLatestPost([
+  const latestPost = getLatestStories([
     "title",
     "date",
     "slug",
     "preview",
     "description",
   ]);
-  const latestProjects = getLatestProjects([
+  const latestProjects = getLatestWorks([
     "title",
     "date",
     "slug",
@@ -38,7 +38,7 @@ export function getStaticProps({ params }) {
   ]);
   const latestGallery = getLatestArts(
     ["title", "date", "slug", "preview", "toolIcon"],
-    6
+    6,
   );
 
   return {

@@ -19,26 +19,35 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
 import {
   BiChevronLeft,
   BiChevronRight,
   BiCode,
   BiZoomIn,
 } from "react-icons/bi";
-import { BsBootstrap, BsX } from "react-icons/bs";
-import { useEffect, useRef, useState } from "react";
+import { BsX } from "react-icons/bs";
 
-import { CgDesktop } from "react-icons/cg";
-import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import CodeBlock from "../CodeBlock";
-import { FaLaravel } from "react-icons/fa";
-import ReactMarkdown from "react-markdown";
-import { SiJquery } from "react-icons/si";
-import { TbBrandSass } from "react-icons/tb";
 import { formatDateString } from "@/lib/textUtils";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
+import { useRouter } from "next/router";
+import { CgDesktop } from "react-icons/cg";
+import {
+  SiBootstrap,
+  SiChakraui,
+  SiCss3,
+  SiHtml5,
+  SiJavascript,
+  SiJquery,
+  SiLaravel,
+  SiReact,
+  SiSass,
+  SiVite,
+} from "react-icons/si";
+import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { useRouter } from "next/router";
+import CodeBlock from "../CodeBlock";
 
 const newTheme = {
   p: ({ children }) => (
@@ -73,10 +82,16 @@ const newTheme = {
 };
 
 const tagsMap = {
-  Laravel: FaLaravel,
+  Laravel: SiLaravel,
   jQuery: SiJquery,
-  SCSS: TbBrandSass,
-  Bootstrap: BsBootstrap,
+  SCSS: SiSass,
+  Bootstrap: SiBootstrap,
+  ChakraUI: SiChakraui,
+  "React.js": SiReact,
+  Vite: SiVite,
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  Javascript: SiJavascript,
 };
 
 function ProjectDetail({ isOpen, onClose, data }) {
@@ -102,7 +117,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
     if (target?.scrollWidth > target?.offsetWidth) {
       setLeftNavShown(target.scrollLeft > 0);
       setRightNavShown(
-        target.scrollLeft + target.offsetWidth < target.scrollWidth
+        target.scrollLeft + target.offsetWidth < target.scrollWidth,
       );
     } else {
       setLeftNavShown(false);
@@ -414,7 +429,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery - 1 < 0
                                       ? gallery.length - 1
-                                      : activeGallery - 1
+                                      : activeGallery - 1,
                                   );
                                   setActiveGalleryHover(true);
                                 }}
@@ -450,7 +465,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery + 1 >= gallery.length
                                       ? 0
-                                      : activeGallery + 1
+                                      : activeGallery + 1,
                                   );
                                   setActiveGalleryHover(true);
                                 }}

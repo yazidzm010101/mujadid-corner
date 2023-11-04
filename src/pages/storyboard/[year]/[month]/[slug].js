@@ -4,13 +4,18 @@ import {
   Button,
   Container,
   HStack,
+  Heading,
   Icon,
   Image,
   Link,
   Spacer,
   Text,
 } from "@chakra-ui/react";
-import { getAllPosts, getLatestPost, getSinglePost } from "@/lib/fetchStory";
+import {
+  getAllStories,
+  getLatestStories,
+  getSingleStory,
+} from "@/lib/fetchStory";
 
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import CodeBlock from "@/components/CodeBlock";
@@ -21,9 +26,11 @@ import { TbShare } from "react-icons/tb";
 import { formatDateString } from "@/lib/textUtils";
 import remarkGfm from "remark-gfm";
 import { useRouter } from "next/router";
+import PostList from "@/components/storyboard/PostList";
+import LatestPost from "@/components/storyboard/LatestPost";
 
 export async function getStaticProps({ params }) {
-  const post = getSinglePost(params, [
+  const post = getSingleStory(params, [
     "title",
     "date",
     "slug",
@@ -31,7 +38,12 @@ export async function getStaticProps({ params }) {
     "content",
     "preview",
   ]);
-  const latestPost = getLatestPost(["slug", "title", "date"]);
+  const latestPost = getLatestStories([
+    "slug",
+    "title",
+    "date",
+    "preview",
+  ]).filter(({ slug }) => slug != params.slug);
 
   return {
     props: { post, latestPost },
@@ -39,7 +51,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug", "date"]);
+  const posts = getAllStories(["slug", "date"]);
   const paths = posts.map((post) => {
     return {
       params: {
@@ -89,7 +101,7 @@ const newTheme = {
   code: ({ ...props }) => <CodeBlock {...props} />,
 };
 
-export default function StoryPage({ post }) {
+export default function StoryPage({ post, latestPost }) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -124,7 +136,7 @@ export default function StoryPage({ post }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -144,7 +156,7 @@ export default function StoryPage({ post }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -217,6 +229,11 @@ export default function StoryPage({ post }) {
               {post.content}
             </ReactMarkdown>
           </Box>
+          <Spacer as={"hr"} mt={24} mb={10} />
+          <Heading as={"h5"} fontSize={"2xl"}>
+            Read another story
+          </Heading>
+          <LatestPost data={latestPost} />
         </Container>
       </Box>
     </Layout>

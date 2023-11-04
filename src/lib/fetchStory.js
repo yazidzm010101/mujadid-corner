@@ -6,12 +6,12 @@ import { utcToZonedTime } from "date-fns-tz";
 const postsDirectory = join(process.cwd(), "_data/storyboard");
 
 // this function wiill get all markdown file list
-export function getPostSlugs() {
+export function getStoryboardSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
 // this function parse graymatter by defining exposed fields
-export function getPostGraymatters(filename, fields) {
+export function getStoryboardGraymatter(filename, fields) {
   const realSlug = filename.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -44,38 +44,38 @@ export function getPostGraymatters(filename, fields) {
 }
 
 // return all markdown and parse it
-export function getAllPosts(fields) {
-  const slugs = getPostSlugs();
+export function getAllStories(fields) {
+  const slugs = getStoryboardSlugs();
   const posts = slugs
-    .map((slug) => getPostGraymatters(slug, fields))
+    .map((slug) => getStoryboardGraymatter(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) =>
-      new Date(post1.date) > new Date(post2.date) ? -1 : 1
+      new Date(post1.date) > new Date(post2.date) ? -1 : 1,
     );
   return posts;
 }
 
 // return latest 4 markdown and parse it
-export function getLatestPost(fields, maxLength = 4) {
-  const slugs = getPostSlugs();
+export function getLatestStories(fields, maxLength = 4) {
+  const slugs = getStoryboardSlugs();
   const posts = slugs
-    .map((slug) => getPostGraymatters(slug, fields))
+    .map((slug) => getStoryboardGraymatter(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) =>
-      new Date(post1.date) > new Date(post2.date) ? -1 : 1
+      new Date(post1.date) > new Date(post2.date) ? -1 : 1,
     );
   return posts.slice(0, maxLength);
 }
 
 // find Post by Slug name
-export function getSinglePost({ slug, year, month }, fields) {
+export function getSingleStory({ slug, year, month }, fields) {
   if (slug && year && month) {
-    const allPost = getAllPosts(fields);
+    const allPost = getAllStories(fields);
     const currPost = allPost.find(
       (post) =>
         post.slug == slug &&
         Number(post.year) == Number(year) &&
-        Number(post.month) == Number(month)
+        Number(post.month) == Number(month),
     );
     return currPost;
   }

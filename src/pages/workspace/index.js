@@ -14,12 +14,12 @@ import { useRef, useState } from "react";
 import Cloud from "@/assets/Cloud";
 import Layout from "@/components/Layout";
 import ProjectList from "@/components/workspace/ProjectList";
-import { getAllProjects } from "@/lib/fetchWork";
+import { getAllPWorks } from "@/lib/fetchWork";
 import style from "@/styles/greeting.module.css";
 import { useRouter } from "next/router";
 
 export function getStaticProps({ params }) {
-  const allProjects = getAllProjects([
+  const allProjects = getAllPWorks([
     "title",
     "date",
     "slug",
@@ -90,7 +90,7 @@ function WorkspacePage({ allProjects }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-204.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",

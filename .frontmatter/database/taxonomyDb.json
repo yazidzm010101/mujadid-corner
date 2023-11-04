@@ -1,1 +1,6 @@
-{"taxonomy":{"tags":[],"categories":[]}}
+{
+  "taxonomy": {
+    "tags": ["ChakraUI", "IndexedDB", "React.js", "ReactQuery", "Vite"],
+    "categories": []
+  }
+}

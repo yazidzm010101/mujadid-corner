@@ -50,7 +50,7 @@ export function getAllArts(fields) {
     .map((slug) => getArtGraymatter(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) =>
-      new Date(post1.date).getTime() > new Date(post2.date).getTime() ? -1 : 1
+      new Date(post1.date).getTime() > new Date(post2.date).getTime() ? -1 : 1,
     );
   return posts;
 }
@@ -62,14 +62,14 @@ export function getLatestArts(fields, maxLength = 4) {
     .map((slug) => getArtGraymatter(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) =>
-      new Date(post1.date).getTime() > new Date(post2.date).getTime() ? -1 : 1
+      new Date(post1.date).getTime() > new Date(post2.date).getTime() ? -1 : 1,
     );
   return posts.slice(0, maxLength);
 }
 
 // find Post by Slug name
 export function getSingleArt({ slug }, fields) {
-  if (slug && year && month) {
+  if (slug) {
     const allPost = getAllArts(fields);
     const currPost = allPost.find((post) => post.slug == slug);
     return currPost;
