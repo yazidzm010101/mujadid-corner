@@ -2,7 +2,7 @@
 title: Menyulap Lockcreen KDE Plasma menjadi seperti Gnome
 date: 2023-11-04
 description: Langkah-langkah memodifikasi layout lockscreen KDE Plasma
-preview: https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/storyboard_images%2Fcustomize_kde_locskcreen_preview.jpg
+preview: https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/storyboard_images%2Fcustomize_kde_locskcreen_preview.jpg&alt=media
 tags:
   - Linux
   - KDE Plasma
