@@ -11,7 +11,7 @@ export function formatDateString({ input, isRelative, locale = "enUS" }) {
   const localeModule = localeConfig[locale.replace(/[^a-zA-Z0-9 ]/g, "")];
 
   if (isRelative) {
-    return formatDistance(timedZone, new Date(), {
+    return formatDistance(timedZone, utcToZonedTime(new Date()), {
       locale: localeModule,
       includeSeconds: false,
       addSuffix:
