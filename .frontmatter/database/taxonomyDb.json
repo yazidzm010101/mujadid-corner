@@ -1,6 +1,28 @@
 {
   "taxonomy": {
-    "tags": ["ChakraUI", "IndexedDB", "React.js", "ReactQuery", "Vite"],
+    "tags": [
+      "Android",
+      "Bioconda",
+      "Bootstrap",
+      "CSS",
+      "ChakraUI",
+      "Conda",
+      "Flutter",
+      "HTML",
+      "IndexedDB",
+      "Javascript",
+      "Jupyter Notebook",
+      "KDE Plasma",
+      "Laravel",
+      "Linux",
+      "Python",
+      "React.js",
+      "ReactQuery",
+      "SCSS",
+      "Vite",
+      "aos.css",
+      "jQuery"
+    ],
     "categories": []
   }
 }

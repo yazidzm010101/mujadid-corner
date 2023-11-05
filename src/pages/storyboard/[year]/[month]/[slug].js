@@ -199,7 +199,7 @@ export default function StoryPage({ post, latestPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -219,7 +219,7 @@ export default function StoryPage({ post, latestPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg"
+              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg",
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",

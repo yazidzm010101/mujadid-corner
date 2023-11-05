@@ -1,6 +1,6 @@
 ---
 title: Menyulap Lockcreen KDE Plasma menjadi seperti Gnome
-date: 2023-11-05
+date: 2023-11-04
 description: Langkah-langkah memodifikasi layout lockscreen KDE Plasma
 preview: https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/storyboard_images%2Fcustomize_kde_locskcreen_preview.jpg?alt=media
 tags:
@@ -421,4 +421,6 @@ Untuk bagian ini kita ubah NumberAnimation nya yang pake parameter property (sin
 
 ![KDE Plasma Lockscreen Modified - Fedora KDE 38-1.6](https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/storyboard_images%2Fcustomize_kde_locskcreen-kde_lockscreen_modified.gif?alt=media)
 
-Nah, kurang lebih gitu mayan panjang tapi mayan ada hal baru yg gw pelajarin tentang QML di KDE Plasma. Moga bisa ngebuat hari agan agak cerah tiap afk dari linuxnya yaa hehe 😏
+Nah, kurang lebih gitu mayan panjang tapi mayan ada hal baru yg gw pelajarin tentang QML di KDE Plasma. Moga bisa ngebuat hari agan agak cerah tiap afk dari linuxnya yaa hehe 😏.
+
+~ Yazid

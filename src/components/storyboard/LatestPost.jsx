@@ -33,7 +33,7 @@ function LatestPost({ data }) {
     <Stack
       pos={"relative"}
       margin={"0 auto"}
-      w={"calc(100% + 4rem)"}
+      w={"calc(100% + 3rem)"}
       mx={-6}
       maxW={"container.xl"}
       flexDirection={"row"}

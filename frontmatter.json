@@ -1,10 +1,32 @@
 {
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "next",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.preview.host": "http://localhost:3000",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "artscape",
+      "path": "[[workspace]]/_data/artscape",
+      "previewPath": "/artscape",
+      "contentTypes": ["artscape"]
+    },
+    {
+      "title": "workspace",
+      "path": "[[workspace]]/_data/workspace",
+      "previewPath": "/workspace",
+      "contentTypes": ["workspace"]
+    },
+    {
+      "title": "storyboard",
+      "path": "[[workspace]]/_data/storyboard",
+      "previewPath": "/storyboard/{{year}}/{{month}}",
+      "contentTypes": ["posts"]
+    }
+  ],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",
       "pageBundle": false,
-      "previewPath": null,
       "fields": [
         {
           "title": "Title",
@@ -31,7 +53,7 @@
         {
           "title": "Is in draft",
           "name": "draft",
-          "type": "draft"
+          "type": "boolean"
         },
         {
           "title": "Tags",
@@ -44,29 +66,32 @@
           "type": "categories"
         }
       ]
-    }
-  ],
-  "frontMatter.framework.id": "next",
-  "frontMatter.content.publicFolder": "public",
-  "frontMatter.preview.host": "http://localhost:3000",
-  "frontMatter.content.pageFolders": [
-    {
-      "title": "artscape",
-      "path": "[[workspace]]/_data/artscape",
-      "previewPath": "/artscape",
-      "contentTypes": ["artscape"]
     },
     {
-      "title": "workspace",
-      "path": "[[workspace]]/_data/workspace",
-      "previewPath": "/workspace",
-      "contentTypes": ["workspace"]
-    },
-    {
-      "title": "storyboard",
-      "path": "[[workspace]]/_data/storyboard",
-      "previewPath": "/storyboard/{{year}}/{{month}}",
-      "contentTypes": ["posts"]
+      "name": "art",
+      "pageBundle": false,
+      "fields": [
+        {
+          "title": "title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "date",
+          "name": "date",
+          "type": "datetime"
+        },
+        {
+          "title": "preview",
+          "name": "preview",
+          "type": "string"
+        },
+        {
+          "title": "toolIcon",
+          "name": "toolIcon",
+          "type": "string"
+        }
+      ]
     }
   ]
 }
