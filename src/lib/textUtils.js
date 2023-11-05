@@ -6,7 +6,8 @@ import { formatDistance, formatRelative } from "date-fns";
 export function formatDateString({ input, isRelative, locale = "enUS" }) {
   const date = new Date(input);
   const pattern = "EEEE, d MMM yyyy";
-  const timedZone = utcToZonedTime(date, "Asia/Jakarta");
+  // const timedZone = utcToZonedTime(date, "Asia/Jakarta");
+  const timedZone = new Date(date);
   const localeModule = localeConfig[locale.replace(/[^a-zA-Z0-9 ]/g, "")];
 
   if (isRelative) {
