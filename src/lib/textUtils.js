@@ -18,7 +18,6 @@ export function formatDateString({ input, isRelative, locale = "enUS" }) {
     });
   }
   return format(timedZone, pattern, {
-    timeZone: "Asia/Jakarta",
     locale: localeModule,
   });
 }
