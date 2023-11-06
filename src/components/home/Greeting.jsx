@@ -112,8 +112,8 @@ function Greeting() {
       <MotionBox
         px={4}
         pos={"absolute"}
-        filter={"blur(.2rem)"}
-        opacity={0.2}
+        filter={"blur(2rem)"}
+        opacity={0.5}
         userSelect={"none"}
         style={{
           y: y,
@@ -123,6 +123,7 @@ function Greeting() {
         }}
       >
         <Heading
+          fontWeight={"black"}
           as={"h1"}
           fontSize={{ base: "6xl", md: "7xl", lg: "8xl" }}
           textAlign={"center"}
