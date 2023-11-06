@@ -123,7 +123,6 @@ function Greeting() {
         }}
       >
         <Heading
-          fontWeight={"black"}
           as={"h1"}
           fontSize={{ base: "6xl", md: "7xl", lg: "8xl" }}
           textAlign={"center"}
