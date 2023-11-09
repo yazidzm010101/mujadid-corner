@@ -47,10 +47,13 @@ export function getStoryboardGraymatter(filename, fields) {
 export function getAllStories(fields) {
   const slugs = getStoryboardSlugs();
   const posts = slugs
-    .map((slug) => getStoryboardGraymatter(slug, fields))
+    .map((slug) => getStoryboardGraymatter(slug, [...fields, "draft"]))
     // sort posts by date in descending order
+    .filter((slug) => !slug.draft)
     .sort((post1, post2) =>
-      new Date(post1.date) > new Date(post2.date) ? -1 : 1,
+      new Date(post1.date) > new Date(post2.date) || !post1.hide_from_home
+        ? -1
+        : 1
     );
   return posts;
 }
@@ -59,11 +62,12 @@ export function getAllStories(fields) {
 export function getLatestStories(fields, maxLength = 4) {
   const slugs = getStoryboardSlugs();
   const posts = slugs
-    .map((slug) => getStoryboardGraymatter(slug, fields))
+    .map((slug) => getStoryboardGraymatter(slug, [...fields, "hide_from_home"]))
     // sort posts by date in descending order
-    .sort((post1, post2) =>
-      new Date(post1.date) > new Date(post2.date) ? -1 : 1,
-    );
+    .filter((slug) => !slug.hide_from_home && !slug.draft)
+    .sort((post1, post2) => {
+      new Date(post1.date) > new Date(post2.date) ? -1 : 1;
+    });
   return posts.slice(0, maxLength);
 }
 
@@ -75,7 +79,7 @@ export function getSingleStory({ slug, year, month }, fields) {
       (post) =>
         post.slug == slug &&
         Number(post.year) == Number(year) &&
-        Number(post.month) == Number(month),
+        Number(post.month) == Number(month)
     );
     return currPost;
   }
