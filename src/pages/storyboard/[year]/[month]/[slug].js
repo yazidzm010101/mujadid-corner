@@ -29,7 +29,7 @@ import CodeBlock from "@/components/CodeBlock";
 import ErrorPage from "next/error";
 import LatestPost from "@/components/storyboard/LatestPost";
 import Layout from "@/components/Layout";
-import PostList from "@/components/storyboard/PostList";
+import NextLink from "next/link";
 import ReactMarkdown from "react-markdown";
 import { TbShare } from "react-icons/tb";
 import { formatDateString } from "@/lib/textUtils";
@@ -118,6 +118,7 @@ let newTheme = {
   ),
   a: ({ href, children }) => (
     <Link
+      as={NextLink}
       fontWeight={"bold"}
       href={href}
       wordBreak={"break-word"}
@@ -199,7 +200,7 @@ export default function StoryPage({ post, latestPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-028.jpg"
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
@@ -219,7 +220,7 @@ export default function StoryPage({ post, latestPost }) {
         >
           <Image
             src={getFullUrl(
-              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg",
+              "https://fffuel.co/images/dddepth-preview/dddepth-056.jpg"
             )}
             style={{
               maskImage: "radial-gradient(black, transparent)",
