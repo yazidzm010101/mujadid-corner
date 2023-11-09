@@ -5,6 +5,7 @@ description: Habit Tracker terinspirasi dari Atomic Habit by James Clear, dibang
 preview: https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/project_images%2FScreenshot_20231109_112332.png?alt=media
 icon: "https://yazidzm010101.github.io/habit-tracker/habit-tracker.svg"
 demoURL: "https://yazidzm010101.github.io/habit-tracker/"
+repoURL: https://github.com/yazidzm010101/habit-tracker
 tags:
   - Vite
   - React.js
@@ -13,6 +14,7 @@ tags:
   - Redux-toolkit
   - Redux-thunk
   - IndexedDB
+  - PWA
 ---
 
 Setelah membaca AtomicHabit by James Clear, saya terinspirasi untuk membangun satu aplikasi sedernaha untuk memonitor kebiasaan saya sehari-hari. Saya menyadari banyak aspek di hidup saya yang masih belum terkendali dengan baik dengan terotomatisasinya kebiasaan-kebiasaan yang tidak baik. Goals/target dari proyek ini adalah menyediakan aplikasi dengan kriteria sebagai berikut:

@@ -5,6 +5,8 @@ description: Implementasi fuzzy search pada katalog produk menggunakan interpola
 preview: "/images/project-fuzzysearch-commerce.png"
 icon: "/images/project-icon-fuzzysearch-commerce.png"
 demoURL: "https://yazidzm010101.github.io/fuzzysearch-commerce/"
+repoURL: https://github.com/yazidzm010101/fuzzysearch-commerce
+
 tags:
   - Vite
   - React.js
