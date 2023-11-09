@@ -135,6 +135,28 @@ function ProjectList({ data }) {
                       bgGradient: "linear(to-t, teal.900, transparent 20%)",
                     }}
                   />
+                  {item.draft && (
+                    <Text
+                      bg={"gray.900"}
+                      color={"orange.400"}
+                      px={10}
+                      w={"max-content !important"}
+                      h={"max-content !important"}
+                      fontSize={{ base: "sm", lg: "md" }}
+                      fontWeight={"bold"}
+                      transformOrigin={"center !important"}
+                      transform={
+                        "translate(30%, 120%) rotate(45deg) !important"
+                      }
+                      pos={"absolute"}
+                      top={"0 !important"}
+                      left={"unset !important"}
+                      bottom={"unset !important"}
+                      right={"2 !important"}
+                    >
+                      Development
+                    </Text>
+                  )}
                   {item.icon && (
                     <Image
                       src={getFullUrl(item.icon)}

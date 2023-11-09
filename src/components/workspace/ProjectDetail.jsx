@@ -275,10 +275,16 @@ function ProjectDetail({ isOpen, onClose, data }) {
             >
               {data?.description}
             </Text>
-            {data?.date && (
+            {data?.draft ? (
+              <Text color={"orange.500"} _dark={{ color: "orange.500" }}>
+                On Development
+              </Text>
+            ) : data?.date ? (
               <Text color={"gray.500"} _dark={{ color: "gray.500" }}>
                 {formatDateString({ input: data?.date })}
               </Text>
+            ) : (
+              ""
             )}
           </VStack>
 
