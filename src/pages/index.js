@@ -35,10 +35,12 @@ export function getStaticProps({ params }) {
     "icon",
     "demoURL",
     "repoURL",
+    "tags",
+    "draft",
   ]);
   const latestGallery = getLatestArts(
     ["title", "date", "slug", "preview", "toolIcon"],
-    6,
+    6
   );
 
   return {

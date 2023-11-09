@@ -12,18 +12,66 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import {
+  SiAnaconda,
+  SiAndroidstudio,
+  SiBootstrap,
+  SiChakraui,
+  SiCss3,
+  SiFirebase,
+  SiHtml5,
+  SiJavascript,
+  SiJquery,
+  SiJupyter,
+  SiLaravel,
+  SiMysql,
+  SiPython,
+  SiReact,
+  SiSass,
+  SiVite,
+} from "react-icons/si";
 import { useScroll, useTransform } from "framer-motion";
 
 import { BiCode } from "react-icons/bi";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { CgDesktop } from "react-icons/cg";
 import Dots from "@/assets/Dots";
+import { FaJava } from "react-icons/fa";
 import MotionBox from "@/components/MotionBox";
 import NextLink from "next/link";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
-function Project({ preview, title, icon, description, demoURL, repoURL }) {
+const tagsMap = {
+  Laravel: SiLaravel,
+  jQuery: SiJquery,
+  SCSS: SiSass,
+  Bootstrap: SiBootstrap,
+  ChakraUI: SiChakraui,
+  "React.js": SiReact,
+  Vite: SiVite,
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  Python: SiPython,
+  Javascript: SiJavascript,
+  "Jupyter Notebook": SiJupyter,
+  Conda: SiAnaconda,
+  MySQL: SiMysql,
+  "Android Studio": SiAndroidstudio,
+  Java: FaJava,
+  Firebase: SiFirebase,
+};
+
+function Project({
+  preview,
+  title,
+  icon,
+  description,
+  demoURL,
+  repoURL,
+  tags,
+  draft,
+}) {
   const ref = useRef(null);
 
   const router = useRouter();
@@ -42,7 +90,7 @@ function Project({ preview, title, icon, description, demoURL, repoURL }) {
   const backdropOpacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75],
-    [0, 1, 1, 0],
+    [0, 1, 1, 0]
   );
 
   return (
@@ -248,6 +296,27 @@ function Project({ preview, title, icon, description, demoURL, repoURL }) {
                     )}
                   </VStack>
                 )}
+
+                {draft && (
+                  <Text
+                    bg={"gray.900"}
+                    color={"orange.400"}
+                    px={10}
+                    w={"max-content !important"}
+                    h={"max-content !important"}
+                    fontSize={{ base: "sm", lg: "md" }}
+                    fontWeight={"bold"}
+                    transformOrigin={"center !important"}
+                    transform={"translate(30%, 120%) rotate(45deg) !important"}
+                    pos={"absolute"}
+                    top={"0 !important"}
+                    left={"unset !important"}
+                    bottom={"unset !important"}
+                    right={"2 !important"}
+                  >
+                    Development
+                  </Text>
+                )}
               </>
             </AspectRatio>
             <Image
@@ -293,6 +362,30 @@ function Project({ preview, title, icon, description, demoURL, repoURL }) {
             >
               {description}
             </Text>
+            <HStack
+              maxW={500}
+              data-aos={"scale-fade-up"}
+              borderTop={"1px"}
+              borderColor={"gray.300"}
+              w={"full"}
+              alignItems={"stretch"}
+              flexWrap={"wrap"}
+              mt={4}
+              py={4}
+              spacing={4}
+              color={"gray.600"}
+              _dark={{
+                color: "gray.400",
+                borderColor: "gray.600",
+              }}
+            >
+              {tags?.map((tag, i) => (
+                <HStack key={i} minH={4} flexShrink={0}>
+                  {tagsMap[tag] && <Icon w={4} h={4} as={tagsMap[tag]} />}
+                  <Text>{tag}</Text>
+                </HStack>
+              ))}
+            </HStack>
           </Box>
         </Stack>
       </Container>

@@ -19,38 +19,42 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
 import {
   BiChevronLeft,
   BiChevronRight,
   BiCode,
   BiZoomIn,
 } from "react-icons/bi";
-import { BsX } from "react-icons/bs";
-
-import { formatDateString } from "@/lib/textUtils";
-import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import { useRouter } from "next/router";
-import { CgDesktop } from "react-icons/cg";
 import {
   SiAnaconda,
+  SiAndroidstudio,
   SiBootstrap,
   SiChakraui,
   SiCss3,
+  SiFirebase,
   SiHtml5,
   SiJavascript,
   SiJquery,
   SiJupyter,
   SiLaravel,
+  SiMysql,
   SiPython,
   SiReact,
   SiSass,
   SiVite,
 } from "react-icons/si";
+import { useEffect, useRef, useState } from "react";
+
+import { BsX } from "react-icons/bs";
+import { CgDesktop } from "react-icons/cg";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
+import CodeBlock from "../CodeBlock";
+import { FaJava } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
+import { formatDateString } from "@/lib/textUtils";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import CodeBlock from "../CodeBlock";
+import { useRouter } from "next/router";
 
 const newTheme = {
   p: ({ children }) => (
@@ -98,6 +102,10 @@ const tagsMap = {
   Javascript: SiJavascript,
   "Jupyter Notebook": SiJupyter,
   Conda: SiAnaconda,
+  MySQL: SiMysql,
+  "Android Studio": SiAndroidstudio,
+  Java: FaJava,
+  Firebase: SiFirebase,
 };
 
 function ProjectDetail({ isOpen, onClose, data }) {
@@ -123,7 +131,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
     if (target?.scrollWidth > target?.offsetWidth) {
       setLeftNavShown(target.scrollLeft > 0);
       setRightNavShown(
-        target.scrollLeft + target.offsetWidth < target.scrollWidth,
+        target.scrollLeft + target.offsetWidth < target.scrollWidth
       );
     } else {
       setLeftNavShown(false);
@@ -435,7 +443,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery - 1 < 0
                                       ? gallery.length - 1
-                                      : activeGallery - 1,
+                                      : activeGallery - 1
                                   );
                                   setActiveGalleryHover(true);
                                 }}
@@ -471,7 +479,7 @@ function ProjectDetail({ isOpen, onClose, data }) {
                                   setActiveGallery(
                                     activeGallery + 1 >= gallery.length
                                       ? 0
-                                      : activeGallery + 1,
+                                      : activeGallery + 1
                                   );
                                   setActiveGalleryHover(true);
                                 }}

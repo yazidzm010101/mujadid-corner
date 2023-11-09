@@ -1,6 +1,6 @@
 ---
 title: 2020 Laboratory Survey Monitoring
-date: 2020-01-04
+date: 2020-06-15
 description: Web application for laboratory revenue survey monitoring at 2020
 preview: https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/project_images%2Fpowernet-iqvia%2Fscreenshot-localhost_8000-2023.10.18-07_28_45.png?alt=media
 icon: https://powernet.co.id/assets/img/favicon.png
@@ -9,7 +9,6 @@ tags:
   - Bootstrap
   - SCSS
   - jQuery
-  - aos.css
 gallery:
   - name: Laboratory List
     image: https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/o/project_images%2Fpowernet-iqvia%2Fscreenshot-localhost_8000-2023.10.18-07_29_52.png?alt=media

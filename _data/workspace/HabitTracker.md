@@ -6,6 +6,7 @@ preview: https://firebasestorage.googleapis.com/v0/b/mujadid-corner.appspot.com/
 icon: "https://yazidzm010101.github.io/habit-tracker/habit-tracker.svg"
 demoURL: "https://yazidzm010101.github.io/habit-tracker/"
 repoURL: https://github.com/yazidzm010101/habit-tracker
+draft: true
 tags:
   - Vite
   - React.js
