@@ -14,6 +14,7 @@ import {
 
 import ParallaxText from "../ParallaxText";
 import data from "~/_data/about";
+import seedrandom from "seedrandom";
 import { useRouter } from "next/router";
 
 function ParallaxSkills({ baseVelocity = 2, skills, ...rest }) {
@@ -53,7 +54,7 @@ function ParallaxSkills({ baseVelocity = 2, skills, ...rest }) {
               _dark: { bg: item.color, color: "white" },
             }}
           >
-            <Icon as={item.icon} mr={2} h={10} w={10} />
+            {item?.icon && <Icon as={item.icon} mr={2} h={10} w={10} />}
             <Text fontSize={"2xl"}>{item.name}</Text>
           </Flex>
         ))}
@@ -69,6 +70,27 @@ function About() {
       return router.basePath + url;
     }
     return url;
+  };
+  const shuffle = (curarray) => {
+    let myrng = seedrandom("randomskills");
+    let array = [...curarray];
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex > 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(myrng.quick() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
   };
   return (
     <Box w={"full"}>
@@ -221,12 +243,11 @@ function About() {
           },
         }}
       />
-      <ParallaxSkills skills={data?.latest_interest} baseVelocity={2} />
-      <ParallaxSkills skills={data?.latest_interest} baseVelocity={-2} />
+      <ParallaxSkills skills={data?.latest_interest} baseVelocity={0.5} />
+      <ParallaxSkills skills={data?.latest_interest} baseVelocity={-0.5} />
       <ParallaxSkills
-        skills={!!data && [...data.latest_interest].reverse()}
-        baseVelocity={2}
-        display={{ md: "none" }}
+        skills={!!data && shuffle(data.latest_interest)}
+        baseVelocity={0.5}
       />
     </Box>
   );
