@@ -27,6 +27,26 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <link rel="icon" href={getFullUrl("/favicon.ico")} sizes="any" />
+
+        {router.pathname != "/storyboard/[year]/[month]/[slug]" && (
+          <>
+            <meta property="og:title" content={"Mujadid's Corner"} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={router.basePath + router.asPath} />
+
+            <meta property="og:image" content={getFullUrl("/favicon.ico")} />
+
+            <meta name="twitter:image:alt" content={"Mujadid's Corner"} />
+
+            <meta name="twitter:card" content="summary_large_image" />
+
+            <meta
+              property="og:description"
+              content={"The introvert corner of Yazid Zaidan Mujadid"}
+            />
+            <meta property="og:site_name" content={"Mujadid's Story"} />
+          </>
+        )}
       </Head>
       <ChakraProvider theme={theme}>
         <Component {...pageProps} />
