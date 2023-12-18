@@ -27,6 +27,7 @@ import {
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import CodeBlock from "@/components/CodeBlock";
 import ErrorPage from "next/error";
+import Head from "next/head";
 import LatestPost from "@/components/storyboard/LatestPost";
 import Layout from "@/components/Layout";
 import NextLink from "next/link";
@@ -45,6 +46,7 @@ export async function getStaticProps({ params }) {
     "month",
     "content",
     "preview",
+    "description",
   ]);
   const latestPost = getLatestStories([
     "slug",
@@ -179,6 +181,18 @@ export default function StoryPage({ post, latestPost }) {
 
   return (
     <Layout title={post.title}>
+      <Head>
+        {/* Essential META Tags */}
+        <meta property="og:title" content={post.title} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={router.basePath + router.asPath} />
+        {post.preview && <meta property="og:image" content={post.preview} />}
+        {post.preview && <meta name="twitter:image:alt" content={post.title} />}
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta property="og:description" content={post.description} />
+        <meta property="og:site_name" content={"Mujadid's Story"} />
+      </Head>
       <Box
         pos={"relative"}
         w={"full"}
